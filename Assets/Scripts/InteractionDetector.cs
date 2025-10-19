@@ -16,12 +16,12 @@ public class InteractionDetector : MonoBehaviour
         if (context.performed)
         {
             Debug.Log("button pressed");
-            objectInRange?.Interact();
+            objectInRange?.Interact(transform);
         }
         else if (context.canceled)
         {
             Debug.Log("button slightly pressed");
-            objectInRange?.Interact();
+            objectInRange?.Interact(transform);
         }
     }
 

@@ -12,7 +12,7 @@ public class Clock : MonoBehaviour, IObject
 
     public bool CanInteract() => true;
 
-    public void Interact()
+    public void Interact(Transform playerTransform)
     {
         ControlUI.SetActive(false);
         ClockPuzzleUI.SetActive(true);

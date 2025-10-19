@@ -7,6 +7,7 @@ public class SpiritMovement : NetworkBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
+    bool isFacingRight = false;
 
     float horizontalMovement;
     float verticalMovement;
@@ -51,6 +52,7 @@ public class SpiritMovement : NetworkBehaviour
         if (!IsOwner) return;
 
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
+        Flip();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -60,4 +62,17 @@ public class SpiritMovement : NetworkBehaviour
         horizontalMovement = context.ReadValue<Vector2>().x;
         verticalMovement = context.ReadValue<Vector2>().y;
     }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+
+        }
+    }
 }
+
