@@ -1,29 +1,62 @@
+using Unity.Cinemachine;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SpiritMovement : MonoBehaviour
+public class SpiritMovement : NetworkBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
 
     float horizontalMovement;
     float verticalMovement;
+    private CinemachineCamera cam;
+
+    private PlayerInput input;
+
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            // Disable input for non-owners
+            input.enabled = false;
+        }
+    }
+
+    void Awake()
+    {
+        input = GetComponent<PlayerInput>();
+    }
+
 
     void Start()
     {
+        cam = GetComponentInChildren<CinemachineCamera>(true);
+
+        if (cam != null)
+            cam.gameObject.SetActive(IsOwner); // aktif hanya untuk player sendiri
 
     }
+
+    void OnEnable()
+    {
+        Debug.Log($"{name} spawned, IsOwner={IsOwner}, IsLocalPlayer={IsLocalPlayer}, ClientID={OwnerClientId}");
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
-        rb.linearVelocity = new Vector2(rb.linearVelocityX, verticalMovement * moveSpeed);
+        if (!IsOwner) return;
 
+        rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
     }
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;
+
         horizontalMovement = context.ReadValue<Vector2>().x;
         verticalMovement = context.ReadValue<Vector2>().y;
     }
