@@ -207,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.92, y: -0.9, z: 0}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_LocalScale: {x: 0.21, y: 0.21, z: 0.21}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4017397357690029109}
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2813899529
+  GlobalObjectIdHash: 1586851083
   InScenePlacedSourceGlobalObjectIdHash: 2813899529
   DeferredDespawnTick: 0
   Ownership: 1
@@ -495,7 +495,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.915361, y: 37.171875}
+    oldSize: {x: 8.900993, y: 23.789999}
     newSize: {x: 13.915361, y: 37.171875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -577,7 +577,7 @@ Transform:
   m_GameObject: {fileID: 8043564467038994727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.923078, z: -76.92308}
+  m_LocalPosition: {x: 0, y: 6.142857, z: -47.61905}
   m_LocalScale: {x: 7.6923084, y: 7.6923084, z: 7.6923084}
   m_ConstrainProportionsScale: 0
   m_Children: []
