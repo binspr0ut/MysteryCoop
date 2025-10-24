@@ -1,18 +1,22 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     [Header("References")]
     [SerializeField] private RectTransform lockpick;
     [SerializeField] private RectTransform[] pins;
-    [SerializeField] private Image[] pinImages;          // 🔹 NEW: gambar pin (untuk ubah warna)
-    [SerializeField] private float[] shearHeights;       // tinggi shear line per pin
+    [SerializeField] private Image[] pinImages;
+    [SerializeField] private float[] shearHeights;
     [SerializeField] private float liftLimit = 150f;
     [SerializeField] private float snapThreshold = 80f;
-    [SerializeField] private float shearTolerance = 12f; // 🔹 jarak toleransi untuk efek warna
-    [SerializeField] private float colorLerpSpeed = 8f;  // 🔹 kecepatan transisi warna
+    [SerializeField] private float shearTolerance = 12f;
+    [SerializeField] private float colorLerpSpeed = 8f;
+
+    [Header("Shelf Reference")]
+    [SerializeField] private ShelfLockpick shelfLockpick;
 
     private RectTransform canvasRect;
     private bool isDragging;
@@ -22,17 +26,20 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
 
     private Vector2[] pinStartPos;
     private bool[] pinUnlocked;
+    private Coroutine[] checkCoroutines; // 🕒 cek otomatis per pin
+
+    private float lockpickHalfHeight;
 
     void Start()
     {
         canvasRect = GetComponent<RectTransform>();
         pinStartPos = new Vector2[pins.Length];
         pinUnlocked = new bool[pins.Length];
+        checkCoroutines = new Coroutine[pins.Length];
 
         for (int i = 0; i < pins.Length; i++)
             pinStartPos[i] = pins[i].anchoredPosition;
 
-        // pastikan shearHeights sama panjang
         if (shearHeights.Length != pins.Length)
         {
             shearHeights = new float[pins.Length];
@@ -40,13 +47,15 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
                 shearHeights[i] = 100f;
         }
 
-        // pastikan langsung sejajar ke Pin1
+        // langsung ke pin pertama
         if (pins.Length > 0)
         {
             Vector2 lp = lockpick.anchoredPosition;
             lp.x = pins[0].anchoredPosition.x;
             lockpick.anchoredPosition = lp;
         }
+
+        lockpickHalfHeight = lockpick.rect.height * 0.5f;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -66,47 +75,97 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         Vector2 delta = localPoint - startMousePos;
         Vector2 newPos = startLockpickPos + delta;
 
-        // === Horizontal Snap ===
+        // === Snap horizontal ke pin ===
         float closestX = SnapToPinX(newPos.x);
         newPos.x = closestX;
         lockpick.anchoredPosition = newPos;
 
         // === Tentukan pin aktif ===
         currentPinIndex = FindNearestPin(lockpick.anchoredPosition.x);
-        if (currentPinIndex < 0) return;
+        if (currentPinIndex < 0 || pinUnlocked[currentPinIndex]) return;
 
         // === Vertikal: angkat pin ===
-        if (!pinUnlocked[currentPinIndex])
+        Vector3 worldTip = lockpick.TransformPoint(new Vector3(0, lockpick.rect.height * 0.5f, 0));
+        Vector2 localTip;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            RectTransformUtility.WorldToScreenPoint(eventData.pressEventCamera, worldTip),
+            eventData.pressEventCamera,
+            out localTip
+        );
+
+        float lift = Mathf.Clamp(localTip.y - pinStartPos[currentPinIndex].y, 0, liftLimit);
+        Vector2 pinPos = pinStartPos[currentPinIndex];
+        pins[currentPinIndex].anchoredPosition = new Vector2(pinPos.x, pinPos.y + lift);
+
+        // jika mendekati shear line, mulai cek otomatis
+        float distance = Mathf.Abs((pinPos.y + lift) - (pinStartPos[currentPinIndex].y + shearHeights[currentPinIndex]));
+        if (distance <= shearTolerance && checkCoroutines[currentPinIndex] == null)
         {
-            float lift = Mathf.Clamp(newPos.y - startLockpickPos.y, 0, liftLimit);
-            Vector2 pinPos = pinStartPos[currentPinIndex];
-            pins[currentPinIndex].anchoredPosition = new Vector2(pinPos.x, pinPos.y + lift);
+            checkCoroutines[currentPinIndex] = StartCoroutine(AutoUnlockAfterDelay(currentPinIndex, 1f));
+        }
+        else if (distance > shearTolerance && checkCoroutines[currentPinIndex] != null)
+        {
+            StopCoroutine(checkCoroutines[currentPinIndex]);
+            checkCoroutines[currentPinIndex] = null;
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (currentPinIndex < 0) { isDragging = false; return; }
-
-        Vector2 pinPos = pins[currentPinIndex].anchoredPosition;
-        float lifted = pinPos.y - pinStartPos[currentPinIndex].y;
-
-        if (Mathf.Abs(lifted - shearHeights[currentPinIndex]) <= shearTolerance)
-        {
-            // ✅ Pin unlocked
-            pinUnlocked[currentPinIndex] = true;
-            pins[currentPinIndex].anchoredPosition = new Vector2(pinStartPos[currentPinIndex].x, pinStartPos[currentPinIndex].y + shearHeights[currentPinIndex]);
-            Debug.Log($"Pin {currentPinIndex + 1} unlocked!");
-        }
-        else
-        {
-            // ❌ Belum pas
-            pins[currentPinIndex].anchoredPosition = pinStartPos[currentPinIndex];
-        }
-
-        currentPinIndex = -1;
         isDragging = false;
-        CheckIfAllUnlocked();
+    }
+
+    IEnumerator AutoUnlockAfterDelay(int index, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // pastikan masih di shear line
+        float lifted = pins[index].anchoredPosition.y - pinStartPos[index].y;
+        if (Mathf.Abs(lifted - shearHeights[index]) <= shearTolerance)
+        {
+            pinUnlocked[index] = true;
+            pins[index].anchoredPosition = new Vector2(pinStartPos[index].x, pinStartPos[index].y + shearHeights[index]);
+            Debug.Log($"✅ Pin {index + 1} unlocked!");
+            checkCoroutines[index] = null;
+
+            // otomatis pindah ke pin berikutnya
+            MoveToNextPin();
+            CheckIfAllUnlocked();
+        }
+    }
+
+    private void MoveToNextPin()
+    {
+        for (int i = 0; i < pins.Length; i++)
+        {
+            if (!pinUnlocked[i])
+            {
+                Vector2 lp = lockpick.anchoredPosition;
+                lp.x = pins[i].anchoredPosition.x;
+                lockpick.anchoredPosition = lp;
+                return;
+            }
+        }
+    }
+
+    private void CheckIfAllUnlocked()
+    {
+        foreach (bool unlocked in pinUnlocked)
+        {
+            if (!unlocked) return;
+        }
+
+        Debug.Log("🔓 All pins unlocked! Lock opened!");
+
+        // === Trigger Shelf ===
+        if (shelfLockpick != null)
+        {
+            shelfLockpick.isSolved = true;
+            shelfLockpick.LockpickOverlay.SetActive(false);
+            shelfLockpick.OpenedShelf.SetActive(true);
+            shelfLockpick.ClosePuzzle();
+        }
     }
 
     void Update()
@@ -118,11 +177,11 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
 
             float lifted = pins[i].anchoredPosition.y - pinStartPos[i].y;
             float distance = Mathf.Abs(lifted - shearHeights[i]);
+            Color targetColor;
 
-            // Jika dekat shear line → jadi hijau, kalau jauh → biru
-            Color targetColor = distance <= shearTolerance ? Color.green : Color.blue;
+            if (pinUnlocked[i]) targetColor = Color.green;
+            else targetColor = distance <= shearTolerance ? Color.yellow : Color.blue;
 
-            // Smooth transition
             pinImages[i].color = Color.Lerp(pinImages[i].color, targetColor, Time.deltaTime * colorLerpSpeed);
         }
     }
@@ -158,16 +217,5 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
             }
         }
         return index;
-    }
-
-    private void CheckIfAllUnlocked()
-    {
-        foreach (bool unlocked in pinUnlocked)
-        {
-            if (!unlocked) return;
-        }
-
-        Debug.Log("✅ All pins unlocked! Lock opened!");
-        // bisa tambahkan: shelfLockpick.ClosePuzzle();
     }
 }

@@ -9,19 +9,47 @@ public class ShelfLockpick : NetworkBehaviour, IObject
     [Header("UI References")]
     public GameObject ControlUI;
     public GameObject LockpickOverlay;
+    public GameObject OpenedShelf;
+    public GameObject ShelfUI;
+    public GameObject GuestbookUI;
 
+    public bool isSolved;
     void Start()
     {
         if (LockpickOverlay != null)
             LockpickOverlay.SetActive(false);
+        if (OpenedShelf != null)
+            OpenedShelf.SetActive(false);
+
+        // Hubungkan otomatis LockpickUI dengan Shelf ini
+        var ui = LockpickOverlay?.GetComponentInChildren<LockpickUI>();
+        if (ui != null)
+            ui.GetType().GetField("shelfLockpick", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+              ?.SetValue(ui, this);
     }
 
     public bool CanInteract() => true;
 
     public void Interact(Transform playerTransform)
     {
+        if (!isSolved)
+        {
+            ControlUI.SetActive(false);
+            LockpickOverlay.SetActive(true);
+            IsInteracted = true;
+        }
+        else
+        {
+            ControlUI.SetActive(false);
+            ShelfUI.SetActive(true);
+            IsInteracted = true;
+        }
+    }
+
+    public void OpenGuestbook()
+    {
         ControlUI.SetActive(false);
-        LockpickOverlay.SetActive(true);
+        GuestbookUI.SetActive(true);
         IsInteracted = true;
     }
 
@@ -29,6 +57,8 @@ public class ShelfLockpick : NetworkBehaviour, IObject
     {
         ControlUI.SetActive(true);
         LockpickOverlay.SetActive(false);
+        ShelfUI.SetActive(false);
+        GuestbookUI.SetActive(false);
         IsInteracted = false;
     }
 
