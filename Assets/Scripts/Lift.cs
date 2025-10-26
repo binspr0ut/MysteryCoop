@@ -60,11 +60,36 @@ public class Lift : NetworkBehaviour, IObject
         CloseLift();
     }
 
+    public void Go3rdFloor()
+    {
+        Debug.Log("Go 3rd Floor Pressed");
+
+        if (IsServer)
+        {
+            // kirim perintah ke client owner untuk teleport dirinya
+            GoUp3rdFloorClientRpc(interactorClientId);
+        }
+        else
+        {
+            // kirim ke server dulu, baru server broadcast ke owner
+            Go3rdFloorServerRpc();
+        }
+        CloseLift();
+        
+    }
+
     [ServerRpc(RequireOwnership = false)]
     private void GoUpServerRpc(ServerRpcParams rpcParams = default)
     {
         Debug.Log("Server received GoUp request");
         GoUpClientRpc(interactorClientId);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void Go3rdFloorServerRpc(ServerRpcParams rpcParams = default)
+    {
+        Debug.Log("Server received GoUp request");
+        GoUp3rdFloorClientRpc(interactorClientId);
     }
 
     [ClientRpc]
@@ -76,6 +101,20 @@ public class Lift : NetworkBehaviour, IObject
         var player = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject().transform;
         Vector3 newPos = player.position;
         newPos.y += 10f;
+        player.position = newPos;
+
+        Debug.Log($"[Client {targetClientId}] moved self up to {newPos}");
+    }
+
+    [ClientRpc]
+    private void GoUp3rdFloorClientRpc(ulong targetClientId)
+    {
+        // hanya player owner yang eksekusi ini
+        if (NetworkManager.Singleton.LocalClientId != targetClientId) return;
+
+        var player = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject().transform;
+        Vector3 newPos = player.position;
+        newPos.y += 20f;
         player.position = newPos;
 
         Debug.Log($"[Client {targetClientId}] moved self up to {newPos}");
