@@ -9,7 +9,7 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
 
     [Header("Puzzle Target (deg)")]
     public float targetHourAngle = 100f;    // target 3:20
-    public float targetMinuteAngle = 120f;
+    public float targetMinuteAngle = 120f; // menitnya
     public float tolerance = 5f;            // toleransi sukses (5 derajat)
 
     private RectTransform currentHand;
