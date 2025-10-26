@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,24 +6,32 @@ public class InteractionDetector : MonoBehaviour
 {
     private IObject objectInRange = null;
     public GameObject interactionIcon;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        interactionIcon.SetActive(false);
+        if (interactionIcon != null)
+            interactionIcon.SetActive(false);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        // Only when the key is PRESSED, not when released
+        if (!context.performed) return;
+
+        if (objectInRange == null)
         {
-            Debug.Log("button pressed");
-            objectInRange?.Interact(transform);
+            Debug.LogWarning("No interactable object in range!");
+            return;
         }
-        else if (context.canceled)
+
+        var netObj = GetComponentInParent<NetworkObject>();
+        if (netObj == null)
         {
-            Debug.Log("button slightly pressed");
-            objectInRange?.Interact(transform);
+            Debug.LogWarning("No NetworkObject found in parent!");
+            return;
         }
+
+        objectInRange.Interact(netObj.transform);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -30,7 +39,8 @@ public class InteractionDetector : MonoBehaviour
         if (collision.TryGetComponent(out IObject iobject) && iobject.CanInteract())
         {
             objectInRange = iobject;
-            interactionIcon.SetActive(true);
+            if (interactionIcon != null)
+                interactionIcon.SetActive(true);
         }
     }
 
@@ -39,13 +49,8 @@ public class InteractionDetector : MonoBehaviour
         if (collision.TryGetComponent(out IObject iobject) && iobject == objectInRange)
         {
             objectInRange = null;
-            interactionIcon.SetActive(false);
+            if (interactionIcon != null)
+                interactionIcon.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

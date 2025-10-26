@@ -161,10 +161,8 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         // === Trigger Shelf ===
         if (shelfLockpick != null)
         {
-            shelfLockpick.isSolved = true;
-            shelfLockpick.LockpickOverlay.SetActive(false);
-            shelfLockpick.OpenedShelf.SetActive(true);
-            shelfLockpick.ClosePuzzle();
+            shelfLockpick.UnlockShelfServerRpc(); // 🔹 panggil RPC baru
+            shelfLockpick.Unpossess();
         }
     }
 

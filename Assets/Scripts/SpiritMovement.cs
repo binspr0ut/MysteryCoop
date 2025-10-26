@@ -15,6 +15,10 @@ public class SpiritMovement : NetworkBehaviour
 
     private PlayerInput input;
 
+    private SpriteRenderer spriteRenderer;
+    private Collider2D col;
+    private readonly NetworkVariable<bool> isVisible = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+
 
     public override void OnNetworkSpawn()
     {
@@ -23,11 +27,31 @@ public class SpiritMovement : NetworkBehaviour
             // Disable input for non-owners
             input.enabled = false;
         }
+
+        // Saat nilai berubah, update visual semua client
+        isVisible.OnValueChanged += (_, newValue) =>
+        {
+            SetVisible(newValue);
+        };
+    }
+
+    [ServerRpc]
+    public void SetVisibleServerRpc(bool visible)
+    {
+        isVisible.Value = visible;
+    }
+
+    private void SetVisible(bool visible)
+    {
+        if (spriteRenderer != null) spriteRenderer.enabled = visible;
+        if (col != null) col.enabled = visible;
     }
 
     void Awake()
     {
         input = GetComponent<PlayerInput>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(true); // 🔹 tambahkan
+        col = GetComponent<Collider2D>();
     }
 
 
@@ -74,4 +98,6 @@ public class SpiritMovement : NetworkBehaviour
 
         }
     }
+
+
 }

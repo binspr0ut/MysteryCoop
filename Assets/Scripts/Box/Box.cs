@@ -11,6 +11,9 @@ public class Box : MonoBehaviour, IObject
 
     private BoxUI puzzle;
 
+    // 🔹 Tambahan untuk dependency
+    public bool isSolved { get; private set; } = false;
+
     void Start()
     {
         ID ??= GlobalHelper.GenerateUniqueID(gameObject);
@@ -42,7 +45,8 @@ public class Box : MonoBehaviour, IObject
 
     private void OnPuzzleDone()
     {
-        Debug.Log("Box Puzzle Done!");
+        Debug.Log("✅ Box Puzzle Done!");
+        isSolved = true; // ✅ Puzzle selesai
         ClosePuzzle();
     }
 }
