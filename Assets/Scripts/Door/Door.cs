@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -7,51 +8,82 @@ public class Door : NetworkBehaviour, IObject
     public GameObject DoorOpen;
     public GameObject DoorClosed;
 
-    private NetworkVariable<bool> isOpen = new NetworkVariable<bool>(
-        false,
-        NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Server
-    );
+    // Hanya server yang boleh write
+    private readonly NetworkVariable<bool> isOpen = new NetworkVariable<bool>(
+        false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+
+    // ==== Debounce client-side supaya satu tekan = satu RPC ====
+    private static float s_lastInteractTime;
+    private const float InteractCooldown = 0.2f;
+
+    // ==== Anti-spam server-side per-client (opsional tapi aman) ====
+    private static readonly Dictionary<ulong, float> s_serverLastToggle = new();
 
     public bool CanInteract() => true;
 
     public void Interact(Transform player)
     {
-        // Hanya owner atau client yang berinteraksi yang kirim permintaan ke server
-        if (IsOwner || !IsServer)
+        // Debounce di sisi yang menekan tombol
+        if (Time.unscaledTime - s_lastInteractTime < InteractCooldown) return;
+        s_lastInteractTime = Time.unscaledTime;
+
+        if (IsServer && IsOwner) // host menekan (server+client): toggle langsung
+        {
+            ToggleDoor_ServerAuthoritative();
+        }
+        else if (!IsServer) // pure client: kirim RPC sekali
         {
             ToggleDoorServerRpc();
         }
+        // Catatan: Dedicated server tidak punya input; cabang di atas sudah cukup.
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void ToggleDoorServerRpc(ServerRpcParams rpcParams = default)
     {
-        isOpen.Value = !isOpen.Value; // ubah status di server
-        UpdateDoorStateClientRpc(isOpen.Value); // broadcast ke semua client
+        var sender = rpcParams.Receive.SenderClientId;
+
+        // Anti-spam di server
+        if (s_serverLastToggle.TryGetValue(sender, out var last) &&
+            Time.unscaledTime - last < InteractCooldown)
+            return;
+
+        s_serverLastToggle[sender] = Time.unscaledTime;
+
+        ToggleDoor_ServerAuthoritative();
     }
 
-    [ClientRpc]
-    private void UpdateDoorStateClientRpc(bool newState)
+    // Selalu panggil ini HANYA di server
+    private void ToggleDoor_ServerAuthoritative()
     {
-        DoorOpen.SetActive(newState);
-        DoorClosed.SetActive(!newState);
+        isOpen.Value = !isOpen.Value;   // memicu OnValueChanged di semua client
+        UpdateDoorVisual(isOpen.Value); // juga update lokal (server)
+        // Debug.Log($"[SERVER] Door toggled -> {isOpen.Value}");
     }
 
-    private void OnEnable()
+    private void UpdateDoorVisual(bool open)
     {
-        // Pastikan setiap kali nilai berubah, pintu update juga
-        isOpen.OnValueChanged += (oldValue, newValue) =>
-        {
-            DoorOpen.SetActive(newValue);
-            DoorClosed.SetActive(!newValue);
-        };
+        if (DoorOpen) DoorOpen.SetActive(open);
+        if (DoorClosed) DoorClosed.SetActive(!open);
     }
 
-    void Start()
+    // === Sinkron awal dan event binding pakai lifecycle Netcode ===
+    public override void OnNetworkSpawn()
     {
-        // Pastikan kondisi awal pintu sinkron dengan NetworkVariable
-        DoorOpen.SetActive(isOpen.Value);
-        DoorClosed.SetActive(!isOpen.Value);
+        // Saat object spawn di client, NetworkVariable sudah tersinkron → pakai nilainya
+        UpdateDoorVisual(isOpen.Value);
+
+        isOpen.OnValueChanged += OnDoorNetworkChanged;
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        isOpen.OnValueChanged -= OnDoorNetworkChanged;
+    }
+
+    private void OnDoorNetworkChanged(bool oldValue, bool newValue)
+    {
+        UpdateDoorVisual(newValue);
+        // Debug.Log($"[CLIENT {NetworkManager.Singleton.LocalClientId}] Door visual <- {newValue}");
     }
 }

@@ -3,22 +3,32 @@ using UnityEngine.EventSystems;
 
 public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    [Header("References")]
     [SerializeField] private RectTransform hourArrow;
     [SerializeField] private RectTransform minuteArrow;
     [SerializeField] private Clock parentClock;
 
     [Header("Puzzle Target (deg)")]
-    public float targetHourAngle = 100f;    // target 3:20
-    public float targetMinuteAngle = 120f; // menitnya
-    public float tolerance = 5f;            // toleransi sukses (5 derajat)
+    [SerializeField] private float targetHourAngle = 100f;
+    [SerializeField] private float targetMinuteAngle = 120f;
+    [SerializeField] private float tolerance = 5f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource alarmSound;
 
     private RectTransform currentHand;
     private bool isDragging = false;
     private Vector2 pivotScreenPos;
 
+    private void Awake()
+    {
+        // fallback: otomatis ambil AudioSource di anak
+        if (alarmSound == null)
+            alarmSound = GetComponentInChildren<AudioSource>();
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Tentukan apakah yang diklik adalah hour atau minute arrow
         var clickedObj = eventData.pointerPressRaycast.gameObject;
         if (clickedObj == null) return;
 
@@ -29,7 +39,6 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
         else
             return;
 
-        // Ambil posisi pivot untuk perhitungan sudut
         pivotScreenPos = RectTransformUtility.WorldToScreenPoint(eventData.pressEventCamera, currentHand.position);
         isDragging = true;
     }
@@ -40,8 +49,6 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
 
         Vector2 dir = eventData.position - pivotScreenPos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-        // Rotasi jarum (pivot di pangkal)
         currentHand.localEulerAngles = new Vector3(0, 0, angle - 90);
     }
 
@@ -60,7 +67,14 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
             Mathf.Abs(minuteZ - targetMinuteAngle) <= tolerance)
         {
             Debug.Log("✅ Puzzle solved! Time = 3:20");
-            parentClock?.ClosePuzzle();
+
+            // 🔊 Mainkan suara alarm
+            if (alarmSound != null)
+                alarmSound.Play();
+            else
+                Debug.LogWarning("⚠️ Alarm AudioSource belum diset atau tidak ditemukan.");
+
+            // parentClock?.Unpossess();
         }
     }
 

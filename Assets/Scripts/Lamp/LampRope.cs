@@ -49,7 +49,7 @@ public class LampRope : NetworkBehaviour, IObject
     private void Start()
     {
         isOn.Value = false;
-        BasementCover.SetActive(isOn.Value);
+        BasementCover.SetActive(!isOn.Value);
         BasementRenderer.sprite = offSprite;
     }
 

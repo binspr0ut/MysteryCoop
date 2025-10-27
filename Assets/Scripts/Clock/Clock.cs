@@ -22,6 +22,11 @@ public class Clock : NetworkBehaviour, IPossess
 
         if (ControlUI != null)
             ControlUI.SetActive(true);
+
+        var col = GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false;
+
     }
 
     // === INTERACTION ===
