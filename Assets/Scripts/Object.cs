@@ -2,6 +2,6 @@ using UnityEngine;
 
 public interface IObject
 {
-    void Interact();
+    void Interact(Transform player);
     bool CanInteract();
 }
