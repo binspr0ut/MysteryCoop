@@ -24,11 +24,7 @@ public class CoopGameUI : MonoBehaviour
         string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         GUI.Label(rect, text, style);
 
-        // Connection info
-        string status = NetworkManager.Singleton.IsServer ? "Host (Detective)"
-                      : NetworkManager.Singleton.IsClient ? "Client (Spirit)"
-                      : "Offline";
-        GUI.Label(new Rect(10, 30, 400, 25), $"Status: {status}", style);
+
 
         // Buttons
         if (!NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsClient)

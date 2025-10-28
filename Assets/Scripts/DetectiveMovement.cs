@@ -12,7 +12,7 @@ public class DetectiveMovement : NetworkBehaviour
     float horizontalMovement;
     private CinemachineCamera cam;
     private PlayerInput input;
-
+    public float HorizontalDirection => horizontalMovement;
 
     public override void OnNetworkSpawn()
     {

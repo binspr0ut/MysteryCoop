@@ -68,8 +68,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 26.017025, y: 41.82}
+  m_Offset: {x: -0.2723512, y: -0.19812584}
+  m_Size: {x: 16.539146, y: 29.361202}
   m_Direction: 0
 --- !u!114 &682188615906171452
 MonoBehaviour:
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 2393382556760725287}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.923078, z: -76.92308}
+  m_LocalPosition: {x: 0, y: 6.789474, z: -52.631584}
   m_LocalScale: {x: 7.6923084, y: 7.6923084, z: 7.6923084}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 3528300552729859200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 25, z: 0}
+  m_LocalPosition: {x: 0, y: 15.9, z: 0}
   m_LocalScale: {x: 21.35, y: 21.35, z: 21.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -326,7 +326,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.81, y: -1.14, z: 0}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_LocalScale: {x: 0.19, y: 0.19, z: 0.19}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6547369645139477752}
@@ -452,17 +452,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.0907097}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.46875, y: 40.42022}
+    oldSize: {x: 8.625529, y: 25.820002}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13.46875, y: 40.42022}
+  m_Size: {x: 13.46875, y: 24.607143}
   m_EdgeRadius: 0
 --- !u!114 &6076835546057439508
 MonoBehaviour:
@@ -578,14 +578,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2939054192
-  InScenePlacedSourceGlobalObjectIdHash: 2939054192
+  GlobalObjectIdHash: 0
+  InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
+  SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
