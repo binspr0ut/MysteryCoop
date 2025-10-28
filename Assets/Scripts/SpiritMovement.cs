@@ -7,6 +7,7 @@ public class SpiritMovement : NetworkBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
+    public Animator animator;
     bool isFacingRight = false;
 
     float horizontalMovement;
@@ -76,6 +77,7 @@ public class SpiritMovement : NetworkBehaviour
         if (!IsOwner) return;
 
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
+        animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
         Flip();
     }
 

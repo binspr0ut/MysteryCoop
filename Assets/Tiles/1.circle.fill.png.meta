@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7131836570dc349e992650999956ce2d
+guid: f8e8047ba5a734062807d52bbccaf55b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1030137974459625965
-    second: arrow.left.circle.fill_0
+      213: 6287842453477757519
+    second: 1.circle.fill_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,11 +109,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrow.left.circle.fill_0
+      name: 1.circle.fill_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de17e45a709cb4e00800000000000000
-      internalID: 1030137974459625965
+      spriteID: f429923a567e24750800000000000000
+      internalID: 6287842453477757519
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arrow.left.circle.fill_0: 1030137974459625965
+      1.circle.fill_0: 6287842453477757519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

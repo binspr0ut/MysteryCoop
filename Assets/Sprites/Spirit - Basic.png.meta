@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 205e1c25c2c0d423390f5aec56d9af69
+guid: 66ca6358ed2bb4055adac667be6b138d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6533523812311163648
-    second: arrow.forward.circle.fill_0
+      213: -6256606479366201527
+    second: Spirit - Basic_0
+  - first:
+      213: 5040251282713564289
+    second: Spirit - Basic_1
+  - first:
+      213: 6132886496863484297
+    second: Spirit - Basic_2
+  - first:
+      213: 8960504996678466848
+    second: Spirit - Basic_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,17 +118,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrow.forward.circle.fill_0
+      name: Spirit - Basic_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 510
-        height: 511
+        x: 126
+        y: 166
+        width: 862
+        height: 2379
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 003ec5c8a4dbbaa50800000000000000
-      internalID: 6533523812311163648
+      spriteID: 94f58f15e811c29a0800000000000000
+      internalID: -6256606479366201527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spirit - Basic_1
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 167
+        width: 872
+        height: 2379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18459d456d192f540800000000000000
+      internalID: 5040251282713564289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spirit - Basic_2
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 170
+        width: 1054
+        height: 2375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 989765586c36c1550800000000000000
+      internalID: 6132886496863484297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spirit - Basic_3
+      rect:
+        serializedVersion: 2
+        x: 3211
+        y: 169
+        width: 1038
+        height: 2375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02df127d1db1a5c70800000000000000
+      internalID: 8960504996678466848
       vertices: []
       indices: 
       edges: []
@@ -148,7 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arrow.forward.circle.fill_0: 6533523812311163648
+      Spirit - Basic_0: -6256606479366201527
+      Spirit - Basic_1: 5040251282713564289
+      Spirit - Basic_2: 6132886496863484297
+      Spirit - Basic_3: 8960504996678466848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
