@@ -33,7 +33,10 @@ public class DetectiveMovement : NetworkBehaviour
         cam = GetComponentInChildren<CinemachineCamera>(true);
 
         if (cam != null)
+        {
             cam.gameObject.SetActive(IsOwner); // aktif hanya untuk player sendiri
+            cam.GetComponent<DynamicConfinerBinder>().BindConfiner();
+        }
 
     }
     void OnEnable()

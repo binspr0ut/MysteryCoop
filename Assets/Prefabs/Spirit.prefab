@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 4204524976761724453}
   - component: {fileID: 5784150513233809074}
   - component: {fileID: 995498848019651972}
+  - component: {fileID: 816539203976181437}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -707,3 +708,16 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &816539203976181437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043564467038994727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9957a1c302fa14b888b50bbfbfb13296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicConfinerBinder
+  confinerName: Confiner
