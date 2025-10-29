@@ -49,7 +49,8 @@ public class LampRope : NetworkBehaviour, IObject
     private void Start()
     {
         isOn.Value = false;
-        BasementCover.SetActive(!isOn.Value);
+        bool isDetective = IsHost;
+        BasementCover.SetActive(isDetective);
         BasementRenderer.sprite = offSprite;
     }
 

@@ -21,6 +21,10 @@ public class LobbyUIManager : MonoBehaviour
     private TMP_Text joinCodeDisplay;
     private bool gameStarted = false;
 
+    [SerializeField] private GameObject detectiveSelectButton;
+    [SerializeField] private GameObject spiritSelectButton;
+
+
     private void Awake()
     {
         if (joinCodeInputObj) joinCodeInput = joinCodeInputObj.GetComponent<TMP_InputField>();
