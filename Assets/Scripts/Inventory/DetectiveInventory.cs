@@ -34,4 +34,9 @@ public class DetectiveInventory : MonoBehaviour
         items.Clear();
         OnInventoryChanged?.Invoke();
     }
+
+    // public void TryAdd()
+    // {
+        
+    // }
 }
