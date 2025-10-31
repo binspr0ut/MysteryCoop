@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fadb65553544e6fa0965aeec82c22d, type: 3}
   m_Name: Item Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 
-  displayName: 
-  icon: {fileID: 0}
+  id: note01
+  displayName: Riddle Note
+  icon: {fileID: 2179578291804627319, guid: e40bb14149e314e6e86e597d94de022a, type: 3}
+  isInspectable: 1
+  inspectSprite: {fileID: 2179578291804627319, guid: e40bb14149e314e6e86e597d94de022a, type: 3}
+  inspectText: Note
