@@ -106,7 +106,7 @@ public class CollectibleItem : MonoBehaviour, IPointerClickHandler
             item.icon = overrideIcon; // sederhana (kalau mau non-destruktif, simpan via ItemInstance)
 
         // 4) coba masukkan ke inventory
-        bool ok = inv.TryAdd(item);
+        bool ok = inv.AddItem(item);
         if (!ok)
         {
             // TODO: tampilkan popup "Inventory penuh"
