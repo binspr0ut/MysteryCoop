@@ -10,7 +10,7 @@ jobs:
       checks: write
       contents: write
       packages: write
-      pull-request: write
+      pull-requests: write
     steps:
       # Checkout
       - name: Checkout repository
