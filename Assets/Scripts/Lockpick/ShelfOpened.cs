@@ -10,7 +10,7 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
     public GameObject GuestbookUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private ObjectState currentState = ObjectState.Locked;
+    private ObjectState currentState = ObjectState.Disabled;
 
 
     [Header("Components")]
@@ -59,7 +59,7 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
 
     }
 
-    public bool CanInteract() => true;
+    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void OpenGuestbook()
     {

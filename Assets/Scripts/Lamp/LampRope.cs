@@ -50,7 +50,7 @@ public class LampRope : NetworkBehaviour, IObject
     {
         isOn.Value = false;
         bool isDetective = IsHost;
-        BasementCover.SetActive(isDetective);
+        BasementCover.SetActive(!isDetective);
         BasementRenderer.sprite = offSprite;
     }
 

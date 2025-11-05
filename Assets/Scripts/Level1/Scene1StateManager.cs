@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-//
+
 public class Scene1StateManager : NetworkBehaviour
 {
     public static Scene1StateManager Instance;
@@ -16,13 +16,22 @@ public class Scene1StateManager : NetworkBehaviour
 
     [Header("Object References")]
     public MonoBehaviour suitcaseObject;
-    public MonoBehaviour shelfOpenedObject;
-    public MonoBehaviour clockObject;
     public List<MonoBehaviour> otherObjects = new();
 
     [Header("Explore Settings")]
     public int requiredExploreInteractions = 1;
     private int currentExploreInteractions = 0;
+
+    [Header("State Objects - Active in FindSuitcase")]
+    public MonoBehaviour shelfLockpickObject;
+    public MonoBehaviour boxObject;
+    public MonoBehaviour radioObject;
+    public MonoBehaviour clockBackObject;
+    public MonoBehaviour parabolaObject;
+
+    [Header("State Objects - Locked in FindSuitcase")]
+    public MonoBehaviour shelfOpenedObject;
+    public MonoBehaviour clockObject;
 
 
     private void Awake()
@@ -97,32 +106,63 @@ public class Scene1StateManager : NetworkBehaviour
     private void ApplyExploreState()
     {
         SetState(suitcaseObject, ObjectState.Active);
+
+        // Active objects
+        SetState(shelfLockpickObject, ObjectState.Disabled);
+        SetState(boxObject, ObjectState.Disabled);
+        SetState(radioObject, ObjectState.Disabled);
+        SetState(clockBackObject, ObjectState.Disabled);
+        SetState(parabolaObject, ObjectState.Disabled);
+
+        // Locked objects
         SetState(shelfOpenedObject, ObjectState.Disabled);
         SetState(clockObject, ObjectState.Disabled);
-
-        foreach (var obj in otherObjects)
-            SetState(obj, ObjectState.Disabled);
     }
 
     private void ApplyFindSuitcaseState()
     {
-        SetState(suitcaseObject, ObjectState.Active);
+        // Active objects
+        SetState(shelfLockpickObject, ObjectState.Active);
+        SetState(boxObject, ObjectState.Active);
+        SetState(radioObject, ObjectState.Active);
+        SetState(clockBackObject, ObjectState.Active);
+        SetState(parabolaObject, ObjectState.Active);
 
-        // Hanya 2 object ini yang Locked di state kedua
+        // Locked objects
         SetState(shelfOpenedObject, ObjectState.Locked);
         SetState(clockObject, ObjectState.Locked);
-
-        // Object lain jadi Active
-        foreach (var obj in otherObjects)
-            SetState(obj, ObjectState.Active);
     }
+
 
 
     private void SetState(MonoBehaviour obj, ObjectState state)
     {
-        if (obj is IStateObject so)
-            so.SetObjectState(state);
+        try
+        {
+            if (obj == null)
+            {
+                Debug.LogWarning($"[SetState] NULL object for state {state}");
+                return;
+            }
+
+            if (obj is IStateObject so)
+            {
+                so.SetObjectState(state);
+                Debug.Log($"✅ {obj.name} set to {state}");
+            }
+            else
+            {
+                Debug.LogWarning($"⚠️ {obj.name} does not implement IStateObject!");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"❌ Error while setting state for {obj}: {ex.Message}");
+        }
     }
+
+
+
 
 
     // ===== UNLOCK METHODS CALLED BY PUZZLES =====
@@ -133,18 +173,6 @@ public class Scene1StateManager : NetworkBehaviour
 
         // Saat note diambil pertama kali, langsung pindah state
         CurrentState.Value = Level1State.FindSuitcaseCode;
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void UnlockShelfServerRpc()
-    {
-        SetState(shelfOpenedObject, ObjectState.Active);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void UnlockClockServerRpc()
-    {
-        SetState(clockObject, ObjectState.Active);
     }
 
     // ===== EXPLORE PROGRESS =====
