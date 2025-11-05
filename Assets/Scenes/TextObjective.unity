@@ -998,8 +998,10 @@ MonoBehaviour:
   ControlUI: {fileID: 1904602423}
   LockpickOverlay: {fileID: 1693800992}
   OpenedShelf: {fileID: 1987442355}
+  OpenedShelfRenderer: {fileID: 0}
   LockpickTrigger: {fileID: 81814763}
   isSolved: 0
+  interactionCollider: {fileID: 0}
 --- !u!61 &81814766
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1171,6 +1173,7 @@ MonoBehaviour:
   batteryUI: {fileID: 1101162941}
   clockTarget: {fileID: 1200930347}
   boxDependency: {fileID: 1811646369}
+  interactionCollider: {fileID: 0}
 --- !u!61 &85947141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1991,8 +1994,6 @@ MonoBehaviour:
   LockPanel: {fileID: 0}
   ControlUI: {fileID: 0}
   CorrectCode: 493
-  onlyDetectiveCanInteract: 1
-  detectiveTag: Detective
 --- !u!61 &134308544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3956,6 +3957,7 @@ MonoBehaviour:
   ClockPuzzleUI: {fileID: 193142671}
   ControlUI: {fileID: 1904602423}
   isSolved: 0
+  interactionCollider: {fileID: 0}
 --- !u!1 &328359786
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,6 +4823,7 @@ MonoBehaviour:
   dishHead: {fileID: 438346087}
   maxHeadAngle: 16.3
   headFollow: 4
+  interactionCollider: {fileID: 0}
 --- !u!212 &438346086
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11270,7 +11273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1108167197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12411,6 +12414,7 @@ MonoBehaviour:
   ClockPuzzleUI: {fileID: 1049108049}
   ControlUI: {fileID: 1904602423}
   isSolved: 0
+  interactionCollider: {fileID: 0}
 --- !u!58 &1200930348
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13545,6 +13549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ControlUI: {fileID: 1904602423}
   RadioUI: {fileID: 1124753263}
+  interactionCollider: {fileID: 0}
 --- !u!1 &1263090124
 GameObject:
   m_ObjectHideFlags: 0
@@ -14645,7 +14650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1354746725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14658,9 +14663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20457f8b6565c4ca3b1b14fb28e5cc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager_Network
-  ShowTopMostFoldoutHeaderGroup: 1
-  currentState:
-    m_InternalValue: 0
 --- !u!114 &1354746726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17621,7 +17623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ee0ccbe7c95483cb673178f8d58926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  battery: {fileID: 1937013261}
+  battery1: {fileID: 0}
+  battery2: {fileID: 0}
   covers:
   - {fileID: 1927550960}
   - {fileID: 1420286058}
@@ -19578,8 +19581,6 @@ MonoBehaviour:
   LockPanel: {fileID: 151038091}
   ControlUI: {fileID: 1904602423}
   CorrectCode: 493
-  onlyDetectiveCanInteract: 1
-  detectiveTag: Detective
 --- !u!61 &1785370340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20125,6 +20126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ControlUI: {fileID: 1904602423}
   BoxUI: {fileID: 1633387109}
+  interactionCollider: {fileID: 0}
 --- !u!1 &1819819089
 GameObject:
   m_ObjectHideFlags: 0
@@ -21944,6 +21946,7 @@ MonoBehaviour:
   ControlUI: {fileID: 1904602423}
   ShelfUI: {fileID: 1766457374}
   GuestbookUI: {fileID: 54565917}
+  interactionCollider: {fileID: 0}
 --- !u!61 &1987442359
 BoxCollider2D:
   m_ObjectHideFlags: 0

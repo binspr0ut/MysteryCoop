@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ShelfLockpick : NetworkBehaviour, IPossess
+public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
 {
     public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
@@ -10,17 +10,43 @@ public class ShelfLockpick : NetworkBehaviour, IPossess
     public GameObject ControlUI;
     public GameObject LockpickOverlay;
     public GameObject OpenedShelf;
+    public SpriteRenderer OpenedShelfRenderer;
 
     public GameObject LockpickTrigger;
     public bool isSolved;
     private SpiritMovement PossessedSpirit;
 
+    [Header("Components")]
+    [SerializeField] private Collider2D interactionCollider;
+
+    private ObjectState currentState = ObjectState.Disabled;
+
+
+    public void SetObjectState(ObjectState state)
+    {
+        currentState = state;
+
+        switch (state)
+        {
+            case ObjectState.Disabled:
+                interactionCollider.enabled = false;
+                break;
+
+            case ObjectState.Locked:
+                interactionCollider.enabled = true;
+                break;
+
+            case ObjectState.Active:
+                interactionCollider.enabled = true;
+                break;
+        }
+    }
+
+
     void Start()
     {
         if (LockpickOverlay != null)
             LockpickOverlay.SetActive(false);
-        if (OpenedShelf != null)
-            OpenedShelf.SetActive(false);
 
         // Hubungkan otomatis LockpickUI dengan Shelf ini
         var ui = LockpickOverlay?.GetComponentInChildren<LockpickUI>();
@@ -82,7 +108,7 @@ public class ShelfLockpick : NetworkBehaviour, IPossess
     private void UpdateShelfClientRpc()
     {
         LockpickOverlay.SetActive(false);
-        OpenedShelf.SetActive(true);
+        OpenedShelfRenderer.enabled = true;
         LockpickTrigger.SetActive(false);
     }
 }

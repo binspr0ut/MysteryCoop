@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ClockBack : NetworkBehaviour, IObject
+public class ClockBack : NetworkBehaviour, IObject, IStateObject
 {
     public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
@@ -16,6 +16,32 @@ public class ClockBack : NetworkBehaviour, IObject
     [SerializeField] private Box boxDependency;      // ketergantungan Box
 
     private ClockBackUI _puzzleUI;
+
+    [Header("Components")]
+    [SerializeField] private Collider2D interactionCollider;
+
+    private ObjectState currentState = ObjectState.Disabled;
+
+
+    public void SetObjectState(ObjectState state)
+    {
+        currentState = state;
+
+        switch (state)
+        {
+            case ObjectState.Disabled:
+                interactionCollider.enabled = false;
+                break;
+
+            case ObjectState.Locked:
+                interactionCollider.enabled = true;
+                break;
+
+            case ObjectState.Active:
+                interactionCollider.enabled = true;
+                break;
+        }
+    }
 
     // === KUNCI SINKRONISASI ===
     private readonly NetworkVariable<bool> _isSolvedNet = new(

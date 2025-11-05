@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class Clock : NetworkBehaviour, IPossess
+public class Clock : NetworkBehaviour, IPossess, IStateObject
 {
     public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
@@ -13,6 +13,30 @@ public class Clock : NetworkBehaviour, IPossess
     public bool isSolved = false;
     private SpiritMovement PossessedSpirit;
 
+    [Header("Components")]
+    [SerializeField] private Collider2D interactionCollider;
+
+    private ObjectState currentState = ObjectState.Disabled;
+
+    public void SetObjectState(ObjectState state)
+    {
+        currentState = state;
+
+        switch (state)
+        {
+            case ObjectState.Disabled:
+                interactionCollider.enabled = false;
+                break;
+
+            case ObjectState.Locked:
+                interactionCollider.enabled = true;
+                break;
+
+            case ObjectState.Active:
+                interactionCollider.enabled = true;
+                break;
+        }
+    }
     void Start()
     {
         ID ??= System.Guid.NewGuid().ToString();

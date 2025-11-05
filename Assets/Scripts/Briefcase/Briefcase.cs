@@ -174,10 +174,6 @@ public class Briefcase : NetworkBehaviour, IObject
     [Header("Settings")]
     public string CorrectCode = "4931";
 
-    [Header("Role Restriction")]
-    [Tooltip("Hanya detektif yang boleh interaksi koper")]
-    public bool onlyDetectiveCanInteract = true;
-    public string detectiveTag = "Detective";
 
     // mencegah double-trigger quest 1 jika dipencet berkali-kali
     private bool explorationMarkedOnServer = false;
@@ -186,13 +182,6 @@ public class Briefcase : NetworkBehaviour, IObject
 
     public void Interact(Transform playerTransform)
     {
-        // --- Batasi hanya Detective ---
-        if (onlyDetectiveCanInteract && (playerTransform == null || !playerTransform.CompareTag(detectiveTag)))
-        {
-            Debug.Log("[Briefcase] Hanya detektif yang bisa menginteraksi koper ini.");
-            return;
-        }
-
         // --- Perilaku asli: sembunyikan HUD & tampilkan LockPanel ---
         if (ControlUI != null) ControlUI.SetActive(false);
 
@@ -212,42 +201,6 @@ public class Briefcase : NetworkBehaviour, IObject
         LockPanel.SetActive(true);
         panel.Init(this, CorrectCode);
         IsInteracted = true;
-
-        // --- Hook Quest 1 → Quest 2 (Explore -> Find Passcode) ---
-        if (!explorationMarkedOnServer)
-        {
-            Debug.Log("[Briefcase] Interact → request advance quest (client)");
-            NotifyBriefcaseInteracted_ServerRpc();
-            explorationMarkedOnServer = true;
-        }
-    }
-
-    // === ServerRpc: dijalankan di server ===
-    [ServerRpc(RequireOwnership = false)]
-    private void NotifyBriefcaseInteracted_ServerRpc()
-    {
-        Debug.Log("[Briefcase] ServerRpc received → advancing quest on server");
-
-        if (QuestManager_Network.I != null)
-        {
-            if (QuestManager_Network.I.currentState.Value == QuestState.ExploreBoardingHouse)
-            {
-                QuestManager_Network.I.TryAdvanceFromExplore_Server();
-            }
-        }
-    }
-
-    public void OnUnlocked()
-    {
-        // --- Hook Quest 2 selesai (Find Passcode -> Completed) ---
-        if (QuestManager_Network.I != null &&
-            QuestManager_Network.I.currentState.Value == QuestState.FindBriefcasePasscode)
-        {
-            QuestManager_Network.I.MarkAllDone_ServerRpc();
-        }
-
-        // Perilaku asli: tutup panel & kembalikan HUD
-        ClosePuzzle();
     }
 
     public void ClosePuzzle()

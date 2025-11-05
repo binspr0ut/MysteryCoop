@@ -62,6 +62,8 @@ public class BriefcaseNoteUI : MonoBehaviour
     public DetectiveInventory detectiveInventory;
     public ItemData noteItemData;
 
+    private bool hasTriggeredStateChange = false;
+
     void Start()
     {
         if (notePanel) notePanel.SetActive(false);
@@ -79,6 +81,15 @@ public class BriefcaseNoteUI : MonoBehaviour
 
     public void TakeNote()
     {
+        if (!hasTriggeredStateChange)
+        {
+            TriggerStateChangeToServer();
+            hasTriggeredStateChange = true;
+            noteButton.SetActive(false);
+        }
+
+        HideNote();
+
         if (!detectiveInventory || !noteItemData)
         {
             Debug.LogWarning("[BriefcaseNoteUI] Inventory atau ItemData belum di-assign.");
@@ -88,13 +99,29 @@ public class BriefcaseNoteUI : MonoBehaviour
         bool added = detectiveInventory.AddItem(noteItemData);
         if (added)
         {
-            if (noteButton) noteButton.SetActive(false); // sembunyikan kertas di atas koper
-            HideNote(); // tutup panel
-            Debug.Log("Note berhasil ditambahkan ke inventory!");
+            if (noteButton) noteButton.SetActive(false);
+            HideNote();
+
+            Debug.Log("[BriefcaseNoteUI] Note berhasil ditambahkan ke inventory!");
+
+            // 🔥 Trigger state change only ONCE
+            if (!hasTriggeredStateChange)
+            {
+                hasTriggeredStateChange = true;
+                TriggerStateChangeToServer();
+            }
         }
         else
         {
             Debug.Log("Inventory penuh atau gagal menambahkan note!");
+        }
+    }
+
+    private void TriggerStateChangeToServer()
+    {
+        if (Scene1StateManager.Instance != null)
+        {
+            Scene1StateManager.Instance.OnBriefcaseNoteTakenServerRpc();
         }
     }
 }

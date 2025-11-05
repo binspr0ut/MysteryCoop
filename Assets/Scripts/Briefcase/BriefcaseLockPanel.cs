@@ -4,7 +4,7 @@ using TMPro;
 public class BriefcaseLockPanel : MonoBehaviour
 {
     public TMP_Text[] digitTexts;   // isi 4 elemen untuk tampilan digit
-    private int[] digits = new int[4]; 
+    private int[] digits = new int[4];
 
     private Briefcase owner;
     private string correctCode = "000";
@@ -44,16 +44,7 @@ public class BriefcaseLockPanel : MonoBehaviour
     // tombol Enter
     public void PressEnter()
     {
-        string input = $"{digits[0]}{digits[1]}{digits[2]}";
-        if (input == correctCode)
-        {
-            owner?.OnUnlocked();
-        }
-        else
-        {
-            // salah → reset ke 0 (sederhana; nanti bisa ditambah shake/SFX)
-            Init(owner, correctCode);
-        }
+
     }
 
     // tombol Close (batalkan)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ParabolaBalance : MonoBehaviour, IPossess
+public class ParabolaBalance : MonoBehaviour, IPossess, IStateObject
 {
     public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
@@ -17,6 +17,32 @@ public class ParabolaBalance : MonoBehaviour, IPossess
     private float _stability01;
     private bool _isPossessed;
     private Quaternion _dishStartRot;
+
+    [Header("Components")]
+    [SerializeField] private Collider2D interactionCollider;
+
+    private ObjectState currentState = ObjectState.Disabled;
+
+
+    public void SetObjectState(ObjectState state)
+    {
+        currentState = state;
+
+        switch (state)
+        {
+            case ObjectState.Disabled:
+                interactionCollider.enabled = false;
+                break;
+
+            case ObjectState.Locked:
+                interactionCollider.enabled = true;
+                break;
+
+            case ObjectState.Active:
+                interactionCollider.enabled = true;
+                break;
+        }
+    }
 
     // ------------------------- IPossess Implementation -------------------------
 

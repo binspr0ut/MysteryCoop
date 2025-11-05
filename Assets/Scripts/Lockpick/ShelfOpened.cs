@@ -10,7 +10,7 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
     public GameObject GuestbookUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private ObjectState currentState = ObjectState.Disabled;
+    private ObjectState currentState = ObjectState.Locked;
 
 
     [Header("Components")]

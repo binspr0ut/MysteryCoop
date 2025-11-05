@@ -21,6 +21,13 @@ public class RadioPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     private float currentAngle;
     private float startAngle;
     private Vector2 startPointerPos;
+    private float initialNeedleY;
+
+    void Start()
+    {
+        if (needleIndicator != null)
+            initialNeedleY = needleIndicator.anchoredPosition.y;
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -68,7 +75,7 @@ public class RadioPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
         {
             float moveRange = 70f;
             float xPos = Mathf.Lerp(-moveRange / 2f, moveRange / 2f, normalized);
-            needleIndicator.anchoredPosition = new Vector2(xPos, 0);
+            needleIndicator.anchoredPosition = new Vector2(xPos, initialNeedleY);
         }
 
         // --- 3️⃣ Hitung jarak terhadap frekuensi target (untuk suara)
