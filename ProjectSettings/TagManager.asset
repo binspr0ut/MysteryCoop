@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Detective
   - Spirit
+  - DropZone
   layers:
   - Default
   - TransparentFX

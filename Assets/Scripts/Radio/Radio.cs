@@ -34,13 +34,25 @@ public class Radio : MonoBehaviour, IObject, IStateObject
         }
     }
 
-    public bool CanInteract() => true;
+    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void Interact(Transform player)
     {
-        ControlUI.SetActive(false);
-        RadioUI.SetActive(true);
-        IsInteracted = true;
+        if (currentState == ObjectState.Disabled) return;
+
+        if (currentState == ObjectState.Locked)
+        {
+            Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
+            // tampilkan UI "Memerlukan kunci"
+            return;
+        }
+
+        if (currentState == ObjectState.Active)
+        {
+            ControlUI.SetActive(false);
+            RadioUI.SetActive(true);
+            IsInteracted = true;
+        }
     }
 
     public void ClosePuzzle()

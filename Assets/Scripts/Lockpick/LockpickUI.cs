@@ -177,8 +177,7 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
             float distance = Mathf.Abs(lifted - shearHeights[i]);
             Color targetColor;
 
-            if (pinUnlocked[i]) targetColor = Color.green;
-            else targetColor = distance <= shearTolerance ? Color.yellow : Color.blue;
+            targetColor = distance <= shearTolerance ? Color.yellow : Color.white;
 
             pinImages[i].color = Color.Lerp(pinImages[i].color, targetColor, Time.deltaTime * colorLerpSpeed);
         }

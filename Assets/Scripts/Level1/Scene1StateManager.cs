@@ -8,15 +8,14 @@ public class Scene1StateManager : NetworkBehaviour
     public static Scene1StateManager Instance;
 
     public NetworkVariable<Level1State> CurrentState =
-        new NetworkVariable<Level1State>(Level1State.ExploreBuilding);
+        new NetworkVariable<Level1State>(Level1State.ExploreBuilding, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     public event Action<Level1State, string> OnQuestTitleChanged;
     public event Action<Level1State> OnStateChanged;
 
-
     [Header("Object References")]
+    [Tooltip("Suitcase / Briefcase object")]
     public MonoBehaviour suitcaseObject;
-    public List<MonoBehaviour> otherObjects = new();
 
     [Header("Explore Settings")]
     public int requiredExploreInteractions = 1;
@@ -34,6 +33,8 @@ public class Scene1StateManager : NetworkBehaviour
     public MonoBehaviour clockObject;
 
 
+    /* ================== UNITY EVENTS ================== */
+
     private void Awake()
     {
         Instance = this;
@@ -41,35 +42,74 @@ public class Scene1StateManager : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        // Register listener on both server and client
+        CurrentState.OnValueChanged += HandleStateChanged;
+
+        if (IsServer)
+        {
+            // Server apply current state immediately
+            HandleStateChanged(CurrentState.Value, CurrentState.Value);
+            RegisterEvents();
+
+        }
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        // IMPORTANT: Unregister listener to avoid double-callback after scene reload
+        CurrentState.OnValueChanged -= HandleStateChanged;
+    }
+
+
+    /* ================== STATE CHANGE CORE ================== */
+
+    public void ChangeState(Level1State newState)
+    {
         if (!IsServer) return;
 
-        CurrentState.OnValueChanged += HandleStateChanged;
-        BroadcastTitle(CurrentState.Value);
-        ApplyStateSettings(CurrentState.Value);
+        Level1State oldState = CurrentState.Value;
+        CurrentState.Value = newState;
+
+        // Call manually for server, clients will receive via OnValueChanged
+        HandleStateChanged(oldState, newState);
     }
 
     private void HandleStateChanged(Level1State oldState, Level1State newState)
     {
-        Debug.Log($"[LEVEL STATE] {oldState} → {newState}");
+        string who = IsServer ? "[SERVER]" : "[CLIENT]";
+        Debug.Log($"{who} [LEVEL STATE] {oldState} → {newState}");
 
         ApplyStateSettings(newState);
         BroadcastTitle(newState);
 
-
         OnStateChanged?.Invoke(newState);
 
-        if (newState == Level1State.Completed)
+        if (IsServer && newState == Level1State.Completed)
         {
-            NetworkManager.SceneManager.LoadScene("EndingScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+            NetworkManager.SceneManager.LoadScene("EndingScene",
+                UnityEngine.SceneManagement.LoadSceneMode.Single);
         }
     }
+
+
+    /* ================== STATE UI TITLE ================== */
+
     private void BroadcastTitle(Level1State state)
     {
         string title = GetTitle(state);
+
+        // Local invoke
         OnQuestTitleChanged?.Invoke(state, title);
+
+        // Tell all clients to update UI
         UpdateClientTitleClientRpc(title);
     }
 
+    [ClientRpc]
+    private void UpdateClientTitleClientRpc(string title)
+    {
+        OnQuestTitleChanged?.Invoke(CurrentState.Value, title);
+    }
 
     public string GetTitle(Level1State state)
     {
@@ -81,13 +121,11 @@ public class Scene1StateManager : NetworkBehaviour
             _ => ""
         };
     }
+
     public string GetTitle() => GetTitle(CurrentState.Value);
 
-    [ClientRpc]
-    private void UpdateClientTitleClientRpc(string title)
-    {
-        OnQuestTitleChanged?.Invoke(CurrentState.Value, title);
-    }
+
+    /* ================== APPLY STATE TO OBJECTS ================== */
 
     private void ApplyStateSettings(Level1State state)
     {
@@ -107,75 +145,65 @@ public class Scene1StateManager : NetworkBehaviour
     {
         SetState(suitcaseObject, ObjectState.Active);
 
-        // Active objects
         SetState(shelfLockpickObject, ObjectState.Disabled);
         SetState(boxObject, ObjectState.Disabled);
         SetState(radioObject, ObjectState.Disabled);
         SetState(clockBackObject, ObjectState.Disabled);
         SetState(parabolaObject, ObjectState.Disabled);
 
-        // Locked objects
         SetState(shelfOpenedObject, ObjectState.Disabled);
         SetState(clockObject, ObjectState.Disabled);
+
+        LogStateApplied("ExploreBuilding");
     }
 
     private void ApplyFindSuitcaseState()
     {
-        // Active objects
         SetState(shelfLockpickObject, ObjectState.Active);
         SetState(boxObject, ObjectState.Active);
         SetState(radioObject, ObjectState.Active);
         SetState(clockBackObject, ObjectState.Active);
         SetState(parabolaObject, ObjectState.Active);
 
-        // Locked objects
         SetState(shelfOpenedObject, ObjectState.Locked);
         SetState(clockObject, ObjectState.Locked);
+
+        LogStateApplied("FindSuitcaseCode");
     }
-
-
 
     private void SetState(MonoBehaviour obj, ObjectState state)
     {
-        try
+        if (obj == null)
         {
-            if (obj == null)
-            {
-                Debug.LogWarning($"[SetState] NULL object for state {state}");
-                return;
-            }
-
-            if (obj is IStateObject so)
-            {
-                so.SetObjectState(state);
-                Debug.Log($"✅ {obj.name} set to {state}");
-            }
-            else
-            {
-                Debug.LogWarning($"⚠️ {obj.name} does not implement IStateObject!");
-            }
+            Debug.LogWarning($"[SetState] NULL object for state {state}");
+            return;
         }
-        catch (Exception ex)
+
+        if (obj is IStateObject so)
         {
-            Debug.LogError($"❌ Error while setting state for {obj}: {ex.Message}");
+            so.SetObjectState(state);
+            Debug.Log($"{(IsServer ? "[SERVER]" : "[CLIENT]")} ✅ {obj.name} set to {state}");
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ {obj.name} does not implement IStateObject!");
         }
     }
 
+    private void LogStateApplied(string state)
+    {
+        Debug.Log($"{(IsServer ? "[SERVER]" : "[CLIENT]")} [STATE APPLY] {state} state applied");
+    }
 
 
+    /* ================== CALLS FROM PUZZLES ================== */
 
-
-    // ===== UNLOCK METHODS CALLED BY PUZZLES =====
     [ServerRpc(RequireOwnership = false)]
     public void OnBriefcaseNoteTakenServerRpc()
     {
         if (CurrentState.Value != Level1State.ExploreBuilding) return;
-
-        // Saat note diambil pertama kali, langsung pindah state
-        CurrentState.Value = Level1State.FindSuitcaseCode;
+        ChangeState(Level1State.FindSuitcaseCode);
     }
-
-    // ===== EXPLORE PROGRESS =====
 
     [ServerRpc(RequireOwnership = false)]
     public void RegisterExploreInteractionServerRpc()
@@ -185,13 +213,20 @@ public class Scene1StateManager : NetworkBehaviour
         currentExploreInteractions++;
 
         if (currentExploreInteractions >= requiredExploreInteractions)
-            CurrentState.Value = Level1State.FindSuitcaseCode;
+            ChangeState(Level1State.FindSuitcaseCode);
     }
 
-    public void SetState(Level1State newState)
+    private void RegisterEvents()
     {
-        if (!IsServer) return;
-        CurrentState.Value = newState;
+        if (shelfLockpickObject is ShelfLockpick shelf)
+        {
+            shelf.OnShelfUnlocked += () =>
+            {
+                // ubah shelfOpened menjadi Active
+                if (shelfOpenedObject is IStateObject so)
+                    so.SetObjectState(ObjectState.Active);
+            };
+        }
     }
 
 }

@@ -54,7 +54,7 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
     }
 
     // === INTERACTION ===
-    public bool CanInteract() => true;
+    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void Interact(Transform playerTransform)
     {
@@ -64,9 +64,21 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
             return;
         }
 
-        ControlUI.SetActive(false);
-        ClockPuzzleUI.SetActive(true);
-        IsInteracted = true;
+        if (currentState == ObjectState.Disabled) return;
+
+        if (currentState == ObjectState.Locked)
+        {
+            Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
+            // tampilkan UI "Memerlukan kunci"
+            return;
+        }
+
+        if (currentState == ObjectState.Active)
+        {
+            ControlUI.SetActive(false);
+            ClockPuzzleUI.SetActive(true);
+            IsInteracted = true;
+        }
     }
 
     public void ClosePuzzle()

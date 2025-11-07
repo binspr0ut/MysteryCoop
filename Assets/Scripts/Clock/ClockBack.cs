@@ -85,25 +85,36 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         ApplySolvedState(newValue);
     }
 
-    public bool CanInteract() => !_isSolvedNet.Value;
+    public bool CanInteract() => !_isSolvedNet.Value && (currentState == ObjectState.Active || currentState == ObjectState.Locked);
 
     public void Interact(Transform player)
     {
-        // Hanya Detective yang boleh membuka panel
-        var detective = player.GetComponent<DetectiveMovement>();
-        if (detective == null)
+        if (currentState == ObjectState.Disabled) return;
+
+        if (currentState == ObjectState.Locked)
         {
-            Debug.Log("❌ Only detective can interact with ClockBack!");
+            Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
+            // tampilkan UI "Memerlukan kunci"
             return;
         }
 
-        IsInteracted = true;
-        if (controlUI) controlUI.SetActive(false);
-        if (clockBackUIPanel) clockBackUIPanel.SetActive(true);
+        if (currentState == ObjectState.Active)
+        {  // Hanya Detective yang boleh membuka panel
+            var detective = player.GetComponent<DetectiveMovement>();
+            if (detective == null)
+            {
+                Debug.Log("❌ Only detective can interact with ClockBack!");
+                return;
+            }
 
-        // Tampilkan battery jika Box sudah solved
-        if (batteryUI)
-            batteryUI.SetActive(boxDependency != null && boxDependency.isSolved);
+            IsInteracted = true;
+            if (controlUI) controlUI.SetActive(false);
+            if (clockBackUIPanel) clockBackUIPanel.SetActive(true);
+
+            // Tampilkan battery jika Box sudah solved
+            if (batteryUI)
+                batteryUI.SetActive(boxDependency != null && boxDependency.isSolved);
+        }
     }
 
     public void ClosePuzzle()

@@ -44,7 +44,7 @@ public class StairUpTrigger : NetworkBehaviour, IObject
         var player = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject().transform;
         Vector3 newPos = player.position;
         newPos.y = -1.1f;
-        newPos.x = 27f;
+        newPos.x = 26f;
         player.position = newPos;
 
         Debug.Log($"[Client {targetClientId}] moved self up to {newPos}");
