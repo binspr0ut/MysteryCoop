@@ -1,182 +1,3 @@
-// using UnityEngine;
-// using Unity.Netcode;
-// using UnityEngine.Playables;
-// using UnityEngine.SceneManagement;
-
-// public class CutsceneTimelineManager_NG : NetworkBehaviour
-// {
-//     [Header("Timeline References")]
-//     public CutsceneController[] cutscenes; // semua prefab/timeline
-//     public CanvasGroup fadeCanvas;          // fade global
-//     public GameObject skipHint;
-//     public string nextSceneName = "";
-
-//     private int currentIndex = 0;
-//     private bool localPlaying = false;
-//     private bool localReportedDone = false;
-
-//     private CutsceneController localController;
-//     private GameObject spawnedLocal;
-
-
-//     // Server state
-//     private NetworkVariable<int> readyCount = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-//     private NetworkVariable<int> doneCount = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-//     private NetworkVariable<int> indexSync = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-//     private NetworkVariable<bool> sequenceRunning = new(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-
-//     [ServerRpc(RequireOwnership = false)]
-//     public void ClientReadyForCutsceneServerRpc()
-//     {
-//         if (!IsServer) return;
-//         readyCount.Value = Mathf.Min(2, readyCount.Value + 1);
-//         if (readyCount.Value >= 2 && !sequenceRunning.Value)
-//         {
-//             sequenceRunning.Value = true;
-//             indexSync.Value = 0;
-//             doneCount.Value = 0;
-//             StartTimelineClientRpc(indexSync.Value);
-//         }
-//     }
-
-//     [ClientRpc]
-//     private void StartTimelineClientRpc(int index)
-//     {
-//         if (index < 0 || index >= cutscenes.Length)
-//         {
-//             Debug.LogWarning("Index cutscene di luar batas!");
-//             return;
-//         }
-
-//         HideAllSubtitles();
-
-//         // Matikan / hapus instance sebelumnya
-//         if (spawnedLocal) Destroy(spawnedLocal);
-
-//         // Instantiate prefab cutscene → dapat instance di scene
-//         localController = Instantiate(cutscenes[index]);
-//         spawnedLocal = localController.gameObject;
-
-//         // Reset state
-//         currentIndex = index;
-//         localReportedDone = false;
-//         localPlaying = true;
-
-//         if (skipHint != null) skipHint.SetActive(false);
-//         FadeTo(0f, 0.3f);
-
-//         // Mulai play dan daftarkan callback selesai
-//         print("Panggil Sapiman");
-//         localController.Play(OnTimelineEnded);
-
-//         // Tampilkan hint skip setelah sedikit delay
-//         Invoke(nameof(ShowSkipHint), 1.5f);
-//     }
-
-//     void ShowSkipHint()
-//     {
-//         if (localPlaying && skipHint) skipHint.SetActive(true);
-//     }
-
-//     void Update()
-//     {
-//         if (!localPlaying) return;
-
-//         if (!localReportedDone && (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.touchCount > 0))
-//         {
-//             localReportedDone = true;
-//             localController?.Skip();
-//             ReportDoneServerRpc(indexSync.Value);
-//         }
-//     }
-
-//     private void OnTimelineEnded()
-//     {
-//         if (!localReportedDone)
-//         {
-//             localReportedDone = true;
-//             ReportDoneServerRpc(indexSync.Value);
-//         }
-//         FadeTo(1f, 0.2f);
-//     }
-
-//     [ServerRpc(RequireOwnership = false)]
-//     void ReportDoneServerRpc(int index)
-//     {
-//         if (!IsServer) return;
-//         doneCount.Value = Mathf.Min(2, doneCount.Value + 1);
-
-//         if (doneCount.Value >= 2)
-//         {
-//             doneCount.Value = 0;
-//             int next = index + 1;
-//             if (next < cutscenes.Length)
-//             {
-//                 indexSync.Value = next;
-//                 StartTimelineClientRpc(next);
-//             }
-//             else
-//             {
-//                 sequenceRunning.Value = false;
-//                 EndSequenceClientRpc();
-//             }
-//         }
-//     }
-
-//     [ClientRpc]
-//     void EndSequenceClientRpc()
-//     {
-//         skipHint?.SetActive(false);
-//         FadeTo(0f, 0.3f);
-//         if (!string.IsNullOrEmpty(nextSceneName))
-//         {
-//             if (IsHost)
-//                 NetworkManager.SceneManager.LoadScene(nextSceneName, LoadSceneMode.Single);
-//         }
-//         else
-//         {
-//             Debug.Log("Semua cutscene selesai!");
-//         }
-
-//         if (spawnedLocal) Destroy(spawnedLocal);
-//         localController = null;
-
-//     }
-
-//     private void FadeTo(float targetAlpha, float dur)
-//     {
-//         if (fadeCanvas == null) return;
-//         StopAllCoroutines();
-//         StartCoroutine(FadeCoroutine(targetAlpha, dur));
-//     }
-
-//     private System.Collections.IEnumerator FadeCoroutine(float target, float dur)
-//     {
-//         float t = 0f;
-//         float start = fadeCanvas.alpha;
-//         while (t < dur)
-//         {
-//             t += Time.deltaTime;
-//             fadeCanvas.alpha = Mathf.Lerp(start, target, t / dur);
-//             yield return null;
-//         }
-//         fadeCanvas.alpha = target;
-//     }
-
-//     [SerializeField] Transform subtitleRoot; // drag: CutsceneCanvas
-//     private void HideAllSubtitles()
-//     {
-//         if (!subtitleRoot) return;
-//         for (int i = 0; i < subtitleRoot.childCount; i++)
-//         {
-//             var go = subtitleRoot.GetChild(i).gameObject;
-//             // matikan semua yang namanya mulai dengan "SubtitleTMP"
-//             if (go.name.StartsWith("SubtitleTMP")) go.SetActive(false);
-//         }
-//     }
-
-// }
-
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Playables;
@@ -191,7 +12,7 @@ public class CutsceneTimelineManager_NG : NetworkBehaviour
     public GameObject skipHint;
     public string nextSceneName = "";
 
-    private int  currentIndex = 0;
+    private int currentIndex = 0;
     private bool localPlaying = false;
     private bool localReportedDone = false;
 
@@ -200,9 +21,9 @@ public class CutsceneTimelineManager_NG : NetworkBehaviour
     private GameObject spawnedLocal;
 
     // ====== server state (unchanged) ======
-    private NetworkVariable<int>  readyCount      = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    private NetworkVariable<int>  doneCount       = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    private NetworkVariable<int>  indexSync       = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> readyCount = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> doneCount = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> indexSync = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<bool> sequenceRunning = new(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     [ServerRpc(RequireOwnership = false)]
@@ -317,6 +138,12 @@ public class CutsceneTimelineManager_NG : NetworkBehaviour
         else
         {
             Debug.Log("Semua cutscene selesai!");
+
+            //buka panel pilih role
+            var roleUI = FindObjectOfType<RoleSelectUI>(true);
+            if (roleUI != null)
+                roleUI.Open();
+
         }
 
         if (spawnedLocal) Destroy(spawnedLocal);
