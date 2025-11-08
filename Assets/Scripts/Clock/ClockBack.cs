@@ -1,5 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ClockBack : NetworkBehaviour, IObject, IStateObject
 {
@@ -11,7 +12,8 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
     [SerializeField] private GameObject clockBackUIPanel;
 
     [Header("Puzzle Elements")]
-    [SerializeField] private GameObject batteryUI;   // battery di UI (hanya tampil jika Box solved)
+    [SerializeField] private GameObject batteryUI1;
+    [SerializeField] private GameObject batteryUI2;
     [SerializeField] private Clock clockTarget;      // target jam (punya Collider2D yg awalnya disabled)
     [SerializeField] private Box boxDependency;      // ketergantungan Box
 
@@ -54,17 +56,35 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
     {
         ID ??= System.Guid.NewGuid().ToString();
 
-        if (clockBackUIPanel != null)
-        {
-            clockBackUIPanel.SetActive(false);
-            _puzzleUI = clockBackUIPanel.GetComponent<ClockBackUI>();
-            if (_puzzleUI != null)
-                _puzzleUI.onPuzzleDone += HandlePuzzleDoneLocal;
-        }
+        batteryUI1.SetActive(false);
+        batteryUI2.SetActive(false);
 
-        if (batteryUI != null)
-            batteryUI.SetActive(false);
+        ClockBackBatterySync.Instance.OnBatteryChanged += HandleBatterySync;
     }
+    private void HandleBatterySync(int count)
+    {
+        if (count >= 1)
+            ShowBattery(batteryUI1);
+
+        if (count >= 2)
+            ShowBattery(batteryUI2);
+    }
+
+    private void ShowBattery(GameObject obj)
+    {
+        var cg = obj.GetComponent<CanvasGroup>();
+        if (cg == null) cg = obj.AddComponent<CanvasGroup>();
+
+        obj.SetActive(true);
+        var scale = obj.transform.localScale;
+        obj.transform.localScale = Vector3.zero;
+        cg.alpha = 0f;
+
+        LeanTween.scale(obj, scale, 0.3f).setEaseOutBack();
+        LeanTween.value(obj, 0f, 1f, 0.3f)
+                 .setOnUpdate(v => cg.alpha = v);
+    }
+
 
     public override void OnNetworkSpawn()
     {
@@ -112,8 +132,11 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             if (clockBackUIPanel) clockBackUIPanel.SetActive(true);
 
             // Tampilkan battery jika Box sudah solved
-            if (batteryUI)
-                batteryUI.SetActive(boxDependency != null && boxDependency.isSolved);
+            if (batteryUI1 && batteryUI2)
+            {
+                batteryUI1.SetActive(boxDependency != null && boxDependency.isSolved);
+                batteryUI2.SetActive(boxDependency != null && boxDependency.isSolved);
+            }
         }
     }
 
@@ -174,8 +197,11 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             clockTarget.enabled = solved;
         }
 
-        // (Opsional) Sembunyikan battery UI setelah solved
-        if (batteryUI != null)
-            batteryUI.SetActive(!solved);
+        // Tampilkan battery jika Box sudah solved
+        if (batteryUI1 && batteryUI2)
+        {
+            batteryUI1.SetActive(!solved);
+            batteryUI2.SetActive(!solved);
+        }
     }
 }

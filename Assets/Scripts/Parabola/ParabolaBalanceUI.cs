@@ -2,25 +2,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ParabolaBalanceUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ParabolaBalanceUI : MonoBehaviour
 {
     [Header("Refs")]
     public RectTransform track;
     public RectTransform window;
     public RectTransform bar;
-    public Image progressFill; // pastikan Image.type = Filled (Horizontal/Vertical)
+    public Image progressFill;
+    public Button balanceButton; // 🔹 Tambahkan ini
 
     [Header("Window Move")]
-    public float moveRightSpeed = 450f; // px/sec saat tap
-    public float driftLeftSpeed = 300f; // px/sec saat lepas
+    public float moveRightSpeed = 450f;
+    public float driftLeftSpeed = 300f;
 
     [Header("Bar Move")]
     public float barSpeed = 100f;
     public float barJitter = 0f;
 
     [Header("Win / Signal")]
-    public float keepInsideTime = 1f;          // waktu agar full bar
-    public float decayMultiplier = 0.6f;       // Q2=B: decay halus (0..1), 1 = sama cepat dgn naik
+    public float keepInsideTime = 1f;
+    public float decayMultiplier = 0.6f;
 
     [Header("Debug")]
     public bool debugLogs = true;
@@ -30,14 +31,13 @@ public class ParabolaBalanceUI : MonoBehaviour, IPointerDownHandler, IPointerUpH
     private float timer;
     private float barDir = 1f;
     private ParabolaBalance owner;
-    private bool solvedOnceForDebugStop; // hanya utk stop log, bukan solve permanen
+    private bool solvedOnceForDebugStop;
 
     float TrackHalf => track.rect.width * 0.5f;
     float WindowHalf => window.rect.width * 0.5f;
 
     private Color lowColor = Color.white;
-    private Color highColor = new Color(0.22f, 1f, 0.08f); // #39FF14 neon green
-
+    private Color highColor = new Color(0.22f, 1f, 0.08f);
 
     public void Init(ParabolaBalance o)
     {
@@ -47,19 +47,43 @@ public class ParabolaBalanceUI : MonoBehaviour, IPointerDownHandler, IPointerUpH
         barDir = Random.value > 0.5f ? 1f : -1f;
         solvedOnceForDebugStop = false;
 
-        // Start positions
-        SetX(window, -TrackHalf + WindowHalf); // kiri
-        SetX(bar, 0f);                         // tengah
+        SetX(window, -TrackHalf + WindowHalf);
+        SetX(bar, 0f);
 
         if (progressFill) progressFill.fillAmount = 0f;
 
+        // 🔹 Pasang event listener tombol
+        if (balanceButton)
+        {
+            balanceButton.onClick.RemoveAllListeners();
+            EventTrigger trigger = balanceButton.GetComponent<EventTrigger>();
+            if (trigger == null) trigger = balanceButton.gameObject.AddComponent<EventTrigger>();
+
+            trigger.triggers.Clear();
+
+            // PointerDown
+            EventTrigger.Entry downEntry = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.PointerDown
+            };
+            downEntry.callback.AddListener(_ => pressing = true);
+            trigger.triggers.Add(downEntry);
+
+            // PointerUp
+            EventTrigger.Entry upEntry = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.PointerUp
+            };
+            upEntry.callback.AddListener(_ => pressing = false);
+            trigger.triggers.Add(upEntry);
+        }
+
         if (debugLogs)
-            Debug.Log($"[ParabolaUI] Init. TrackHalf={TrackHalf:F2}, WindowHalf={WindowHalf:F2}");
+            Debug.Log($"[ParabolaUI] Init with BalanceButton bound");
     }
 
     void OnDisable()
     {
-        // Q1=B: saat UI ditutup → reset signal ke 0
         owner?.ClientSetSignal01(0f);
         if (progressFill) progressFill.fillAmount = 0f;
         timer = 0f;
@@ -67,7 +91,7 @@ public class ParabolaBalanceUI : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
     void Update()
     {
-        if (owner == null) return; // owner belum di-Init → jangan jalan
+        if (owner == null) return;
 
         float dt = Time.unscaledDeltaTime;
 
@@ -77,7 +101,7 @@ public class ParabolaBalanceUI : MonoBehaviour, IPointerDownHandler, IPointerUpH
         w = Mathf.Clamp(w + v * dt, -TrackHalf + WindowHalf, TrackHalf - WindowHalf);
         SetX(window, w);
 
-        // Bar move (ping-pong)
+        // Bar move
         float b = GetX(bar);
         float jitter = Random.Range(-barJitter, barJitter);
         b += (barSpeed + jitter) * barDir * dt;
@@ -91,45 +115,18 @@ public class ParabolaBalanceUI : MonoBehaviour, IPointerDownHandler, IPointerUpH
         // Inside check
         bool inside = Mathf.Abs(b - w) <= WindowHalf;
 
-        // Timer naik saat inside, turun halus saat outside
         if (inside) timer += dt;
         else timer -= dt * Mathf.Clamp(decayMultiplier, 0.05f, 1f);
-
         timer = Mathf.Clamp(timer, 0f, keepInsideTime);
 
-        // progress 0..1
         float signal01 = (keepInsideTime <= 0.0001f) ? 0f : (timer / keepInsideTime);
         if (progressFill) progressFill.fillAmount = signal01;
+        if (progressFill) progressFill.color = Color.Lerp(lowColor, highColor, signal01);
 
-        if (progressFill)
-        {
-            progressFill.color = Color.Lerp(lowColor, highColor, signal01);
-        }
-
-        // kirim ke owner (akan di-forward via RPC ke server → replicate)
         owner?.ClientSetSignal01(signal01);
-
-        // Debug (stop setelah pertama kali penuh, tapi mekanik tetap jalan)
-        if (!solvedOnceForDebugStop && debugLogs && Time.frameCount % logEveryNFrames == 0)
-        {
-            Debug.Log($"[ParabolaUI] inside={inside} | timer={timer:F2}/{keepInsideTime} | " +
-                      $"barX={b:F1} windowX={w:F1} | signal={signal01:F2}");
-        }
-        if (!solvedOnceForDebugStop && signal01 >= 1f)
-        {
-            solvedOnceForDebugStop = true;
-            if (owner != null && owner.enableDebug)
-                Debug.Log("[ParabolaUI] ✅ Full Signal");
-        }
-
     }
 
-    public void OnPointerDown(PointerEventData e) => pressing = true;
-    public void OnPointerUp(PointerEventData e) => pressing = false;
-
-    public void OnClickClose() => owner?.ClosePuzzle();
-
-    // Helpers (pakai localPosition sesuai setup awalmu)
+    // Helpers
     static float GetX(RectTransform rt) => rt.localPosition.x;
     static void SetX(RectTransform rt, float x)
     {

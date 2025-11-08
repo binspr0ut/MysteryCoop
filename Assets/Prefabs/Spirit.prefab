@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0791de48dbb4888ba1e8543631f71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  possesIcon: {fileID: 6595972865743184128}
 --- !u!1 &6595972865743184128
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2813899529
+  GlobalObjectIdHash: 661185720
   InScenePlacedSourceGlobalObjectIdHash: 2813899529
   DeferredDespawnTick: 0
   Ownership: 1

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ParabolaBalance : NetworkBehaviour, IPossess, IStateObject
 {
-    public bool IsInteracted { get; private set; }
+    public bool IsPossessed { get; private set; }
     public string ID { get; private set; }
 
     [Header("UI")]
@@ -26,8 +26,9 @@ public class ParabolaBalance : NetworkBehaviour, IPossess, IStateObject
     [SerializeField] private Collider2D interactionCollider;
 
     private ObjectState currentState = ObjectState.Disabled;
-    private bool _isPossessed;
     private Quaternion _dishStartRot;
+    private SpiritMovement PossessedSpirit;
+
 
     public void SetObjectState(ObjectState state)
     {
@@ -39,6 +40,17 @@ public class ParabolaBalance : NetworkBehaviour, IPossess, IStateObject
 
     public void Possess()
     {
+        if (IsPossessed) return;
+
+        // Cari spirit milik player lokal
+        var spirit = FindFirstObjectByType<SpiritMovement>();
+        if (spirit != null && spirit.IsOwner)
+        {
+            // 🔹 Sembunyikan spirit di semua client
+            spirit.SetVisibleServerRpc(false);
+            PossessedSpirit = spirit;
+        }
+
         if (currentState == ObjectState.Disabled) return;
         if (currentState == ObjectState.Locked)
         {
@@ -46,17 +58,37 @@ public class ParabolaBalance : NetworkBehaviour, IPossess, IStateObject
             return;
         }
 
-        _isPossessed = true;
+        IsPossessed = true;
         OpenPuzzle();
     }
 
     public void Unpossess()
     {
-        _isPossessed = false;
+        if (PossessedSpirit != null)
+        {
+            // 🔹 Tampilkan kembali spirit di semua client
+            PossessedSpirit.SetVisibleServerRpc(true);
+            PossessedSpirit = null;
+        }
+        IsPossessed = false;
         ClosePuzzle();
     }
 
-    public void Interact() { }
+    public void Interact()
+    {
+        if (IsPossessed)
+        {
+            Debug.Log("Unposess Parabola");
+            Unpossess();
+            IsPossessed = false;
+        }
+        else
+        {
+            Debug.Log("Possess Parabola");
+            Possess();
+            IsPossessed = true;
+        }
+    }
 
     private void OpenPuzzle()
     {
@@ -69,14 +101,14 @@ public class ParabolaBalance : NetworkBehaviour, IPossess, IStateObject
             BalanceUI.SetActive(true);
         }
 
-        IsInteracted = true;
+        IsPossessed = true;
     }
 
     public void ClosePuzzle()
     {
         if (BalanceUI) BalanceUI.SetActive(false);
         if (ControlUI) ControlUI.SetActive(true);
-        IsInteracted = false;
+        IsPossessed = false;
 
         if (dishHead) dishHead.localRotation = _dishStartRot;
 

@@ -52,9 +52,21 @@ public class Box : MonoBehaviour, IObject, IStateObject
             BoxUI.SetActive(false);
             puzzle = BoxUI.GetComponent<BoxUI>();
             if (puzzle != null)
+            {
                 puzzle.onPuzzleDone += OnPuzzleDone;
+                puzzle.onBatteryCollected += OnBatteryCollected;
+            }
         }
     }
+
+    private void OnBatteryCollected(int count)
+    {
+        isSolved = (count >= 2);
+
+        // Kirim sinkronisasi ke ClockBack
+        ClockBackBatterySync.Instance.UpdateBatteryCount(count);
+    }
+
 
     public bool CanInteract()
     {

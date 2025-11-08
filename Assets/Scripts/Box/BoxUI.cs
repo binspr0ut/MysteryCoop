@@ -20,6 +20,7 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
     private int batteryCount = 0;
     private bool puzzleDone = false;
     private HashSet<GameObject> clickedBatteries = new();
+    public event Action<int> onBatteryCollected;
 
     private RectTransform draggingObject;
     private Canvas canvas;
@@ -160,6 +161,11 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         batteryObj.SetActive(false);
         batteryCount++;
         Debug.Log($"🔋 Battery collected: {batteryCount}/2");
+
+        // Inform ClockBack!
+        onBatteryCollected?.Invoke(batteryCount);
+
+
 
         if (batteryCount >= 2)
         {

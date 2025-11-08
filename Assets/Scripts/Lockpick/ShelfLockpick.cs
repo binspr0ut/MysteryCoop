@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
 {
-    public bool IsInteracted { get; private set; }
+    public bool IsPossessed { get; private set; }
     public string ID { get; private set; }
 
     [Header("UI References")]
@@ -85,13 +85,24 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
 
             ControlUI.SetActive(false);
             LockpickOverlay.SetActive(true);
-            IsInteracted = true;
+            IsPossessed = true;
         }
     }
 
     public void Interact()
     {
-        return;
+        if (IsPossessed)
+        {
+            Debug.Log("Unposess ShelfLockpick");
+            Unpossess();
+            IsPossessed = false;
+        }
+        else
+        {
+            Debug.Log("Possess ShelfLockPick");
+            Possess();
+            IsPossessed = true;
+        }
     }
 
     public bool CanPossess() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
@@ -112,7 +123,7 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
     {
         ControlUI.SetActive(true);
         LockpickOverlay.SetActive(false);
-        IsInteracted = false;
+        IsPossessed = false;
     }
     public System.Action OnShelfUnlocked;
 

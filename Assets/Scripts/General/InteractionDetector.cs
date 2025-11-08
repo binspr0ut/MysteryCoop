@@ -1,16 +1,18 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.OnScreen;
+using UnityEngine.UI;
 
 public class InteractionDetector : MonoBehaviour
 {
     private IObject objectInRange = null;
-    public GameObject interactionIcon;
+
 
     void Start()
     {
-        if (interactionIcon != null)
-            interactionIcon.SetActive(false);
+
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -33,14 +35,14 @@ public class InteractionDetector : MonoBehaviour
 
         objectInRange.Interact(netObj.transform);
     }
+    public event System.Action<bool> OnRangeChanged;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IObject iobject) && iobject.CanInteract())
         {
             objectInRange = iobject;
-            if (interactionIcon != null)
-                interactionIcon.SetActive(true);
+            OnRangeChanged?.Invoke(true);
         }
     }
 
@@ -49,8 +51,8 @@ public class InteractionDetector : MonoBehaviour
         if (collision.TryGetComponent(out IObject iobject) && iobject == objectInRange)
         {
             objectInRange = null;
-            if (interactionIcon != null)
-                interactionIcon.SetActive(false);
+            OnRangeChanged?.Invoke(false);
         }
     }
+
 }

@@ -5043,11 +5043,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3f73a4bcae940e49876058c8f36d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParabolaBalance
+  ShowTopMostFoldoutHeaderGroup: 1
   BalanceUI: {fileID: 1108167196}
   ControlUI: {fileID: 0}
   dishHead: {fileID: 438346087}
   maxHeadAngle: 16.3
   headFollow: 4
+  Signal01:
+    m_InternalValue: 0
+  enableDebug: 1
   interactionCollider: {fileID: 0}
 --- !u!212 &438346086
 SpriteRenderer:
@@ -13173,6 +13177,9 @@ MonoBehaviour:
   barSpeed: 280
   barJitter: 40
   keepInsideTime: 3
+  decayMultiplier: 0.6
+  debugLogs: 1
+  logEveryNFrames: 10
 --- !u!1 &1108859591
 GameObject:
   m_ObjectHideFlags: 0
@@ -18590,14 +18597,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c1a6e3b08fd402786aa9c9ab0306f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  ShowTopMostFoldoutHeaderGroup: 1
   knob: {fileID: 2122614849}
   needleIndicator: {fileID: 195082114}
+  leftLimit: {fileID: 0}
+  rightLimit: {fileID: 0}
+  signalFill: {fileID: 0}
   correctSound: {fileID: 693821853}
   noiseSound: {fileID: 487746995}
   targetAngle: -120
   tolerance: 5
   minAngle: -300
   maxAngle: 0
+  rotationSpeed: 0.5
+  parabola: {fileID: 0}
+  minSignalToHear: 0.2
 --- !u!1 &1494370121
 GameObject:
   m_ObjectHideFlags: 0

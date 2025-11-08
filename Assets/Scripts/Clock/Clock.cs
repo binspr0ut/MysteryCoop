@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Clock : NetworkBehaviour, IPossess, IStateObject
 {
-    public bool IsInteracted { get; private set; }
+    public bool IsPossessed { get; private set; }
     public string ID { get; private set; }
 
     [Header("Clock Puzzle UI")]
@@ -53,31 +53,20 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
 
     }
 
-    // === INTERACTION ===
-    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
-
+    // === INTERACTION ==
     public void Interact(Transform playerTransform)
     {
-        if (isSolved)
+        if (IsPossessed)
         {
-            Debug.Log("[Clock] Puzzle already solved.");
-            return;
+            Debug.Log("Unposess lampu belajar");
+            Unpossess();
+            IsPossessed = false;
         }
-
-        if (currentState == ObjectState.Disabled) return;
-
-        if (currentState == ObjectState.Locked)
+        else
         {
-            Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
-            // tampilkan UI "Memerlukan kunci"
-            return;
-        }
-
-        if (currentState == ObjectState.Active)
-        {
-            ControlUI.SetActive(false);
-            ClockPuzzleUI.SetActive(true);
-            IsInteracted = true;
+            Debug.Log("Possess lampu belajar");
+            Possess();
+            IsPossessed = true;
         }
     }
 
@@ -85,13 +74,13 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
     {
         ControlUI.SetActive(true);
         ClockPuzzleUI.SetActive(false);
-        IsInteracted = false;
+        IsPossessed = false;
     }
 
     // === POSSESSION SYSTEM ===
     public void Possess()
     {
-        if (IsInteracted) return;
+        if (IsPossessed) return;
 
         // Cari spirit milik player lokal
         var spirit = FindFirstObjectByType<SpiritMovement>();
@@ -102,20 +91,58 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
             PossessedSpirit = spirit;
         }
 
-        // 🔹 Tampilkan puzzle jam
-        ControlUI.SetActive(false);
-        ClockPuzzleUI.SetActive(true);
-        IsInteracted = true;
+        if (isSolved)
+        {
+            Debug.Log("[Clock] Puzzle already solved.");
+            return;
+        }
+
+        if (currentState == ObjectState.Disabled) return;
+
+        if (currentState == ObjectState.Locked)
+        {
+            var puzzle = ClockPuzzleUI.GetComponentInChildren<ClockPuzzle>();
+            if (puzzle != null && puzzle.alarmSound != null)
+                puzzle.alarmSound.volume = 0f;
+
+
+            ControlUI.SetActive(false);
+            ClockPuzzleUI.SetActive(true);
+            IsPossessed = true;
+        }
+
+        if (currentState == ObjectState.Active)
+        {
+            var puzzle = ClockPuzzleUI.GetComponentInChildren<ClockPuzzle>();
+            if (puzzle != null && puzzle.alarmSound != null)
+                puzzle.alarmSound.volume = 1f;
+
+
+            ControlUI.SetActive(false);
+            ClockPuzzleUI.SetActive(true);
+            IsPossessed = true;
+        }
 
         Debug.Log("[Clock] Possessed and puzzle opened.");
     }
 
     public void Interact()
     {
-        // Tidak dipakai, tapi wajib implement
+        if (IsPossessed)
+        {
+            Debug.Log("Unposess Clock");
+            Unpossess();
+            IsPossessed = false;
+        }
+        else
+        {
+            Debug.Log("Possess Clock");
+            Possess();
+            IsPossessed = true;
+        }
     }
 
-    public bool CanPossess() => !IsInteracted;
+    public bool CanPossess() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void Unpossess()
     {
@@ -146,7 +173,7 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
         // Tutup puzzle, sembunyikan UI
         ClockPuzzleUI.SetActive(false);
         ControlUI.SetActive(true);
-        IsInteracted = false;
+        IsPossessed = false;
 
         Debug.Log("[Clock] Puzzle solved and updated for all clients.");
     }

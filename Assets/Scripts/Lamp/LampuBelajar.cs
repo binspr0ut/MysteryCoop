@@ -13,7 +13,7 @@ public class LampuBelajar : NetworkBehaviour, IPossess
     [SerializeField] private GameObject uiControl;      // parent UIControl
     [SerializeField] private GameObject leftStick;      // joystick yang dimatikan saat possess
     [SerializeField] private GameObject interactButton; // tombol tetap aktif untuk unpossess
-    [SerializeField] private GameObject possesIcon;     // tidak dimatikan
+    [SerializeField] private GameObject bgStick;     // tidak dimatikan
 
     private SpiritMovement possessedSpirit;
 
@@ -48,48 +48,32 @@ public class LampuBelajar : NetworkBehaviour, IPossess
     // ==== POSSESS LOGIC ====
     public void Possess()
     {
-        if (IsPossessed)
+        var spirit = FindFirstObjectByType<SpiritMovement>();
+        if (spirit != null && spirit.IsOwner)
         {
-            IsPossessed = false;
-            Unpossess();
+            spirit.SetVisibleServerRpc(false);
+            possessedSpirit = spirit;
         }
-        else
+
+        if (leftStick != null)
+            leftStick.SetActive(false);
+        if (bgStick != null)
+            bgStick.SetActive(false);
+
+        if (interactButton == null)
         {
-            // cari spirit milik local player
-            var spirit = FindFirstObjectByType<SpiritMovement>();
-            if (spirit != null && spirit.IsOwner)
-            {
-                spirit.SetVisibleServerRpc(false); // 🔹 sembunyikan spirit di semua client
-                possessedSpirit = spirit;
-            }
-
-            // 🔹 Nonaktifkan LeftStick (tidak bisa gerak saat possess)
-            if (leftStick == null)
-            {
-                var ui = GameObject.Find("UIControl");
-                if (ui != null)
-                    leftStick = ui.transform.Find("Left Stick")?.gameObject;
-            }
-            if (leftStick != null)
-                leftStick.SetActive(false);
-
-            // 🔹 InteractButton tetap aktif untuk Unpossess
-            if (interactButton == null)
-            {
-                var ui = GameObject.Find("UIControl");
-                if (ui != null)
-                    interactButton = ui.transform.Find("InteractButton")?.gameObject;
-            }
-            if (interactButton != null)
-                interactButton.SetActive(true);
-
-            // 🔹 Tidak matikan possesIcon
-            Debug.Log("[LampuBelajar] Possessing object...");
-            IsPossessed = true;
-
-            // 🔹 Sinkronkan ON ke server
-            ToggleLampServerRpc(true);
+            var ui = GameObject.Find("UIControl");
+            if (ui != null)
+                interactButton = ui.transform.Find("InteractButton")?.gameObject;
         }
+        if (interactButton != null)
+            interactButton.SetActive(true);
+
+        Debug.Log("[LampuBelajar] Possessing object...");
+        IsPossessed = true;
+
+        ToggleLampServerRpc(true);
+
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -98,7 +82,21 @@ public class LampuBelajar : NetworkBehaviour, IPossess
         isLampOn.Value = on;
     }
 
-    public void Interact() { } // not used
+    public void Interact()
+    {
+        if (IsPossessed)
+        {
+            Debug.Log("Unposess lampu belajar");
+            Unpossess();
+            IsPossessed = false;
+        }
+        else
+        {
+            Debug.Log("Possess lampu belajar");
+            Possess();
+            IsPossessed = true;
+        }
+    } // not used
 
     public void Unpossess()
     {
@@ -113,6 +111,9 @@ public class LampuBelajar : NetworkBehaviour, IPossess
         // 🔹 Aktifkan kembali LeftStick
         if (leftStick != null)
             leftStick.SetActive(true);
+        if (bgStick != null)
+            bgStick.SetActive(true);
+
 
         // 🔹 Lampu OFF di server
         ToggleLampServerRpc(false);
