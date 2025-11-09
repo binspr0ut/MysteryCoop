@@ -3,188 +3,130 @@ using Unity.Netcode;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using TMPro; // jika kamu mau mengubah teks hint
-
-public class CutsceneTimelineManager_NG : NetworkBehaviour
+public class CutsceneTimelineManager : NetworkBehaviour
 {
-    [Header("Timeline References")]
-    public CutsceneController[] cutscenes;
+    [Header("Cutscenes in Order")]
+    public PlayableDirector[] directors; // isi 10 director dari Hierarchy
     public CanvasGroup fadeCanvas;
     public GameObject skipHint;
-    public string nextSceneName = "";
 
-    private int currentIndex = 0;
-    private bool localPlaying = false;
-    private bool localReportedDone = false;
+    private int index = 0;
+    private bool localDone = false;
 
-    private bool localSkipArmed = false;   // <-- TAP #1 sudah dilakukan?
-    private CutsceneController localController;
-    private GameObject spawnedLocal;
-
-    // ====== server state (unchanged) ======
-    private NetworkVariable<int> readyCount = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    private NetworkVariable<int> doneCount = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    private NetworkVariable<int> indexSync = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    private NetworkVariable<bool> sequenceRunning = new(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-
-    [ServerRpc(RequireOwnership = false)]
-    public void ClientReadyForCutsceneServerRpc()
+    private void Start()
     {
-        if (!IsServer) return;
-        readyCount.Value = Mathf.Min(2, readyCount.Value + 1);
-        if (readyCount.Value >= 2 && !sequenceRunning.Value)
-        {
-            sequenceRunning.Value = true;
-            indexSync.Value = 0;
-            doneCount.Value = 0;
-            StartTimelineClientRpc(indexSync.Value);
-        }
+        if (IsServer)
+            StartNextCutsceneClientRpc(0);
     }
+
+    // [ServerRpc(RequireOwnership = false)]
+    // public void ClientReadyForCutsceneServerRpc(ServerRpcParams rpcParams = default)
+    // {
+    //     // Player baru bergabung, langsung ikut cutscene saat ini
+    //     Debug.Log($"[CutsceneTimelineManager] ClientReady dari {rpcParams.Receive.SenderClientId}");
+    //     if (IsServer)
+    //     {
+    //         // kirim ulang cutscene saat ini ke client yang baru ready
+    //         StartNextCutsceneClientRpc(index);
+    //     }
+    // }
 
     [ClientRpc]
-    private void StartTimelineClientRpc(int index)
+    private void StartNextCutsceneClientRpc(int idx)
     {
-        if (index < 0 || index >= cutscenes.Length) { Debug.LogWarning("Index cutscene invalid"); return; }
-
-        HideAllSubtitles();
-
-        if (spawnedLocal) Destroy(spawnedLocal);
-        localController = Instantiate(cutscenes[index]);
-        spawnedLocal = localController.gameObject;
-
-        currentIndex = index;
-        localReportedDone = false;
-        localSkipArmed = false;          // <-- reset dua-tap tiap mulai scene
-        localPlaying = true;
-
-        if (skipHint) { skipHint.SetActive(false); SetSkipHintText("Tap to Skip"); }
-        FadeTo(0f, 0.3f);
-
-        localController.Play(OnTimelineEnded);  // callback selesai
-        Invoke(nameof(ShowSkipHint), 1.0f);
-    }
-
-    void ShowSkipHint()
-    {
-        if (localPlaying && skipHint) skipHint.SetActive(true);
-    }
-
-    // ====== SATU tempat input untuk host & client ======
-    void Update()
-    {
-        if (!localPlaying) return;
-
-        bool pressed = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.touchCount > 0;
-        if (!pressed) return;
-
-        // TAP #1: loncat ke akhir lokal (tanpa report)
-        if (!localSkipArmed)
+        if (directors == null || directors.Length == 0)
         {
-            localSkipArmed = true;
-            localController?.SkipToEnd();
-            SetSkipHintText("Tap to Continue"); // feedback visual
+            Debug.LogError("[CutsceneTimelineManager] Directors array is empty!");
             return;
         }
 
-        // TAP #2: lapor selesai ke server (host & client sama-sama harus tap)
-        if (!localReportedDone)
+        if (idx < 0 || idx >= directors.Length)
         {
-            localReportedDone = true;
-            ReportDoneServerRpc(indexSync.Value);
+            Debug.Log($"[CutsceneTimelineManager] Cutscene selesai. Lanjut ke GameplayScene.");
+            if (IsHost)
+                SceneFlowManager.Instance.ChangeScene("FirstFloor");
+            return;
+        }
+
+        index = idx;
+        PlayCutsceneLocal();
+    }
+
+
+
+    void PlayCutsceneLocal()
+    {
+        var d = directors[index];
+        localDone = false;
+
+        // Pastikan punya CutsceneController
+        var ctrl = d.GetComponent<CutsceneController>();
+        if (ctrl != null)
+        {
+            ctrl.Play(OnCutsceneEnd);
+        }
+        else
+        {
+            Debug.LogWarning($"[CutsceneTimelineManager] Director {d.name} tanpa CutsceneController, memutar langsung.");
+            d.stopped -= OnStopped;
+            d.stopped += OnStopped;
+            d.time = 0;
+            d.Play();
+        }
+
+        if (fadeCanvas) StartCoroutine(FadeIn());
+        if (skipHint) { skipHint.SetActive(false); Invoke(nameof(ShowSkip), 1f); }
+    }
+
+    private void OnCutsceneEnd()
+    {
+        if (localDone) return;
+        localDone = true;
+        ReportCutsceneDoneServerRpc(index);
+    }
+
+
+    void ShowSkip() => skipHint?.SetActive(true);
+
+    private void Update()
+    {
+        if (Input.anyKeyDown && !localDone)
+        {
+            directors[index].time = directors[index].duration - 0.05;
+            directors[index].Evaluate();
         }
     }
 
-    private void OnTimelineEnded()
+    private void OnStopped(PlayableDirector d)
     {
-        // Cutscene benar-benar selesai (oleh waktu normal ATAU setelah SkipToEnd)
-        FadeTo(1f, 0.2f);
-        // biarkan tombol menunggu TAP #2 agar advance (server butuh 2 laporan)
-        // tidak apa-apa kalau pemain belum tap kedua—mereka “parkir” di frame akhir.
+        if (localDone) return;
+        localDone = true;
+        ReportCutsceneDoneServerRpc(index);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void ReportDoneServerRpc(int index)
+    void ReportCutsceneDoneServerRpc(int idx)
     {
-        if (!IsServer) return;
-        if (index != indexSync.Value) return; // cegah race
-
-        doneCount.Value = Mathf.Clamp(doneCount.Value + 1, 0, 2);
-        if (doneCount.Value >= 2)
+        playerReadyCount++;
+        if (playerReadyCount >= NetworkManager.Singleton.ConnectedClients.Count)
         {
-            doneCount.Value = 0;
-            int next = index + 1;
-            if (next < cutscenes.Length)
-            {
-                indexSync.Value = next;
-                StartTimelineClientRpc(next);
-            }
-            else
-            {
-                sequenceRunning.Value = false;
-                EndSequenceClientRpc();
-            }
+            playerReadyCount = 0;
+            StartNextCutsceneClientRpc(idx + 1);
         }
     }
 
-    [ClientRpc]
-    void EndSequenceClientRpc()
+    // fade effect opsional
+    private System.Collections.IEnumerator FadeIn()
     {
-        if (skipHint) skipHint.SetActive(false);
-        FadeTo(0f, 0.3f);
-
-        if (!string.IsNullOrEmpty(nextSceneName))
+        float t = 0f;
+        while (t < 0.5f)
         {
-            if (IsHost) NetworkManager.SceneManager.LoadScene(nextSceneName, LoadSceneMode.Single);
+            t += Time.deltaTime;
+            fadeCanvas.alpha = 1f - t / 0.5f;
+            yield return null;
         }
-        else
-        {
-            Debug.Log("Semua cutscene selesai!");
-
-            //buka panel pilih role
-            var roleUI = FindObjectOfType<RoleSelectUI>(true);
-            if (roleUI != null)
-                roleUI.Open();
-
-        }
-
-        if (spawnedLocal) Destroy(spawnedLocal);
-        localController = null;
+        fadeCanvas.alpha = 0f;
     }
 
-    private void FadeTo(float targetAlpha, float dur)
-    {
-        if (!fadeCanvas) return;
-        StopAllCoroutines();
-        StartCoroutine(FadeCoroutine(targetAlpha, dur));
-    }
-
-    private System.Collections.IEnumerator FadeCoroutine(float target, float dur)
-    {
-        float t = 0f, start = fadeCanvas.alpha;
-        while (t < dur) { t += Time.deltaTime; fadeCanvas.alpha = Mathf.Lerp(start, target, t / dur); yield return null; }
-        fadeCanvas.alpha = target;
-    }
-
-    [SerializeField] Transform subtitleRoot; // drag: CutsceneCanvas
-    private void HideAllSubtitles()
-    {
-        if (!subtitleRoot) return;
-        for (int i = 0; i < subtitleRoot.childCount; i++)
-        {
-            var go = subtitleRoot.GetChild(i).gameObject;
-            if (go.name.StartsWith("SubtitleTMP")) go.SetActive(false);
-        }
-    }
-
-    // util kecil untuk ganti tulisan hint (pakai TMP atau Text biasa)
-    private void SetSkipHintText(string s)
-    {
-        if (!skipHint) return;
-        var tmp = skipHint.GetComponentInChildren<TMPro.TMP_Text>();
-        if (tmp) tmp.text = s;
-        else
-        {
-            var uiText = skipHint.GetComponentInChildren<UnityEngine.UI.Text>();
-            if (uiText) uiText.text = s;
-        }
-    }
+    private int playerReadyCount = 0;
 }

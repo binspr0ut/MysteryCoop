@@ -104,18 +104,22 @@ public class LobbyUIManager : MonoBehaviour
                 joinCodeDisplay.text = $"Player connected! Starting game...";
                 HideLobbyAndShowDebug();
                 gameStarted = true;
+
+                // ✅ NEW: Host pindahkan semua ke FirstFloor via NetworkSceneManager
+                NetworkManager.Singleton.SceneManager
+                    .LoadScene("FirstFloor", UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
         }
         else if (NetworkManager.Singleton.IsClient)
         {
             joinCodeDisplay.text = $"Player connected! Starting game...";
 
-            // Client auto-hide saat terhubung
+            // Client cukup menunggu — NGO akan auto pindah saat host load scene
             HideLobbyAndShowDebug();
             gameStarted = true;
-
         }
     }
+
 
     private void HideLobbyAndShowDebug()
     {
