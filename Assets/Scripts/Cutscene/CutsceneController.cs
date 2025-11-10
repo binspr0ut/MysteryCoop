@@ -2,11 +2,10 @@ using UnityEngine;
 using UnityEngine.Playables;
 using System;
 using UnityEngine.Video;
-using System.Collections;
 
 public class CutsceneController : MonoBehaviour
 {
-    [SerializeField] private PlayableDirector director;
+    public PlayableDirector director;
     private Action onEnd;
     private VideoPlayer video;
 
@@ -20,44 +19,52 @@ public class CutsceneController : MonoBehaviour
     public void Play(Action end)
     {
         onEnd = end;
-        StartCoroutine(PlayRoutine());
-    }
-
-    private IEnumerator PlayRoutine()
-    {
         if (!director) director = GetComponent<PlayableDirector>();
         if (!video) video = GetComponent<VideoPlayer>();
 
-        // Tunggu 1 frame agar VideoPlayer siap
-        yield return null;
+        Debug.Log($"🎬 Playing {gameObject.name}: video={video?.clip?.name}, director={director?.playableAsset?.name}");
 
         if (video)
         {
             video.Stop();
-            video.Prepare();                     // prepare dulu
-            while (!video.isPrepared) yield return null; // tunggu sampai siap
             video.Play();
-            Debug.Log($"[CutsceneController] Playing video: {video.clip?.name}");
         }
 
-        // Mainkan timeline
         director.stopped -= OnStopped;
         director.stopped += OnStopped;
         director.time = 0;
         director.Play();
     }
 
+
+    // public void Play(Action end)
+    // {
+    //     onEnd = end;
+    //     if (!director) director = GetComponent<PlayableDirector>();
+    //     if (!video) video = GetComponent<VideoPlayer>();
+
+    //     // restart state bersih
+    //     if (video) { video.Stop(); video.Play(); }
+    //     director.stopped -= OnStopped;
+    //     director.stopped += OnStopped;
+    //     director.time = 0;
+    //     director.Play();
+    // }
+
+    // TAP #1: loncat ke akhir, tapi jangan akhiri sequence (biar user lihat frame terakhir + fade)
     public void SkipToEnd()
     {
         if (!director) return;
         if (director.state == PlayState.Playing)
         {
+            // loncat persis ke near-end; biarkan event OnStopped terpicu natural
             double eps = 0.05;
             director.time = Math.Max(0, director.duration - eps);
-            director.Evaluate();
+            director.Evaluate(); // tampilkan frame akhir segera
         }
     }
 
+    // (opsional) kalau ingin langsung matikan
     public void StopNow()
     {
         if (director && director.state == PlayState.Playing)

@@ -80,9 +80,12 @@ public class CreateRoomUI : MonoBehaviour
     {
         if (NetworkManager.Singleton.IsHost)
         {
-            txtStatus.text = "Loading cutscene...";
+            txtStatus.text = "Loading intro...";
             btnStart.interactable = false;
-            NetworkManager.Singleton.SceneManager.LoadScene(cutsceneScene, LoadSceneMode.Single);
+
+            // Gunakan SceneFlowManager untuk memulai cutscene bersama
+            SceneFlowManager.Instance.PlayCutscene("IntroCutscene", "FirstFloor");
         }
     }
+
 }

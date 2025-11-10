@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.Netcode;
 
 [RequireComponent(typeof(RectTransform))]
 public class PolaroidDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -131,7 +132,20 @@ public class PolaroidDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
 
         foreach (var z in DropZoneManager.Instance.zones) z.UpdateCorrectGlow();
         if (DropZoneManager.Instance.IsAllCorrect())
+        {
             Debug.Log("🎉 Puzzle Solved!");
+            if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsConnectedClient)
+            {
+                // Panggil RPC ke server
+                PuzzleNetworkManager.Instance.PuzzleSolvedServerRpc();
+            }
+            else
+            {
+                // Mode offline fallback
+                PuzzleNetworkManager.Instance.ActivateMapForOfflineTest();
+            }
+        }
+
     }
 
     // ======================

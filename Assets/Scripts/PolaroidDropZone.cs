@@ -1,38 +1,34 @@
+using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class DropZone : MonoBehaviour
+public class DropZone : NetworkBehaviour
 {
     public int slotIndex;
     public PolaroidDragHandler currentPolaroid;
 
     [Header("Visuals")]
-    [Tooltip("Optional: Image untuk highlight area dropzone (mis. Image kosong di atas slot).")]
+    [Tooltip("Highlight area dropzone (opsional, untuk hover).")]
     [SerializeField] private Image highlightImage; // boleh null
-    [Tooltip("Optional: Outline/GLOW di tepi slot (UI Outline atau Shadow).")]
-    [SerializeField] private Outline glowOutline;  // boleh null
+    [Tooltip("Glow image (GameObject UI yang menyala jika benar).")]
+    [SerializeField] private GameObject glowImage; // <— ini pengganti Outline
 
     public RectTransform Rect => GetComponent<RectTransform>();
 
-    void Reset()
-    {
-        highlightImage = GetComponent<Image>();
-        glowOutline = GetComponent<Outline>();
-    }
+
     void Awake()
     {
-        if (glowOutline)
-        {
-            glowOutline.effectColor = Color.clear;
-            glowOutline.effectDistance = Vector2.zero;
-        }
+        // Matikan glow di awal
+        if (glowImage) glowImage.SetActive(false);
+
         if (slotIndex >= DropZoneManager.Instance.correctOrder.Count)
         {
             Debug.LogError($"[DROPZONE ERROR] slotIndex {slotIndex} lebih besar dari correctOrder.Count ({DropZoneManager.Instance.correctOrder.Count}).");
         }
-
     }
+
 
     public void PlacePolaroid(PolaroidDragHandler p, bool animate = true)
     {
@@ -45,35 +41,29 @@ public class DropZone : MonoBehaviour
         var target = Rect.anchoredPosition;
         if (animate) p.SnapWithBounce(target);
         else p.Rect.anchoredPosition = target;
+
         Debug.Log($"[DROP] Polaroid {p.photoID} placed into slot {slotIndex}");
 
         UpdateCorrectGlow();
-
     }
+
 
     public void SwapPolaroid(PolaroidDragHandler incoming)
     {
-        var fromZone = incoming.currentDropZone;   // null = dari free area
-        var outgoing = currentPolaroid;            // polaroid yang sekarang di slot ini
+        var fromZone = incoming.currentDropZone;
+        var outgoing = currentPolaroid;
 
-        // 1) Masukkan incoming ke slot ini
         PlacePolaroid(incoming, animate: true);
 
-        // 2) Tangani outgoing (kalau ada)
         if (outgoing != null)
         {
             if (fromZone != null)
             {
-                // KASUS: dua-duanya dari dropzone -> swap antar zone
                 fromZone.PlacePolaroid(outgoing, animate: true);
             }
             else
             {
-                // KASUS: incoming dari free area -> keluarkan outgoing ke free
                 outgoing.currentDropZone = null;
-
-                // pastikan originalPosition adalah posisi bebas (bukan slot)
-                // (kita hanya set originalPosition ketika item berasal dari area bebas)
                 outgoing.SnapWithBounce(outgoing.originalPosition);
             }
         }
@@ -84,7 +74,6 @@ public class DropZone : MonoBehaviour
     {
         if (!highlightImage) return;
 
-        // simple pulse saat on
         if (on)
         {
             float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * DropZoneManager.Instance.highlightPulseSpeed);
@@ -98,55 +87,63 @@ public class DropZone : MonoBehaviour
         }
     }
 
+
     public void UpdateCorrectGlow()
     {
-        if (!glowOutline)
-        {
-            Debug.LogWarning($"[GLOW] DropZone {slotIndex} tidak punya Outline.");
-            return;
-        }
+        if (!glowImage) return;
 
         if (currentPolaroid == null)
         {
-            // Tidak ada polaroid di sini → glow mati total
-            glowOutline.effectColor = Color.clear;
-            glowOutline.effectDistance = Vector2.zero;
-            Debug.Log($"[GLOW] Slot {slotIndex} kosong → glow OFF");
+            glowImage.SetActive(false);
+            DropZoneManager.Instance.BroadcastCorrectSlots();
             return;
         }
 
-        var order = DropZoneManager.Instance.correctOrder;
-
-        if (slotIndex < 0 || slotIndex >= order.Count)
-        {
-            Debug.LogWarning($"[GLOW] SlotIndex {slotIndex} di luar range order list.");
-            glowOutline.effectColor = Color.clear;
-            glowOutline.effectDistance = Vector2.zero;
-            return;
-        }
-
-        int expectedID = order[slotIndex];
+        int expectedID = DropZoneManager.Instance.correctOrder[slotIndex];
         int actualID = currentPolaroid.photoID;
-
         bool correct = actualID == expectedID;
 
-        if (correct)
+        if (NetworkManager.Singleton.IsHost)
+            DropZoneManager.Instance.BroadcastCorrectSlots(); // kirim update setelah perubahan posisi
+
+        if (!NetworkManager.Singleton.IsHost)
         {
-            // gunakan warna glow dari manager (atau warna #A5FFDE yang kamu pilih)
-            Color glowColor = DropZoneManager.Instance.correctGlowColor;
-
-            glowOutline.effectColor = glowColor;
-            glowOutline.effectDistance = new Vector2(3f, 3f);
-
-            Debug.Log($"[GLOW] ✅ Slot {slotIndex}: Polaroid {actualID} BENAR (expected {expectedID}) → Glow ON");
+            // client tidak menghitung apapun, hanya menunggu broadcast
+            return;
         }
-        else
+    }
+
+
+    public void ShowGlow(bool on)
+    {
+        if (!glowImage) return;
+        StopAllCoroutines();
+        StartCoroutine(FadeGlow(on));
+    }
+
+
+    private IEnumerator FadeGlow(bool on)
+    {
+        if (!glowImage) yield break;
+        var img = glowImage.GetComponent<Image>();
+        if (!img) yield break;
+
+        float startAlpha = img.color.a;
+        float targetAlpha = on ? 1f : 0f;
+        float t = 0f;
+
+        while (t < 0.25f)
         {
-            glowOutline.effectColor = Color.clear;
-            glowOutline.effectDistance = Vector2.zero;
-
-            Debug.Log($"[GLOW] ❌ Slot {slotIndex}: Polaroid {actualID} SALAH (expected {expectedID}) → Glow OFF");
+            t += Time.deltaTime;
+            float a = Mathf.Lerp(startAlpha, targetAlpha, t / 0.25f);
+            var c = img.color;
+            c.a = a;
+            img.color = c;
+            yield return null;
         }
+
+        img.color = new Color(img.color.r, img.color.g, img.color.b, targetAlpha);
+        glowImage.SetActive(on);
     }
 
 }

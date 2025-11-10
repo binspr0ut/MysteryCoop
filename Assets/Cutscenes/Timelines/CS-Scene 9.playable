@@ -92,7 +92,7 @@ MonoBehaviour:
     m_DisplayName: Active
   m_Markers:
     m_Objects: []
-  m_PostPlaybackState: 3
+  m_PostPlaybackState: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,14 +130,14 @@ MonoBehaviour:
   sourceGameObject:
     exposedName: 765dfa7c00d74434c8cd2b6a724f62ac
     defaultValue: {fileID: 0}
-  prefabGameObject: {fileID: 0}
+  prefabGameObject: {fileID: 6669956726676742282, guid: 67b53117a63334787a5e896721a0aed6, type: 3}
   updateParticle: 1
   particleRandomSeed: 2751
-  updateDirector: 0
+  updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 0
-  postPlayback: 2
+  active: 1
+  postPlayback: 1
   directorOnClipEnd: 0
 --- !u!114 &6685367713717560887
 MonoBehaviour:

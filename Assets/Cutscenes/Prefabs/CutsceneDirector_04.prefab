@@ -64,7 +64,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -82,13 +82,10 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 2423530397276059162, guid: cbb1b8a1565dd43949218aa21f3e7f4f, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 362468481019603952, guid: cbb1b8a1565dd43949218aa21f3e7f4f, type: 2}
-    value: {fileID: 0}
+  m_SceneBindings: []
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 5d1c2ea066ead470fa7005a23ae16c96: {fileID: 0}
 --- !u!114 &1271619539105867002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,4 +98,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7cbaef6a60647178e6ca46417cd32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  director: {fileID: 5908031143242788351}

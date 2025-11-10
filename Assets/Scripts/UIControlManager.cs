@@ -24,6 +24,7 @@ public class UIControlManager : MonoBehaviour
     public Sprite SpiritInteract;
     public Sprite SpiritJoystick;
     public Sprite SpiritJoystickBg;
+    public GameObject inventoryButton;
 
 
     public float transparentValue;
@@ -41,9 +42,19 @@ public class UIControlManager : MonoBehaviour
 
     private void Start()
     {
-        // Jalankan coroutine supaya menunggu sampai player benar-benar spawn
+        // Pastikan tombol inventory mati di awal
+        if (inventoryButton != null)
+            inventoryButton.SetActive(false);
         StartCoroutine(WaitForLocalPlayerAndBind());
     }
+
+    // Method publik agar bisa dipanggil dari state manager
+    public void SetInventoryVisible(bool visible)
+    {
+        if (inventoryButton != null)
+            inventoryButton.SetActive(visible);
+    }
+
 
     private IEnumerator WaitForLocalPlayerAndBind()
     {

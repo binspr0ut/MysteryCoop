@@ -64,7 +64,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -101,4 +101,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7cbaef6a60647178e6ca46417cd32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  director: {fileID: 5908031143242788351}

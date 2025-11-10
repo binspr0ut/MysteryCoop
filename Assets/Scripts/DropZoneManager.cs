@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.Netcode;
+using Unity.Collections;
+using System.Linq;
 
-public class DropZoneManager : MonoBehaviour
+public class DropZoneManager : NetworkBehaviour
 {
     public static DropZoneManager Instance;
 
@@ -17,6 +20,8 @@ public class DropZoneManager : MonoBehaviour
     public Color highlightColor = new Color(1f, 1f, 1f, 0.35f);  // semi-white overlay
     public Color normalColor = new Color(1f, 1f, 1f, 0f);        // no overlay
     public Color correctGlowColor = new Color(0.65f, 1f, 0.87f, 1f); // A5FFDE
+    // 🧠 daftar slot yang benar dikirim dari host ke client
+    private NetworkVariable<FixedString64Bytes> syncedCorrectSlots = new(writePerm: NetworkVariableWritePermission.Server);
 
     public float highlightPulseSpeed = 3f;
 
@@ -80,4 +85,41 @@ public class DropZoneManager : MonoBehaviour
         }
         return true;
     }
+
+    public override void OnNetworkSpawn()
+    {
+        syncedCorrectSlots.OnValueChanged += (_, newVal) =>
+        {
+            // hanya Spirit yang update visual glow
+            if (!IsServer)
+                UpdateGlowFromString(newVal.ToString());
+        };
+    }
+
+    // 🟢 dipanggil host setiap kali ada perubahan
+    public void BroadcastCorrectSlots()
+    {
+        if (!IsServer) return;
+
+        var correctIndexes = zones
+            .Where(z => z.currentPolaroid != null && z.currentPolaroid.photoID == correctOrder[z.slotIndex])
+            .Select(z => z.slotIndex)
+            .ToList();
+
+        syncedCorrectSlots.Value = string.Join(",", correctIndexes);
+        Debug.Log($"[DropZoneManager] Synced correct slots: {syncedCorrectSlots.Value}");
+    }
+
+    // 🔵 dijalankan client (Spirit)
+    private void UpdateGlowFromString(string str)
+    {
+        var activeIndexes = str.Split(',').Where(s => int.TryParse(s, out _)).Select(int.Parse).ToHashSet();
+
+        foreach (var z in zones)
+        {
+            bool on = activeIndexes.Contains(z.slotIndex);
+            z.ShowGlow(on);
+        }
+    }
+
 }

@@ -36,7 +36,7 @@ public class BriefcaseNoteUI : MonoBehaviour
             TriggerStateChangeToServer();
         }
 
-        noteButton.SetActive(false);
+        // noteButton.SetActive(false);
         HideNote();
 
         if (!detectiveInventory || !noteItemData)

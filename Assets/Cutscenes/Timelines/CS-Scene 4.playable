@@ -107,14 +107,14 @@ MonoBehaviour:
   sourceGameObject:
     exposedName: 5d1c2ea066ead470fa7005a23ae16c96
     defaultValue: {fileID: 0}
-  prefabGameObject: {fileID: 0}
+  prefabGameObject: {fileID: 6669956726676742282, guid: a12c4aa2c49bd4e71aff52f817474e5e, type: 3}
   updateParticle: 1
   particleRandomSeed: 7076
-  updateDirector: 0
+  updateDirector: 1
   updateITimeControl: 1
   searchHierarchy: 0
-  active: 0
-  postPlayback: 2
+  active: 1
+  postPlayback: 1
   directorOnClipEnd: 0
 --- !u!114 &11400000
 MonoBehaviour:

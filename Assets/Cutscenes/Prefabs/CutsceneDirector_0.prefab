@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 678674440594737317}
   - component: {fileID: 726287128066045107}
   - component: {fileID: 5908031143242788351}
-  - component: {fileID: 7178932584043860885}
+  - component: {fileID: 1271619539105867002}
   m_Layer: 0
-  m_Name: CutsceneDirector_02
+  m_Name: CutsceneDirector_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6669956726676742282}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: a18679cf6381e4ccab3185dd9a5b1366, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 16dc58d49f07c44058dd0547ec25ac84, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -64,7 +64,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -77,17 +77,22 @@ PlayableDirector:
   m_GameObject: {fileID: 6669956726676742282}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 50cc6c4d337424f99b3694e82aba2f5b, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: f514f9a0294a440aea7bbc5f3970de3b, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 2423530397276059162, guid: 50cc6c4d337424f99b3694e82aba2f5b, type: 2}
+  - key: {fileID: 2423530397276059162, guid: a75ec6345e3ef42e98402201fd7e46d0, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 362468481019603952, guid: a75ec6345e3ef42e98402201fd7e46d0, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1833610364262333313, guid: f514f9a0294a440aea7bbc5f3970de3b, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
-    m_References: []
---- !u!114 &7178932584043860885
+    m_References:
+    - bd6f4966e08174fa98288fdf96161dc1: {fileID: 0}
+--- !u!114 &1271619539105867002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7cbaef6a60647178e6ca46417cd32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
+  director: {fileID: 5908031143242788351}
