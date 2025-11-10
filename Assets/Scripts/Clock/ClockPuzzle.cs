@@ -14,7 +14,7 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     [SerializeField] private float tolerance = 5f;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource alarmSound;
+    public AudioSource alarmSound;
 
     private RectTransform currentHand;
     private bool isDragging = false;
@@ -22,11 +22,14 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
 
     private void Awake()
     {
-        // fallback: otomatis ambil AudioSource di anak
+        // fallback: otomatis ambil AudioSource dari anak
         if (alarmSound == null)
             alarmSound = GetComponentInChildren<AudioSource>();
     }
 
+    // =====================================================================
+    // CLICK DOWN: tentukan jam mana yang di-drag (hour atau minute)
+    // =====================================================================
     public void OnPointerDown(PointerEventData eventData)
     {
         var clickedObj = eventData.pointerPressRaycast.gameObject;
@@ -43,41 +46,70 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
         isDragging = true;
     }
 
+    // =====================================================================
+    // DRAG: putar jarum berdasarkan posisi mouse
+    // =====================================================================
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging || currentHand == null) return;
 
         Vector2 dir = eventData.position - pivotScreenPos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
         currentHand.localEulerAngles = new Vector3(0, 0, angle - 90);
+
+        // ✅ real-time checking saat drag
+        CheckPuzzleState();
     }
 
+    // =====================================================================
+    // RELEASE: cek posisi terakhir ketika mouse dilepas
+    // =====================================================================
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
-        CheckPuzzleSolved();
+        CheckPuzzleState();
     }
 
-    private void CheckPuzzleSolved()
+    // =====================================================================
+    // CONTINUOUS CHECKER
+    // Jika benar → alarm ON
+    // Jika keluar dari toleransi → alarm OFF
+    // =====================================================================
+    private void CheckPuzzleState()
     {
         float hourZ = Mathf.Abs(NormalizeAngle(hourArrow.localEulerAngles.z));
         float minuteZ = Mathf.Abs(NormalizeAngle(minuteArrow.localEulerAngles.z));
 
-        if (Mathf.Abs(hourZ - targetHourAngle) <= tolerance &&
-            Mathf.Abs(minuteZ - targetMinuteAngle) <= tolerance)
+        bool hourCorrect = Mathf.Abs(hourZ - targetHourAngle) <= tolerance;
+        bool minuteCorrect = Mathf.Abs(minuteZ - targetMinuteAngle) <= tolerance;
+
+        bool isCorrect = hourCorrect && minuteCorrect;
+
+        if (isCorrect)
         {
-            Debug.Log("✅ Puzzle solved! Time = 3:20");
-
-            // 🔊 Mainkan suara alarm
-            if (alarmSound != null)
+            // ✅ Nyalakan alarm (hanya kalau belum main)
+            if (!alarmSound.isPlaying)
+            {
+                Debug.Log("✅ Alarm ON — posisi jam benar");
+                alarmSound.volume = 1f;
                 alarmSound.Play();
-            else
-                Debug.LogWarning("⚠️ Alarm AudioSource belum diset atau tidak ditemukan.");
-
-            // parentClock?.Unpossess();
+            }
+        }
+        else
+        {
+            // ✅ Matikan alarm (kalau sedang main)
+            if (alarmSound.isPlaying)
+            {
+                Debug.Log("🔇 Alarm OFF — keluar dari posisi benar");
+                alarmSound.Stop();
+            }
         }
     }
 
+    // =====================================================================
+    // Normalize sudut 0..360 menjadi -180..180 agar mudah dicek
+    // =====================================================================
     private float NormalizeAngle(float angle)
     {
         if (angle > 180) angle -= 360;

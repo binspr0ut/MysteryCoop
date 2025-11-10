@@ -1,64 +1,71 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class BriefcaseLockPanel : MonoBehaviour
 {
-    public TMP_Text[] digitTexts;   // isi 4 elemen untuk tampilan digit
-    private int[] digits = new int[4]; 
+    [Header("UI")]
+    public TMP_Text[] digitTexts;
+    private int[] digits = new int[3];
 
     private Briefcase owner;
-    private string correctCode = "000";
+    public string correctCode = "389";
 
     public void Init(Briefcase briefcase, string code)
     {
         owner = briefcase;
         correctCode = string.IsNullOrEmpty(code) ? "000" : code;
 
-        // reset semua digit ke 0
         for (int i = 0; i < digits.Length; i++)
         {
             digits[i] = 0;
-            if (digitTexts != null && i < digitTexts.Length && digitTexts[i] != null)
+            if (digitTexts[i] != null)
                 digitTexts[i].text = "0";
         }
     }
 
-    // dipanggil dari tombol ↑ (set param index di Inspector: 0..3)
     public void PressUp(int index)
     {
         if (index < 0 || index >= digits.Length) return;
         digits[index] = (digits[index] + 1) % 10;
-        if (digitTexts != null && index < digitTexts.Length && digitTexts[index] != null)
-            digitTexts[index].text = digits[index].ToString();
+        digitTexts[index].text = digits[index].ToString();
     }
 
-    // dipanggil dari tombol ↓ (set param index di Inspector: 0..3)
     public void PressDown(int index)
     {
         if (index < 0 || index >= digits.Length) return;
-        digits[index] = (digits[index] + 9) % 10; // turun 1 (wrap)
-        if (digitTexts != null && index < digitTexts.Length && digitTexts[index] != null)
-            digitTexts[index].text = digits[index].ToString();
+        digits[index] = (digits[index] + 9) % 10;
+        digitTexts[index].text = digits[index].ToString();
     }
 
-    // tombol Enter
     public void PressEnter()
     {
-        string input = $"{digits[0]}{digits[1]}{digits[2]}";
-        if (input == correctCode)
-        {
-            owner?.OnUnlocked();
-        }
-        else
-        {
-            // salah → reset ke 0 (sederhana; nanti bisa ditambah shake/SFX)
-            Init(owner, correctCode);
-        }
+        string entered = $"{digits[0]}{digits[1]}{digits[2]}";
+        Debug.Log($"[BriefcaseLockPanel] Entered code: {entered}");
+
+        // Kirim ke Briefcase (yang punya NetworkObject)
+        owner?.ValidateCodeFromUI(entered);
     }
 
-    // tombol Close (batalkan)
     public void PressClose()
     {
         owner?.ClosePuzzle();
+    }
+
+    public IEnumerator ShakeDigits()
+    {
+        float dur = 0.3f;
+        float t = 0;
+        while (t < dur)
+        {
+            t += Time.deltaTime;
+            float offset = Mathf.Sin(t * 50f) * 5f;
+            foreach (var text in digitTexts)
+                text.rectTransform.anchoredPosition = new Vector2(offset, 0);
+            yield return null;
+        }
+
+        foreach (var text in digitTexts)
+            text.rectTransform.anchoredPosition = Vector2.zero;
     }
 }

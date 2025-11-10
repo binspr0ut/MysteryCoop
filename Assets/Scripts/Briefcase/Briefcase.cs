@@ -1,45 +1,51 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class Briefcase : MonoBehaviour, IObject
+public class Briefcase : NetworkBehaviour, IObject
 {
     public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
 
     [Header("UI")]
-    public GameObject LockPanel;   // panel input kode
+    public GameObject LockPanel;   // Panel input kode
     public GameObject ControlUI;   // HUD kontrol (disembunyikan saat panel tampil)
 
     [Header("Settings")]
-    public string CorrectCode = "4931";
+    public string CorrectCode = "389";
 
+    // Referensi internal
+    private BriefcaseLockPanel lockPanelScript;
+
+    // Mencegah trigger berulang
+    private bool explorationMarkedOnServer = false;
+
+    // ========================================================================
+    // INTERACTION
+    // ========================================================================
     public bool CanInteract() => true;
 
     public void Interact(Transform playerTransform)
     {
-        if (ControlUI != null) ControlUI.SetActive(false);
+        if (ControlUI != null)
+            ControlUI.SetActive(false);
 
         if (LockPanel == null)
         {
-            Debug.LogError("[Briefcase] LockPanel belum di-assign.");
+            Debug.LogError("[Briefcase] ❌ LockPanel belum di-assign!");
             return;
         }
 
-        var panel = LockPanel.GetComponent<BriefcaseLockPanel>();
-        if (panel == null)
+        lockPanelScript = LockPanel.GetComponent<BriefcaseLockPanel>();
+        if (lockPanelScript == null)
         {
-            Debug.LogError("[Briefcase] Komponen BriefcaseLockPanel tidak ditemukan di LockPanel.");
+            Debug.LogError("[Briefcase] ❌ Komponen BriefcaseLockPanel tidak ditemukan di LockPanel!");
             return;
         }
 
+        // Aktifkan UI lokal
         LockPanel.SetActive(true);
-        panel.Init(this, CorrectCode);
+        lockPanelScript.Init(this, CorrectCode);
         IsInteracted = true;
-    }
-
-    public void OnUnlocked()
-    {
-        // Di tahap ini cukup tutup panel; nanti kita bisa tambah buka-isi koper.
-        ClosePuzzle();
     }
 
     public void ClosePuzzle()
@@ -49,11 +55,81 @@ public class Briefcase : MonoBehaviour, IObject
         IsInteracted = false;
     }
 
+    // ========================================================================
+    // VALIDATION LOGIC (dipanggil dari LockPanel)
+    // ========================================================================
+    public void ValidateCodeFromUI(string entered)
+    {
+        // Kalau client yang tekan Enter
+        if (!IsServer)
+        {
+            ValidateCodeServerRpc(entered);
+            return;
+        }
+
+        // Kalau host yang tekan Enter
+        ValidateCode(entered);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ValidateCodeServerRpc(string entered)
+    {
+        ValidateCode(entered);
+    }
+
+    private void ValidateCode(string entered)
+    {
+        Debug.Log($"[Briefcase] Entered code: {entered}");
+
+        if (entered == CorrectCode)
+        {
+            Debug.Log("[Briefcase] ✅ Correct code! Notifying all players...");
+            OnCorrectCodeClientRpc();
+        }
+        else
+        {
+            Debug.Log("[Briefcase] ❌ Wrong code! Shaking digits...");
+            OnWrongCodeClientRpc();
+        }
+    }
+
+    // ========================================================================
+    // RPC BROADCASTS
+    // ========================================================================
+    [ClientRpc]
+    private void OnCorrectCodeClientRpc()
+    {
+        Debug.Log("[Briefcase] 🎉 Correct code received on all clients!");
+
+        // Tutup panel
+        ClosePuzzle();
+
+        // Bisa trigger scene change, animasi koper terbuka, dsb.
+        if (SceneFlowManager.Instance != null)
+        {
+            SceneFlowManager.Instance.ChangeScene("BriefcaseOpenedScene");
+        }
+    }
+
+    [ClientRpc]
+    private void OnWrongCodeClientRpc()
+    {
+        if (lockPanelScript != null)
+        {
+            lockPanelScript.StartCoroutine(lockPanelScript.ShakeDigits());
+        }
+    }
+
+    // ========================================================================
+    // LIFECYCLE
+    // ========================================================================
     private void Start()
     {
         ID ??= GlobalHelper.GenerateUniqueID(gameObject);
-        if (LockPanel != null) LockPanel.SetActive(false);
+        if (LockPanel != null)
+        {
+            LockPanel.SetActive(false);
+            lockPanelScript = LockPanel.GetComponent<BriefcaseLockPanel>();
+        }
     }
-
-    private void Update() { }
 }

@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8021345769208125016}
   - component: {fileID: 492342813828346308}
   - component: {fileID: 6817648686607299462}
+  - component: {fileID: 5831964822243620370}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -200,6 +201,18 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &5831964822243620370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393382556760725287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9957a1c302fa14b888b50bbfbfb13296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &3528300552729859200
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1378355907
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1

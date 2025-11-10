@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShelfOpened : MonoBehaviour, IObject
+public class ShelfOpened : MonoBehaviour, IObject, IStateObject
 {
     public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
@@ -9,6 +9,33 @@ public class ShelfOpened : MonoBehaviour, IObject
     public GameObject ShelfUI;
     public GameObject GuestbookUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private ObjectState currentState = ObjectState.Disabled;
+
+
+    [Header("Components")]
+    [SerializeField] private Collider2D interactionCollider;
+
+    public void SetObjectState(ObjectState state)
+    {
+        currentState = state;
+
+        switch (state)
+        {
+            case ObjectState.Disabled:
+                interactionCollider.enabled = false;
+                break;
+
+            case ObjectState.Locked:
+                interactionCollider.enabled = true;
+                break;
+
+            case ObjectState.Active:
+                interactionCollider.enabled = true;
+                break;
+        }
+    }
+
     void Start()
     {
 
@@ -16,10 +43,23 @@ public class ShelfOpened : MonoBehaviour, IObject
 
     public void Interact(Transform player)
     {
-        OpenShelf();
+        if (currentState == ObjectState.Disabled) return;
+
+        if (currentState == ObjectState.Locked)
+        {
+            Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
+            // tampilkan UI "Memerlukan kunci"
+            return;
+        }
+
+        if (currentState == ObjectState.Active)
+        {
+            OpenShelf();
+        }
+
     }
 
-    public bool CanInteract() => true;
+    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void OpenGuestbook()
     {

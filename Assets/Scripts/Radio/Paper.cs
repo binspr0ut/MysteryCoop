@@ -6,44 +6,39 @@ public class Paper : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDra
 {
     [SerializeField] private RawImage drawSurface;
     [SerializeField] private Color drawColor = Color.black;
-    [SerializeField] private float brushSize = 5;
+    [SerializeField] private float brushSize = 8f;
 
     private Texture2D texture;
     private RectTransform rectTransform;
     private bool isDrawing = false;
-    int scaleMultiplier = 4; // 🔥 naikkan resolusi 4x
+    private int scaleMultiplier = 4;
 
+    private Vector2 lastPos;     // to smooth strokes
 
     void Start()
     {
         rectTransform = drawSurface.GetComponent<RectTransform>();
 
-        int scaleMultiplier = 4; // 🔥 naikkan resolusi 4x
         int width = (int)(rectTransform.rect.width * scaleMultiplier);
         int height = (int)(rectTransform.rect.height * scaleMultiplier);
 
         texture = new Texture2D(width, height, TextureFormat.RGBA32, false);
-        texture.filterMode = FilterMode.Bilinear;     // sedikit halus tapi tetap tajam
+        texture.filterMode = FilterMode.Bilinear;
         texture.wrapMode = TextureWrapMode.Clamp;
-        texture.Apply();
 
-        // isi putih
-        Color[] fillColor = new Color[width * height];
-        for (int i = 0; i < fillColor.Length; i++)
-            fillColor[i] = Color.white;
-
-        texture.SetPixels(fillColor);
-        texture.Apply();
-
+        ClearCanvas();
         drawSurface.texture = texture;
     }
-
-
 
     public void OnPointerDown(PointerEventData eventData)
     {
         isDrawing = true;
-        DrawAt(eventData);
+        if (TryGetLocalPosition(eventData, out Vector2 pos))
+        {
+            lastPos = pos;
+            DrawCircle(pos);
+            texture.Apply();
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -53,47 +48,71 @@ public class Paper : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (isDrawing)
-            DrawAt(eventData);
+        if (!isDrawing) return;
+
+        if (TryGetLocalPosition(eventData, out Vector2 pos))
+        {
+            DrawLine(lastPos, pos); // smooth connect
+            lastPos = pos;
+            texture.Apply();
+        }
     }
 
-    private void DrawAt(PointerEventData eventData)
+    private bool TryGetLocalPosition(PointerEventData eventData, out Vector2 pos)
     {
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out Vector2 localPoint))
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,
+            eventData.position, eventData.pressEventCamera, out Vector2 localPoint))
         {
-            float x = (localPoint.x + rectTransform.rect.width / 2) * scaleMultiplier;
-            float y = (localPoint.y + rectTransform.rect.height / 2) * scaleMultiplier;
+            pos = new Vector2(
+                (localPoint.x + rectTransform.rect.width / 2) * scaleMultiplier,
+                (localPoint.y + rectTransform.rect.height / 2) * scaleMultiplier
+            );
+            return true;
+        }
 
+        pos = Vector2.zero;
+        return false;
+    }
 
-            for (int i = (int)-brushSize; i <= brushSize; i++)
+    private void DrawCircle(Vector2 center)
+    {
+        int r = Mathf.RoundToInt(brushSize * scaleMultiplier);
+
+        for (int y = -r; y <= r; y++)
+        {
+            for (int x = -r; x <= r; x++)
             {
-                for (int j = (int)-brushSize; j <= brushSize; j++)
+                if (x * x + y * y <= r * r) // circle check
                 {
-                    int px = Mathf.RoundToInt(x + i);
-                    int py = Mathf.RoundToInt(y + j);
+                    int px = Mathf.RoundToInt(center.x + x);
+                    int py = Mathf.RoundToInt(center.y + y);
 
                     if (px >= 0 && px < texture.width && py >= 0 && py < texture.height)
                         texture.SetPixel(px, py, drawColor);
                 }
             }
+        }
+    }
 
-            texture.Apply();
+    private void DrawLine(Vector2 start, Vector2 end)
+    {
+        float distance = Vector2.Distance(start, end);
+        int steps = Mathf.CeilToInt(distance);
+
+        for (int i = 0; i < steps; i++)
+        {
+            Vector2 t = Vector2.Lerp(start, end, i / (float)steps);
+            DrawCircle(t);
         }
     }
 
     public void ClearCanvas()
     {
-        if (texture == null) return;
-
-        // isi ulang texture jadi putih lagi
         Color[] clearColor = new Color[texture.width * texture.height];
         for (int i = 0; i < clearColor.Length; i++)
             clearColor[i] = Color.white;
 
         texture.SetPixels(clearColor);
         texture.Apply();
-
-        Debug.Log("🧹 Canvas cleared!");
     }
-
 }

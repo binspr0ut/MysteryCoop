@@ -1,26 +1,49 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class RadioPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class RadioPuzzle : NetworkBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [Header("UI References")]
     [SerializeField] private RectTransform knob;
     [SerializeField] private RectTransform needleIndicator;
+    [SerializeField] private RectTransform leftLimit;
+    [SerializeField] private RectTransform rightLimit;
+
+    [Header("Signal UI")]
+    [SerializeField] private Image signalFill; // progress bar signal pada radio
 
     [Header("Audio")]
     [SerializeField] private AudioSource correctSound;
     [SerializeField] private AudioSource noiseSound;
 
     [Header("Settings")]
-    [Range(-360, 360)] public float targetAngle = -150f; // boleh negatif
+    [Range(-360, 360)] public float targetAngle = -150f;
     public float tolerance = 5f;
     public float minAngle = -300f;
     public float maxAngle = 0f;
+    public float rotationSpeed = 0.5f;
+
+    [Header("Signal Source")]
+    [SerializeField] private ParabolaBalance parabola; // assign via Inspector
+    public float minSignalToHear = 0.2f;
 
     private bool isDragging = false;
     private float currentAngle;
     private float startAngle;
     private Vector2 startPointerPos;
+    private float leftX, rightX;
+
+    // Warna untuk signal bar (White → Neon Green)
+    private Color lowColor = Color.white;
+    private Color highColor = new Color(0.22f, 1f, 0.08f);
+
+    void Start()
+    {
+        if (leftLimit) leftX = leftLimit.anchoredPosition.x;
+        if (rightLimit) rightX = rightLimit.anchoredPosition.x;
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -33,17 +56,10 @@ public class RadioPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     {
         if (!isDragging) return;
 
-        // Ambil delta horizontal
         float deltaX = eventData.position.x - startPointerPos.x;
-
-        // Semakin besar rotationSpeed, semakin sensitif
-        float rotationSpeed = 0.5f;
-
-        // arah dibalik (-deltaX) agar drag kanan = rotasi searah jarum jam
         currentAngle = Mathf.Clamp(startAngle - deltaX * rotationSpeed, minAngle, maxAngle);
 
-        // Set rotasi knob (RectTransform positif = CCW, jadi tetap pakai currentAngle)
-        knob.localEulerAngles = new Vector3(0, 0, currentAngle);
+        if (knob) knob.localEulerAngles = new Vector3(0, 0, currentAngle);
 
         UpdateRadioFeedback();
     }
@@ -51,43 +67,53 @@ public class RadioPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IPo
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
-        CheckSolved();
+        UpdateRadioFeedback();
+    }
+
+    void Update()
+    {
+        UpdateRadioFeedback();
     }
 
     private void UpdateRadioFeedback()
     {
-        // --- 1️⃣ Hitung posisi relatif knob terhadap rentang min–max
+        // ========== 1) Needle Movement ==========
         float normalized = Mathf.InverseLerp(minAngle, maxAngle, currentAngle);
-
-        // Karena knob berputar clockwise (arah sebaliknya dari nilai euler Unity),
-        // kita balik nilai normalized agar kiri = minAngle, kanan = maxAngle
         normalized = 1f - Mathf.Clamp01(normalized);
 
-        // --- 2️⃣ Update posisi jarum kiri → kanan
-        if (needleIndicator != null)
+        if (needleIndicator)
         {
-            float moveRange = 70f;
-            float xPos = Mathf.Lerp(-moveRange / 2f, moveRange / 2f, normalized);
-            needleIndicator.anchoredPosition = new Vector2(xPos, 0);
+            float xPos = Mathf.Lerp(leftX, rightX, normalized);
+            var pos = needleIndicator.anchoredPosition;
+            needleIndicator.anchoredPosition = new Vector2(xPos, pos.y);
         }
 
-        // --- 3️⃣ Hitung jarak terhadap frekuensi target (untuk suara)
+        // ========== 2) Get Signal ==========
+        float signal = 0f;
+        if (parabola != null && parabola.IsSpawned)
+            signal = Mathf.Clamp01(parabola.Signal01.Value);
+
+        // ✅ Update Signal UI (Progress + Color)
+        if (signalFill)
+        {
+            signalFill.fillAmount = signal;
+            signalFill.color = Color.Lerp(lowColor, highColor, signal);
+        }
+
+        // ========== 3) Audio Logic ==========
+        if (signal < minSignalToHear)
+        {
+            if (correctSound) correctSound.volume = 0f;
+            if (noiseSound) noiseSound.volume = 1f;
+            return;
+        }
+
         float distance = Mathf.Abs(currentAngle - targetAngle);
-        float proximity = Mathf.InverseLerp(90f, 0f, distance);
+        float tuning01 = Mathf.InverseLerp(90f, 0f, distance);
 
-        // --- 4️⃣ Update volume
-        correctSound.volume = Mathf.Lerp(0.0f, 1.0f, proximity);
-        noiseSound.volume = Mathf.Lerp(1.0f, 0.2f, proximity);
-    }
+        float clarity = Mathf.Clamp01(signal * tuning01);
 
-
-    private void CheckSolved()
-    {
-        if (Mathf.Abs(currentAngle - targetAngle) <= tolerance)
-        {
-            Debug.Log("✅ Correct frequency tuned!");
-            correctSound.volume = 1f;
-            noiseSound.volume = 0f;
-        }
+        if (correctSound) correctSound.volume = clarity;
+        if (noiseSound) noiseSound.volume = 1f - clarity;
     }
 }

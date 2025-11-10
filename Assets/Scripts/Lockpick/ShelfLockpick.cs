@@ -1,26 +1,57 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ShelfLockpick : NetworkBehaviour, IPossess
+public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
 {
-    public bool IsInteracted { get; private set; }
+    public bool IsPossessed { get; private set; }
     public string ID { get; private set; }
 
     [Header("UI References")]
     public GameObject ControlUI;
     public GameObject LockpickOverlay;
     public GameObject OpenedShelf;
+    public SpriteRenderer OpenedShelfRenderer;
 
     public GameObject LockpickTrigger;
     public bool isSolved;
     private SpiritMovement PossessedSpirit;
 
+    [Header("Components")]
+    [SerializeField] private Collider2D interactionCollider;
+
+    private ObjectState currentState = ObjectState.Disabled;
+
+
+    public void SetObjectState(ObjectState state)
+    {
+        currentState = state;
+
+        switch (state)
+        {
+            case ObjectState.Disabled:
+                interactionCollider.enabled = false;
+                break;
+
+            case ObjectState.Locked:
+                interactionCollider.enabled = true;
+                break;
+
+            case ObjectState.Active:
+                interactionCollider.enabled = true;
+                break;
+        }
+    }
+
+    private void Awake()
+    {
+        Debug.Log($"ShelfLockpick implements IStateObject? {this is IStateObject}");
+    }
+
+
     void Start()
     {
         if (LockpickOverlay != null)
             LockpickOverlay.SetActive(false);
-        if (OpenedShelf != null)
-            OpenedShelf.SetActive(false);
 
         // Hubungkan otomatis LockpickUI dengan Shelf ini
         var ui = LockpickOverlay?.GetComponentInChildren<LockpickUI>();
@@ -31,26 +62,50 @@ public class ShelfLockpick : NetworkBehaviour, IPossess
 
     public void Possess()
     {
-        // cari spirit di sekitar (atau lewat parameter dari PossesDetector)
-        var spirit = FindFirstObjectByType<SpiritMovement>();
-        if (spirit != null && spirit.IsOwner)
+        if (currentState == ObjectState.Disabled) return;
+
+
+        if (currentState == ObjectState.Locked)
         {
-            // 🔹 Panggil RPC agar semua client tahu spirit menghilang
-            spirit.SetVisibleServerRpc(false);
-            PossessedSpirit = spirit;
+            Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
+            // tampilkan UI "Memerlukan kunci"
+            return;
         }
 
-        ControlUI.SetActive(false);
-        LockpickOverlay.SetActive(true);
-        IsInteracted = true;
+        if (currentState == ObjectState.Active)
+        {
+            // cari spirit di sekitar (atau lewat parameter dari PossesDetector)
+            var spirit = FindFirstObjectByType<SpiritMovement>();
+            if (spirit != null && spirit.IsOwner)
+            {
+                // 🔹 Panggil RPC agar semua client tahu spirit menghilang
+                spirit.SetVisibleServerRpc(false);
+                PossessedSpirit = spirit;
+            }
+
+            ControlUI.SetActive(false);
+            LockpickOverlay.SetActive(true);
+            IsPossessed = true;
+        }
     }
 
     public void Interact()
     {
-        return;
+        if (IsPossessed)
+        {
+            Debug.Log("Unposess ShelfLockpick");
+            Unpossess();
+            IsPossessed = false;
+        }
+        else
+        {
+            Debug.Log("Possess ShelfLockPick");
+            Possess();
+            IsPossessed = true;
+        }
     }
 
-    public bool CanPossess() => true;
+    public bool CanPossess() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void Unpossess()
     {
@@ -68,21 +123,26 @@ public class ShelfLockpick : NetworkBehaviour, IPossess
     {
         ControlUI.SetActive(true);
         LockpickOverlay.SetActive(false);
-        IsInteracted = false;
+        IsPossessed = false;
     }
+    public System.Action OnShelfUnlocked;
 
     [ServerRpc(RequireOwnership = false)]
     public void UnlockShelfServerRpc()
     {
         isSolved = true;
         UpdateShelfClientRpc();
+
+        // 🔥 Trigger event untuk beri tahu State Manager
+        OnShelfUnlocked?.Invoke();
+
     }
 
     [ClientRpc]
     private void UpdateShelfClientRpc()
     {
         LockpickOverlay.SetActive(false);
-        OpenedShelf.SetActive(true);
+        OpenedShelfRenderer.enabled = true;
         LockpickTrigger.SetActive(false);
     }
 }
