@@ -115,8 +115,8 @@ public class Scene1StateManager : NetworkBehaviour
     {
         return state switch
         {
-            Level1State.ExploreBuilding => "Explore the building and inspect key objects",
-            Level1State.FindSuitcaseCode => "Find the code to unlock the suitcase",
+            Level1State.ExploreBuilding => "Find the briefcase!",
+            Level1State.FindSuitcaseCode => "Unlock the briefcase!",
             Level1State.Completed => "Objective Completed!",
             _ => ""
         };

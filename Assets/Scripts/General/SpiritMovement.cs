@@ -20,6 +20,13 @@ public class SpiritMovement : NetworkBehaviour
     private Collider2D col;
     private readonly NetworkVariable<bool> isVisible = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
+    [Header("Fly Settings")]
+    public AudioSource flySource;
+    public AudioClip loopFlyClip;
+    public float minVelocityForSound = 0.1f;
+
+    private bool isFlyPlaying = false;
+
 
     public override void OnNetworkSpawn()
     {
@@ -80,7 +87,31 @@ public class SpiritMovement : NetworkBehaviour
 
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
         animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        HandleFly();
         Flip();
+    }
+
+    private void HandleFly()
+    {
+        if (flySource == null || loopFlyClip == null)
+        {
+            Debug.LogWarning("AudioSource atau Clip belum diset!");
+            return;
+        }
+
+        bool isMoving = Mathf.Abs(horizontalMovement) > 0.1f && Mathf.Abs(rb.linearVelocity.x) > minVelocityForSound;
+
+        if (isMoving && !isFlyPlaying)
+        {
+            flySource.Play();
+            isFlyPlaying = true;
+        }
+        else if (!isMoving && isFlyPlaying)
+        {
+            Debug.Log("[Footstep] Stop footsteps.");
+            flySource.Stop();
+            isFlyPlaying = false;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)

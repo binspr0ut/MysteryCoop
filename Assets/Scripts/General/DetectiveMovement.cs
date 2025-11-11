@@ -10,9 +10,19 @@ public class DetectiveMovement : NetworkBehaviour
     public Animator animator;
     bool isFacingRight = true;
     float horizontalMovement;
+    private float previousInput;
+
     private CinemachineCamera cam;
     private PlayerInput input;
     public float HorizontalDirection => horizontalMovement;
+
+    [Header("Footstep Settings")]
+    public AudioSource footstepSource;
+    public AudioClip loopFootstepClip;
+    public float minVelocityForSound = 0.1f;
+
+    private bool isFootstepPlaying = false;
+
 
     public override void OnNetworkSpawn()
     {
@@ -62,8 +72,38 @@ public class DetectiveMovement : NetworkBehaviour
         if (!IsOwner) return;
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocityY);
         animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        HandleFootstep();
         Flip();
     }
+
+    private void HandleFootstep()
+    {
+        if (footstepSource == null || loopFootstepClip == null)
+        {
+            Debug.LogWarning("[Footstep] AudioSource atau Clip belum diset!");
+            return;
+        }
+
+        bool isMoving = Mathf.Abs(horizontalMovement) > 0.1f && Mathf.Abs(rb.linearVelocity.x) > minVelocityForSound;
+
+        if (isMoving && !isFootstepPlaying)
+        {
+            Debug.Log("[Footstep] Start playing footsteps...");
+            footstepSource.Play();
+            Debug.Log($"[Footstep] Playing clip: {footstepSource.clip?.name}");
+            isFootstepPlaying = true;
+        }
+        else if (!isMoving && isFootstepPlaying)
+        {
+            Debug.Log("[Footstep] Stop footsteps.");
+            footstepSource.Stop();
+            isFootstepPlaying = false;
+        }
+    }
+
+
+
+
 
     public void Move(InputAction.CallbackContext context)
     {
