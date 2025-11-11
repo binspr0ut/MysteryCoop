@@ -48,8 +48,18 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
         if (currentState == ObjectState.Locked)
         {
             Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
-            // tampilkan UI "Memerlukan kunci"
-            return;
+            SubtitleManager.Instance.ShowSubtitle(
+                            "Agung: This locker’s locked tight. Think you can handle it, Dinda?",
+                            SubtitleTarget.Detective,
+                            SubtitleScope.Global
+                        );
+
+            // global untuk semua spirit
+            SubtitleManager.Instance.ShowSubtitle(
+                "Dinda: I’ll try. Give me a moment.",
+                SubtitleTarget.Spirit,
+                SubtitleScope.Global
+            ); return;
         }
 
         if (currentState == ObjectState.Active)

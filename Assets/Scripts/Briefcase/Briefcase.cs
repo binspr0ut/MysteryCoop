@@ -104,11 +104,11 @@ public class Briefcase : NetworkBehaviour, IObject
         // Tutup panel
         ClosePuzzle();
 
-        // Bisa trigger scene change, animasi koper terbuka, dsb.
-        if (SceneFlowManager.Instance != null)
+        if (IsServer && SceneFlowManager.Instance != null)
         {
-            SceneFlowManager.Instance.ChangeScene("BriefcaseOpenedScene");
+            SceneFlowManager.Instance.PlayCutscene("KoperCutscene", "BriefcaseOpenedScene");
         }
+
     }
 
     [ClientRpc]

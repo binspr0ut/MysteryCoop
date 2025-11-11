@@ -120,6 +120,12 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
 
         if (currentState == ObjectState.Active)
         {  // Hanya Detective yang boleh membuka panel
+            SubtitleManager.Instance.ShowSubtitle(
+                    "Agung: This clock’s stopped. I’ll need to find a battery",
+                    SubtitleTarget.Detective,
+                    SubtitleScope.Local
+                );
+
             var detective = player.GetComponent<DetectiveMovement>();
             if (detective == null)
             {
