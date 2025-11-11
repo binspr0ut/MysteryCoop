@@ -17,6 +17,8 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
     [SerializeField] private Collider2D interactionCollider;
 
     private ObjectState currentState = ObjectState.Disabled;
+    public ObjectState CurrentState => currentState; // ✅ getter publik
+
 
     public void SetObjectState(ObjectState state)
     {
@@ -47,9 +49,8 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
         if (ControlUI != null)
             ControlUI.SetActive(true);
 
-        var col = GetComponent<Collider2D>();
-        if (col != null)
-            col.enabled = false;
+        SetObjectState(currentState); // ✅ gunakan logika dari SetObjectState()
+
 
     }
 

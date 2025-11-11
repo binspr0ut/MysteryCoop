@@ -78,6 +78,9 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     // =====================================================================
     private void CheckPuzzleState()
     {
+        if (parentClock != null && parentClock.CurrentState == ObjectState.Locked)
+            return;
+
         float hourZ = Mathf.Abs(NormalizeAngle(hourArrow.localEulerAngles.z));
         float minuteZ = Mathf.Abs(NormalizeAngle(minuteArrow.localEulerAngles.z));
 

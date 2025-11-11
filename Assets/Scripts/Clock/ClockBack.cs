@@ -16,6 +16,7 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
     [SerializeField] private GameObject batteryUI2;
     [SerializeField] private Clock clockTarget;      // target jam (punya Collider2D yg awalnya disabled)
     [SerializeField] private Box boxDependency;      // ketergantungan Box
+    public bool IsSolvedNet => _isSolvedNet.Value;
 
     private ClockBackUI _puzzleUI;
 
@@ -60,6 +61,13 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         batteryUI2.SetActive(false);
 
         ClockBackBatterySync.Instance.OnBatteryChanged += HandleBatterySync;
+
+
+        // ✅ Hubungkan event dari UI ke fungsi selesai puzzle
+        _puzzleUI = clockBackUIPanel.GetComponentInChildren<ClockBackUI>(true);
+        if (_puzzleUI != null)
+            _puzzleUI.onPuzzleDone += HandlePuzzleDoneLocal;
+
     }
     private void HandleBatterySync(int count)
     {
@@ -158,15 +166,43 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
     {
         if (IsServer)
         {
-            // Host langsung set NetworkVariable (satu sumber kebenaran)
             SetSolvedOnServer();
+            ActivateClockServerRpc(); // ✅ langsung aktifkan clock di server
         }
         else
         {
-            // Client minta server untuk menetapkan solved
             RequestSetSolvedServerRpc();
+            RequestActivateClockServerRpc(); // ✅ minta server aktifkan clock
         }
     }
+
+    // === RPC untuk aktifkan Clock ===
+    [ServerRpc(RequireOwnership = false)]
+    private void RequestActivateClockServerRpc(ServerRpcParams rpcParams = default)
+    {
+        ActivateClockServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ActivateClockServerRpc()
+    {
+        if (clockTarget == null) return;
+
+        clockTarget.SetObjectState(ObjectState.Active); // ✅ ubah state
+        Debug.Log("⏰ Clock is now ACTIVE (triggered by ClockBack puzzle solve)");
+
+        ActivateClockClientRpc(); // broadcast ke semua client
+    }
+
+    [ClientRpc]
+    private void ActivateClockClientRpc()
+    {
+        if (clockTarget == null) return;
+
+        clockTarget.SetObjectState(ObjectState.Active);
+        Debug.Log("📡 Clock activated on client");
+    }
+
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestSetSolvedServerRpc(ServerRpcParams rpcParams = default)
