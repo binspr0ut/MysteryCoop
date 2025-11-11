@@ -19,16 +19,6 @@ public class BriefcaseNoteUI : MonoBehaviour
 
     public void ShowNote()
     {
-        if (notePanel) notePanel.SetActive(true);
-    }
-
-    public void HideNote()
-    {
-        if (notePanel) notePanel.SetActive(false);
-    }
-
-    public void TakeNote()
-    {
         // 🔥 Trigger state change only ONCE
         if (!hasTriggeredStateChange)
         {
@@ -36,25 +26,18 @@ public class BriefcaseNoteUI : MonoBehaviour
             TriggerStateChangeToServer();
         }
 
-        // noteButton.SetActive(false);
+        if (notePanel) notePanel.SetActive(true);
+    }
+
+    public void HideNote()
+    {
+
+        if (notePanel) notePanel.SetActive(false);
+    }
+
+    public void TakeNote()
+    {
         HideNote();
-
-        if (!detectiveInventory || !noteItemData)
-        {
-            Debug.LogWarning("[BriefcaseNoteUI] Inventory atau ItemData belum di-assign.");
-            return;
-        }
-
-        bool added = detectiveInventory.AddItem(noteItemData);
-        if (added)
-        {
-            if (noteButton) noteButton.SetActive(false);
-            Debug.Log("[BriefcaseNoteUI] Note berhasil ditambahkan ke inventory!");
-        }
-        else
-        {
-            Debug.Log("Inventory penuh atau gagal menambahkan note!");
-        }
     }
 
     private void TriggerStateChangeToServer()
