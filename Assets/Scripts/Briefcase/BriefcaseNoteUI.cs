@@ -24,6 +24,20 @@ public class BriefcaseNoteUI : MonoBehaviour
         {
             hasTriggeredStateChange = true;
             TriggerStateChangeToServer();
+
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Dinda: Could that be the answer to unlocking the briefcase?",
+                SubtitleTarget.Spirit,
+                SubtitleScope.Global
+            );
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: Maybe, we should try",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global
+            );
+
         }
 
         if (notePanel) notePanel.SetActive(true);

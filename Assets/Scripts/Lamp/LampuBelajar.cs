@@ -16,6 +16,7 @@ public class LampuBelajar : NetworkBehaviour, IPossess
     [SerializeField] private GameObject bgStick;     // tidak dimatikan
 
     private SpiritMovement possessedSpirit;
+    private int counter = 0;
 
     // Disinkronkan antar client: lampu ON/OFF
     private NetworkVariable<bool> isLampOn = new NetworkVariable<bool>(
@@ -92,6 +93,23 @@ public class LampuBelajar : NetworkBehaviour, IPossess
         }
         else
         {
+            if (counter == 0)
+            {
+                SubtitleManager.Instance.ShowSubtitle(
+                                       "Dinda: Hey look!, there's a briefcase, but that is not mine, is it from the murderer?",
+                                       SubtitleTarget.Spirit,
+                                       SubtitleScope.Global
+                                   );
+
+                SubtitleManager.Instance.ShowSubtitle(
+                    "Agung: Interesting, let me check it!”",
+                    SubtitleTarget.Detective,
+                    SubtitleScope.Global
+                );
+
+                counter++;
+            }
+
             Debug.Log("Possess lampu belajar");
             Possess();
             IsPossessed = true;

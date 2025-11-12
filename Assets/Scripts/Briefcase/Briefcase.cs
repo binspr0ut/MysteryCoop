@@ -19,6 +19,8 @@ public class Briefcase : NetworkBehaviour, IObject
     // Mencegah trigger berulang
     private bool explorationMarkedOnServer = false;
 
+    private int counter = 0;
+
     // ========================================================================
     // INTERACTION
     // ========================================================================
@@ -26,6 +28,23 @@ public class Briefcase : NetworkBehaviour, IObject
 
     public void Interact(Transform playerTransform)
     {
+        if (counter == 0)
+        {
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: It seems this briefcase needs a code to be opened!",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global
+            );
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: Look, there's a note lying on the briefcase",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global
+            );
+
+            counter++;
+        }
+
         if (ControlUI != null)
             ControlUI.SetActive(false);
 

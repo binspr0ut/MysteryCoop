@@ -53,7 +53,7 @@ public class PuzzleNetworkManager : NetworkBehaviour
     {
         if (toBeContinuedPanel != null)
         {
-            toBeContinuedPanel.SetActive(true);
+            SceneFlowManager.Instance.PlayCutscene("EndScene1Cutscene", "MainMenu");
             Debug.Log("✨ ToBeContinued panel activated on client");
         }
     }

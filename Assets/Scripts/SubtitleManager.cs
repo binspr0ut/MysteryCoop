@@ -41,16 +41,18 @@ public class SubtitleManager : NetworkBehaviour
     {
         if (scope == SubtitleScope.Global)
         {
+            // Pastikan hanya server yang enqueue
             if (IsServer)
                 EnqueueGlobalSubtitle(text, forWho);
             else
                 RequestGlobalSubtitleServerRpc(text, forWho);
+            return; // 🚫 Jangan tampilkan langsung di client
         }
-        else
-        {
-            TryQueueLocal(text, forWho, isGlobal: false);
-        }
+
+        // Local subtitle
+        TryQueueLocal(text, forWho, isGlobal: false);
     }
+
 
     // ================================================================
     // 🔄 Network RPC

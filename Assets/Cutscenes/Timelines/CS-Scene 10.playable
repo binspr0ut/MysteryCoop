@@ -1,29 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2181019567483445936
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48853ae485fa386428341ac1ea122570, type: 3}
-  m_Name: ControlPlayableAsset
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.ControlPlayableAsset
-  sourceGameObject:
-    exposedName: 
-    defaultValue: {fileID: 0}
-  prefabGameObject: {fileID: 6669956726676742282, guid: be84dfc6cf44644a19308344fbf84ed2, type: 3}
-  updateParticle: 1
-  particleRandomSeed: 6267
-  updateDirector: 1
-  updateITimeControl: 1
-  searchHierarchy: 0
-  active: 1
-  postPlayback: 2
-  directorOnClipEnd: 0
 --- !u!114 &-1833610364262333313
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,6 +46,30 @@ MonoBehaviour:
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
+--- !u!114 &3535108813323354299
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48853ae485fa386428341ac1ea122570, type: 3}
+  m_Name: ControlPlayableAsset
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.ControlPlayableAsset
+  sourceGameObject:
+    exposedName: 
+    defaultValue: {fileID: 0}
+  prefabGameObject: {fileID: 6669956726676742282, guid: 2b03969f2d2a64cf9b93cf5a93f25ac3, type: 3}
+  updateParticle: 1
+  particleRandomSeed: 6145
+  updateDirector: 1
+  updateITimeControl: 1
+  searchHierarchy: 0
+  active: 1
+  postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &6685367713717560887
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,8 +94,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -2181019567483445936}
-    m_Duration: 5
+    m_Asset: {fileID: 3535108813323354299}
+    m_Duration: 9.633333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6685367713717560887}
     m_EaseInDuration: 0
@@ -159,6 +159,6 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: KoperCutsceneDirector
+    m_DisplayName: EndScene1Cutscene
   m_Markers:
     m_Objects: []
