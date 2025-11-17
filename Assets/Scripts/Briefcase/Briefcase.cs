@@ -33,7 +33,8 @@ public class Briefcase : NetworkBehaviour, IObject
             SubtitleManager.Instance.ShowSubtitle(
                 "Agung: It seems this briefcase needs a code to be opened!",
                 SubtitleTarget.Detective,
-                SubtitleScope.Global
+                SubtitleScope.Global,
+                overwrite: true
             );
 
             SubtitleManager.Instance.ShowSubtitle(

@@ -748,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 8029879554694537919}
-  moveSpeed: 5
+  moveSpeed: 6
   animator: {fileID: -5400236869981061474}
   footstepSource: {fileID: 7476779041370301504}
   loopFootstepClip: {fileID: 8300000, guid: 076dd7d57e3984508a3c71a1e6a280a9, type: 3}

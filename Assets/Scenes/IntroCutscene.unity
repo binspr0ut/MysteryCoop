@@ -119,16 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!320 &24665882 stripped
-PlayableDirector:
-  m_CorrespondingSourceObject: {fileID: 5908031143242788351, guid: 5927798b5967a4e9889dc4760e990c55, type: 3}
-  m_PrefabInstance: {fileID: 906650342}
-  m_PrefabAsset: {fileID: 0}
---- !u!320 &27384137 stripped
-PlayableDirector:
-  m_CorrespondingSourceObject: {fileID: 5908031143242788351, guid: 89b5ee598aa39475d86dde85e8d632a2, type: 3}
-  m_PrefabInstance: {fileID: 1793556159}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &120080285
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,16 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneTimelineManager_NG
   ShowTopMostFoldoutHeaderGroup: 1
   directors:
-  - {fileID: 929121009}
-  - {fileID: 1256249214}
-  - {fileID: 1014280835}
-  - {fileID: 664365822}
-  - {fileID: 1680944039}
-  - {fileID: 1141937013}
-  - {fileID: 1158711797}
-  - {fileID: 24665882}
-  - {fileID: 819708471}
-  - {fileID: 27384137}
+  - {fileID: 955982805}
 --- !u!4 &332666060
 Transform:
   m_ObjectHideFlags: 0
@@ -781,6 +762,10 @@ PrefabInstance:
     - target: {fileID: 6669956726676742282, guid: 5925d17053ea8432cbfda57c09093442, type: 3}
       propertyPath: m_Name
       value: CutsceneDirector_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 5925d17053ea8432cbfda57c09093442, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1158,7 +1143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6669956726676742282, guid: 44118c446b3054e2caf01b5ac11cb75b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1478,6 +1463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutsceneDirector_04
       objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: a12c4aa2c49bd4e71aff52f817474e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1692,6 +1681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutsceneDirector_03
       objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: efc44d3aeed3a474a9c9a0c3ae7796b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1764,6 +1757,10 @@ PrefabInstance:
     - target: {fileID: 6669956726676742282, guid: 901b14ffbcb8a4e22ac8767f01ca6528, type: 3}
       propertyPath: m_Name
       value: CutsceneDirector_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 901b14ffbcb8a4e22ac8767f01ca6528, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1924,11 +1921,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &819708471 stripped
-PlayableDirector:
-  m_CorrespondingSourceObject: {fileID: 5908031143242788351, guid: 67b53117a63334787a5e896721a0aed6, type: 3}
-  m_PrefabInstance: {fileID: 2140932361}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &838337128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2168,10 @@ PrefabInstance:
     - target: {fileID: 6669956726676742282, guid: 5927798b5967a4e9889dc4760e990c55, type: 3}
       propertyPath: m_Name
       value: CutsceneDirector_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 5927798b5967a4e9889dc4760e990c55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2537,13 +2533,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6669956726676742282, guid: 5348d84c89e3b4ba39f3733c56340eac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5348d84c89e3b4ba39f3733c56340eac, type: 3}
+--- !u!320 &955982805 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 5908031143242788351, guid: 5348d84c89e3b4ba39f3733c56340eac, type: 3}
+  m_PrefabInstance: {fileID: 955982804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963734097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,6 +2865,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutsceneDirector_02
       objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 7c40f151b86dc433badb10f340180c32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7178932584043860885, guid: 7c40f151b86dc433badb10f340180c32, type: 3}
       propertyPath: director
       value: 
@@ -3120,11 +3125,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6669956726676742282, guid: 68846b3ee6390464694d394356e2c35d, type: 3}
   m_PrefabInstance: {fileID: 1155277510}
   m_PrefabAsset: {fileID: 0}
---- !u!320 &1141937013 stripped
-PlayableDirector:
-  m_CorrespondingSourceObject: {fileID: 5908031143242788351, guid: 68846b3ee6390464694d394356e2c35d, type: 3}
-  m_PrefabInstance: {fileID: 1155277510}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1155277510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3233,16 +3233,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutsceneDirector_06
       objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 68846b3ee6390464694d394356e2c35d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68846b3ee6390464694d394356e2c35d, type: 3}
---- !u!320 &1158711797 stripped
-PlayableDirector:
-  m_CorrespondingSourceObject: {fileID: 5908031143242788351, guid: 5925d17053ea8432cbfda57c09093442, type: 3}
-  m_PrefabInstance: {fileID: 445139973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174314758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,6 +5711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutsceneDirector_10
       objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 89b5ee598aa39475d86dde85e8d632a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6775,6 +6778,10 @@ PrefabInstance:
     - target: {fileID: 6669956726676742282, guid: 67b53117a63334787a5e896721a0aed6, type: 3}
       propertyPath: m_Name
       value: CutsceneDirector_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669956726676742282, guid: 67b53117a63334787a5e896721a0aed6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

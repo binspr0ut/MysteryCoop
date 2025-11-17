@@ -28,6 +28,9 @@ public class SubtitleTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (counter != 0) { return; }
+        Debug.Log("Subtitle Triggered");
+        Debug.Log(counter);
+
 
         // pastikan hanya player yang bisa memicu
         if (!other.CompareTag("Detective")) return;
@@ -40,9 +43,8 @@ public class SubtitleTrigger : MonoBehaviour
         }
 
         SubtitleManager.Instance.ShowSubtitle(subtitleText, target, scope);
-        SubtitleManager.Instance.ShowSubtitle(subtitleText, target2, scope);
-        SubtitleManager.Instance.ShowSubtitle(subtitleText2, target, scope);
         SubtitleManager.Instance.ShowSubtitle(subtitleText2, target2, scope);
-
+        counter++;
+        Debug.Log(counter);
     }
 }

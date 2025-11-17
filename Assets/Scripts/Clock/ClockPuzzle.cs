@@ -81,11 +81,14 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
         if (parentClock != null && parentClock.CurrentState == ObjectState.Locked)
             return;
 
-        float hourZ = Mathf.Abs(NormalizeAngle(hourArrow.localEulerAngles.z));
-        float minuteZ = Mathf.Abs(NormalizeAngle(minuteArrow.localEulerAngles.z));
+        float hourZ = NormalizeAngle(hourArrow.localEulerAngles.z);
+        float minuteZ = NormalizeAngle(minuteArrow.localEulerAngles.z);
 
-        bool hourCorrect = Mathf.Abs(hourZ - targetHourAngle) <= tolerance;
-        bool minuteCorrect = Mathf.Abs(minuteZ - targetMinuteAngle) <= tolerance;
+        float targetHourNorm = NormalizeAngle(targetHourAngle);
+        float targetMinuteNorm = NormalizeAngle(targetMinuteAngle);
+
+        bool hourCorrect = Mathf.Abs(hourZ - targetHourNorm) <= tolerance;
+        bool minuteCorrect = Mathf.Abs(minuteZ - targetMinuteNorm) <= tolerance;
 
         bool isCorrect = hourCorrect && minuteCorrect;
 
@@ -115,7 +118,10 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     // =====================================================================
     private float NormalizeAngle(float angle)
     {
-        if (angle > 180) angle -= 360;
+        angle %= 360f;
+        if (angle > 180f) angle -= 360f;
+        if (angle < -180f) angle += 360f;
         return angle;
+
     }
 }

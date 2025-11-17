@@ -42,16 +42,7 @@ public class Scene1StateManager : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        // Register listener on both server and client
-        CurrentState.OnValueChanged += HandleStateChanged;
 
-        if (IsServer)
-        {
-            // Server apply current state immediately
-            HandleStateChanged(CurrentState.Value, CurrentState.Value);
-            RegisterEvents();
-
-        }
     }
 
     public override void OnNetworkDespawn()

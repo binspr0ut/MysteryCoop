@@ -1,18 +1,24 @@
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using System.Collections;
 
 public class ReadNoteOverlay : MonoBehaviour
 {
     [Header("Refs")]
-    [Tooltip("Root panel overlay yang menutupi layar (punya Image dengan Raycast Target ON).")]
-    public GameObject root;                 // ex: Panel (isi gambar kertas & teks)
-    [Tooltip("(Opsional) CanvasGroup pada root untuk fade.")]
-    public CanvasGroup canvasGroup;         // boleh kosong
+    public GameObject root;
+    public CanvasGroup canvasGroup;
+    public GameObject objectiveUI;
+
+    [Header("Countdown Settings")]
+    public bool autoHide = true;
+    public float countdownDuration = 5f;
+    public TextMeshProUGUI countdownText;   // ⬅️ tambahkan ini
 
     [Header("Behavior")]
-    public bool showOnStart = false;        // true kalau mau muncul otomatis saat scene masuk
+    public bool showOnStart = false;
     public bool pauseGameWhileShown = false;
-    public bool onlyOncePerSession = true;  // hanya sekali per run
+    public bool onlyOncePerSession = true;
     public string onceKey = "FirstFloor_IntroNote_Shown";
 
     [Header("Events")]
@@ -21,15 +27,15 @@ public class ReadNoteOverlay : MonoBehaviour
 
     bool _visible;
     bool _alreadyShown;
+    Coroutine countdownRoutine;
 
     void Awake()
     {
-        if (root == null) root = gameObject;     // fallback
+        if (root == null) root = gameObject;
         if (canvasGroup == null) canvasGroup = root.GetComponent<CanvasGroup>();
 
         _alreadyShown = onlyOncePerSession && PlayerPrefs.GetInt(onceKey, 0) == 1;
 
-        // Pastikan awalnya tersembunyi di Editor/Build
         SetActiveInstant(false);
     }
 
@@ -39,42 +45,29 @@ public class ReadNoteOverlay : MonoBehaviour
             Show();
     }
 
-    void Update()
-    {
-        if (!_visible) return;
-
-        // ——— INPUT TANPA NEW INPUT SYSTEM ———
-        // Mouse / tap layar
-        bool mouseTap = Input.GetMouseButtonDown(0);
-        bool touchTap = false;
-        if (Input.touchCount > 0)
-        {
-            var t = Input.GetTouch(0);
-            if (t.phase == TouchPhase.Began) touchTap = true;
-        }
-        // (opsional) tombol apa saja
-        bool anyKey = Input.anyKeyDown;
-
-        if (mouseTap || touchTap || anyKey)
-        {
-            Hide();
-        }
-    }
-
     public void Show()
     {
         if (_visible) return;
 
         _visible = true;
+
         if (pauseGameWhileShown)
             Time.timeScale = 0f;
 
         root.SetActive(true);
+
         if (canvasGroup != null)
         {
             canvasGroup.alpha = 0f;
             StopAllCoroutines();
             StartCoroutine(FadeTo(1f, 0.2f));
+        }
+
+        // start countdown jika diaktifkan
+        if (autoHide)
+        {
+            if (countdownRoutine != null) StopCoroutine(countdownRoutine);
+            countdownRoutine = StartCoroutine(AutoCountdownHide());
         }
 
         onShown?.Invoke();
@@ -83,8 +76,8 @@ public class ReadNoteOverlay : MonoBehaviour
     public void Hide()
     {
         if (!_visible) return;
-
         _visible = false;
+
         if (pauseGameWhileShown)
             Time.timeScale = 1f;
 
@@ -97,7 +90,7 @@ public class ReadNoteOverlay : MonoBehaviour
         if (canvasGroup != null)
         {
             StopAllCoroutines();
-            StartCoroutine(FadeOutAndDisable(0.15f));
+            StartCoroutine(FadeOutAndDisable(0.2f));
         }
         else
         {
@@ -106,11 +99,39 @@ public class ReadNoteOverlay : MonoBehaviour
         }
     }
 
-    // ===== Helpers =====
-    System.Collections.IEnumerator FadeTo(float target, float dur)
+    // ================================
+    // COUNTDOWN 5 DETIK
+    // ================================
+    IEnumerator AutoCountdownHide()
+    {
+        float timeLeft = countdownDuration;
+
+        while (timeLeft > 0)
+        {
+            if (countdownText != null)
+                countdownText.text = Mathf.CeilToInt(timeLeft).ToString();
+
+            timeLeft -= (pauseGameWhileShown ? Time.unscaledDeltaTime : Time.deltaTime);
+            yield return null;
+        }
+
+        // Hapus angka saat selesai
+        if (countdownText != null)
+            countdownText.text = "";
+
+        objectiveUI.SetActive(true);
+        Scene1StateManager.Instance.ChangeState(Level1State.ExploreBuilding);
+        Hide();
+    }
+
+    // ================================
+    // FADES
+    // ================================
+    IEnumerator FadeTo(float target, float dur)
     {
         float start = canvasGroup.alpha;
         float t = 0f;
+
         while (t < dur)
         {
             t += (pauseGameWhileShown ? Time.unscaledDeltaTime : Time.deltaTime);
@@ -120,7 +141,7 @@ public class ReadNoteOverlay : MonoBehaviour
         canvasGroup.alpha = target;
     }
 
-    System.Collections.IEnumerator FadeOutAndDisable(float dur)
+    IEnumerator FadeOutAndDisable(float dur)
     {
         yield return FadeTo(0f, dur);
         root.SetActive(false);

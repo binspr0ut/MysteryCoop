@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 39f71501c4b604fcfa970fad156f778a
+guid: c4e37a2dd7cc34d81963a1ad5ff37345
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6554852658772456929
-    second: guestbook close up_0
-  - first:
-      213: 8098383263060070262
-    second: guestbook close up_1
-  - first:
-      213: 2326930491591102542
-    second: guestbook close up_2
-  - first:
-      213: -5685141669437396344
-    second: guestbook close up_3
-  - first:
-      213: 1056869171129776865
-    second: guestbook close up_4
+      213: -1074611818290464194
+    second: circle 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -138,101 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: guestbook close up_0
+      name: circle 2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 19
-        width: 776
-        height: 413
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1ac7d66c3c7805a0800000000000000
-      internalID: -6554852658772456929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guestbook close up_1
-      rect:
-        serializedVersion: 2
-        x: 759
-        y: 185
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 67f0aa1bbac336070800000000000000
-      internalID: 8098383263060070262
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guestbook close up_2
-      rect:
-        serializedVersion: 2
-        x: 767
-        y: 185
-        width: 14
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e40105814faea4020800000000000000
-      internalID: 2326930491591102542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guestbook close up_3
-      rect:
-        serializedVersion: 2
-        x: 626
-        y: 13
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 88aa967d5c15a11b0800000000000000
-      internalID: -5685141669437396344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: guestbook close up_4
-      rect:
-        serializedVersion: 2
-        x: 615
         y: 0
-        width: 6
-        height: 6
+        width: 510
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ea704f59e0caae00800000000000000
-      internalID: 1056869171129776865
+      spriteID: e3a3c5bae363611f0800000000000000
+      internalID: -1074611818290464194
       vertices: []
       indices: 
       edges: []
@@ -261,11 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      guestbook close up_0: -6554852658772456929
-      guestbook close up_1: 8098383263060070262
-      guestbook close up_2: 2326930491591102542
-      guestbook close up_3: -5685141669437396344
-      guestbook close up_4: 1056869171129776865
+      circle 2_0: -1074611818290464194
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
