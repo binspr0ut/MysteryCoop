@@ -98,6 +98,50 @@ public class SceneFlowManager : NetworkBehaviour
     }
 
 
+
+    // Dipanggil ketika pemain menekan "Continue" di panel guide
+    [ServerRpc(RequireOwnership = false)]
+    public void ReportGuideContinueServerRpc(string cutsceneSceneName, string nextSceneName, ServerRpcParams _ = default)
+    {
+        readyCount.Value++;
+
+        int total = NetworkManager.Singleton.ConnectedClients.Count;
+        Debug.Log($"[SceneFlow] Guide ready ({readyCount.Value}/{total})");
+
+        if (readyCount.Value >= total)
+        {
+            // reset counter untuk fase berikutnya (cutscene done)
+            readyCount.Value = 0;
+
+            // mulai cutscene untuk semua pemain
+            PlayCutscene(cutsceneSceneName, nextSceneName);
+        }
+    }
+
+    // Dipanggil oleh host ketika menekan "Start Game" di lobby
+    [ServerRpc(RequireOwnership = false)]
+    public void ShowGuidePanelsServerRpc(ServerRpcParams _ = default)
+    {
+        ShowGuidePanelsClientRpc();
+    }
+
+    [ClientRpc]
+    private void ShowGuidePanelsClientRpc(ClientRpcParams _ = default)
+    {
+        var menu = FindObjectOfType<MainMenuUI>();
+        if (menu != null)
+        {
+            menu.ShowGuideForLocalPlayer();
+        }
+        else
+        {
+            Debug.LogWarning("[SceneFlow] MainMenuUI not found when trying to show guide panels.");
+        }
+    }
+
+
+
+
     // Dipanggil oleh cutscene di masing-masing client setelah selesai
     [ServerRpc(RequireOwnership = false)]
     public void ReportCutsceneDoneServerRpc(ServerRpcParams _ = default)
