@@ -3665,6 +3665,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 726287128066045107, guid: 2b03969f2d2a64cf9b93cf5a93f25ac3, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: e02c60cb9eda8436c926b0fff77503a8, type: 2}
+    - target: {fileID: 726287128066045107, guid: 2b03969f2d2a64cf9b93cf5a93f25ac3, type: 3}
       propertyPath: m_WaitForFirstFrame
       value: 1
       objectReference: {fileID: 0}

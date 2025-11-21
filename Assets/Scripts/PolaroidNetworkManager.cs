@@ -9,8 +9,14 @@ public class PuzzleNetworkManager : NetworkBehaviour
     [Header("Map & Ending UI References")]
     public GameObject mapObject;
     public GameObject toBeContinuedPanel; // Drag "ToBeContinued" GameObject here in Inspector
+    public NetworkVariable<bool> detectiveSolved = new(false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
 
-    void Awake()
+    public NetworkVariable<bool> spiritSolved = new(false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
+    public override void OnNetworkSpawn()
     {
         Instance = this;
     }
@@ -42,19 +48,44 @@ public class PuzzleNetworkManager : NetworkBehaviour
     // 🚉 Train Station Button Trigger
     // ===========================================================
     [ServerRpc(RequireOwnership = false)]
-    public void ShowToBeContinuedServerRpc()
+    public void SubmitSolvedServerRpc(ulong senderId)
     {
-        Debug.Log("🚉 Train Station button clicked — notifying all clients...");
-        ShowToBeContinuedClientRpc();
+        if (senderId == NetworkManager.ServerClientId)
+            detectiveSolved.Value = true;
+        else
+            spiritSolved.Value = true;
+
+        CheckAllSolved();
+    }
+
+    private void CheckAllSolved()
+    {
+        if (detectiveSolved.Value && spiritSolved.Value)
+        {
+            ShowEndingClientRpc();
+        }
     }
 
     [ClientRpc]
-    private void ShowToBeContinuedClientRpc()
+    private void ShowEndingClientRpc()
     {
-        if (toBeContinuedPanel != null)
-        {
-            SceneFlowManager.Instance.PlayCutscene("EndScene1Cutscene", "MainMenu");
-            Debug.Log("✨ ToBeContinued panel activated on client");
-        }
+        SceneFlowManager.Instance.PlayCutscene("EndScene1Cutscene", "MainMenu");
     }
+
+    [ClientRpc]
+    public void SetEventSystemStateClientRpc(bool state)
+    {
+        var es = GameObject.Find("EventSystem");
+        if (es != null)
+        {
+            es.SetActive(state);
+
+        }
+        else
+        {
+            Debug.Log("Event System not found");
+        }
+        Debug.Log(state);
+    }
+
 }

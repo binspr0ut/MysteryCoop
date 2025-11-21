@@ -1,9 +1,9 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
+public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
 {
-    public bool IsPossessed { get; private set; }
+    public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
 
     [Header("UI References")]
@@ -60,7 +60,7 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
               ?.SetValue(ui, this);
     }
 
-    public void Possess()
+    public void Interact(Transform player)
     {
         if (currentState == ObjectState.Disabled) return;
 
@@ -74,56 +74,20 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
 
         if (currentState == ObjectState.Active)
         {
-            // cari spirit di sekitar (atau lewat parameter dari PossesDetector)
-            var spirit = FindFirstObjectByType<SpiritMovement>();
-            if (spirit != null && spirit.IsOwner)
-            {
-                // 🔹 Panggil RPC agar semua client tahu spirit menghilang
-                spirit.SetVisibleServerRpc(false);
-                PossessedSpirit = spirit;
-            }
-
             ControlUI.SetActive(false);
             LockpickOverlay.SetActive(true);
-            IsPossessed = true;
+            IsInteracted = true;
         }
     }
 
-    public void Interact()
-    {
-        if (IsPossessed)
-        {
-            Debug.Log("Unposess ShelfLockpick");
-            Unpossess();
-            IsPossessed = false;
-        }
-        else
-        {
-            Debug.Log("Possess ShelfLockPick");
-            Possess();
-            IsPossessed = true;
-        }
-    }
 
-    public bool CanPossess() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
-
-    public void Unpossess()
-    {
-        if (PossessedSpirit != null)
-        {
-            PossessedSpirit.SetVisibleServerRpc(true);
-            PossessedSpirit = null;
-        }
-
-        ClosePuzzle();
-    }
-
+    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
         LockpickOverlay.SetActive(false);
-        IsPossessed = false;
+        IsInteracted = false;
     }
     public System.Action OnShelfUnlocked;
 

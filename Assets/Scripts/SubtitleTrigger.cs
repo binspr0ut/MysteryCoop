@@ -41,10 +41,10 @@ public class SubtitleTrigger : MonoBehaviour
             Debug.LogWarning("[SubtitleTrigger] SubtitleManager belum ada di scene.");
             return;
         }
+        counter++;
 
         SubtitleManager.Instance.ShowSubtitle(subtitleText, target, scope);
         SubtitleManager.Instance.ShowSubtitle(subtitleText2, target2, scope);
-        counter++;
         Debug.Log(counter);
     }
 }

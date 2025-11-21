@@ -40,6 +40,7 @@ public class SubtitleManager : NetworkBehaviour
 
     private Coroutine localRoutine;
     private Coroutine globalRoutine;
+    public bool IsSubtitleShowing { get; private set; }
 
     void Awake()
     {
@@ -303,6 +304,20 @@ public class SubtitleManager : NetworkBehaviour
         bgRect.localScale = Vector3.zero;
     }
 
+    public IEnumerator ShowAndWaitRoutine(string text, SubtitleTarget target = SubtitleTarget.Detective, float duration = -1f)
+    {
+        IsSubtitleShowing = true;
+
+        // non-overwrite, force "local scope"
+        ShowSubtitle(text, target, SubtitleScope.Global, duration, overwrite: false);
+
+        // tunggu sampai subtitle selesai
+        float estimated = (duration < 0 ? stayDuration : duration) + fadeDuration * 2f + 0.1f;
+
+        yield return new WaitForSeconds(estimated);
+
+        IsSubtitleShowing = false;
+    }
 
 
     private IEnumerator FadeCanvas(float targetAlpha)

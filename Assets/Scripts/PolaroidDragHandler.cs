@@ -136,8 +136,7 @@ public class PolaroidDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
             Debug.Log("🎉 Puzzle Solved!");
             if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsConnectedClient)
             {
-                // Panggil RPC ke server
-                PuzzleNetworkManager.Instance.PuzzleSolvedServerRpc();
+                StartCoroutine(MyEndingSequence());
             }
             else
             {
@@ -151,6 +150,36 @@ public class PolaroidDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
     // ======================
     // Helpers
     // ======================
+
+    private IEnumerator MyEndingSequence()
+    {
+        GameObject eventSystem = GameObject.Find("EventSystem");
+
+        eventSystem.SetActive(false);
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "polaroidnya udah selesai semua cok.", target: SubtitleTarget.Detective
+        );
+
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "keren juga", target: SubtitleTarget.Spirit
+        );
+
+
+        PuzzleNetworkManager.Instance.PuzzleSolvedServerRpc();
+
+        eventSystem.SetActive(false);
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "keknya ada polanya cok.", target: SubtitleTarget.Detective
+        );
+
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "iya juga", target: SubtitleTarget.Spirit
+        );
+
+
+        eventSystem.SetActive(true);
+    }
+
     void KeepInsideParentBounds()
     {
         var parent = Rect.parent as RectTransform;

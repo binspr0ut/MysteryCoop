@@ -162,7 +162,7 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         if (shelfLockpick != null)
         {
             shelfLockpick.UnlockShelfServerRpc(); // 🔹 panggil RPC baru
-            shelfLockpick.Unpossess();
+            shelfLockpick.ClosePuzzle();
         }
     }
 

@@ -4779,6 +4779,10 @@ PrefabInstance:
       propertyPath: m_VideoClip
       value: 
       objectReference: {fileID: 32900000, guid: 666299af895aa4988abeb10af4efdefe, type: 3}
+    - target: {fileID: 726287128066045107, guid: be84dfc6cf44644a19308344fbf84ed2, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: e02c60cb9eda8436c926b0fff77503a8, type: 2}
     - target: {fileID: 5908031143242788351, guid: be84dfc6cf44644a19308344fbf84ed2, type: 3}
       propertyPath: m_PlayableAsset
       value: 

@@ -119,9 +119,10 @@ public class ReadNoteOverlay : MonoBehaviour
         if (countdownText != null)
             countdownText.text = "";
 
-        objectiveUI.SetActive(true);
-        Scene1StateManager.Instance.ChangeState(Level1State.ExploreBuilding);
+        // Scene1StateManager.Instance.ChangeState(Level1State.ExploreBuilding);
         Hide();
+        objectiveUI.SetActive(true);
+
     }
 
     // ================================

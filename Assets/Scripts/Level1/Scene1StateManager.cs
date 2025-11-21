@@ -2,13 +2,14 @@ using Unity.Netcode;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Rendering.Universal;
 
 public class Scene1StateManager : NetworkBehaviour
 {
     public static Scene1StateManager Instance;
 
     public NetworkVariable<Level1State> CurrentState =
-        new NetworkVariable<Level1State>(Level1State.ExploreBuilding, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+        new NetworkVariable<Level1State>(Level1State.FindLift, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     public event Action<Level1State, string> OnQuestTitleChanged;
     public event Action<Level1State> OnStateChanged;
@@ -32,18 +33,47 @@ public class Scene1StateManager : NetworkBehaviour
     public MonoBehaviour shelfOpenedObject;
     public MonoBehaviour clockObject;
 
+    [Header("State Objects - Not Active in FindLift")]
+    public GameObject LiftLampFloor1;
+    public GameObject HallwayLampFloor1;
+    public GameObject StairLampFloor1;
+    public GameObject BasementLamp;
+    public GameObject GudangLamp;
+    public GameObject LiftLampFloor2;
+    public GameObject ColliderTemp;
+    public GameObject Cover;
+    public Light2D GlobalLight;
+    public MonoBehaviour lift1Object;
+    public MonoBehaviour lift2Object;
+    public MonoBehaviour lift3Object;
+
+
+    [SerializeField] private string detectiveName = "Detective(Clone)";
+    [SerializeField] private string spiritName = "Spirit(Clone)";
+
+
+
 
     /* ================== UNITY EVENTS ================== */
 
     private void Awake()
     {
         Instance = this;
+        RegisterEvents();
+
     }
 
     public override void OnNetworkSpawn()
     {
+        // listen to state changes on both host & client
+        CurrentState.OnValueChanged += HandleStateChanged;
+
+        // IMPORTANT: jalankan sekali untuk sync initial state
+        HandleStateChanged(CurrentState.Value, CurrentState.Value);
+        RegisterEvents();
 
     }
+
 
     public override void OnNetworkDespawn()
     {
@@ -106,6 +136,8 @@ public class Scene1StateManager : NetworkBehaviour
     {
         return state switch
         {
+            Level1State.FindLift => "Go to the lift!",
+            Level1State.TurnElectricity => "Switch the Generator on the Basement!",
             Level1State.ExploreBuilding => "Find the briefcase!",
             Level1State.FindSuitcaseCode => "Unlock the briefcase!",
             Level1State.Completed => "Objective Completed!",
@@ -122,6 +154,12 @@ public class Scene1StateManager : NetworkBehaviour
     {
         switch (state)
         {
+            case Level1State.FindLift:
+                ApplyFindLift();
+                break;
+            case Level1State.TurnElectricity:
+                ApplyTurnElectricity();
+                break;
             case Level1State.ExploreBuilding:
                 ApplyExploreState();
                 break;
@@ -132,8 +170,22 @@ public class Scene1StateManager : NetworkBehaviour
         }
     }
 
-    private void ApplyExploreState()
+    private void ApplyFindLift()
     {
+        LiftLampFloor1.SetActive(false);
+        HallwayLampFloor1.SetActive(false);
+        StairLampFloor1.SetActive(false);
+        BasementLamp.SetActive(false);
+        GudangLamp.SetActive(false);
+        LiftLampFloor2.SetActive(false);
+
+        Cover.SetActive(true);
+        ColliderTemp.SetActive(true);
+
+        SetState(lift1Object, ObjectState.Locked);
+        SetState(lift2Object, ObjectState.Locked);
+        SetState(lift3Object, ObjectState.Locked);
+
         SetState(suitcaseObject, ObjectState.Active);
 
         SetState(shelfLockpickObject, ObjectState.Disabled);
@@ -144,6 +196,36 @@ public class Scene1StateManager : NetworkBehaviour
 
         SetState(shelfOpenedObject, ObjectState.Disabled);
         SetState(clockObject, ObjectState.Disabled);
+
+        LogStateApplied("FindLift");
+
+    }
+
+    private void ApplyTurnElectricity()
+    {
+
+
+        LogStateApplied("TurnElectricity");
+    }
+
+    private void ApplyExploreState()
+    {
+        DisablePlayerSpotlights();
+        LiftLampFloor1.SetActive(true);
+        HallwayLampFloor1.SetActive(true);
+        StairLampFloor1.SetActive(true);
+        BasementLamp.SetActive(true);
+        GudangLamp.SetActive(true);
+        LiftLampFloor2.SetActive(true);
+
+        GlobalLight.intensity = 0.15f;
+
+        Cover.SetActive(false);
+        ColliderTemp.SetActive(false);
+
+        SetState(lift1Object, ObjectState.Active);
+        SetState(lift2Object, ObjectState.Active);
+        SetState(lift3Object, ObjectState.Active);
 
         LogStateApplied("ExploreBuilding");
     }
@@ -185,6 +267,28 @@ public class Scene1StateManager : NetworkBehaviour
     {
         Debug.Log($"{(IsServer ? "[SERVER]" : "[CLIENT]")} [STATE APPLY] {state} state applied");
     }
+
+    private void DisablePlayerSpotlights()
+    {
+        // cari detective
+        GameObject detective = GameObject.Find(detectiveName);
+        if (detective != null)
+        {
+            Light2D detectiveLight = detective.GetComponentInChildren<Light2D>();
+            if (detectiveLight != null)
+                detectiveLight.enabled = false;
+        }
+
+        // cari spirit
+        GameObject spirit = GameObject.Find(spiritName);
+        if (spirit != null)
+        {
+            Light2D spiritLight = spirit.GetComponentInChildren<Light2D>();
+            if (spiritLight != null)
+                spiritLight.enabled = false;
+        }
+    }
+
 
 
     /* ================== CALLS FROM PUZZLES ================== */

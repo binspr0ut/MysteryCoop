@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class QuestUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class QuestUI : MonoBehaviour
     [Header("Animation Settings")]
     public float slideDistance = 400f;  // seberapa jauh dari luar layar
     public float slideDuration = 0.4f;  // durasi animasi
+
+    [SerializeField] private Vector2 fixedEndPos = new Vector2(909, 365);
 
 
     private bool subscribed;
@@ -50,28 +53,31 @@ public class QuestUI : MonoBehaviour
     private void OnQuestChanged(Level1State state, string title)
     {
         questText.text = title;
+        StartCoroutine(PlayAnim());
+    }
 
-        // --- Animasi slide in ---
+    IEnumerator PlayAnim()
+    {
+        yield return null;                  // tunggu 1 frame layouting
+        yield return new WaitForEndOfFrame(); // paling aman
+
         AnimateIn(bgObjective);
         AnimateIn(quest);
     }
+
 
     private void AnimateIn(RectTransform target)
     {
         if (target == null) return;
 
-        // posisi awal: di atas layar (ke atas dari posisi aslinya)
-        Vector2 startPos = target.anchoredPosition + Vector2.up * slideDistance;
-        Debug.Log(startPos);
+        // posisi akhir dari inspector (anti beda-beda)
+        Vector2 endPos = fixedEndPos;
 
-        // simpan posisi akhir
-        Vector2 endPos = target.anchoredPosition;
-        Debug.Log(endPos);
+
+        Vector2 startPos = endPos + Vector2.up * slideDistance;
 
         // mulai dari atas
         target.anchoredPosition = startPos;
-        Debug.Log(target.anchoredPosition);
-
 
         // animasi turun ke posisi semula
         LeanTween.move(target, endPos, slideDuration)
