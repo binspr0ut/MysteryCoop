@@ -29228,7 +29228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OffscreenIndicatorBinder_NG
   indicatorPrefab: {fileID: 8909576906197764156, guid: 9b76805edec9941e8be4c16683f971e5, type: 3}
   teammateColor: {r: 1, g: 1, b: 1, a: 1}
-  screenEdgePadding: 24
+  screenEdgePadding: 100
   worldHeightOffset: 1.2
 --- !u!1 &1906672957
 GameObject:
