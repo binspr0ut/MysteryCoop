@@ -25,6 +25,12 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
 
     private ObjectState currentState = ObjectState.Disabled;
 
+    public static ClockBack Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void SetObjectState(ObjectState state)
     {
@@ -60,7 +66,7 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         batteryUI1.SetActive(false);
         batteryUI2.SetActive(false);
 
-        ClockBackBatterySync.Instance.OnBatteryChanged += HandleBatterySync;
+        // ClockBackBatterySync.Instance.OnBatteryChanged += HandleBatterySync;
 
 
         // ✅ Hubungkan event dari UI ke fungsi selesai puzzle
@@ -69,16 +75,18 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             _puzzleUI.onPuzzleDone += HandlePuzzleDoneLocal;
 
     }
-    private void HandleBatterySync(int count)
+    public void HandleBatterySync(int count)
     {
         if (count >= 1)
-            ShowBattery(batteryUI1);
+            Debug.Log("Battery Count 1");
+        // ShowBattery(batteryUI1);
 
         if (count >= 2)
-            ShowBattery(batteryUI2);
+            Debug.Log("Battery Count 2");
+        // ShowBattery(batteryUI2);
     }
 
-    private void ShowBattery(GameObject obj)
+    public void ShowBattery(GameObject obj)
     {
         var cg = obj.GetComponent<CanvasGroup>();
         if (cg == null) cg = obj.AddComponent<CanvasGroup>();
@@ -144,13 +152,14 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             IsInteracted = true;
             if (controlUI) controlUI.SetActive(false);
             if (clockBackUIPanel) clockBackUIPanel.SetActive(true);
+            InventoryController.Instance.ShowInventoryFreeze();
 
-            // Tampilkan battery jika Box sudah solved
-            if (batteryUI1 && batteryUI2)
-            {
-                batteryUI1.SetActive(boxDependency != null && boxDependency.isSolved);
-                batteryUI2.SetActive(boxDependency != null && boxDependency.isSolved);
-            }
+            // // Tampilkan battery jika Box sudah solved
+            // if (batteryUI1 && batteryUI2)
+            // {
+            //     batteryUI1.SetActive(boxDependency != null && boxDependency.isSolved);
+            //     batteryUI2.SetActive(boxDependency != null && boxDependency.isSolved);
+            // }
         }
     }
 
@@ -159,6 +168,7 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         IsInteracted = false;
         if (controlUI) controlUI.SetActive(true);
         if (clockBackUIPanel) clockBackUIPanel.SetActive(false);
+        InventoryController.Instance.HideInventory();
     }
 
     // Dipanggil lokal oleh UI saat battery sukses dipasang
@@ -239,11 +249,11 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             clockTarget.enabled = solved;
         }
 
-        // Tampilkan battery jika Box sudah solved
-        if (batteryUI1 && batteryUI2)
-        {
-            batteryUI1.SetActive(!solved);
-            batteryUI2.SetActive(!solved);
-        }
+        // // Tampilkan battery jika Box sudah solved
+        // if (batteryUI1 && batteryUI2)
+        // {
+        //     batteryUI1.SetActive(!solved);
+        //     batteryUI2.SetActive(!solved);
+        // }
     }
 }

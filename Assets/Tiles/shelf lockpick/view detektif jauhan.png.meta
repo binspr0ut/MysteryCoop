@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 20404679968254aefbea101b97e657d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 266216758954038611
+    second: bener bener jauh detektif-2_0
+  - first:
+      213: 4504400257634388904
+    second: bener bener jauh detektif-2_1
+  - first:
+      213: 4752007582076109947
+    second: bener bener jauh detektif-2_2
+  - first:
+      213: -2033722216025192999
+    second: bener bener jauh detektif-2_3
+  - first:
+      213: -2105742566131260521
+    second: bener bener jauh detektif-2_4
+  - first:
+      213: 6922231096640980678
+    second: bener bener jauh detektif-2_5
+  - first:
+      213: 1804636605511573050
+    second: bener bener jauh detektif-2_6
+  - first:
+      213: -3324205482441951201
+    second: bener bener jauh detektif-2_7
+  - first:
+      213: 3961147417840880120
+    second: bener bener jauh detektif-2_8
+  - first:
+      213: -9180638011303976053
+    second: bener bener jauh detektif-2_9
+  - first:
+      213: 2521002383256783697
+    second: bener bener jauh detektif-2_10
+  - first:
+      213: -3856402311918180837
+    second: bener bener jauh detektif-2_11
+  - first:
+      213: 5788822380167907843
+    second: bener bener jauh detektif-2_12
+  - first:
+      213: -858749534819139469
+    second: bener bener jauh detektif-2_13
+  - first:
+      213: -775347575367208427
+    second: bener bener jauh detektif-2_14
+  - first:
+      213: -8477424152957332450
+    second: bener bener jauh detektif-2_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 2365
+        width: 895
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35516b65bbac1b300800000000000000
+      internalID: 266216758954038611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_1
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 2515
+        width: 713
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8abc9724b28d28e30800000000000000
+      internalID: 4504400257634388904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_2
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 2557
+        width: 620
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b740c9bf7b582f140800000000000000
+      internalID: 4752007582076109947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_3
+      rect:
+        serializedVersion: 2
+        x: 3770
+        y: 2421
+        width: 439
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d58ffd6b64c6c3e0800000000000000
+      internalID: -2033722216025192999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_4
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1777
+        width: 861
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 793a355fa46e6c2e0800000000000000
+      internalID: -2105742566131260521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_5
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1844
+        width: 637
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c6c270c184b01060800000000000000
+      internalID: 6922231096640980678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_6
+      rect:
+        serializedVersion: 2
+        x: 2773
+        y: 1971
+        width: 642
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3e1f2c6e6b5b0910800000000000000
+      internalID: 1804636605511573050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_7
+      rect:
+        serializedVersion: 2
+        x: 3678
+        y: 1814
+        width: 499
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1834a2e9bc0ed1d0800000000000000
+      internalID: -3324205482441951201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_8
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 886
+        width: 576
+        height: 682
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f98c57e692d8f630800000000000000
+      internalID: 3961147417840880120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_9
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 441
+        width: 474
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8327ccae52d79080800000000000000
+      internalID: -9180638011303976053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_10
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 1214
+        width: 604
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15b0feb8f466cf220800000000000000
+      internalID: 2521002383256783697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_11
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 1252
+        width: 568
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b162f17878e4b7ac0800000000000000
+      internalID: -3856402311918180837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_12
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 1182
+        width: 556
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30a4db5c847065050800000000000000
+      internalID: 5788822380167907843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_13
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 496
+        width: 748
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370c21219db1514f0800000000000000
+      internalID: -858749534819139469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_14
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 497
+        width: 572
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 512f6c8fc796d35f0800000000000000
+      internalID: -775347575367208427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bener bener jauh detektif-2_15
+      rect:
+        serializedVersion: 2
+        x: 3538
+        y: 492
+        width: 545
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1459a0f5a32a5a80800000000000000
+      internalID: -8477424152957332450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bener bener jauh detektif-2_0: 266216758954038611
+      bener bener jauh detektif-2_1: 4504400257634388904
+      bener bener jauh detektif-2_10: 2521002383256783697
+      bener bener jauh detektif-2_11: -3856402311918180837
+      bener bener jauh detektif-2_12: 5788822380167907843
+      bener bener jauh detektif-2_13: -858749534819139469
+      bener bener jauh detektif-2_14: -775347575367208427
+      bener bener jauh detektif-2_15: -8477424152957332450
+      bener bener jauh detektif-2_2: 4752007582076109947
+      bener bener jauh detektif-2_3: -2033722216025192999
+      bener bener jauh detektif-2_4: -2105742566131260521
+      bener bener jauh detektif-2_5: 6922231096640980678
+      bener bener jauh detektif-2_6: 1804636605511573050
+      bener bener jauh detektif-2_7: -3324205482441951201
+      bener bener jauh detektif-2_8: 3961147417840880120
+      bener bener jauh detektif-2_9: -9180638011303976053
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

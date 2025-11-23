@@ -75,11 +75,13 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         // 2) Jika klik di area baterai (termasuk child)
         if (IsUnder(clicked, battery1))
         {
+            InventoryController.Instance.GetBattery1();
             HandleBatteryClick(battery1);
             return;
         }
         if (IsUnder(clicked, battery2))
         {
+            InventoryController.Instance.GetBattery2();
             HandleBatteryClick(battery2);
             return;
         }
@@ -172,6 +174,7 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             puzzleDone = true;
             Debug.Log("🎉 Puzzle solved! Both batteries collected!");
             onPuzzleDone?.Invoke();
+            InventoryController.Instance.ShowInventoryUI();
         }
     }
 

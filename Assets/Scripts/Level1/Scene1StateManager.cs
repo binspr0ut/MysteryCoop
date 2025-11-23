@@ -3,13 +3,14 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
 
 public class Scene1StateManager : NetworkBehaviour
 {
     public static Scene1StateManager Instance;
 
     public NetworkVariable<Level1State> CurrentState =
-        new NetworkVariable<Level1State>(Level1State.FindLift, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+        new NetworkVariable<Level1State>(Level1State.FindSuitcaseCode, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     public event Action<Level1State, string> OnQuestTitleChanged;
     public event Action<Level1State> OnStateChanged;
@@ -31,6 +32,8 @@ public class Scene1StateManager : NetworkBehaviour
 
     [Header("State Objects - Locked in FindSuitcase")]
     public MonoBehaviour shelfOpenedObject;
+    public MonoBehaviour shelfOpenedSpiritObject;
+
     public MonoBehaviour clockObject;
 
     [Header("State Objects - Not Active in FindLift")]
@@ -59,7 +62,6 @@ public class Scene1StateManager : NetworkBehaviour
     private void Awake()
     {
         Instance = this;
-        RegisterEvents();
 
     }
 
@@ -70,7 +72,6 @@ public class Scene1StateManager : NetworkBehaviour
 
         // IMPORTANT: jalankan sekali untuk sync initial state
         HandleStateChanged(CurrentState.Value, CurrentState.Value);
-        RegisterEvents();
 
     }
 
@@ -195,6 +196,8 @@ public class Scene1StateManager : NetworkBehaviour
         SetState(parabolaObject, ObjectState.Disabled);
 
         SetState(shelfOpenedObject, ObjectState.Disabled);
+        SetState(shelfOpenedSpiritObject, ObjectState.Disabled);
+
         SetState(clockObject, ObjectState.Disabled);
 
         LogStateApplied("FindLift");
@@ -239,6 +242,7 @@ public class Scene1StateManager : NetworkBehaviour
         SetState(parabolaObject, ObjectState.Active);
 
         SetState(shelfOpenedObject, ObjectState.Locked);
+        SetState(shelfOpenedSpiritObject, ObjectState.Locked);
         SetState(clockObject, ObjectState.Locked);
 
         LogStateApplied("FindSuitcaseCode");
@@ -311,17 +315,6 @@ public class Scene1StateManager : NetworkBehaviour
             ChangeState(Level1State.FindSuitcaseCode);
     }
 
-    private void RegisterEvents()
-    {
-        if (shelfLockpickObject is ShelfLockpick shelf)
-        {
-            shelf.OnShelfUnlocked += () =>
-            {
-                // ubah shelfOpened menjadi Active
-                if (shelfOpenedObject is IStateObject so)
-                    so.SetObjectState(ObjectState.Active);
-            };
-        }
-    }
+
 
 }

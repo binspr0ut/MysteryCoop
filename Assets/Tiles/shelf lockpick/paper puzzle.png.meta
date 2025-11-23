@@ -1,0 +1,324 @@
+fileFormatVersion: 2
+guid: 31bdaf0944c1d4ea7bae116cce2b4674
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7805467972981075553
+    second: paper puzzle_0
+  - first:
+      213: 4021871684249365789
+    second: paper puzzle_1
+  - first:
+      213: 3605832618071406973
+    second: paper puzzle_2
+  - first:
+      213: 941853320656995526
+    second: paper puzzle_3
+  - first:
+      213: -1557712652868341256
+    second: paper puzzle_4
+  - first:
+      213: -7053711584134297727
+    second: paper puzzle_5
+  - first:
+      213: 6362717392572866607
+    second: paper puzzle_6
+  - first:
+      213: -1803623736686513772
+    second: paper puzzle_7
+  - first:
+      213: 4112126794615177602
+    second: paper puzzle_8
+  - first:
+      213: 4497457136660271150
+    second: paper puzzle_9
+  - first:
+      213: 8129515671198413366
+    second: paper puzzle_10
+  - first:
+      213: 8431019304001665349
+    second: paper puzzle_11
+  - first:
+      213: 2319244616760187282
+    second: paper puzzle_12
+  - first:
+      213: -1896272973621820702
+    second: paper puzzle_13
+  - first:
+      213: -4277637935327592494
+    second: paper puzzle_14
+  - first:
+      213: -5818171410233078464
+    second: paper puzzle_15
+  - first:
+      213: -1714737604620073395
+    second: paper puzzle_16
+  - first:
+      213: 3517890904597749874
+    second: paper puzzle_17
+  - first:
+      213: -2783882977196395363
+    second: paper puzzle_18
+  - first:
+      213: -8353913605221713293
+    second: paper puzzle_19
+  - first:
+      213: 7585875862491958338
+    second: paper puzzle_20
+  - first:
+      213: 8140084935148605975
+    second: paper puzzle_21
+  - first:
+      213: 2892497595865164030
+    second: paper puzzle_22
+  - first:
+      213: -3129651778412181904
+    second: paper puzzle_23
+  - first:
+      213: -1428101926421069428
+    second: paper puzzle_24
+  - first:
+      213: 1641916855677325389
+    second: paper puzzle_25
+  - first:
+      213: -8500582269030643393
+    second: paper puzzle_26
+  - first:
+      213: -6591806723904905446
+    second: paper puzzle_27
+  - first:
+      213: 5691589816523810209
+    second: paper puzzle_28
+  - first:
+      213: -8681490271564132945
+    second: paper puzzle_29
+  - first:
+      213: 7651849769700981716
+    second: paper puzzle_30
+  - first:
+      213: -7159047502705337817
+    second: paper puzzle_31
+  - first:
+      213: -7760416332911592895
+    second: paper puzzle_32
+  - first:
+      213: -818695840203445905
+    second: paper puzzle_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: paper puzzle_0
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1362
+        width: 1767
+        height: 1153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ea93b24c7925c60800000000000000
+      internalID: 7805467972981075553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paper puzzle_1
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 1362
+        width: 1767
+        height: 1154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1da2efecfe80d730800000000000000
+      internalID: 4021871684249365789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1e5731d51a18848c6b87b3f8271059eb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      paper puzzle_0: 7805467972981075553
+      paper puzzle_1: 4021871684249365789
+      paper puzzle_10: 8129515671198413366
+      paper puzzle_11: 8431019304001665349
+      paper puzzle_12: 2319244616760187282
+      paper puzzle_13: -1896272973621820702
+      paper puzzle_14: -4277637935327592494
+      paper puzzle_15: -5818171410233078464
+      paper puzzle_16: -1714737604620073395
+      paper puzzle_17: 3517890904597749874
+      paper puzzle_18: -2783882977196395363
+      paper puzzle_19: -8353913605221713293
+      paper puzzle_2: 3605832618071406973
+      paper puzzle_20: 7585875862491958338
+      paper puzzle_21: 8140084935148605975
+      paper puzzle_22: 2892497595865164030
+      paper puzzle_23: -3129651778412181904
+      paper puzzle_24: -1428101926421069428
+      paper puzzle_25: 1641916855677325389
+      paper puzzle_26: -8500582269030643393
+      paper puzzle_27: -6591806723904905446
+      paper puzzle_28: 5691589816523810209
+      paper puzzle_29: -8681490271564132945
+      paper puzzle_3: 941853320656995526
+      paper puzzle_30: 7651849769700981716
+      paper puzzle_31: -7159047502705337817
+      paper puzzle_32: -7760416332911592895
+      paper puzzle_33: -818695840203445905
+      paper puzzle_34: -1385905802
+      paper puzzle_4: -1557712652868341256
+      paper puzzle_5: -7053711584134297727
+      paper puzzle_6: 6362717392572866607
+      paper puzzle_7: -1803623736686513772
+      paper puzzle_8: 4112126794615177602
+      paper puzzle_9: 4497457136660271150
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

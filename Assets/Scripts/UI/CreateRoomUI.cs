@@ -84,7 +84,7 @@ public class CreateRoomUI : MonoBehaviour
             btnStart.interactable = false;
 
             // Gunakan SceneFlowManager untuk memulai cutscene bersama
-            SceneFlowManager.Instance.PlayCutscene("IntroCutscene", "FirstFloor");
+            SceneFlowManager.Instance.PlayCutscene("IntroCutscene", "FirstFloor - Shelf Lockpick");
         }
     }
 

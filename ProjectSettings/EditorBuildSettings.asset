@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScene1Cutscene.unity
     guid: 09a1c0e640f60472090a34d115504065
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor - Shelf Lockpick.unity
+    guid: 8564d37b45b524fa2a35c22c279cbb1f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

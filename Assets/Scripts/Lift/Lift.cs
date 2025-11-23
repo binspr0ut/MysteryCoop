@@ -53,7 +53,9 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
             SubtitleManager.Instance.ShowSubtitle("o iya, yok ke basement", SubtitleTarget.Spirit, SubtitleScope.Global);
             if (!hasChangedState)
             {
-                Scene1StateManager.Instance.ChangeState(Level1State.TurnElectricity);
+                Scene1StateManager.Instance.ChangeState(Level1State.ExploreBuilding);
+                Scene1StateManager.Instance.ChangeState(Level1State.FindSuitcaseCode);
+
                 hasChangedState = true;
             }
         }
