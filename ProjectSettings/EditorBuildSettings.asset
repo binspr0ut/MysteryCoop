@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroCutscene.unity
     guid: 1b981a1a57c0b4f40b4ebe5dc98e8157
   - enabled: 1
+    path: Assets/Scenes/FirstFloor-Rigel.unity
+    guid: e4b820994d0174ac5a3f05b97c11cd19
+  - enabled: 0
     path: Assets/Scenes/FirstFloor.unity
-    guid: 875fcde07d6954cbdb22cd68003589b4
+    guid: 75076d07421504bcbacdc7643f053460
   - enabled: 1
     path: Assets/Scenes/KoperCutscene.unity
     guid: 362f19f55ddbd4a66ae708bab4b4c5bd

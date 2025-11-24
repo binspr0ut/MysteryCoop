@@ -78,13 +78,30 @@ public class CreateRoomUI : MonoBehaviour
 
     private void StartCutscene()
     {
-        if (NetworkManager.Singleton.IsHost)
-        {
-            txtStatus.text = "Loading intro...";
-            btnStart.interactable = false;
+        // if (NetworkManager.Singleton.IsHost)
+        // {
+        //     txtStatus.text = "Loading intro...";
+        //     btnStart.interactable = false;
 
-            // Gunakan SceneFlowManager untuk memulai cutscene bersama
-            SceneFlowManager.Instance.PlayCutscene("IntroCutscene", "FirstFloor - Shelf Lockpick");
+        //     // Gunakan SceneFlowManager untuk memulai cutscene bersama
+        //     SceneFlowManager.Instance.PlayCutscene("IntroCutscene", "FirstFloor");
+        // }
+
+        // Hanya host yang boleh mulai
+        if (!NetworkManager.Singleton.IsHost)
+            return;
+
+        txtStatus.text = "Starting...";
+        btnStart.interactable = false;
+
+        if (SceneFlowManager.Instance != null)
+        {
+            // minta server menyuruh semua client buka panel guide
+            SceneFlowManager.Instance.ShowGuidePanelsServerRpc();
+        }
+        else
+        {
+            Debug.LogWarning("[CreateRoomUI] SceneFlowManager instance not found.");
         }
     }
 
