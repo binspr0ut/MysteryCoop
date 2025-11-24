@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // biar bisa klik UI
+using UnityEngine.EventSystems;
 
 public class WireNode : MonoBehaviour, IPointerClickHandler
 {
     public WireColor color;
-    public bool isTopNode = false;   // atas atau bawah, buatmu saja
+    public bool isTopNode = false;        // kalau mau dipakai buat logika tambahan
     public ElectricPuzzle puzzle;
 
-    // static untuk menyimpan node yang sedang dipilih
-    private static WireNode selectedNode;
+    // node pertama yang diklik
+    private static WireNode firstSelected;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -18,47 +18,47 @@ public class WireNode : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        if (selectedNode == null)
+        // kalau belum ada node yang dipilih → simpan sebagai firstSelected
+        if (firstSelected == null)
         {
-            // pilih node pertama
-            selectedNode = this;
+            firstSelected = this;
             Debug.Log($"[WireNode] Selected {color} ({(isTopNode ? "Top" : "Bottom")})");
+            return;
         }
-        else
+
+        // kalau klik node yang sama → batal
+        if (firstSelected == this)
         {
-            // klik kedua: cek apakah warna sama
-            if (selectedNode == this)
-            {
-                // klik node yang sama → batal
-                selectedNode = null;
-                return;
-            }
+            Debug.Log("[WireNode] Same node clicked, clearing selection");
+            firstSelected = null;
+            return;
+        }
 
-            if (selectedNode.color == this.color)
-            {
-                Debug.Log($"[WireNode] CONNECTED color {color}");
+        // cek warna
+        if (firstSelected.color == this.color)
+        {
+            Debug.Log($"[WireNode] CONNECTED color {color}");
 
-                // Kalau ada network → kirim ke server
-                if (ElectricPuzzleNetwork.Instance != null && ElectricPuzzleNetwork.Instance.IsSpawned)
-                {
-                    ElectricPuzzleNetwork.Instance
-                        .RequestSetCableConnectedServerRpc(color, true);
-                }
-                else
-                {
-                    // fallback: singleplayer / belum spawn network
-                    if (puzzle != null)
-                        puzzle.SetCableConnected(color, true);
-                }
+            // multiplayer: kirim ke server
+            if (ElectricPuzzleNetwork.Instance != null &&
+                ElectricPuzzleNetwork.Instance.IsSpawned)
+            {
+                ElectricPuzzleNetwork.Instance
+                    .RequestSetCableConnectedServerRpc(color, true);
             }
             else
             {
-                Debug.Log($"[WireNode] Wrong pair: {selectedNode.color} vs {color}");
-                // bisa tambahin efek salah
+                // singleplayer / fallback
+                puzzle.SetCableConnected(color, true);
             }
-
-            // reset pilihan
-            selectedNode = null;
         }
+        else
+        {
+            Debug.Log($"[WireNode] WRONG pair: {firstSelected.color} vs {color}");
+            // di sini kamu bisa tambahin efek salah kalau mau
+        }
+
+        // reset selection
+        firstSelected = null;
     }
 }

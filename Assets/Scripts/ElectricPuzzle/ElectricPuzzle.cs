@@ -13,8 +13,12 @@ public class ElectricPuzzle : MonoBehaviour
 
     [Header("Background Sprites")]
     [SerializeField] private Image backgroundImage;    // Image di BackgroundPanel
-    [SerializeField] private Sprite detectiveSprite;   // IMG_0108_0 (punya saklar & kabel)
-    [SerializeField] private Sprite spiritSprite;      // IMG_0107_0 (khusus kabel)
+    [SerializeField] private Sprite detectiveSprite;   // punya saklar & kabel
+    [SerializeField] private Sprite spiritSprite;      // khusus kabel
+
+    [Header("Wire Visuals (Spirit view)")]
+    [SerializeField] private Image[] wireImages;   // urutan sesuai WireColor
+
 
 
     private bool isOpen = false;
@@ -71,7 +75,7 @@ public class ElectricPuzzle : MonoBehaviour
 
         if (wireGroup != null) wireGroup.SetActive(true);     // 👻 lihat kabel
         if (switchGroup != null) switchGroup.SetActive(false); // saklar disembunyikan
-        if (lampGroup   != null) lampGroup.SetActive(false);    // lampu disembunyikan
+        if (lampGroup != null) lampGroup.SetActive(false);    // lampu disembunyikan
 
         // ganti background ke versi SPIRIT
         if (backgroundImage != null && spiritSprite != null)
@@ -90,7 +94,7 @@ public class ElectricPuzzle : MonoBehaviour
 
         if (wireGroup != null) wireGroup.SetActive(false);   // 🕵️ gak bisa main kabel
         if (switchGroup != null) switchGroup.SetActive(true); // cuma saklar
-        if (lampGroup   != null) lampGroup.SetActive(true);     // lampu indikator kelihatan
+        if (lampGroup != null) lampGroup.SetActive(true);     // lampu indikator kelihatan
 
         // ganti background ke versi DETEKTIF
         if (backgroundImage != null && detectiveSprite != null)
@@ -127,6 +131,13 @@ public class ElectricPuzzle : MonoBehaviour
 
         UpdateLampVisual(color);
 
+        // Nyalain / matiin visual kabel penuh
+        if (wireImages != null && i >= 0 && i < wireImages.Length && wireImages[i] != null)
+        {
+            wireImages[i].enabled = connected;
+            wireImages[i].gameObject.SetActive(connected);
+        }
+
         // kalau kabel diputus, saklar otomatis mati
         if (!connected)
         {
@@ -145,6 +156,29 @@ public class ElectricPuzzle : MonoBehaviour
         if (lampImages[i] == null) return;
 
         lampImages[i].color = cableConnected[i] ? lampOnColor : lampOffColor;
+    }
+
+
+    public bool IsCableConnected(WireColor color)
+    {
+        int i = (int)color;
+        if (i < 0 || i >= cableConnected.Length) return false;
+        return cableConnected[i];
+    }
+
+    // dipakai Spirit untuk preview kabel waktu drag
+    public void SetWirePreview(WireColor color, bool visible)
+    {
+        int i = (int)color;
+        if (wireImages == null || i >= wireImages.Length) return;
+        if (wireImages[i] == null) return;
+
+        // kalau kabel sudah resmi connected, jangan dimatikan paksa
+        if (cableConnected[i] && !visible) return;
+
+        wireImages[i].enabled = visible;
+        if (wireImages[i] != null)
+            wireImages[i].gameObject.SetActive(visible);
     }
 
 
@@ -169,6 +203,14 @@ public class ElectricPuzzle : MonoBehaviour
 
         CheckSolved();
     }
+
+    public bool IsSwitchOn(WireColor color)
+    {
+        int i = (int)color;
+        if (i < 0 || i >= switchOn.Length) return false;
+        return switchOn[i];
+    }
+
 
 
     // ===========================
