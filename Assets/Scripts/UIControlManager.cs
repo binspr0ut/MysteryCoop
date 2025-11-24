@@ -10,6 +10,7 @@ public class UIControlManager : MonoBehaviour
     public GameObject interactButton;
     public GameObject joyStick;
     public GameObject joyStickBg;
+    public GameObject inventoryBg;
 
     private InteractionDetector interactionDetector;
     private PossesDetector possesDetector;
@@ -18,13 +19,15 @@ public class UIControlManager : MonoBehaviour
     public Sprite DetectiveInteract;
     public Sprite DetectiveJoystick;
     public Sprite DetectiveJoystickBg;
+    public Sprite DetectiveInventoryBg;
+
 
 
     [Header("Spirit Asset")]
     public Sprite SpiritInteract;
     public Sprite SpiritJoystick;
     public Sprite SpiritJoystickBg;
-    public GameObject inventoryButton;
+    public Sprite SpiritInventoryBg;
 
 
     public float transparentValue;
@@ -42,19 +45,8 @@ public class UIControlManager : MonoBehaviour
 
     private void Start()
     {
-        // Pastikan tombol inventory mati di awal
-        if (inventoryButton != null)
-            inventoryButton.SetActive(false);
         StartCoroutine(WaitForLocalPlayerAndBind());
     }
-
-    // Method publik agar bisa dipanggil dari state manager
-    public void SetInventoryVisible(bool visible)
-    {
-        if (inventoryButton != null)
-            inventoryButton.SetActive(visible);
-    }
-
 
     private IEnumerator WaitForLocalPlayerAndBind()
     {
@@ -106,6 +98,7 @@ public class UIControlManager : MonoBehaviour
             img.sprite = DetectiveInteract;
             joyStick.GetComponent<Image>().sprite = DetectiveJoystick;
             joyStickBg.GetComponent<Image>().sprite = DetectiveJoystickBg;
+            inventoryBg.GetComponent<Image>().sprite = DetectiveInventoryBg;
         }
 
 
@@ -121,6 +114,7 @@ public class UIControlManager : MonoBehaviour
             img.sprite = SpiritInteract;
             joyStick.GetComponent<Image>().sprite = SpiritJoystick;
             joyStickBg.GetComponent<Image>().sprite = SpiritJoystickBg;
+            inventoryBg.GetComponent<Image>().sprite = SpiritInventoryBg;
         }
         possesDetector.OnRangeChanged += HandleRangeChanged;
         isBound = true;

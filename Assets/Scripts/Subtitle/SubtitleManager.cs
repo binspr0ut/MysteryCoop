@@ -65,7 +65,8 @@ public class SubtitleManager : NetworkBehaviour
         SubtitleTarget forWho,
         SubtitleScope scope,
         float duration = -1f,
-        bool overwrite = false)
+        bool overwrite = false,
+        SubtitleTarget target = default)
     {
         if (duration < 0f) duration = stayDuration;
 

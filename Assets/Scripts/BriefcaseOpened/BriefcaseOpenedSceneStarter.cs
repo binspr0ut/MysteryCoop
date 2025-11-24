@@ -19,8 +19,6 @@ public class BriefcaseOpenedSceneStarter : NetworkBehaviour
         yield return new WaitForSeconds(0.2f);
 
         // Sync: EventSystem OFF
-        PuzzleNetworkManager.Instance.SetEventSystemStateClientRpc(false);
-
         yield return SubtitleManager.Instance.ShowAndWaitRoutine(
             "Kopernya kebuka juga.", SubtitleTarget.Detective
         );
@@ -35,8 +33,6 @@ public class BriefcaseOpenedSceneStarter : NetworkBehaviour
             "Coba berantakin kali ya.", SubtitleTarget.Detective
         );
 
-        // Sync: EventSystem ON
-        PuzzleNetworkManager.Instance.SetEventSystemStateClientRpc(true);
     }
 
 }

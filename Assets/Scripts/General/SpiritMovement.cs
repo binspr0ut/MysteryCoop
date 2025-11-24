@@ -70,7 +70,6 @@ public class SpiritMovement : NetworkBehaviour
         if (cam != null)
         {
             cam.gameObject.SetActive(IsOwner); // aktif hanya untuk player sendiri
-            cam.GetComponent<DynamicConfinerBinder>().BindConfiner();
         }
     }
 

@@ -115,13 +115,13 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
         if (currentState == ObjectState.Active)
         {
             SubtitleManager.Instance.ShowSubtitle(
-                    "Dinda: The clock’s awake again. Should I try to possess it!",
+                    "The clock’s awake again. Should I try to possess it!",
                     SubtitleTarget.Spirit,
                     SubtitleScope.Global
                 );
 
             SubtitleManager.Instance.ShowSubtitle(
-                    "Agung: Interesting… it’s working again. Maybe it’s pointing to something.",
+                    "Interesting… it’s working again. Maybe it’s pointing to something.",
                     SubtitleTarget.Detective,
                     SubtitleScope.Global
                 );

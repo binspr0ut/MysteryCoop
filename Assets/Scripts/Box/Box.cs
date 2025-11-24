@@ -64,7 +64,7 @@ public class Box : MonoBehaviour, IObject, IStateObject
         isSolved = (count >= 2);
 
         // Kirim sinkronisasi ke ClockBack
-        ClockBackBatterySync.Instance.UpdateBatteryCount(count);
+        // ClockBackBatterySync.Instance.UpdateBatteryCount(count);
     }
 
 

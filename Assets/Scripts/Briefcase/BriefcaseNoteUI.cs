@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class BriefcaseNoteUI : MonoBehaviour
+public class BriefcaseNoteUI : NetworkBehaviour
 {
     [Header("Refs")]
     public GameObject notePanel;
@@ -11,6 +12,7 @@ public class BriefcaseNoteUI : MonoBehaviour
     public ItemData noteItemData;
 
     private bool hasTriggeredStateChange = false;
+    private bool hasTaken = false;
 
     void Start()
     {
@@ -19,6 +21,7 @@ public class BriefcaseNoteUI : MonoBehaviour
 
     public void ShowNote()
     {
+        InventoryController.Instance.HideInventory();
         // 🔥 Trigger state change only ONCE
         if (!hasTriggeredStateChange)
         {
@@ -51,6 +54,12 @@ public class BriefcaseNoteUI : MonoBehaviour
 
     public void TakeNote()
     {
+        if (!hasTaken)
+        {
+            GetNoteServerRpc();
+            hasTaken = true;
+        }
+
         HideNote();
     }
 
@@ -65,5 +74,17 @@ public class BriefcaseNoteUI : MonoBehaviour
         {
             Debug.LogWarning("[BriefcaseNoteUI] Scene1StateManager not found!");
         }
+    }
+
+    [ServerRpc]
+    void GetNoteServerRpc()
+    {
+        GetNoteClientRpc();
+    }
+
+    [ClientRpc]
+    void GetNoteClientRpc()
+    {
+        InventoryController.Instance.GetNote();
     }
 }

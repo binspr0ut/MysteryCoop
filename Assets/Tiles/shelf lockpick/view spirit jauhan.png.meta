@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: f50ecb691c46341679b14c02254b20ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2730405062029650493
+    second: view spirit jauhan_0
+  - first:
+      213: -3722185731643886972
+    second: view spirit jauhan_1
+  - first:
+      213: -3602447747473228092
+    second: view spirit jauhan_2
+  - first:
+      213: -1164171472143044811
+    second: view spirit jauhan_3
+  - first:
+      213: 707173167134276294
+    second: view spirit jauhan_4
+  - first:
+      213: -1583515358542672645
+    second: view spirit jauhan_5
+  - first:
+      213: -7443938224080022990
+    second: view spirit jauhan_6
+  - first:
+      213: -8031475212530037883
+    second: view spirit jauhan_7
+  - first:
+      213: 6167353624142726939
+    second: view spirit jauhan_8
+  - first:
+      213: 474433348820866865
+    second: view spirit jauhan_9
+  - first:
+      213: -7074023818026393350
+    second: view spirit jauhan_10
+  - first:
+      213: 1021417796092942293
+    second: view spirit jauhan_11
+  - first:
+      213: 5117164319569695296
+    second: view spirit jauhan_12
+  - first:
+      213: 6973062430242793198
+    second: view spirit jauhan_13
+  - first:
+      213: 141195235580475144
+    second: view spirit jauhan_14
+  - first:
+      213: 315099561596600446
+    second: view spirit jauhan_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: view spirit jauhan_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 2365
+        width: 895
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3aa43700f854e520800000000000000
+      internalID: 2730405062029650493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_1
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 2515
+        width: 713
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482b65d4cc3285cc0800000000000000
+      internalID: -3722185731643886972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_2
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 2557
+        width: 620
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ceb3f93cd8810ec0800000000000000
+      internalID: -3602447747473228092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_3
+      rect:
+        serializedVersion: 2
+        x: 3770
+        y: 2421
+        width: 439
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53f2541d63808dfe0800000000000000
+      internalID: -1164171472143044811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_4
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1777
+        width: 861
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6caf9bdaf3260d900800000000000000
+      internalID: 707173167134276294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_5
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1844
+        width: 637
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc40b5db29360ae0800000000000000
+      internalID: -1583515358542672645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_6
+      rect:
+        serializedVersion: 2
+        x: 2773
+        y: 1971
+        width: 642
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23212c7ff91d1b890800000000000000
+      internalID: -7443938224080022990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_7
+      rect:
+        serializedVersion: 2
+        x: 3678
+        y: 1814
+        width: 499
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58bcac6c8d77a8090800000000000000
+      internalID: -8031475212530037883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_8
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 886
+        width: 576
+        height: 682
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17ce33f177d69550800000000000000
+      internalID: 6167353624142726939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_9
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 439
+        width: 474
+        height: 861
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 137111afd96859600800000000000000
+      internalID: 474433348820866865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_10
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 1214
+        width: 604
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af062e931d404dd90800000000000000
+      internalID: -7074023818026393350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_11
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 1252
+        width: 568
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7d167e21ecc2e00800000000000000
+      internalID: 1021417796092942293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_12
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 1182
+        width: 556
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042514536d1d30740800000000000000
+      internalID: 5117164319569695296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_13
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 496
+        width: 748
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee66e3fd55b45c060800000000000000
+      internalID: 6973062430242793198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_14
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 497
+        width: 572
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80770c49150a5f100800000000000000
+      internalID: 141195235580475144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: view spirit jauhan_15
+      rect:
+        serializedVersion: 2
+        x: 3538
+        y: 492
+        width: 544
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e70c8ddb1657f5400800000000000000
+      internalID: 315099561596600446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      view spirit jauhan_0: 2730405062029650493
+      view spirit jauhan_1: -3722185731643886972
+      view spirit jauhan_10: -7074023818026393350
+      view spirit jauhan_11: 1021417796092942293
+      view spirit jauhan_12: 5117164319569695296
+      view spirit jauhan_13: 6973062430242793198
+      view spirit jauhan_14: 141195235580475144
+      view spirit jauhan_15: 315099561596600446
+      view spirit jauhan_2: -3602447747473228092
+      view spirit jauhan_3: -1164171472143044811
+      view spirit jauhan_4: 707173167134276294
+      view spirit jauhan_5: -1583515358542672645
+      view spirit jauhan_6: -7443938224080022990
+      view spirit jauhan_7: -8031475212530037883
+      view spirit jauhan_8: 6167353624142726939
+      view spirit jauhan_9: 474433348820866865
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,8 +6,7 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
     public string ID { get; private set; }
     public GameObject ControlUI;
 
-    public GameObject ShelfUI;
-    public GameObject GuestbookUI;
+    public GameObject PaperPuzzleUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private ObjectState currentState = ObjectState.Disabled;
@@ -48,47 +47,33 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
         if (currentState == ObjectState.Locked)
         {
             Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
-            SubtitleManager.Instance.ShowSubtitle(
-                            "Agung: This locker’s locked tight. Think you can handle it, Dinda?",
-                            SubtitleTarget.Detective,
-                            SubtitleScope.Global
-                        );
 
-            // global untuk semua spirit
-            SubtitleManager.Instance.ShowSubtitle(
-                "Dinda: I’ll try. Give me a moment.",
-                SubtitleTarget.Spirit,
-                SubtitleScope.Global
-            ); return;
         }
 
         if (currentState == ObjectState.Active)
         {
-            OpenShelf();
+            OpenPaperPuzzle();
         }
 
     }
 
     public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
-    public void OpenGuestbook()
+    public void OpenPaperPuzzle()
     {
         ControlUI.SetActive(false);
-        GuestbookUI.SetActive(true);
-        IsInteracted = true;
-    }
-    public void OpenShelf()
-    {
-        ControlUI.SetActive(false);
-        ShelfUI.SetActive(true);
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 1;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         IsInteracted = true;
     }
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
-        ShelfUI.SetActive(false);
-        GuestbookUI.SetActive(false);
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 0;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         IsInteracted = false;
     }
 

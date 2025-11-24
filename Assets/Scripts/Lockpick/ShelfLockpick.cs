@@ -10,11 +10,14 @@ public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
     public GameObject ControlUI;
     public GameObject LockpickOverlay;
     public GameObject OpenedShelf;
-    public SpriteRenderer OpenedShelfRenderer;
 
     public GameObject LockpickTrigger;
     public bool isSolved;
     private SpiritMovement PossessedSpirit;
+
+    public MonoBehaviour ShelfOpened;
+    public MonoBehaviour ShelfOpenedSpirit;
+
 
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
@@ -106,7 +109,12 @@ public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
     private void UpdateShelfClientRpc()
     {
         LockpickOverlay.SetActive(false);
-        OpenedShelfRenderer.enabled = true;
+        OpenedShelf.SetActive(true);
         LockpickTrigger.SetActive(false);
+        if (ShelfOpened is IStateObject so)
+            so.SetObjectState(ObjectState.Active);
+
+        if (ShelfOpenedSpirit is IStateObject si)
+            si.SetObjectState(ObjectState.Active);
     }
 }
