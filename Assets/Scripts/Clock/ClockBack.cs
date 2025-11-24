@@ -9,7 +9,7 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
 
     [Header("UI References")]
     [SerializeField] private GameObject controlUI;
-    [SerializeField] private GameObject clockBackUIPanel;
+    public GameObject clockBackUIPanel;
 
     [Header("Puzzle Elements")]
     [SerializeField] private GameObject batteryUI1;

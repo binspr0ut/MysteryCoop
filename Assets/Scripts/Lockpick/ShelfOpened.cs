@@ -62,14 +62,18 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
     public void OpenPaperPuzzle()
     {
         ControlUI.SetActive(false);
-        PaperPuzzleUI.SetActive(true);
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 1;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         IsInteracted = true;
     }
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
-        PaperPuzzleUI.SetActive(false);
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 0;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         IsInteracted = false;
     }
 

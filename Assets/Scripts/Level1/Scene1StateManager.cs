@@ -10,7 +10,7 @@ public class Scene1StateManager : NetworkBehaviour
     public static Scene1StateManager Instance;
 
     public NetworkVariable<Level1State> CurrentState =
-        new NetworkVariable<Level1State>(Level1State.FindSuitcaseCode, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+        new NetworkVariable<Level1State>(Level1State.FindLift, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     public event Action<Level1State, string> OnQuestTitleChanged;
     public event Action<Level1State> OnStateChanged;
@@ -292,8 +292,6 @@ public class Scene1StateManager : NetworkBehaviour
                 spiritLight.enabled = false;
         }
     }
-
-
 
     /* ================== CALLS FROM PUZZLES ================== */
 

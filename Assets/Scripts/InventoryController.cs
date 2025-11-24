@@ -8,6 +8,7 @@ public class InventoryController : NetworkBehaviour
     public RectTransform inventoryPanel;   // drag Inventory Bar
     public Canvas mainCanvas;              // drag canvas tempat inventory berada
     public GameObject ControlUI;
+    public RectTransform InventoryButton;
 
     [Header("Item")]
     public GameObject noteButton;
@@ -31,8 +32,9 @@ public class InventoryController : NetworkBehaviour
                                            // (sesuai layout HP kamu)
 
 
-    private bool isOpen = true;
+    private bool isOpen = false;
     private bool freezeClose = false;
+    private bool ignoreNextClick = false;
 
     private Vector2 shownPos;
     private Vector2 hiddenPos;
@@ -87,12 +89,20 @@ public class InventoryController : NetworkBehaviour
 
     public void ToggleInventory()
     {
-        Debug.Log("IsOpen: " + isOpen);
         if (isOpen)
-            ShowInventory();
-        else
+        {
             HideInventory();
+            isOpen = false;
+        }
+        else
+        {
+            ShowInventory();
+            isOpen = true;
+        }
     }
+
+
+
 
     public void GetNote()
     {
@@ -111,18 +121,39 @@ public class InventoryController : NetworkBehaviour
 
     public void ShowBattery1()
     {
-        ClockBack.Instance.ShowBattery(Battery1);
-        HideBattery1();
+        if (!ClockBack.Instance.clockBackUIPanel.activeInHierarchy)
+        {
+            SubtitleManager.Instance.ShowSubtitle("This battery might be useful.    ", SubtitleTarget.Detective, SubtitleScope.Local);
+            return;
+        }
+        else
+        {
+            ClockBack.Instance.ShowBattery(Battery1);
+            HideBattery1();
+        }
+
     }
 
     public void ShowBattery2()
     {
-        ClockBack.Instance.ShowBattery(Battery2);
-        HideBattery2();
+        if (!ClockBack.Instance.clockBackUIPanel.activeInHierarchy)
+        {
+            SubtitleManager.Instance.ShowSubtitle("This battery might be useful.   ", SubtitleTarget.Detective, SubtitleScope.Local);
+            return;
+        }
+        else
+        {
+            ClockBack.Instance.ShowBattery(Battery2);
+            HideBattery2();
+        }
     }
 
     public void ShowNotePanel()
     {
+        if (ClockBack.Instance.clockBackUIPanel.activeInHierarchy)
+        {
+            return;
+        }
         HideInventory();
         NotePanel.SetActive(true);
         ControlUI.SetActive(false);
@@ -165,7 +196,6 @@ public class InventoryController : NetworkBehaviour
     {
         LeanTween.cancel(inventoryPanel);
         LeanTween.moveY(inventoryPanel, shownPos.y, slideDuration).setEaseOutCubic();
-        isOpen = !isOpen;
 
     }
 
@@ -175,8 +205,6 @@ public class InventoryController : NetworkBehaviour
         LeanTween.moveY(inventoryPanel, hiddenPos.y, slideDuration).setEaseInCubic();
         freezeClose = false;
         Debug.Log("freezeClose" + freezeClose);
-        isOpen = !isOpen;
-
     }
 
     // -----------------------------------------------------
@@ -185,10 +213,18 @@ public class InventoryController : NetworkBehaviour
     void Update()
     {
         if (!isOpen) return;
+        if (freezeClose) return;
 
         if (Input.GetMouseButtonDown(0))
         {
-            // cek apakah klik mengenai UI inventory
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                InventoryButton,
+                Input.mousePosition,
+                mainCanvas.worldCamera))
+            {
+                return;
+            }
+
             if (!RectTransformUtility.RectangleContainsScreenPoint(
                     inventoryPanel,
                     Input.mousePosition,
@@ -196,7 +232,9 @@ public class InventoryController : NetworkBehaviour
             {
                 isOpen = false;
                 HideInventory();
+                return;
             }
         }
     }
+
 }

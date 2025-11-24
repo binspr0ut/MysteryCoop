@@ -119,15 +119,17 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
     public void OpenPaperPuzzle()
     {
         ControlUI.SetActive(false);
-        PaperPuzzleUI.SetActive(true);
-        IsPossessed = true;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 1;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true; IsPossessed = true;
     }
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
-        PaperPuzzleUI.SetActive(false);
-        IsPossessed = false;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 0;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false; IsPossessed = false;
     }
 
     // Update is called once per frame

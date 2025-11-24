@@ -1,4 +1,6 @@
 using System;
+using System.Security.Cryptography;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +23,19 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
     [Header("Fade Overlay")]
     public CanvasGroup blackFadeCanvas;  // drag panel hitam
     public AudioSource audioSource;
+
+    [Header("Lift Animation")]
+    public Animator lift1Animator;
+    public Animator lift2Animator;
+    public Animator lift3Animator;
+    public TextMeshProUGUI lift1Text;
+    public TextMeshProUGUI lift2Text;
+    public TextMeshProUGUI lift3Text;
+
+
+    public float liftAnimDuration = 1.0f;   // durasi animasi LiftOpen
+
+    public int currentFloor = 1;
 
     public void SetObjectState(ObjectState state)
     {
@@ -53,9 +68,7 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
             SubtitleManager.Instance.ShowSubtitle("o iya, yok ke basement", SubtitleTarget.Spirit, SubtitleScope.Global);
             if (!hasChangedState)
             {
-                Scene1StateManager.Instance.ChangeState(Level1State.ExploreBuilding);
-                Scene1StateManager.Instance.ChangeState(Level1State.FindSuitcaseCode);
-
+                Scene1StateManager.Instance.ChangeState(Level1State.TurnElectricity);
                 hasChangedState = true;
             }
         }
@@ -126,7 +139,9 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
         NetworkObject playerObj = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(targetClientId);
         NetworkObjectReference playerRef = playerObj;
 
-        PlayFadeSequenceClientRpc(playerRef, newPos, targetClientId);
+        PlayFadeSequenceClientRpc(playerRef, newPos, targetClientId, currentFloor, 1);
+        currentFloor = 1;
+
         Debug.Log($"[Client {targetClientId}] moved self up to {newPos}");
     }
 
@@ -168,7 +183,8 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
         NetworkObject playerObj = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(targetClientId);
         NetworkObjectReference playerRef = playerObj;
 
-        PlayFadeSequenceClientRpc(playerRef, newPos, targetClientId);
+        PlayFadeSequenceClientRpc(playerRef, newPos, targetClientId, currentFloor, 2);
+        currentFloor = 2;
         Debug.Log($"[Client {targetClientId}] moved self up to {newPos}");
     }
 
@@ -213,8 +229,8 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
         NetworkObject playerObj = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(targetClientId);
         NetworkObjectReference playerRef = playerObj;
 
-        PlayFadeSequenceClientRpc(playerRef, newPos, targetClientId);
-
+        PlayFadeSequenceClientRpc(playerRef, newPos, targetClientId, currentFloor, 3);
+        currentFloor = 3;
         Debug.Log($"[Client {targetClientId}] moved self up to {newPos}");
     }
 
@@ -226,7 +242,7 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
     }
 
     [ClientRpc]
-    private void PlayFadeSequenceClientRpc(NetworkObjectReference playerRef, Vector3 newPos, ulong targetClientId)
+    private void PlayFadeSequenceClientRpc(NetworkObjectReference playerRef, Vector3 newPos, ulong targetClientId, int from, int to)
     {
         // Resolve safe: client bisa resolve reference TANPA error server
         if (!playerRef.TryGet(out NetworkObject playerObj))
@@ -247,18 +263,18 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
         {
             FadeCanvas(blackFadeCanvas, 0f, 1f, 0.2f).setOnComplete(() =>
             {
-                FadeOutInPlayer();
+                FadeOutInPlayer(from, to);
             });
         }
         else
         {
             // OTHER CLIENTS: fade player only
-            FadeOutInPlayer();
+            FadeOutInPlayer(from, to);
         }
 
-        void FadeOutInPlayer()
+        void FadeOutInPlayer(int from, int to)
         {
-            // 1. FADE OUT
+            PlayLiftAnimation(from, to);
             LeanTween.value(player.gameObject, 1f, 0f, fadeT)
                 .setOnUpdate(v =>
                 {
@@ -294,7 +310,33 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
 
     }
 
+    private void PlayLiftAnimation(int from, int to)
+    {
+        Animator fromAnimator = null;
+        Animator toAnimator = null;
 
+
+        if (from == 1) fromAnimator = lift1Animator;
+        else if (from == 2) fromAnimator = lift2Animator;
+        else if (from == 3) fromAnimator = lift3Animator;
+
+        if (to == 1) toAnimator = lift1Animator;
+        else if (to == 2) toAnimator = lift2Animator;
+        else if (to == 3) toAnimator = lift3Animator;
+
+        if (fromAnimator)
+            fromAnimator.SetTrigger("isOpen");
+
+        LeanTween.delayedCall(liftAnimDuration, () =>
+        {
+            if (toAnimator)
+                toAnimator.SetTrigger("isOpen");
+
+            lift1Text.text = to.ToString();
+            lift2Text.text = to.ToString();
+            lift3Text.text = to.ToString();
+        });
+    }
     private LTDescr FadeCanvas(CanvasGroup cg, float from, float to, float time)
     {
         cg.alpha = from;
