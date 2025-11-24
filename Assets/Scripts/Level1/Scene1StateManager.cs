@@ -311,6 +311,19 @@ public class Scene1StateManager : NetworkBehaviour
             ChangeState(Level1State.FindSuitcaseCode);
     }
 
+    // Dipanggil ketika puzzle listrik di basement selesai
+    [ServerRpc(RequireOwnership = false)]
+    public void OnElectricPuzzleSolvedServerRpc()
+    {
+        // Supaya aman, cuma respon kalau memang lagi di quest "TurnElectricity"
+        if (CurrentState.Value != Level1State.TurnElectricity)
+            return;
+
+        // Setelah listrik nyala, pemain boleh explore gedung
+        ChangeState(Level1State.ExploreBuilding);
+    }
+
+
     private void RegisterEvents()
     {
         if (shelfLockpickObject is ShelfLockpick shelf)
