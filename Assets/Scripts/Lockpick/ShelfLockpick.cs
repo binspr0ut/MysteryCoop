@@ -18,6 +18,10 @@ public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
     public MonoBehaviour ShelfOpened;
     public MonoBehaviour ShelfOpenedSpirit;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip openLockpickUISFX; //buka UI lockPIG
+    [SerializeField] private AudioClip lockpickSolvedSFX;    // semua pin benar
+
 
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
@@ -80,6 +84,9 @@ public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
             ControlUI.SetActive(false);
             LockpickOverlay.SetActive(true);
             IsInteracted = true;
+
+            // 🔊 SFX: buka UI lockpick
+            PlaySFX(openLockpickUISFX);
         }
     }
 
@@ -92,6 +99,13 @@ public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
         LockpickOverlay.SetActive(false);
         IsInteracted = false;
     }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
     public System.Action OnShelfUnlocked;
 
     [ServerRpc(RequireOwnership = false)]
@@ -116,5 +130,8 @@ public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
 
         if (ShelfOpenedSpirit is IStateObject si)
             si.SetObjectState(ObjectState.Active);
+
+        // 🔊 SFX: semua pin benar, lemari berhasil kebuka
+        PlaySFX(lockpickSolvedSFX);
     }
 }

@@ -7,6 +7,9 @@ public class BriefcaseNoteUI : NetworkBehaviour
     public GameObject notePanel;
     public GameObject noteButton;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip openNoteSFX;
+
     [Header("Inventory")]
     public DetectiveInventory detectiveInventory;
     public ItemData noteItemData;
@@ -22,6 +25,13 @@ public class BriefcaseNoteUI : NetworkBehaviour
     public void ShowNote()
     {
         InventoryController.Instance.HideInventory();
+
+        // 🔊 SFX buka note
+        if (AudioManager.Instance != null && openNoteSFX != null)
+        {
+            AudioManager.Instance.PlaySFX(openNoteSFX);
+        }
+
         // 🔥 Trigger state change only ONCE
         if (!hasTriggeredStateChange)
         {

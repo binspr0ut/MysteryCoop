@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(RectTransform))]
-public class PolaroidDragHandlerNetworked : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class PolaroidDragHandlerNetworked : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     public int photoID;
 
@@ -15,6 +15,10 @@ public class PolaroidDragHandlerNetworked : NetworkBehaviour, IBeginDragHandler,
     private Coroutine lerpRoutine;
     private bool isDragging = false;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip polaroidTapSFX;
+    [SerializeField] private AudioClip polaroidDragSFX;
+
     // Disimpan sebagai posisi relatif (0–1) dalam parent
     private NetworkVariable<Vector2> syncedNormalizedPos = new(writePerm: NetworkVariableWritePermission.Owner);
 
@@ -23,6 +27,14 @@ public class PolaroidDragHandlerNetworked : NetworkBehaviour, IBeginDragHandler,
         Rect = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!IsOwner) return;
+
+        // Tambahkan SFX tap
+        PlaySFX(polaroidTapSFX);
     }
 
     public override void OnNetworkSpawn()
@@ -84,6 +96,10 @@ public class PolaroidDragHandlerNetworked : NetworkBehaviour, IBeginDragHandler,
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!IsOwner) return;
+
+        // 🔊 SFX drag polaroid (owner saja)
+        PlaySFX(polaroidDragSFX);
+
         isDragging = true;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.85f;
@@ -179,5 +195,11 @@ public class PolaroidDragHandlerNetworked : NetworkBehaviour, IBeginDragHandler,
         target.y = Mathf.Clamp(target.y, min.y, max.y);
 
         Rect.anchoredPosition = target;
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 }

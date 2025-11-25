@@ -22,6 +22,10 @@ public class MapPuzzle : MonoBehaviour
     private List<MapLocation> seq = new();
     private bool solved = false;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip mapButtonSFX;
+
+
     private void Start()
     {
         boardingBtn.onClick.AddListener(() => Press(MapLocation.Boarding, boardingBtn));
@@ -30,10 +34,19 @@ public class MapPuzzle : MonoBehaviour
         groceryBtn.onClick.AddListener(() => Press(MapLocation.GroceryStore, groceryBtn));
     }
 
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
+
     private void Press(MapLocation loc, Button btn)
     {
         if (solved) return;
         if (seq.Count >= 3) return;
+
+        PlaySFX(mapButtonSFX);
 
         seq.Add(loc);
         btn.image.color = Color.green;

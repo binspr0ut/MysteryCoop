@@ -16,12 +16,21 @@ public class ClockBackUI : MonoBehaviour,
     [Header("Settings")]
     [SerializeField] private float snapDistance = 80f;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip insertBatterySFX;
+
     public event Action onPuzzleDone;
 
     private Canvas _canvas;
 
     private RectTransform _currentBattery;
     private CanvasGroup _currentCanvasGroup;
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
 
     private bool battery1Snapped = false;
     private bool battery2Snapped = false;
@@ -168,6 +177,9 @@ public class ClockBackUI : MonoBehaviour,
             battery2Snapped = true;
 
         Debug.Log("✅ Battery inserted!");
+
+        // 🔊 SFX: baterai berhasil dimasukkan ke slot
+        PlaySFX(insertBatterySFX);
 
         CheckPuzzleCompleted();
     }

@@ -973,7 +973,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54565917}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -981,7 +981,7 @@ RectTransform:
   - {fileID: 1787681046}
   - {fileID: 1548320612}
   - {fileID: 1421864848}
-  m_Father: {fileID: 2012911228}
+  m_Father: {fileID: 2019736835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1257,6 +1257,7 @@ MonoBehaviour:
   pieceId: 3
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 34207511}
   SpiritPaper: {fileID: 1282439860}
   rect: {fileID: 63400010}
@@ -1502,6 +1503,8 @@ MonoBehaviour:
   isSolved: 0
   ShelfOpened: {fileID: 1987442358}
   ShelfOpenedSpirit: {fileID: 1253108857}
+  openLockpickUISFX: {fileID: 8300000, guid: ec3d9e5afb2f54445b8db0db8ef9f93d, type: 3}
+  lockpickSolvedSFX: {fileID: 8300000, guid: bdf0aa1c083a74c5a930e944675ae2fc, type: 3}
   interactionCollider: {fileID: 81814766}
 --- !u!61 &81814766
 BoxCollider2D:
@@ -1697,6 +1700,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   controlUI: {fileID: 1904602423}
   clockBackUIPanel: {fileID: 1470240714}
+  openClockUISFX: {fileID: 8300000, guid: e869e03b72e704b769942eb959d8e56e, type: 3}
+  closeClockUISFX: {fileID: 8300000, guid: 2f1eee3cbec16446ba94bd79ec97b667, type: 3}
   batteryUI1: {fileID: 1101162941}
   batteryUI2: {fileID: 1288899521}
   clockTarget: {fileID: 1200930347}
@@ -1940,6 +1945,7 @@ MonoBehaviour:
   pieceId: 7
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 1487808882}
   SpiritPaper: {fileID: 1049597179}
   rect: {fileID: 86001271}
@@ -2460,6 +2466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
   panel: {fileID: 789845185}
+  openBoardSFX: {fileID: 8300000, guid: dbe06e0d897484f9e8da3b8dbdc73f27, type: 3}
+  closeBoardSFX: {fileID: 8300000, guid: 732b4962688c24a5aa178d8bd1bb3ad0, type: 3}
 --- !u!114 &119691034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2911,6 +2919,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   LockPanel: {fileID: 0}
   ControlUI: {fileID: 0}
+  openBriefcaseSFX: {fileID: 0}
+  closeBriefcaseSFX: {fileID: 0}
   CorrectCode: 493
 --- !u!61 &134308544
 BoxCollider2D:
@@ -4013,6 +4023,7 @@ MonoBehaviour:
   targetMinuteAngle: 120
   tolerance: 5
   alarmSound: {fileID: 0}
+  arrowMoveSFX: {fileID: 0}
 --- !u!1 &195082113
 GameObject:
   m_ObjectHideFlags: 0
@@ -4704,6 +4715,8 @@ MonoBehaviour:
   color: 2
   isTopNode: 1
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &237210253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5735,6 +5748,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1494370121}
   DoorClosed: {fileID: 1501470595}
+  doorOpenSFX: {fileID: 8300000, guid: 6e7895ae3c7c5417d8d59d1b6a52a66f, type: 3}
+  doorCloseSFX: {fileID: 8300000, guid: 8a93a5ad2adbc4deb9f1bab649fc2063, type: 3}
 --- !u!114 &294898521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5850,6 +5865,8 @@ MonoBehaviour:
   color: 3
   isTopNode: 1
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &301351733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6495,6 +6512,8 @@ MonoBehaviour:
   ClockPuzzleUI: {fileID: 193142671}
   ControlUI: {fileID: 0}
   isSolved: 0
+  openClockUISFX: {fileID: 0}
+  closeClockUISFX: {fileID: 0}
   interactionCollider: {fileID: 0}
 --- !u!1 &328359786
 GameObject:
@@ -8228,6 +8247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 3
   currentPiece: {fileID: 0}
 --- !u!114 &419911894
@@ -8685,6 +8705,7 @@ MonoBehaviour:
   pieceId: 16
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 1914035270}
   SpiritPaper: {fileID: 1055587748}
   rect: {fileID: 430988958}
@@ -8779,6 +8800,8 @@ MonoBehaviour:
   color: 1
   isTopNode: 1
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &433457302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11113,6 +11136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 1
   currentPiece: {fileID: 0}
 --- !u!114 &592450745
@@ -11429,6 +11453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 14
   currentPiece: {fileID: 0}
 --- !u!114 &599808065
@@ -11934,6 +11959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElectricTriggerSpirit
   electricPuzzle: {fileID: 1231136697}
+  possessSFX: {fileID: 8300000, guid: 0c692b182abad4953bc0e30db8d4c824, type: 3}
+  unpossessSFX: {fileID: 8300000, guid: a677e27d1fc424c1990df0f64f925582, type: 3}
 --- !u!114 &624611887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12607,6 +12634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 4
   currentPiece: {fileID: 0}
 --- !u!114 &664997278
@@ -13233,6 +13261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 7
   currentPiece: {fileID: 0}
 --- !u!114 &697515805
@@ -13921,6 +13950,8 @@ MonoBehaviour:
   color: 3
   isTopNode: 0
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &723772877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14057,6 +14088,7 @@ MonoBehaviour:
   switchImage: {fileID: 738044883}
   spriteOn: {fileID: -4997733982027504095, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
   spriteOff: {fileID: 5495963850039774739, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
+  switchToggleSFX: {fileID: 8300000, guid: 01d8e73fef01743eb938bacda2f92c4c, type: 3}
   color: 3
   puzzle: {fileID: 1231136697}
 --- !u!114 &738044882
@@ -16161,6 +16193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 13
   currentPiece: {fileID: 0}
 --- !u!114 &852268867
@@ -16599,6 +16632,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1609188410}
   DoorClosed: {fileID: 204571528}
+  doorOpenSFX: {fileID: 8300000, guid: 6e7895ae3c7c5417d8d59d1b6a52a66f, type: 3}
+  doorCloseSFX: {fileID: 8300000, guid: 8a93a5ad2adbc4deb9f1bab649fc2063, type: 3}
 --- !u!114 &863228813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16792,6 +16827,8 @@ MonoBehaviour:
   - {fileID: 391147315}
   - {fileID: 1046538339}
   correctCode: 389
+  digitClickSFX: {fileID: 8300000, guid: 560e2f98a1c4243d6ab19ad743407f53, type: 3}
+  submitSFX: {fileID: 8300000, guid: 9ac1d5805961e4aa99f2e2e581abd75a, type: 3}
 --- !u!114 &863384029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17189,6 +17226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 12
   currentPiece: {fileID: 0}
 --- !u!114 &876886131
@@ -17544,6 +17582,7 @@ MonoBehaviour:
   pieceId: 10
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 289636784}
   SpiritPaper: {fileID: 2033385259}
   rect: {fileID: 885535946}
@@ -18612,6 +18651,8 @@ MonoBehaviour:
   color: 1
   isTopNode: 0
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &974791476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18748,6 +18789,8 @@ MonoBehaviour:
   color: 2
   isTopNode: 0
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &977087027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19677,6 +19720,7 @@ MonoBehaviour:
   targetMinuteAngle: 0
   tolerance: 5
   alarmSound: {fileID: 1163298335}
+  arrowMoveSFX: {fileID: 8300000, guid: b3d7eb68d4db24742aea4c107963ae8b, type: 3}
 --- !u!114 &1049108051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20113,6 +20157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 16
   currentPiece: {fileID: 0}
 --- !u!114 &1058136891
@@ -20942,6 +20987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 8
   currentPiece: {fileID: 0}
 --- !u!114 &1101626578
@@ -21452,6 +21498,7 @@ MonoBehaviour:
   pieceId: 14
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 1321435983}
   SpiritPaper: {fileID: 1560686403}
   rect: {fileID: 1121417142}
@@ -22706,6 +22753,7 @@ MonoBehaviour:
   pieceId: 9
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 1219660041}
   SpiritPaper: {fileID: 647491927}
   rect: {fileID: 1173475247}
@@ -22811,6 +22859,7 @@ MonoBehaviour:
   pieceId: 15
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 452119895}
   SpiritPaper: {fileID: 1939609949}
   rect: {fileID: 1180292516}
@@ -23256,6 +23305,8 @@ MonoBehaviour:
   ClockPuzzleUI: {fileID: 1049108049}
   ControlUI: {fileID: 1904602423}
   isSolved: 0
+  openClockUISFX: {fileID: 8300000, guid: e869e03b72e704b769942eb959d8e56e, type: 3}
+  closeClockUISFX: {fileID: 8300000, guid: 2f1eee3cbec16446ba94bd79ec97b667, type: 3}
   interactionCollider: {fileID: 0}
 --- !u!212 &1200930349
 SpriteRenderer:
@@ -24050,6 +24101,7 @@ MonoBehaviour:
   pieceId: 5
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 2142857782}
   SpiritPaper: {fileID: 1495313367}
   rect: {fileID: 1221267292}
@@ -24586,6 +24638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ElectricPuzzleNetwork
   ShowTopMostFoldoutHeaderGroup: 1
   puzzle: {fileID: 1231136697}
+  wireConnectedSFX: {fileID: 8300000, guid: aa94e2d369fa94ebe82665671314a895, type: 3}
 --- !u!114 &1231136696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24624,6 +24677,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElectricPuzzle
   puzzlePanel: {fileID: 428082100}
+  openPuzzleSFX: {fileID: 8300000, guid: 072b11fbbaaf949078a9fe207f5169fb, type: 3}
+  closePuzzleSFX: {fileID: 8300000, guid: 151fc85de23c2431e9ca4b24da577478, type: 3}
   wireGroup: {fileID: 370280418}
   switchGroup: {fileID: 1414308156}
   lampGroup: {fileID: 805404776}
@@ -25086,6 +25141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 10
   currentPiece: {fileID: 0}
 --- !u!114 &1249925248
@@ -25372,6 +25428,9 @@ MonoBehaviour:
   ControlUI: {fileID: 1904602423}
   PaperPuzzleUI: {fileID: 789845185}
   interactionCollider: {fileID: 1253108856}
+  lockedShelfSFX: {fileID: 8300000, guid: a15d05021a2944f5c9b594786fd73f0d, type: 3}
+  openBoardSFX: {fileID: 8300000, guid: dbe06e0d897484f9e8da3b8dbdc73f27, type: 3}
+  closeBoardSFX: {fileID: 8300000, guid: 732b4962688c24a5aa178d8bd1bb3ad0, type: 3}
 --- !u!1 &1254156773
 GameObject:
   m_ObjectHideFlags: 0
@@ -25579,6 +25638,8 @@ MonoBehaviour:
   color: 0
   isTopNode: 0
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &1256840502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26857,7 +26918,9 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   LockPanel: {fileID: 863384025}
   ControlUI: {fileID: 1904602423}
-  CorrectCode: 389
+  openBriefcaseSFX: {fileID: 8300000, guid: 8188be51691114deba2c2828760eb027, type: 3}
+  closeBriefcaseSFX: {fileID: 8300000, guid: 14323ae5e03384b49b5856eaf747532b, type: 3}
+  CorrectCode: 428
 --- !u!61 &1313926611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26977,6 +27040,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   notePanel: {fileID: 605135111}
   noteButton: {fileID: 1689681830}
+  openNoteSFX: {fileID: 8300000, guid: 81da3458d957b49dd8af93d710c68f6b, type: 3}
   detectiveInventory: {fileID: 0}
   noteItemData: {fileID: 11400000, guid: 3dd146f91845645b6b5e8e2e3b0f2174, type: 2}
 --- !u!1 &1315168649
@@ -29848,6 +29912,7 @@ MonoBehaviour:
   pieceId: 2
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 404055701}
   SpiritPaper: {fileID: 1476330244}
   rect: {fileID: 1441369040}
@@ -30149,6 +30214,7 @@ MonoBehaviour:
   switchImage: {fileID: 1457849600}
   spriteOn: {fileID: -4997733982027504095, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
   spriteOff: {fileID: 5495963850039774739, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
+  switchToggleSFX: {fileID: 8300000, guid: 01d8e73fef01743eb938bacda2f92c4c, type: 3}
   color: 0
   puzzle: {fileID: 1231136697}
 --- !u!114 &1457849599
@@ -30505,6 +30571,7 @@ MonoBehaviour:
   target1: {fileID: 1773791655}
   target2: {fileID: 318720279}
   snapDistance: 150
+  insertBatterySFX: {fileID: 8300000, guid: 7d298f0b743e54c01be0ed7d3f2f5e00, type: 3}
   cue: {fileID: 0}
 --- !u!114 &1470240717
 MonoBehaviour:
@@ -30803,6 +30870,8 @@ MonoBehaviour:
   color: 0
   isTopNode: 1
   puzzle: {fileID: 1231136697}
+  bottomNodeClickSFX: {fileID: 8300000, guid: 2884e946672e541838285d006eed2e91, type: 3}
+  topNodeClickSFX: {fileID: 8300000, guid: 4f64fb3233ae34eadb6d8acfc1aa6da7, type: 3}
 --- !u!114 &1477208385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30913,7 +30982,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 3f7dbd823971648b18dd02e14309f44e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 015427bca2e564dc78011fa64c842838, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.15
   m_Pitch: 1
@@ -31477,6 +31546,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1494370121}
   DoorClosed: {fileID: 1501470595}
+  doorOpenSFX: {fileID: 0}
+  doorCloseSFX: {fileID: 0}
 --- !u!61 &1494370125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32451,6 +32522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 5
   currentPiece: {fileID: 0}
 --- !u!114 &1541842790
@@ -32675,6 +32747,7 @@ MonoBehaviour:
   pieceId: 4
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 1754081359}
   SpiritPaper: {fileID: 875516686}
   rect: {fileID: 1548818355}
@@ -33182,6 +33255,7 @@ MonoBehaviour:
   pieceId: 6
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 2012747685}
   SpiritPaper: {fileID: 898786720}
   rect: {fileID: 1580488082}
@@ -33441,6 +33515,7 @@ MonoBehaviour:
   switchImage: {fileID: 1597586409}
   spriteOn: {fileID: -4997733982027504095, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
   spriteOff: {fileID: 5495963850039774739, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
+  switchToggleSFX: {fileID: 8300000, guid: 01d8e73fef01743eb938bacda2f92c4c, type: 3}
   color: 1
   puzzle: {fileID: 1231136697}
 --- !u!114 &1597586408
@@ -33575,6 +33650,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1609188410}
   DoorClosed: {fileID: 204571528}
+  doorOpenSFX: {fileID: 8300000, guid: 6e7895ae3c7c5417d8d59d1b6a52a66f, type: 3}
+  doorCloseSFX: {fileID: 8300000, guid: 8a93a5ad2adbc4deb9f1bab649fc2063, type: 3}
 --- !u!114 &1609188413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34113,6 +34190,9 @@ MonoBehaviour:
   - {fileID: 876552025}
   - {fileID: 246411040}
   - {fileID: 1986622215}
+  coverGrabSFX: {fileID: 8300000, guid: 8affa0ed664f844feaf65820a839a5b6, type: 3}
+  coverSlideSFX: {fileID: 8300000, guid: 5676ed57dd8944df4b0011be0dd945a7, type: 3}
+  batteryPickupSFX: {fileID: 8300000, guid: 49d95e62a25484629b1eebb85578fa17, type: 3}
   moveThreshold: 150
 --- !u!114 &1633387111
 MonoBehaviour:
@@ -34428,6 +34508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 11
   currentPiece: {fileID: 0}
 --- !u!114 &1640732853
@@ -34838,6 +34919,7 @@ MonoBehaviour:
   pieceId: 12
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 489445716}
   SpiritPaper: {fileID: 220436799}
   rect: {fileID: 1665945670}
@@ -35288,6 +35370,8 @@ MonoBehaviour:
   shearTolerance: 12
   colorLerpSpeed: 8
   shelfLockpick: {fileID: 81814765}
+  lockpickMoveSFX: {fileID: 8300000, guid: 8d1036efac8174859ba88d0ebfc74918, type: 3}
+  pinMoveSFX: {fileID: 8300000, guid: 8d1036efac8174859ba88d0ebfc74918, type: 3}
 --- !u!114 &1693800994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35650,6 +35734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 9
   currentPiece: {fileID: 0}
 --- !u!114 &1715344550
@@ -35970,6 +36055,8 @@ MonoBehaviour:
   mainCanvas: {fileID: 1722126473}
   ControlUI: {fileID: 1904602423}
   InventoryButton: {fileID: 1013764138}
+  openInventorySFX: {fileID: 8300000, guid: 70ec45f32351f43e6aa46e7b8af8df5a, type: 3}
+  closeInventorySFX: {fileID: 8300000, guid: 24230f7d3071e4c8f87093b447f68965, type: 3}
   noteButton: {fileID: 419206460}
   battery1Button: {fileID: 793650710}
   battery2Button: {fileID: 1522745737}
@@ -36382,6 +36469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 6
   currentPiece: {fileID: 0}
 --- !u!114 &1761196803
@@ -36573,13 +36661,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766457374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1108859592}
-  m_Father: {fileID: 2012911228}
+  m_Father: {fileID: 2019736835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -37622,6 +37710,7 @@ MonoBehaviour:
   ControlUI: {fileID: 1904602423}
   BoxUI: {fileID: 1633387109}
   interactionCollider: {fileID: 1811646368}
+  openBoxSFX: {fileID: 8300000, guid: ff7231241abe04674a1e1ffd7061c40e, type: 3}
 --- !u!1 &1819819089
 GameObject:
   m_ObjectHideFlags: 0
@@ -38402,6 +38491,7 @@ MonoBehaviour:
   switchImage: {fileID: 1868948757}
   spriteOn: {fileID: -4997733982027504095, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
   spriteOff: {fileID: 5495963850039774739, guid: a42ea58eac0a44179a93aadfc9d7ebb0, type: 3}
+  switchToggleSFX: {fileID: 8300000, guid: 01d8e73fef01743eb938bacda2f92c4c, type: 3}
   color: 2
   puzzle: {fileID: 1231136697}
 --- !u!114 &1868948756
@@ -38551,6 +38641,7 @@ MonoBehaviour:
   pieceId: 1
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 1834391422}
   SpiritPaper: {fileID: 1092427887}
   rect: {fileID: 1873563340}
@@ -40190,6 +40281,7 @@ MonoBehaviour:
   pieceId: 13
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 649794720}
   SpiritPaper: {fileID: 1252738689}
   rect: {fileID: 1957700292}
@@ -40621,6 +40713,7 @@ MonoBehaviour:
   pieceId: 8
   ownerIsHost: 0
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 703498150}
   SpiritPaper: {fileID: 820696485}
   rect: {fileID: 1976088916}
@@ -40842,6 +40935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ControlUI: {fileID: 1904602423}
   PaperPuzzleUI: {fileID: 789845185}
+  openBoardSFX: {fileID: 8300000, guid: dbe06e0d897484f9e8da3b8dbdc73f27, type: 3}
+  closeBoardSFX: {fileID: 8300000, guid: 732b4962688c24a5aa178d8bd1bb3ad0, type: 3}
   interactionCollider: {fileID: 1987442359}
 --- !u!61 &1987442359
 BoxCollider2D:
@@ -40957,6 +41052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LampuBelajar
   ShowTopMostFoldoutHeaderGroup: 1
   spotLight: {fileID: 1438291714}
+  possessSFX: {fileID: 8300000, guid: 24230f7d3071e4c8f87093b447f68965, type: 3}
+  unpossessSFX: {fileID: 8300000, guid: 0c692b182abad4953bc0e30db8d4c824, type: 3}
   uiControl: {fileID: 1904602423}
   leftStick: {fileID: 443664794}
   interactButton: {fileID: 259271495}
@@ -41184,6 +41281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 2
   currentPiece: {fileID: 0}
 --- !u!114 &1997800281
@@ -41487,8 +41585,6 @@ Transform:
   - {fileID: 536670549}
   - {fileID: 1987442357}
   - {fileID: 1253108855}
-  - {fileID: 1766457378}
-  - {fileID: 54565921}
   - {fileID: 119691029}
   m_Father: {fileID: 2095987733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41530,6 +41626,8 @@ Transform:
   - {fileID: 326937141}
   - {fileID: 193142675}
   - {fileID: 374217470}
+  - {fileID: 1766457378}
+  - {fileID: 54565921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022874231
@@ -41733,6 +41831,7 @@ MonoBehaviour:
   pieceId: 11
   ownerIsHost: 1
   isLocked: 0
+  dragPaperSFX: {fileID: 8300000, guid: 090fa0078edae48db9beacd42e61e1e7, type: 3}
   DetectivePaper: {fileID: 124016968}
   SpiritPaper: {fileID: 371179733}
   rect: {fileID: 2029864458}
@@ -43538,6 +43637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleDropZone
   ShowTopMostFoldoutHeaderGroup: 1
+  dropPaperSFX: {fileID: 8300000, guid: c46bf7f6720cc49a188548a807183b19, type: 3}
   slotIndex: 15
   currentPiece: {fileID: 0}
 --- !u!114 &2119937330
@@ -44492,6 +44592,14 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3330298840
       objectReference: {fileID: 0}
+    - target: {fileID: 3435492925504188401, guid: 7d30bf0db3e4943818736826d9333123, type: 3}
+      propertyPath: possessSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a677e27d1fc424c1990df0f64f925582, type: 3}
+    - target: {fileID: 3435492925504188401, guid: 7d30bf0db3e4943818736826d9333123, type: 3}
+      propertyPath: unpossessSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c692b182abad4953bc0e30db8d4c824, type: 3}
     - target: {fileID: 6689978899416504355, guid: 7d30bf0db3e4943818736826d9333123, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.9

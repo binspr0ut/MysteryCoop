@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0791de48dbb4888ba1e8543631f71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  possessSFX: {fileID: 0}
+  unpossessSFX: {fileID: 0}
 --- !u!1 &6291373509571239274
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +407,7 @@ GameObject:
   - component: {fileID: -5587629924922643700}
   - component: {fileID: 709373724746964037}
   - component: {fileID: 7713524217679867637}
+  - component: {fileID: -5494577271738271225}
   m_Layer: 7
   m_Name: Spirit
   m_TagString: Spirit
@@ -824,6 +827,20 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 709373724746964037}
+--- !u!114 &-5494577271738271225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932304621015713153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0791de48dbb4888ba1e8543631f71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PossesDetector
+  possessSFX: {fileID: 8300000, guid: a677e27d1fc424c1990df0f64f925582, type: 3}
+  unpossessSFX: {fileID: 8300000, guid: 0c692b182abad4953bc0e30db8d4c824, type: 3}
 --- !u!1 &8043564467038994727
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,4 +970,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9957a1c302fa14b888b50bbfbfb13296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DynamicConfinerBinder
-  confinerName: Confiner
+  confinerTag: Confiner

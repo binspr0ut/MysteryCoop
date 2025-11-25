@@ -12,6 +12,13 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
     private ObjectState currentState = ObjectState.Disabled;
 
 
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openBoardSFX;
+    [SerializeField] private AudioClip closeBoardSFX;
+
+
+
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
 
@@ -66,6 +73,9 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
         PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
         PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         IsInteracted = true;
+
+        // 🔊 SFX buka papan (detektif)
+        PlaySFX(openBoardSFX);
     }
 
     public void ClosePuzzle()
@@ -75,12 +85,21 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
         PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
         PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         IsInteracted = false;
+
+        // 🔊 SFX buka papan (detektif)
+        PlaySFX(closeBoardSFX);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 
 

@@ -12,6 +12,8 @@ public class PuzzlePieceDragHandler : NetworkBehaviour, IBeginDragHandler, IDrag
     public bool ownerIsHost; // siapa yg boleh drag?
     public bool isLocked = false;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip dragPaperSFX;
 
     [Header("Textures")]
     public GameObject DetectivePaper;
@@ -87,6 +89,9 @@ public class PuzzlePieceDragHandler : NetworkBehaviour, IBeginDragHandler, IDrag
     {
         if (!CanControl()) return;
         if (isLocked) return;
+
+        // 🔊 SFX: mulai drag / memindahkan paper
+        PlaySFX(dragPaperSFX);
 
         isDragging = true;
         group.alpha = 0.8f;
@@ -187,4 +192,11 @@ public class PuzzlePieceDragHandler : NetworkBehaviour, IBeginDragHandler, IDrag
         if (DetectivePaper) DetectivePaper.SetActive(isDetective);
         if (SpiritPaper) SpiritPaper.SetActive(!isDetective);
     }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
 }

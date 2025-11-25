@@ -18,6 +18,12 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip lockedShelfSFX;
+    [SerializeField] private AudioClip openBoardSFX;
+    [SerializeField] private AudioClip closeBoardSFX;
+
+
     public void SetObjectState(ObjectState state)
     {
         currentState = state;
@@ -51,13 +57,13 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
         {
             Debug.Log("Unposess Clock");
             Unpossess();
-            IsPossessed = false;
+            // IsPossessed = false;
         }
         else
         {
             Debug.Log("Possess Clock");
             Possess();
-            IsPossessed = true;
+            // IsPossessed = true;
         }
     }
 
@@ -67,6 +73,13 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
 
         if (currentState == ObjectState.Locked)
         {
+
+            // 🔊 SFX: lemari masih terkunci saat hantu coba possess
+            if (AudioManager.Instance != null && lockedShelfSFX != null)
+            {
+                AudioManager.Instance.PlaySFX(lockedShelfSFX);
+            }
+
             SubtitleManager.Instance.ShowSubtitle(
                             "This locker’s locked tight. Think you can help me, Agung?",
                             SubtitleTarget.Spirit,
@@ -94,6 +107,8 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
             }
 
             OpenPaperPuzzle();
+
+            IsPossessed = true;
         }
     }
 
@@ -112,24 +127,64 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
         // 🔹 Tutup UI puzzle dan kembalikan control
         ClosePuzzle();
 
+        IsPossessed = false;
+
         Debug.Log("[Clock] Unpossessed and puzzle closed.");
     }
     public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
+    // public void OpenPaperPuzzle()
+    // {
+    //     ControlUI.SetActive(false);
+    //     PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 1;
+    //     PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
+    //     PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true; IsPossessed = true;
+
+    //     // 🔊 SFX buka papan (spirit)
+    //     PlaySFX(openBoardSFX);
+    // }
+
     public void OpenPaperPuzzle()
     {
         ControlUI.SetActive(false);
-        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 1;
-        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
-        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true; IsPossessed = true;
+
+        var cg = PaperPuzzleUI.GetComponent<CanvasGroup>();
+        if (cg != null)
+        {
+            cg.alpha = 1;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
+        }
+
+        // 🔊 SFX buka papan (spirit)
+        PlaySFX(openBoardSFX);
     }
+
+    // public void ClosePuzzle()
+    // {
+    //     ControlUI.SetActive(true);
+    //     PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 0;
+    //     PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
+    //     PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false; IsPossessed = false;
+
+    //     // 🔊 SFX tutup papan (spirit)
+    //     PlaySFX(closeBoardSFX);
+    // }
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
-        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 0;
-        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
-        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false; IsPossessed = false;
+
+        var cg = PaperPuzzleUI.GetComponent<CanvasGroup>();
+        if (cg != null)
+        {
+            cg.alpha = 0;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+        }
+
+        // 🔊 SFX tutup papan (spirit)
+        PlaySFX(closeBoardSFX);
     }
 
     // Update is called once per frame
@@ -138,5 +193,10 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
 
     }
 
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
 
 }

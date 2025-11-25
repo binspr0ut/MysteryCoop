@@ -6,6 +6,10 @@ public class ElectricPuzzle : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject puzzlePanel;   // isi: PuzzleRoot
 
+    [Header("SFX UI")]
+    [SerializeField] private AudioClip openPuzzleSFX;
+    [SerializeField] private AudioClip closePuzzleSFX;
+
     [Header("Groups")]
     [SerializeField] private GameObject wireGroup;     // parent untuk node kabel (WireGroup)
     [SerializeField] private GameObject switchGroup;   // parent untuk saklar (SwitchGroup)
@@ -49,6 +53,16 @@ public class ElectricPuzzle : MonoBehaviour
     //   PUZZLE PANEL OPEN/CLOSE
     // ===========================
 
+    //SOUNFEFFFFFFEKK
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null) return;
+        if (AudioManager.Instance == null) return;
+
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
+
     // Dipanggil dari ElectricTrigger saat pemain interact
     public void OpenPuzzle()
     {
@@ -61,6 +75,9 @@ public class ElectricPuzzle : MonoBehaviour
         // default: kedua group aktif
         if (wireGroup != null) wireGroup.SetActive(true);
         if (switchGroup != null) switchGroup.SetActive(true);
+
+        // 🔊 SFX buka UI
+        PlaySFX(openPuzzleSFX);
 
         Debug.Log("[ElectricPuzzle] OpenPuzzle");
     }
@@ -81,6 +98,9 @@ public class ElectricPuzzle : MonoBehaviour
         if (backgroundImage != null && spiritSprite != null)
             backgroundImage.sprite = spiritSprite;
 
+        // 🔊 SFX buka UI
+        PlaySFX(openPuzzleSFX);
+
         Debug.Log("[ElectricPuzzle] OpenForSpirit");
     }
 
@@ -100,6 +120,9 @@ public class ElectricPuzzle : MonoBehaviour
         if (backgroundImage != null && detectiveSprite != null)
             backgroundImage.sprite = detectiveSprite;
 
+        // 🔊 SFX buka UI
+        PlaySFX(openPuzzleSFX);
+
         Debug.Log("[ElectricPuzzle] OpenForDetective");
     }
 
@@ -109,6 +132,10 @@ public class ElectricPuzzle : MonoBehaviour
 
         isOpen = false;
         puzzlePanel.SetActive(false);
+
+        // 🔊 SFX tutup UI
+        PlaySFX(closePuzzleSFX);
+
         Debug.Log("[ElectricPuzzle] ClosePuzzle");
     }
 

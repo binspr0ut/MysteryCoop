@@ -11,6 +11,10 @@ public class BriefcaseLockPanel : MonoBehaviour
     private Briefcase owner;
     public string correctCode = "389";
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip digitClickSFX;
+    [SerializeField] private AudioClip submitSFX;
+
     public void Init(Briefcase briefcase, string code)
     {
         owner = briefcase;
@@ -29,6 +33,9 @@ public class BriefcaseLockPanel : MonoBehaviour
         if (index < 0 || index >= digits.Length) return;
         digits[index] = (digits[index] + 1) % 10;
         digitTexts[index].text = digits[index].ToString();
+
+        // 🔊 SFX klik digit
+        PlayDigitSFX();
     }
 
     public void PressDown(int index)
@@ -36,12 +43,18 @@ public class BriefcaseLockPanel : MonoBehaviour
         if (index < 0 || index >= digits.Length) return;
         digits[index] = (digits[index] + 9) % 10;
         digitTexts[index].text = digits[index].ToString();
+
+        // 🔊 SFX klik digit
+        PlayDigitSFX();
     }
 
     public void PressEnter()
     {
         string entered = $"{digits[0]}{digits[1]}{digits[2]}";
         Debug.Log($"[BriefcaseLockPanel] Entered code: {entered}");
+
+        // 🔊 SFX submit PIN
+        PlaySubmitSFX();
 
         // Kirim ke Briefcase (yang punya NetworkObject)
         owner?.ValidateCodeFromUI(entered);
@@ -67,5 +80,17 @@ public class BriefcaseLockPanel : MonoBehaviour
 
         foreach (var text in digitTexts)
             text.rectTransform.anchoredPosition = Vector2.zero;
+    }
+
+    private void PlayDigitSFX()
+    {
+        if (AudioManager.Instance != null && digitClickSFX != null)
+            AudioManager.Instance.PlaySFX(digitClickSFX);
+    }
+
+    private void PlaySubmitSFX()
+    {
+        if (AudioManager.Instance != null && submitSFX != null)
+            AudioManager.Instance.PlaySFX(submitSFX);
     }
 }

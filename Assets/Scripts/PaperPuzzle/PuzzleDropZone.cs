@@ -3,6 +3,10 @@ using Unity.Netcode;
 
 public class PuzzleDropZone : NetworkBehaviour
 {
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip dropPaperSFX;
+
     public int slotIndex;
     public PuzzlePieceDragHandler currentPiece;
 
@@ -14,6 +18,12 @@ public class PuzzleDropZone : NetworkBehaviour
     {
         ulong pieceNetId = piece.GetComponent<NetworkObject>().NetworkObjectId;
         UpdateDropZoneServerRpc(slotIndex, pieceNetId);
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 
 
@@ -36,6 +46,9 @@ public class PuzzleDropZone : NetworkBehaviour
 
         zone.currentPiece = piece;
         piece.rect.anchoredPosition = zone.rect.anchoredPosition;
+
+        // 🔊 SFX: paper berhasil di-drop ke slot ini
+        PlaySFX(dropPaperSFX);
 
         PuzzleZoneManager.Instance.CheckSolved();
     }

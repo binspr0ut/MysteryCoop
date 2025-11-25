@@ -14,6 +14,10 @@ public class CalendarSwipeController : MonoBehaviour, IDragHandler, IEndDragHand
 
     private bool isAnimating = false;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip swipeCalendarSFX;
+
+
     public void OnDrag(PointerEventData eventData)
     {
         // Tidak perlu real-time drag
@@ -29,6 +33,10 @@ public class CalendarSwipeController : MonoBehaviour, IDragHandler, IEndDragHand
         if (Mathf.Abs(delta) > swipeThreshold)
         {
             bool swipeLeft = delta < 0;
+
+            // 🔊 SFX: kalender digeser
+            PlaySFX(swipeCalendarSFX);
+
             StartCoroutine(SwipeAwayTopCalendar(swipeLeft));
         }
     }
@@ -79,4 +87,11 @@ public class CalendarSwipeController : MonoBehaviour, IDragHandler, IEndDragHand
         cg.alpha = 1f;
         isAnimating = false;
     }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
 }

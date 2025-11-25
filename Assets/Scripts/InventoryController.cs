@@ -10,6 +10,11 @@ public class InventoryController : NetworkBehaviour
     public GameObject ControlUI;
     public RectTransform InventoryButton;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip openInventorySFX;
+    [SerializeField] private AudioClip closeInventorySFX;
+
+
     [Header("Item")]
     public GameObject noteButton;
     public GameObject battery1Button;
@@ -197,6 +202,12 @@ public class InventoryController : NetworkBehaviour
         LeanTween.cancel(inventoryPanel);
         LeanTween.moveY(inventoryPanel, shownPos.y, slideDuration).setEaseOutCubic();
 
+        // 🔊 SFX buka inventory
+        if (AudioManager.Instance != null && openInventorySFX != null)
+        {
+            AudioManager.Instance.PlaySFX(openInventorySFX);
+        }
+
     }
 
     public void HideInventory()
@@ -205,6 +216,12 @@ public class InventoryController : NetworkBehaviour
         LeanTween.moveY(inventoryPanel, hiddenPos.y, slideDuration).setEaseInCubic();
         freezeClose = false;
         Debug.Log("freezeClose" + freezeClose);
+
+        // 🔊 SFX tutup inventory
+        if (AudioManager.Instance != null && closeInventorySFX != null)
+        {
+            AudioManager.Instance.PlaySFX(closeInventorySFX);
+        }
     }
 
     // -----------------------------------------------------

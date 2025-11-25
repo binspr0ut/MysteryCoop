@@ -7,6 +7,12 @@ public class WireNode : MonoBehaviour, IPointerClickHandler
     public bool isTopNode = false;        // kalau mau dipakai buat logika tambahan
     public ElectricPuzzle puzzle;
 
+    //SOUNDEFFFFEKKKKK
+    [Header("SFX (Spirit Node)")]
+    [SerializeField] private AudioClip bottomNodeClickSFX;  // node bawah
+    [SerializeField] private AudioClip topNodeClickSFX;     // node atas
+
+
     // node pertama yang diklik
     private static WireNode firstSelected;
 
@@ -16,6 +22,16 @@ public class WireNode : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogWarning("[WireNode] puzzle is null");
             return;
+        }
+
+        // 🔊 SFX klik node (bedain atas vs bawah)
+        if (AudioManager.Instance != null)
+        {
+            AudioClip clip = isTopNode ? topNodeClickSFX : bottomNodeClickSFX;
+            if (clip != null)
+            {
+                AudioManager.Instance.PlaySFX(clip);
+            }
         }
 
         // kalau belum ada node yang dipilih → simpan sebagai firstSelected

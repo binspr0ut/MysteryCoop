@@ -16,9 +16,19 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     [Header("Audio")]
     public AudioSource alarmSound;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip arrowMoveSFX;
+
+
     private RectTransform currentHand;
     private bool isDragging = false;
     private Vector2 pivotScreenPos;
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
 
     private void Awake()
     {
@@ -32,6 +42,10 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     // =====================================================================
     public void OnPointerDown(PointerEventData eventData)
     {
+
+        // 🔊 SFX: mulai menggerakkan jarum jam
+        PlaySFX(arrowMoveSFX);
+
         var clickedObj = eventData.pointerPressRaycast.gameObject;
         if (clickedObj == null) return;
 

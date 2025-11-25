@@ -11,6 +11,10 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
     [SerializeField] private GameObject controlUI;
     public GameObject clockBackUIPanel;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip openClockUISFX;
+    [SerializeField] private AudioClip closeClockUISFX;
+
     [Header("Puzzle Elements")]
     [SerializeField] private GameObject batteryUI1;
     [SerializeField] private GameObject batteryUI2;
@@ -154,6 +158,9 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             if (clockBackUIPanel) clockBackUIPanel.SetActive(true);
             InventoryController.Instance.ShowInventoryFreeze();
 
+            // 🔊 SFX buka UI jam (belakang)
+            PlaySFX(openClockUISFX);
+
             // // Tampilkan battery jika Box sudah solved
             // if (batteryUI1 && batteryUI2)
             // {
@@ -169,6 +176,9 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         if (controlUI) controlUI.SetActive(true);
         if (clockBackUIPanel) clockBackUIPanel.SetActive(false);
         InventoryController.Instance.HideInventory();
+
+        // 🔊 SFX tutup UI jam (detektif)
+        PlaySFX(closeClockUISFX);
     }
 
     // Dipanggil lokal oleh UI saat battery sukses dipasang
@@ -255,5 +265,11 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         //     batteryUI1.SetActive(!solved);
         //     batteryUI2.SetActive(!solved);
         // }
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 }

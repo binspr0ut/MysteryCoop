@@ -6,8 +6,12 @@ public class ElectricSwitch : MonoBehaviour, IPointerClickHandler
 {
     [Header("Switch Visual")]
     public Image switchImage;   // Image UI untuk saklar
-    public Sprite spriteOn;     // IMG_0108_1
-    public Sprite spriteOff;    // IMG_0108_2
+    public Sprite spriteOn;     // tampilan nyala
+    public Sprite spriteOff;    // tampilan mati yeuh
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip switchToggleSFX;
+
 
     [Header("Data")]
     public WireColor color;
@@ -21,6 +25,13 @@ public class ElectricSwitch : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
+
+        // 🔊 SFX cetek switch
+        if (AudioManager.Instance != null && switchToggleSFX != null)
+        {
+            AudioManager.Instance.PlaySFX(switchToggleSFX);
+        }
+
         // kalau ada network → lewat server
         if (ElectricPuzzleNetwork.Instance != null && ElectricPuzzleNetwork.Instance.IsSpawned)
         {

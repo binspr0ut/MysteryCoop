@@ -17,6 +17,10 @@ public class Box : MonoBehaviour, IObject, IStateObject
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
 
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openBoxSFX;
+
     private ObjectState currentState;
 
 
@@ -84,6 +88,13 @@ public class Box : MonoBehaviour, IObject, IStateObject
         IsInteracted = true;
         ControlUI.SetActive(false);
         BoxUI.SetActive(true);
+
+        // 🔊 Mainkan SFX saat membuka Box UI
+        if (AudioManager.Instance != null && openBoxSFX != null)
+        {
+            AudioManager.Instance.PlaySFX(openBoxSFX);
+        }
+
     }
 
     public void ClosePuzzle()

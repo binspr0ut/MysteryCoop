@@ -18,6 +18,10 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     [Header("Shelf Reference")]
     [SerializeField] private ShelfLockpick shelfLockpick;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip lockpickMoveSFX;
+    [SerializeField] private AudioClip pinMoveSFX;      // SFX baru: pin naik-turun
+
     private RectTransform canvasRect;
     private bool isDragging;
     private Vector2 startMousePos;
@@ -36,6 +40,7 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         pinStartPos = new Vector2[pins.Length];
         pinUnlocked = new bool[pins.Length];
         checkCoroutines = new Coroutine[pins.Length];
+        pinMoveSFXPlayed = new bool[pins.Length];
 
         for (int i = 0; i < pins.Length; i++)
             pinStartPos[i] = pins[i].anchoredPosition;
@@ -61,9 +66,19 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     public void OnPointerDown(PointerEventData eventData)
     {
         isDragging = true;
+
+        // 🔊 SFX: mulai menggerakkan lockpick
+        PlaySFX(lockpickMoveSFX);
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out startMousePos);
         startLockpickPos = lockpick.anchoredPosition;
         currentPinIndex = FindNearestPin(lockpick.anchoredPosition.x);
+
+        // reset flag SFX pin untuk pin yang sedang aktif
+        if (pinMoveSFXPlayed != null && currentPinIndex >= 0 && currentPinIndex < pinMoveSFXPlayed.Length)
+        {
+            pinMoveSFXPlayed[currentPinIndex] = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -95,6 +110,17 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         );
 
         float lift = Mathf.Clamp(localTip.y - pinStartPos[currentPinIndex].y, 0, liftLimit);
+
+        // 🔊 SFX: pin mulai digerakkan (naik)
+        if (lift > 0.5f && pinMoveSFXPlayed != null && currentPinIndex >= 0 && currentPinIndex < pinMoveSFXPlayed.Length)
+        {
+            if (!pinMoveSFXPlayed[currentPinIndex])
+            {
+                PlaySFX(pinMoveSFX);
+                pinMoveSFXPlayed[currentPinIndex] = true; // 1x per drag
+            }
+        }
+
         Vector2 pinPos = pinStartPos[currentPinIndex];
         pins[currentPinIndex].anchoredPosition = new Vector2(pinPos.x, pinPos.y + lift);
 
@@ -114,6 +140,12 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
+
+        // reset agar drag berikutnya bisa bunyi lagi
+        if (pinMoveSFXPlayed != null && currentPinIndex >= 0 && currentPinIndex < pinMoveSFXPlayed.Length)
+        {
+            pinMoveSFXPlayed[currentPinIndex] = false;
+        }
     }
 
     IEnumerator AutoUnlockAfterDelay(int index, float delay)
@@ -147,6 +179,14 @@ public class LockpickUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
                 return;
             }
         }
+    }
+
+
+    private bool[] pinMoveSFXPlayed;   // track biar 1x per drag
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 
     private void CheckIfAllUnlocked()

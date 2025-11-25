@@ -9,6 +9,10 @@ public class LampuBelajar : NetworkBehaviour, IPossess
     [Header("Lamp Visuals")]
     [SerializeField] private GameObject spotLight;
 
+        //SFX SETAN RASUKIN BARANG
+    [SerializeField] private AudioClip possessSFX;
+    [SerializeField] private AudioClip unpossessSFX;
+
     [Header("UI References")]
     [SerializeField] private GameObject uiControl;      // parent UIControl
     [SerializeField] private GameObject leftStick;      // joystick yang dimatikan saat possess

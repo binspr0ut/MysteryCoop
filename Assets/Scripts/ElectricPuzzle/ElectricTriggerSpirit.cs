@@ -4,6 +4,12 @@ public class ElectricTriggerSpirit : MonoBehaviour, IPossess
 {
     [Header("Puzzle Reference")]
     [SerializeField] private ElectricPuzzle electricPuzzle;
+
+    //SFX SETAN RASUKIN BARANG
+    [SerializeField] private AudioClip possessSFX;
+    [SerializeField] private AudioClip unpossessSFX;
+
+
     private bool IsPossessed;
 
     // Helper: cek apakah puzzle boleh dipakai
@@ -49,7 +55,7 @@ public class ElectricTriggerSpirit : MonoBehaviour, IPossess
         {
             Possess();
         }
-        
+
     }
 
     // Dipanggil saat arwah keluar dari benda ini

@@ -7,6 +7,9 @@ public class ElectricPuzzleNetwork : NetworkBehaviour
 
     public static ElectricPuzzleNetwork Instance { get; private set; }
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip wireConnectedSFX;
+
     private void Awake()
     {
         Instance = this;
@@ -27,6 +30,12 @@ public class ElectricPuzzleNetwork : NetworkBehaviour
     private void ApplyCableConnectedClientRpc(WireColor color, bool connected)
     {
         if (puzzle == null) return;
+
+        // 🔊 SFX kabel tersambung (hanya ketika connected = true)
+        if (connected && AudioManager.Instance != null && wireConnectedSFX != null)
+        {
+            AudioManager.Instance.PlaySFX(wireConnectedSFX);
+        }
 
         // Ini dipanggil di HOST dan SEMUA CLIENT
         puzzle.SetCableConnected(color, connected);

@@ -10,6 +10,11 @@ public class Briefcase : NetworkBehaviour, IObject
     public GameObject LockPanel;   // Panel input kode
     public GameObject ControlUI;   // HUD kontrol (disembunyikan saat panel tampil)
 
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openBriefcaseSFX;
+    [SerializeField] private AudioClip closeBriefcaseSFX;
+
     [Header("Settings")]
     public string CorrectCode = "389";
 
@@ -49,6 +54,9 @@ public class Briefcase : NetworkBehaviour, IObject
         if (ControlUI != null)
             ControlUI.SetActive(false);
 
+        // 🔊 SFX buka UI koper
+        PlaySFX(openBriefcaseSFX);
+
         if (LockPanel == null)
         {
             Debug.LogError("[Briefcase] ❌ LockPanel belum di-assign!");
@@ -73,6 +81,9 @@ public class Briefcase : NetworkBehaviour, IObject
         if (LockPanel != null) LockPanel.SetActive(false);
         if (ControlUI != null) ControlUI.SetActive(true);
         IsInteracted = false;
+
+        // 🔊 SFX tutup UI koper
+        PlaySFX(closeBriefcaseSFX);
     }
 
     // ========================================================================
@@ -151,5 +162,11 @@ public class Briefcase : NetworkBehaviour, IObject
             LockPanel.SetActive(false);
             lockPanelScript = LockPanel.GetComponent<BriefcaseLockPanel>();
         }
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 }
