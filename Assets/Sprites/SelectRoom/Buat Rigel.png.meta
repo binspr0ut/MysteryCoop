@@ -1,0 +1,4875 @@
+fileFormatVersion: 2
+guid: 1c130e0fa491d4b12a49df9c2579ef68
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3219503489299598573
+    second: Buat Rigel_0
+  - first:
+      213: -5948581165737140045
+    second: Buat Rigel_1
+  - first:
+      213: -4957555590566477265
+    second: Buat Rigel_2
+  - first:
+      213: -8108778775714193639
+    second: Buat Rigel_3
+  - first:
+      213: -4034360970484972782
+    second: Buat Rigel_4
+  - first:
+      213: -930645418459758158
+    second: Buat Rigel_5
+  - first:
+      213: 4260017723701372395
+    second: Buat Rigel_6
+  - first:
+      213: -2687706102473003519
+    second: Buat Rigel_7
+  - first:
+      213: 8930422833312550919
+    second: Buat Rigel_8
+  - first:
+      213: 1667282265081486034
+    second: Buat Rigel_9
+  - first:
+      213: 1432722833747042277
+    second: Buat Rigel_10
+  - first:
+      213: 3925436499430496539
+    second: Buat Rigel_11
+  - first:
+      213: -180153046882335360
+    second: Buat Rigel_12
+  - first:
+      213: 6888613495596113751
+    second: Buat Rigel_13
+  - first:
+      213: 745790993616787304
+    second: Buat Rigel_14
+  - first:
+      213: -8299484742559343392
+    second: Buat Rigel_15
+  - first:
+      213: 7974662413919710663
+    second: Buat Rigel_16
+  - first:
+      213: 4255146346536463238
+    second: Buat Rigel_17
+  - first:
+      213: -1967009010534617606
+    second: Buat Rigel_18
+  - first:
+      213: 1806040442668608930
+    second: Buat Rigel_19
+  - first:
+      213: 4318962013012372776
+    second: Buat Rigel_20
+  - first:
+      213: 5297569072090183692
+    second: Buat Rigel_21
+  - first:
+      213: 6367748994527628467
+    second: Buat Rigel_22
+  - first:
+      213: 1578324016824096865
+    second: Buat Rigel_23
+  - first:
+      213: 5368032388248404861
+    second: Buat Rigel_24
+  - first:
+      213: 5053587589321178554
+    second: Buat Rigel_25
+  - first:
+      213: -7557720025709308907
+    second: Buat Rigel_26
+  - first:
+      213: 8844369883317266343
+    second: Buat Rigel_27
+  - first:
+      213: 5456640721278322854
+    second: Buat Rigel_28
+  - first:
+      213: 8485769937338436869
+    second: Buat Rigel_29
+  - first:
+      213: -1111266688154743882
+    second: Buat Rigel_30
+  - first:
+      213: 2832552016760842879
+    second: Buat Rigel_31
+  - first:
+      213: 9165883539044789085
+    second: Buat Rigel_32
+  - first:
+      213: 5692348076539938820
+    second: Buat Rigel_33
+  - first:
+      213: -1755049891500988110
+    second: Buat Rigel_34
+  - first:
+      213: 5134235257626615727
+    second: Buat Rigel_35
+  - first:
+      213: 4970143716276206362
+    second: Buat Rigel_36
+  - first:
+      213: -2553844001989020562
+    second: Buat Rigel_37
+  - first:
+      213: 2258426956610849010
+    second: Buat Rigel_38
+  - first:
+      213: -6570979337637119706
+    second: Buat Rigel_39
+  - first:
+      213: -1121297385971171176
+    second: Buat Rigel_40
+  - first:
+      213: 4976844885955991466
+    second: Buat Rigel_41
+  - first:
+      213: 7161969524292435013
+    second: Buat Rigel_42
+  - first:
+      213: 8872683168892657964
+    second: Buat Rigel_43
+  - first:
+      213: 4657675541229709387
+    second: Buat Rigel_44
+  - first:
+      213: -1173992899658775836
+    second: Buat Rigel_45
+  - first:
+      213: -5378768639880341548
+    second: Buat Rigel_46
+  - first:
+      213: 2835324839416318283
+    second: Buat Rigel_47
+  - first:
+      213: -5890319863425729742
+    second: Buat Rigel_48
+  - first:
+      213: -331506749789389330
+    second: Buat Rigel_49
+  - first:
+      213: -8360998762388702930
+    second: Buat Rigel_50
+  - first:
+      213: 5896736345936893600
+    second: Buat Rigel_51
+  - first:
+      213: -7835651227757904763
+    second: Buat Rigel_52
+  - first:
+      213: 3153914329454893024
+    second: Buat Rigel_53
+  - first:
+      213: -7338485186502740663
+    second: Buat Rigel_54
+  - first:
+      213: -1246341560520456501
+    second: Buat Rigel_55
+  - first:
+      213: 647862186338514662
+    second: Buat Rigel_56
+  - first:
+      213: 194084562746948510
+    second: Buat Rigel_57
+  - first:
+      213: 839841627770862540
+    second: Buat Rigel_58
+  - first:
+      213: 4786083200930462309
+    second: Buat Rigel_59
+  - first:
+      213: -7890487245722057014
+    second: Buat Rigel_60
+  - first:
+      213: 8312723253970817201
+    second: Buat Rigel_61
+  - first:
+      213: 5196426417218641921
+    second: Buat Rigel_62
+  - first:
+      213: 2613261506928017676
+    second: Buat Rigel_63
+  - first:
+      213: -334530173629969209
+    second: Buat Rigel_64
+  - first:
+      213: 7980018532578702394
+    second: Buat Rigel_65
+  - first:
+      213: -760165192284562459
+    second: Buat Rigel_66
+  - first:
+      213: 3847400178756642192
+    second: Buat Rigel_67
+  - first:
+      213: -6266664706034907678
+    second: Buat Rigel_68
+  - first:
+      213: -5423337595413438333
+    second: Buat Rigel_69
+  - first:
+      213: -8851958224981625098
+    second: Buat Rigel_70
+  - first:
+      213: -6073016984701239775
+    second: Buat Rigel_71
+  - first:
+      213: -4387304935893120767
+    second: Buat Rigel_72
+  - first:
+      213: 8738077217224042566
+    second: Buat Rigel_73
+  - first:
+      213: -7037435204668435015
+    second: Buat Rigel_74
+  - first:
+      213: 7178173715308842831
+    second: Buat Rigel_75
+  - first:
+      213: 3249010029780325286
+    second: Buat Rigel_76
+  - first:
+      213: -4424794425696140828
+    second: Buat Rigel_77
+  - first:
+      213: -6967618455076840067
+    second: Buat Rigel_78
+  - first:
+      213: 44208269403425012
+    second: Buat Rigel_79
+  - first:
+      213: 2921180701054813112
+    second: Buat Rigel_80
+  - first:
+      213: -1693158532450180177
+    second: Buat Rigel_81
+  - first:
+      213: 5874091097584397058
+    second: Buat Rigel_82
+  - first:
+      213: -2088269264956987294
+    second: Buat Rigel_83
+  - first:
+      213: -3269659676449433566
+    second: Buat Rigel_84
+  - first:
+      213: 2716346280071081842
+    second: Buat Rigel_85
+  - first:
+      213: -3968814941785591437
+    second: Buat Rigel_86
+  - first:
+      213: -281716783925044758
+    second: Buat Rigel_87
+  - first:
+      213: 6353155492377595131
+    second: Buat Rigel_88
+  - first:
+      213: -3381640240718932336
+    second: Buat Rigel_89
+  - first:
+      213: -1596274926631325095
+    second: Buat Rigel_90
+  - first:
+      213: 7613026250650031111
+    second: Buat Rigel_91
+  - first:
+      213: 148235708259402876
+    second: Buat Rigel_92
+  - first:
+      213: 3825186607522401543
+    second: Buat Rigel_93
+  - first:
+      213: -1566103639799111419
+    second: Buat Rigel_94
+  - first:
+      213: 7794080603979309465
+    second: Buat Rigel_95
+  - first:
+      213: -5501963204237801178
+    second: Buat Rigel_96
+  - first:
+      213: 2648961352113960295
+    second: Buat Rigel_97
+  - first:
+      213: -6937986204986244183
+    second: Buat Rigel_98
+  - first:
+      213: -813347504012312839
+    second: Buat Rigel_99
+  - first:
+      213: 1706348719664251572
+    second: Buat Rigel_100
+  - first:
+      213: -4216150483816441978
+    second: Buat Rigel_101
+  - first:
+      213: -2703412675154701746
+    second: Buat Rigel_102
+  - first:
+      213: 2005087177682878010
+    second: Buat Rigel_103
+  - first:
+      213: -2986866739271634293
+    second: Buat Rigel_104
+  - first:
+      213: -3799679364508515264
+    second: Buat Rigel_105
+  - first:
+      213: 2473544445555199416
+    second: Buat Rigel_106
+  - first:
+      213: 4613903455483970696
+    second: Buat Rigel_107
+  - first:
+      213: 5585194552059217669
+    second: Buat Rigel_108
+  - first:
+      213: 5350575642830206772
+    second: Buat Rigel_109
+  - first:
+      213: -501420950845875466
+    second: Buat Rigel_110
+  - first:
+      213: 4664300864312466010
+    second: Buat Rigel_111
+  - first:
+      213: 5956653342759928069
+    second: Buat Rigel_112
+  - first:
+      213: 7158046806574295256
+    second: Buat Rigel_113
+  - first:
+      213: -8477731681542641852
+    second: Buat Rigel_114
+  - first:
+      213: 6058683714979839203
+    second: Buat Rigel_115
+  - first:
+      213: -1248315324657168622
+    second: Buat Rigel_116
+  - first:
+      213: -1112132475124913139
+    second: Buat Rigel_117
+  - first:
+      213: -7521633979587707737
+    second: Buat Rigel_118
+  - first:
+      213: -424370633848337672
+    second: Buat Rigel_119
+  - first:
+      213: 3846986194620181816
+    second: Buat Rigel_120
+  - first:
+      213: -8000532183616585019
+    second: Buat Rigel_121
+  - first:
+      213: 5805994863761583535
+    second: Buat Rigel_122
+  - first:
+      213: 5834169158415925208
+    second: Buat Rigel_123
+  - first:
+      213: -7386106715311440503
+    second: Buat Rigel_124
+  - first:
+      213: 6333074342498265543
+    second: Buat Rigel_125
+  - first:
+      213: 2498940614043247135
+    second: Buat Rigel_126
+  - first:
+      213: -5785762621055104911
+    second: Buat Rigel_127
+  - first:
+      213: -3292598731384340640
+    second: Buat Rigel_128
+  - first:
+      213: 2366101753921149206
+    second: Buat Rigel_129
+  - first:
+      213: -8809034900840390055
+    second: Buat Rigel_130
+  - first:
+      213: -7924533293418620368
+    second: Buat Rigel_131
+  - first:
+      213: 6432586585950118948
+    second: Buat Rigel_132
+  - first:
+      213: 1066462250280926191
+    second: Buat Rigel_133
+  - first:
+      213: 381522086413216063
+    second: Buat Rigel_134
+  - first:
+      213: 7603028391469720985
+    second: Buat Rigel_135
+  - first:
+      213: -1913498224494102793
+    second: Buat Rigel_136
+  - first:
+      213: -8194996477774660400
+    second: Buat Rigel_137
+  - first:
+      213: -1723883077337021559
+    second: Buat Rigel_138
+  - first:
+      213: 6763985183572358505
+    second: Buat Rigel_139
+  - first:
+      213: -358224901137201699
+    second: Buat Rigel_140
+  - first:
+      213: 8564894635374152665
+    second: Buat Rigel_141
+  - first:
+      213: -2058506653494214347
+    second: Buat Rigel_142
+  - first:
+      213: 6801113141918129174
+    second: Buat Rigel_143
+  - first:
+      213: 2868837909514058786
+    second: Buat Rigel_144
+  - first:
+      213: 1034138152823089670
+    second: Buat Rigel_145
+  - first:
+      213: 5594331208832769062
+    second: Buat Rigel_146
+  - first:
+      213: 736728280916517132
+    second: Buat Rigel_147
+  - first:
+      213: 6892339480208494452
+    second: Buat Rigel_148
+  - first:
+      213: 7110201519116691473
+    second: Buat Rigel_149
+  - first:
+      213: 3549345881042445154
+    second: Buat Rigel_150
+  - first:
+      213: 3225421971427459828
+    second: Buat Rigel_151
+  - first:
+      213: 4391503018073614662
+    second: Buat Rigel_152
+  - first:
+      213: -7037338788471505865
+    second: Buat Rigel_153
+  - first:
+      213: -969804870470358966
+    second: Buat Rigel_154
+  - first:
+      213: 1046759180488834810
+    second: Buat Rigel_155
+  - first:
+      213: -1785153768631342049
+    second: Buat Rigel_156
+  - first:
+      213: -8620124990339396745
+    second: Buat Rigel_157
+  - first:
+      213: 7210189148886869094
+    second: Buat Rigel_158
+  - first:
+      213: -2423298100237290485
+    second: Buat Rigel_159
+  - first:
+      213: 7635131594621958683
+    second: Buat Rigel_160
+  - first:
+      213: 2130811416692967729
+    second: Buat Rigel_161
+  - first:
+      213: 7245577642776326335
+    second: Buat Rigel_162
+  - first:
+      213: -6076018652413732093
+    second: Buat Rigel_163
+  - first:
+      213: -3862054480031115906
+    second: Buat Rigel_164
+  - first:
+      213: 4574905636806219149
+    second: Buat Rigel_165
+  - first:
+      213: -1731433198478942941
+    second: Buat Rigel_166
+  - first:
+      213: -7315292338306555494
+    second: Buat Rigel_167
+  - first:
+      213: 7604680104898018617
+    second: Buat Rigel_168
+  - first:
+      213: 2352808500814929011
+    second: Buat Rigel_169
+  - first:
+      213: 2651147073430529890
+    second: Buat Rigel_170
+  - first:
+      213: 3515273801658674929
+    second: Buat Rigel_171
+  - first:
+      213: -1080151357289630958
+    second: Buat Rigel_172
+  - first:
+      213: -1606184784192607903
+    second: Buat Rigel_173
+  - first:
+      213: -4064963882479780766
+    second: Buat Rigel_174
+  - first:
+      213: 7812019226591342460
+    second: Buat Rigel_175
+  - first:
+      213: 2477786011577225127
+    second: Buat Rigel_176
+  - first:
+      213: 7409160732436271643
+    second: Buat Rigel_177
+  - first:
+      213: 607024022985304376
+    second: Buat Rigel_178
+  - first:
+      213: -4999438659414118660
+    second: Buat Rigel_179
+  - first:
+      213: -6555478919195298973
+    second: Buat Rigel_180
+  - first:
+      213: 4538716639716080000
+    second: Buat Rigel_181
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Buat Rigel_0
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 2313
+        height: 1320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313ba2752a60253d0800000000000000
+      internalID: -3219503489299598573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_1
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 989
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b0a8aa52f4627da0800000000000000
+      internalID: -5948581165737140045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_2
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 984
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f228806e479333bb0800000000000000
+      internalID: -4957555590566477265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_3
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 931
+        width: 88
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f14576aa4d77f80800000000000000
+      internalID: -8108778775714193639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 955
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2130b8282121308c0800000000000000
+      internalID: -4034360970484972782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_5
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 957
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b18cd43ceea513f0800000000000000
+      internalID: -930645418459758158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_6
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 959
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be5a6169c8f9e1b30800000000000000
+      internalID: 4260017723701372395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 918
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e62753a8953bad0800000000000000
+      internalID: -2687706102473003519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_8
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 948
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 700d1a1604c3feb70800000000000000
+      internalID: 8930422833312550919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_9
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 927
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da9d7ee260632710800000000000000
+      internalID: 1667282265081486034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_10
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 884
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ef551f83dd02e310800000000000000
+      internalID: 1432722833747042277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_11
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 907
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1958e8c2b3f97630800000000000000
+      internalID: 3925436499430496539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_12
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 912
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 085cf5322c7ff7df0800000000000000
+      internalID: -180153046882335360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_13
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 882
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75fd7ff0a75499f50800000000000000
+      internalID: 6888613495596113751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_14
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 886
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 867d63315f4995a00800000000000000
+      internalID: 745790993616787304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_15
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 898
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ecd9f4699e42dc80800000000000000
+      internalID: -8299484742559343392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_16
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 861
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cde751c631bbae60800000000000000
+      internalID: 7974662413919710663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_17
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 881
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68b6b94be015d0b30800000000000000
+      internalID: 4255146346536463238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_18
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 876
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd67110ab7c3b4e0800000000000000
+      internalID: -1967009010534617606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_19
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 858
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad604bb638501910800000000000000
+      internalID: 1806040442668608930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_20
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 863
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d2208611900fb30800000000000000
+      internalID: 4318962013012372776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_21
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 857
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08f70bd00fb48940800000000000000
+      internalID: 5297569072090183692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_22
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 843
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc8ba509f9ce5850800000000000000
+      internalID: 6367748994527628467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_23
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 852
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 168944bb45557e510800000000000000
+      internalID: 1578324016824096865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_24
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 847
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d73865c14051f7a40800000000000000
+      internalID: 5368032388248404861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_25
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 813
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abdbfce2323f12640800000000000000
+      internalID: 5053587589321178554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_26
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 837
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5149dbbdda59d1790800000000000000
+      internalID: -7557720025709308907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_27
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 843
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a7e945ac838dba70800000000000000
+      internalID: 8844369883317266343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_28
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 815
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a8c9b253d1e9bb40800000000000000
+      internalID: 5456640721278322854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_29
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 829
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50d0fb86cc283c570800000000000000
+      internalID: 8485769937338436869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_30
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 834
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bbcfc9b5dcf390f0800000000000000
+      internalID: -1111266688154743882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_31
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 828
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7aa8de3d0f3f4720800000000000000
+      internalID: 2832552016760842879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_32
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 826
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b6d5d0482c33f70800000000000000
+      internalID: 9165883539044789085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_33
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 799
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4088a009a684ffe40800000000000000
+      internalID: 5692348076539938820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_34
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 822
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239eefd1c6fc4a7e0800000000000000
+      internalID: -1755049891500988110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_35
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 817
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fafde14b3c7704740800000000000000
+      internalID: 5134235257626615727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_36
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 808
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1b7843806f79f440800000000000000
+      internalID: 4970143716276206362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_37
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 812
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64bea9396cee8cd0800000000000000
+      internalID: -2553844001989020562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_38
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 810
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f8c4f3f95b875f10800000000000000
+      internalID: 2258426956610849010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_39
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 799
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62935b16b113fc4a0800000000000000
+      internalID: -6570979337637119706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_40
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 792
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8904d95e7f95070f0800000000000000
+      internalID: -1121297385971171176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_41
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 799
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa750a92e0e411540800000000000000
+      internalID: 4976844885955991466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_42
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 786
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54cbf9b265d646360800000000000000
+      internalID: 7161969524292435013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_43
+      rect:
+        serializedVersion: 2
+        x: 2403
+        y: 793
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c212f66255a122b70800000000000000
+      internalID: 8872683168892657964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_44
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 762
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b48a5023a3363a040800000000000000
+      internalID: 4657675541229709387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_45
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 777
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e202078da325bfe0800000000000000
+      internalID: -1173992899658775836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_46
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 779
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d7dbe28b66ca55b0800000000000000
+      internalID: -5378768639880341548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_47
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 773
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4940445be8195720800000000000000
+      internalID: 2835324839416318283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_48
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 784
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23bf41fda41614ea0800000000000000
+      internalID: -5890319863425729742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_49
+      rect:
+        serializedVersion: 2
+        x: 2422
+        y: 753
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eedb8221e50466bf0800000000000000
+      internalID: -331506749789389330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_50
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 765
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2937509ce3c7fb80800000000000000
+      internalID: -8360998762388702930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_51
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 769
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a614b1e67a65d150800000000000000
+      internalID: 5896736345936893600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_52
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 762
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cf2a139bc224390800000000000000
+      internalID: -7835651227757904763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_53
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 769
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e75c2b5f54f4cb20800000000000000
+      internalID: 3153914329454893024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_54
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 763
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 945b9059a96782a90800000000000000
+      internalID: -7338485186502740663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_55
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 751
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc64f5044fa14bee0800000000000000
+      internalID: -1246341560520456501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_56
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 749
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e67d18d93badf800800000000000000
+      internalID: 647862186338514662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_57
+      rect:
+        serializedVersion: 2
+        x: 2433
+        y: 735
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b3beaa1e681b200800000000000000
+      internalID: 194084562746948510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_58
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 739
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccb3ed2c287b7ab00800000000000000
+      internalID: 839841627770862540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_59
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 744
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56abce040559b6240800000000000000
+      internalID: 4786083200930462309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_60
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 740
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac68cf5d7ab5f7290800000000000000
+      internalID: -7890487245722057014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_61
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 728
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b05f0db1c9bc5370800000000000000
+      internalID: 8312723253970817201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_62
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 732
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100e5cb6b4a6d1840800000000000000
+      internalID: 5196426417218641921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_63
+      rect:
+        serializedVersion: 2
+        x: 2390
+        y: 726
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0185a1be7b244420800000000000000
+      internalID: 2613261506928017676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_64
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 724
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ccc22a54928b5bf0800000000000000
+      internalID: -334530173629969209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_65
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 722
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34336f4398bebe60800000000000000
+      internalID: 7980018532578702394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_66
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 713
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eb134ff8c95375f0800000000000000
+      internalID: -760165192284562459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_67
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 655
+        width: 54
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09560930416b46530800000000000000
+      internalID: 3847400178756642192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_68
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 677
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e5cf4ee6a55809a0800000000000000
+      internalID: -6266664706034907678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_69
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 699
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3806c58e03f6cb4b0800000000000000
+      internalID: -5423337595413438333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_70
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 674
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f67f51e4e6872580800000000000000
+      internalID: -8851958224981625098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_71
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 693
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ef7f78a3f48bba0800000000000000
+      internalID: -6073016984701239775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_72
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 691
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109c5ced7692d13c0800000000000000
+      internalID: -4387304935893120767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_73
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 661
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 648a298cee2e34970800000000000000
+      internalID: 8738077217224042566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_74
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 698
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b5d8ef97f1065e90800000000000000
+      internalID: -7037435204668435015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_75
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 685
+        width: 10
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4f870566fefd9360800000000000000
+      internalID: 7178173715308842831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_76
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 677
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a3dcb8786dc61d20800000000000000
+      internalID: 3249010029780325286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_77
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 665
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e1c044d9e8f792c0800000000000000
+      internalID: -4424794425696140828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_78
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 674
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d50be5eeb0e4f90800000000000000
+      internalID: -6967618455076840067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_79
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 665
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f80de1df2f0d9000800000000000000
+      internalID: 44208269403425012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_80
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 668
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b3491bde5e1a8820800000000000000
+      internalID: 2921180701054813112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_81
+      rect:
+        serializedVersion: 2
+        x: 2405
+        y: 664
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa3a2e41941b088e0800000000000000
+      internalID: -1693158532450180177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_82
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 663
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b6dc12bb6f48150800000000000000
+      internalID: 5874091097584397058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_83
+      rect:
+        serializedVersion: 2
+        x: 2405
+        y: 660
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2686fdaea2af403e0800000000000000
+      internalID: -2088269264956987294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_84
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 652
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22810d009d5df92d0800000000000000
+      internalID: -3269659676449433566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_85
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 642
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27f2796cc8662b520800000000000000
+      internalID: 2716346280071081842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_86
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 646
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3717b9f86dfebe8c0800000000000000
+      internalID: -3968814941785591437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_87
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 633
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9d1eed314271cf0800000000000000
+      internalID: -281716783925044758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_88
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 615
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc0df58241fa2850800000000000000
+      internalID: 6353155492377595131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_89
+      rect:
+        serializedVersion: 2
+        x: 2364
+        y: 627
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09618c52e100211d0800000000000000
+      internalID: -3381640240718932336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_90
+      rect:
+        serializedVersion: 2
+        x: 2402
+        y: 638
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 952f6426964e8d9e0800000000000000
+      internalID: -1596274926631325095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_91
+      rect:
+        serializedVersion: 2
+        x: 2412
+        y: 634
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70418b71a07e6a960800000000000000
+      internalID: 7613026250650031111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_92
+      rect:
+        serializedVersion: 2
+        x: 2414
+        y: 601
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7484dd5793ae0200800000000000000
+      internalID: 148235708259402876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_93
+      rect:
+        serializedVersion: 2
+        x: 2469
+        y: 638
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70d44fce3fac51530800000000000000
+      internalID: 3825186607522401543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_94
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 620
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 501e3548905144ae0800000000000000
+      internalID: -1566103639799111419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_95
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 616
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 991e2f6b3032a2c60800000000000000
+      internalID: 7794080603979309465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_96
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 615
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 629c22ccd9915a3b0800000000000000
+      internalID: -5501963204237801178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_97
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 619
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765bd70a05003c420800000000000000
+      internalID: 2648961352113960295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_98
+      rect:
+        serializedVersion: 2
+        x: 2413
+        y: 621
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a30c3b3e4257bf90800000000000000
+      internalID: -6937986204986244183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_99
+      rect:
+        serializedVersion: 2
+        x: 2422
+        y: 620
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe356021c866b4f0800000000000000
+      internalID: -813347504012312839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_100
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 608
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b2c782be1b2ea710800000000000000
+      internalID: 1706348719664251572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_101
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 607
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687978c19793d75c0800000000000000
+      internalID: -4216150483816441978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_102
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 609
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e429d18ce7c8b7ad0800000000000000
+      internalID: -2703412675154701746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_103
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 584
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3e7a792a2083db10800000000000000
+      internalID: 2005087177682878010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_104
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 595
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b82f84696848c86d0800000000000000
+      internalID: -2986866739271634293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_105
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 593
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0448612efb3d44bc0800000000000000
+      internalID: -3799679364508515264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_106
+      rect:
+        serializedVersion: 2
+        x: 2430
+        y: 587
+        width: 23
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd457d519bc35220800000000000000
+      internalID: 2473544445555199416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_107
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 589
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 884c11c4fb0e70040800000000000000
+      internalID: 4613903455483970696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_108
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 574
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507cfec7ad8928d40800000000000000
+      internalID: 5585194552059217669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_109
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 582
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43770c6d230114a40800000000000000
+      internalID: 5350575642830206772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_110
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 585
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa94e54d489a09f0800000000000000
+      internalID: -501420950845875466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_111
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 579
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a54ee6ceceab040800000000000000
+      internalID: 4664300864312466010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_112
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 570
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5014951d7a84aa250800000000000000
+      internalID: 5956653342759928069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_113
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 572
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d8ea7745ad765360800000000000000
+      internalID: 7158046806574295256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_114
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 578
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447639cd3fb095a80800000000000000
+      internalID: -8477731681542641852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_115
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 566
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec31dd0db4c41450800000000000000
+      internalID: 6058683714979839203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_116
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 568
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21f022a73d71daee0800000000000000
+      internalID: -1248315324657168622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_117
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 549
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ce00df769e090f0800000000000000
+      internalID: -1112132475124913139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_118
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 560
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7acba243fb9cd9790800000000000000
+      internalID: -7521633979587707737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_119
+      rect:
+        serializedVersion: 2
+        x: 2424
+        y: 554
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8facc5c28255c1af0800000000000000
+      internalID: -424370633848337672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_120
+      rect:
+        serializedVersion: 2
+        x: 2429
+        y: 547
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83dea22df8d336530800000000000000
+      internalID: 3846986194620181816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_121
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 552
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c2047d1e5668f090800000000000000
+      internalID: -8000532183616585019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_122
+      rect:
+        serializedVersion: 2
+        x: 2381
+        y: 549
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad604e2199039050800000000000000
+      internalID: 5805994863761583535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_123
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 541
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dfbbe650f127f050800000000000000
+      internalID: 5834169158415925208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_124
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 524
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98dfbb063174f7990800000000000000
+      internalID: -7386106715311440503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_125
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 518
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c9efb87f8993e750800000000000000
+      internalID: 6333074342498265543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_126
+      rect:
+        serializedVersion: 2
+        x: 2378
+        y: 514
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1228de9f350ea220800000000000000
+      internalID: 2498940614043247135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_127
+      rect:
+        serializedVersion: 2
+        x: 2379
+        y: 494
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1780749ec87d4bfa0800000000000000
+      internalID: -5785762621055104911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_128
+      rect:
+        serializedVersion: 2
+        x: 2464
+        y: 501
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f3fe316e65e42d0800000000000000
+      internalID: -3292598731384340640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_129
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 490
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61916e0520516d020800000000000000
+      internalID: 2366101753921149206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_130
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 465
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 952e3611e6500c580800000000000000
+      internalID: -8809034900840390055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_131
+      rect:
+        serializedVersion: 2
+        x: 2437
+        y: 450
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ad603a4f6660290800000000000000
+      internalID: -7924533293418620368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_132
+      rect:
+        serializedVersion: 2
+        x: 2474
+        y: 469
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 424ef7a2b63254950800000000000000
+      internalID: 6432586585950118948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_133
+      rect:
+        serializedVersion: 2
+        x: 2458
+        y: 460
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: febbb5a24c5dcce00800000000000000
+      internalID: 1066462250280926191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_134
+      rect:
+        serializedVersion: 2
+        x: 2389
+        y: 430
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3920a2f0507b4500800000000000000
+      internalID: 381522086413216063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_135
+      rect:
+        serializedVersion: 2
+        x: 2390
+        y: 436
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99523ca1a02638960800000000000000
+      internalID: 7603028391469720985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_136
+      rect:
+        serializedVersion: 2
+        x: 2411
+        y: 427
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f630b2c083e175e0800000000000000
+      internalID: -1913498224494102793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_137
+      rect:
+        serializedVersion: 2
+        x: 2436
+        y: 436
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcf9a65f16854e80800000000000000
+      internalID: -8194996477774660400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_138
+      rect:
+        serializedVersion: 2
+        x: 2383
+        y: 424
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 983050589798318e0800000000000000
+      internalID: -1723883077337021559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_139
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 413
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965f5d4ffa08edd50800000000000000
+      internalID: 6763985183572358505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_140
+      rect:
+        serializedVersion: 2
+        x: 2398
+        y: 418
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd58402b954570bf0800000000000000
+      internalID: -358224901137201699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_141
+      rect:
+        serializedVersion: 2
+        x: 2431
+        y: 420
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9db0028ca4e9cd670800000000000000
+      internalID: 8564894635374152665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_142
+      rect:
+        serializedVersion: 2
+        x: 2451
+        y: 424
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53103b6ea17be63e0800000000000000
+      internalID: -2058506653494214347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_143
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 411
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c55456e58626e50800000000000000
+      internalID: 6801113141918129174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_144
+      rect:
+        serializedVersion: 2
+        x: 2411
+        y: 410
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c72c201e820d720800000000000000
+      internalID: 2868837909514058786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_145
+      rect:
+        serializedVersion: 2
+        x: 2427
+        y: 413
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ae2bfbb2ff95e00800000000000000
+      internalID: 1034138152823089670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_146
+      rect:
+        serializedVersion: 2
+        x: 2439
+        y: 410
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62cdb5a289e03ad40800000000000000
+      internalID: 5594331208832769062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_147
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 397
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c016308d772693a00800000000000000
+      internalID: 736728280916517132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_148
+      rect:
+        serializedVersion: 2
+        x: 2443
+        y: 398
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47f4a357d3286af50800000000000000
+      internalID: 6892339480208494452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_149
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 381
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 118a4643c928ca260800000000000000
+      internalID: 7110201519116691473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_150
+      rect:
+        serializedVersion: 2
+        x: 2379
+        y: 370
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 263e788064fc14130800000000000000
+      internalID: 3549345881042445154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_151
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 389
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f28ca9a13003cc20800000000000000
+      internalID: 3225421971427459828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_152
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 387
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 649655e4ab0c1fc30800000000000000
+      internalID: 4391503018073614662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_153
+      rect:
+        serializedVersion: 2
+        x: 2427
+        y: 390
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73cf31548a9565e90800000000000000
+      internalID: -7037338788471505865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_154
+      rect:
+        serializedVersion: 2
+        x: 2433
+        y: 389
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48ab2acb9f8a82f0800000000000000
+      internalID: -969804870470358966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_155
+      rect:
+        serializedVersion: 2
+        x: 2445
+        y: 389
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe7a6ebde5d68e00800000000000000
+      internalID: 1046759180488834810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_156
+      rect:
+        serializedVersion: 2
+        x: 2473
+        y: 387
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c67470b1cd937e0800000000000000
+      internalID: -1785153768631342049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_157
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 371
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b4a5f1ef92f5880800000000000000
+      internalID: -8620124990339396745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_158
+      rect:
+        serializedVersion: 2
+        x: 2381
+        y: 342
+        width: 47
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66427c664dcbf0460800000000000000
+      internalID: 7210189148886869094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_159
+      rect:
+        serializedVersion: 2
+        x: 2439
+        y: 377
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b043a7e8737be5ed0800000000000000
+      internalID: -2423298100237290485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_160
+      rect:
+        serializedVersion: 2
+        x: 2416
+        y: 349
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1abdce8bbf65f960800000000000000
+      internalID: 7635131594621958683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_161
+      rect:
+        serializedVersion: 2
+        x: 2429
+        y: 341
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 139c457a1b9229d10800000000000000
+      internalID: 2130811416692967729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_162
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 353
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb0f1363a767d8460800000000000000
+      internalID: 7245577642776326335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_163
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 335
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b5b3e4a35adaba0800000000000000
+      internalID: -6076018652413732093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_164
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 333
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e751a8699e9376ac0800000000000000
+      internalID: -3862054480031115906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_165
+      rect:
+        serializedVersion: 2
+        x: 2390
+        y: 335
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8554c210745d7f30800000000000000
+      internalID: 4574905636806219149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_166
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 338
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d1854fda6b8f7e0800000000000000
+      internalID: -1731433198478942941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_167
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 327
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a91e91b506cda7a90800000000000000
+      internalID: -7315292338306555494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_168
+      rect:
+        serializedVersion: 2
+        x: 2398
+        y: 307
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93d3dea9340498960800000000000000
+      internalID: 7604680104898018617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_169
+      rect:
+        serializedVersion: 2
+        x: 2431
+        y: 290
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37cd793addad6a020800000000000000
+      internalID: 2352808500814929011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_170
+      rect:
+        serializedVersion: 2
+        x: 2436
+        y: 296
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267a4278734cac420800000000000000
+      internalID: 2651147073430529890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_171
+      rect:
+        serializedVersion: 2
+        x: 2390
+        y: 286
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fe2a1cd5e2c8c030800000000000000
+      internalID: 3515273801658674929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_172
+      rect:
+        serializedVersion: 2
+        x: 2375
+        y: 259
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 213781d30188201f0800000000000000
+      internalID: -1080151357289630958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_173
+      rect:
+        serializedVersion: 2
+        x: 2433
+        y: 277
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 169ef8ed27fa5b9e0800000000000000
+      internalID: -1606184784192607903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_174
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 264
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26cffffc2e85697c0800000000000000
+      internalID: -4064963882479780766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_175
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 263
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7faf73c81ed96c60800000000000000
+      internalID: 7812019226591342460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_176
+      rect:
+        serializedVersion: 2
+        x: 2394
+        y: 255
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7af0e79ef3dd26220800000000000000
+      internalID: 2477786011577225127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_177
+      rect:
+        serializedVersion: 2
+        x: 2494
+        y: 254
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1213a44e60a2d660800000000000000
+      internalID: 7409160732436271643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_178
+      rect:
+        serializedVersion: 2
+        x: 2466
+        y: 196
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 839ea2cf1259c6800800000000000000
+      internalID: 607024022985304376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_179
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 120
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe2445070d6e9ab0800000000000000
+      internalID: -4999438659414118660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_180
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 0
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3637dc8c7a24605a0800000000000000
+      internalID: -6555478919195298973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buat Rigel_181
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 0
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0897e669cb2ccfe30800000000000000
+      internalID: 4538716639716080000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Buat Rigel_0: -3219503489299598573
+      Buat Rigel_1: -5948581165737140045
+      Buat Rigel_10: 1432722833747042277
+      Buat Rigel_100: 1706348719664251572
+      Buat Rigel_101: -4216150483816441978
+      Buat Rigel_102: -2703412675154701746
+      Buat Rigel_103: 2005087177682878010
+      Buat Rigel_104: -2986866739271634293
+      Buat Rigel_105: -3799679364508515264
+      Buat Rigel_106: 2473544445555199416
+      Buat Rigel_107: 4613903455483970696
+      Buat Rigel_108: 5585194552059217669
+      Buat Rigel_109: 5350575642830206772
+      Buat Rigel_11: 3925436499430496539
+      Buat Rigel_110: -501420950845875466
+      Buat Rigel_111: 4664300864312466010
+      Buat Rigel_112: 5956653342759928069
+      Buat Rigel_113: 7158046806574295256
+      Buat Rigel_114: -8477731681542641852
+      Buat Rigel_115: 6058683714979839203
+      Buat Rigel_116: -1248315324657168622
+      Buat Rigel_117: -1112132475124913139
+      Buat Rigel_118: -7521633979587707737
+      Buat Rigel_119: -424370633848337672
+      Buat Rigel_12: -180153046882335360
+      Buat Rigel_120: 3846986194620181816
+      Buat Rigel_121: -8000532183616585019
+      Buat Rigel_122: 5805994863761583535
+      Buat Rigel_123: 5834169158415925208
+      Buat Rigel_124: -7386106715311440503
+      Buat Rigel_125: 6333074342498265543
+      Buat Rigel_126: 2498940614043247135
+      Buat Rigel_127: -5785762621055104911
+      Buat Rigel_128: -3292598731384340640
+      Buat Rigel_129: 2366101753921149206
+      Buat Rigel_13: 6888613495596113751
+      Buat Rigel_130: -8809034900840390055
+      Buat Rigel_131: -7924533293418620368
+      Buat Rigel_132: 6432586585950118948
+      Buat Rigel_133: 1066462250280926191
+      Buat Rigel_134: 381522086413216063
+      Buat Rigel_135: 7603028391469720985
+      Buat Rigel_136: -1913498224494102793
+      Buat Rigel_137: -8194996477774660400
+      Buat Rigel_138: -1723883077337021559
+      Buat Rigel_139: 6763985183572358505
+      Buat Rigel_14: 745790993616787304
+      Buat Rigel_140: -358224901137201699
+      Buat Rigel_141: 8564894635374152665
+      Buat Rigel_142: -2058506653494214347
+      Buat Rigel_143: 6801113141918129174
+      Buat Rigel_144: 2868837909514058786
+      Buat Rigel_145: 1034138152823089670
+      Buat Rigel_146: 5594331208832769062
+      Buat Rigel_147: 736728280916517132
+      Buat Rigel_148: 6892339480208494452
+      Buat Rigel_149: 7110201519116691473
+      Buat Rigel_15: -8299484742559343392
+      Buat Rigel_150: 3549345881042445154
+      Buat Rigel_151: 3225421971427459828
+      Buat Rigel_152: 4391503018073614662
+      Buat Rigel_153: -7037338788471505865
+      Buat Rigel_154: -969804870470358966
+      Buat Rigel_155: 1046759180488834810
+      Buat Rigel_156: -1785153768631342049
+      Buat Rigel_157: -8620124990339396745
+      Buat Rigel_158: 7210189148886869094
+      Buat Rigel_159: -2423298100237290485
+      Buat Rigel_16: 7974662413919710663
+      Buat Rigel_160: 7635131594621958683
+      Buat Rigel_161: 2130811416692967729
+      Buat Rigel_162: 7245577642776326335
+      Buat Rigel_163: -6076018652413732093
+      Buat Rigel_164: -3862054480031115906
+      Buat Rigel_165: 4574905636806219149
+      Buat Rigel_166: -1731433198478942941
+      Buat Rigel_167: -7315292338306555494
+      Buat Rigel_168: 7604680104898018617
+      Buat Rigel_169: 2352808500814929011
+      Buat Rigel_17: 4255146346536463238
+      Buat Rigel_170: 2651147073430529890
+      Buat Rigel_171: 3515273801658674929
+      Buat Rigel_172: -1080151357289630958
+      Buat Rigel_173: -1606184784192607903
+      Buat Rigel_174: -4064963882479780766
+      Buat Rigel_175: 7812019226591342460
+      Buat Rigel_176: 2477786011577225127
+      Buat Rigel_177: 7409160732436271643
+      Buat Rigel_178: 607024022985304376
+      Buat Rigel_179: -4999438659414118660
+      Buat Rigel_18: -1967009010534617606
+      Buat Rigel_180: -6555478919195298973
+      Buat Rigel_181: 4538716639716080000
+      Buat Rigel_19: 1806040442668608930
+      Buat Rigel_2: -4957555590566477265
+      Buat Rigel_20: 4318962013012372776
+      Buat Rigel_21: 5297569072090183692
+      Buat Rigel_22: 6367748994527628467
+      Buat Rigel_23: 1578324016824096865
+      Buat Rigel_24: 5368032388248404861
+      Buat Rigel_25: 5053587589321178554
+      Buat Rigel_26: -7557720025709308907
+      Buat Rigel_27: 8844369883317266343
+      Buat Rigel_28: 5456640721278322854
+      Buat Rigel_29: 8485769937338436869
+      Buat Rigel_3: -8108778775714193639
+      Buat Rigel_30: -1111266688154743882
+      Buat Rigel_31: 2832552016760842879
+      Buat Rigel_32: 9165883539044789085
+      Buat Rigel_33: 5692348076539938820
+      Buat Rigel_34: -1755049891500988110
+      Buat Rigel_35: 5134235257626615727
+      Buat Rigel_36: 4970143716276206362
+      Buat Rigel_37: -2553844001989020562
+      Buat Rigel_38: 2258426956610849010
+      Buat Rigel_39: -6570979337637119706
+      Buat Rigel_4: -4034360970484972782
+      Buat Rigel_40: -1121297385971171176
+      Buat Rigel_41: 4976844885955991466
+      Buat Rigel_42: 7161969524292435013
+      Buat Rigel_43: 8872683168892657964
+      Buat Rigel_44: 4657675541229709387
+      Buat Rigel_45: -1173992899658775836
+      Buat Rigel_46: -5378768639880341548
+      Buat Rigel_47: 2835324839416318283
+      Buat Rigel_48: -5890319863425729742
+      Buat Rigel_49: -331506749789389330
+      Buat Rigel_5: -930645418459758158
+      Buat Rigel_50: -8360998762388702930
+      Buat Rigel_51: 5896736345936893600
+      Buat Rigel_52: -7835651227757904763
+      Buat Rigel_53: 3153914329454893024
+      Buat Rigel_54: -7338485186502740663
+      Buat Rigel_55: -1246341560520456501
+      Buat Rigel_56: 647862186338514662
+      Buat Rigel_57: 194084562746948510
+      Buat Rigel_58: 839841627770862540
+      Buat Rigel_59: 4786083200930462309
+      Buat Rigel_6: 4260017723701372395
+      Buat Rigel_60: -7890487245722057014
+      Buat Rigel_61: 8312723253970817201
+      Buat Rigel_62: 5196426417218641921
+      Buat Rigel_63: 2613261506928017676
+      Buat Rigel_64: -334530173629969209
+      Buat Rigel_65: 7980018532578702394
+      Buat Rigel_66: -760165192284562459
+      Buat Rigel_67: 3847400178756642192
+      Buat Rigel_68: -6266664706034907678
+      Buat Rigel_69: -5423337595413438333
+      Buat Rigel_7: -2687706102473003519
+      Buat Rigel_70: -8851958224981625098
+      Buat Rigel_71: -6073016984701239775
+      Buat Rigel_72: -4387304935893120767
+      Buat Rigel_73: 8738077217224042566
+      Buat Rigel_74: -7037435204668435015
+      Buat Rigel_75: 7178173715308842831
+      Buat Rigel_76: 3249010029780325286
+      Buat Rigel_77: -4424794425696140828
+      Buat Rigel_78: -6967618455076840067
+      Buat Rigel_79: 44208269403425012
+      Buat Rigel_8: 8930422833312550919
+      Buat Rigel_80: 2921180701054813112
+      Buat Rigel_81: -1693158532450180177
+      Buat Rigel_82: 5874091097584397058
+      Buat Rigel_83: -2088269264956987294
+      Buat Rigel_84: -3269659676449433566
+      Buat Rigel_85: 2716346280071081842
+      Buat Rigel_86: -3968814941785591437
+      Buat Rigel_87: -281716783925044758
+      Buat Rigel_88: 6353155492377595131
+      Buat Rigel_89: -3381640240718932336
+      Buat Rigel_9: 1667282265081486034
+      Buat Rigel_90: -1596274926631325095
+      Buat Rigel_91: 7613026250650031111
+      Buat Rigel_92: 148235708259402876
+      Buat Rigel_93: 3825186607522401543
+      Buat Rigel_94: -1566103639799111419
+      Buat Rigel_95: 7794080603979309465
+      Buat Rigel_96: -5501963204237801178
+      Buat Rigel_97: 2648961352113960295
+      Buat Rigel_98: -6937986204986244183
+      Buat Rigel_99: -813347504012312839
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

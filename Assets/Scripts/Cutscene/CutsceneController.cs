@@ -76,4 +76,12 @@ public class CutsceneController : MonoBehaviour
         d.stopped -= OnStopped;
         onEnd?.Invoke();
     }
+
+        public void RigelStop()
+    {
+        if (!director) director = GetComponent<PlayableDirector>();
+        if (!video) video = GetComponent<VideoPlayer>();
+
+        video.Stop();
+    }
 }
