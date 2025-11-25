@@ -29,6 +29,8 @@ public class CutsceneTimelineManager : NetworkBehaviour
 
         for (index = 0; index < directors.Length; index++)
         {
+            Debug.Log("================Superman===================");
+
             var d = directors[index];
 
             // 🟢 Tambahkan baris ini
@@ -64,6 +66,7 @@ public class CutsceneTimelineManager : NetworkBehaviour
 
                 yield return null;
             }
+            controller.RigelStop();
         }
 
         // selesai semua director
