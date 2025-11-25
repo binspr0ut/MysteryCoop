@@ -31,6 +31,12 @@ public class WorldManager : NetworkBehaviour
     public SpriteRenderer GudangDetectiveTexture;
     public SpriteRenderer GudangSpiritTexture;
 
+    [Header("HiasanDinding")]
+    public SpriteRenderer HiasanDindingDetectiveTexture;
+    public SpriteRenderer HiasanDindingSpiritTexture;
+    public SpriteRenderer HiasanDinding2DetectiveTexture;
+    public SpriteRenderer HiasanDinding2SpiritTexture;
+
 
     public override void OnNetworkSpawn()
     {
@@ -63,6 +69,12 @@ public class WorldManager : NetworkBehaviour
 
         SetActive(GudangDetectiveTexture, isDetective);
         SetActive(GudangSpiritTexture, !isDetective);
+
+        SetActive(HiasanDindingDetectiveTexture, isDetective);
+        SetActive(HiasanDindingSpiritTexture, !isDetective);
+
+        SetActive(HiasanDinding2DetectiveTexture, isDetective);
+        SetActive(HiasanDinding2SpiritTexture, !isDetective);
     }
 
     private void SetActive(Renderer r, bool active)

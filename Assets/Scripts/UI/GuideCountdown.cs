@@ -13,7 +13,7 @@ public class GuideCountdown : MonoBehaviour
 
     [Header("Cutscene Settings")]
     [SerializeField] private string cutsceneSceneName = "IntroCutscene";
-    [SerializeField] private string nextSceneName = "FirstFloor-Rigel";
+    [SerializeField] private string nextSceneName = "FirstFloor - Shelf Lockpick";
 
     private Coroutine countdownRoutine;
     private bool hasPressed = false;

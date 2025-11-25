@@ -26,6 +26,12 @@ public class ClockBackUI : MonoBehaviour,
     private bool battery1Snapped = false;
     private bool battery2Snapped = false;
 
+    private bool hasDraggedOnce = false;
+
+    [Header("Visual Cue")]
+    [SerializeField] private BlinkUI cue;
+
+
 
     private void Start()
     {
@@ -66,6 +72,14 @@ public class ClockBackUI : MonoBehaviour,
 
         _currentCanvasGroup = _currentBattery.GetComponent<CanvasGroup>();
         _currentCanvasGroup.blocksRaycasts = false;
+
+        if (!hasDraggedOnce)
+        {
+            hasDraggedOnce = true;
+
+            if (cue != null) cue.StopBlink();
+        }
+
     }
 
     // ======================================================================

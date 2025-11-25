@@ -994,7 +994,7 @@ MonoBehaviour:
   infoText: {fileID: 592747833}
   waitSeconds: 5
   cutsceneSceneName: IntroCutscene
-  nextSceneName: FirstFloor-Rigel
+  nextSceneName: FirstFloor - Shelf Lockpick
 --- !u!1 &378605770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2613,7 @@ MonoBehaviour:
   infoText: {fileID: 1529811739}
   waitSeconds: 5
   cutsceneSceneName: IntroCutscene
-  nextSceneName: FirstFloor-Rigel
+  nextSceneName: FirstFloor - Shelf Lockpick
 --- !u!1 &950476792
 GameObject:
   m_ObjectHideFlags: 0

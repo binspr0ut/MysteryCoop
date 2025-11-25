@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 9b03aa690613142a98cab4c16ba9fd6e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3979511537041553542
+    second: basement tevii2_0
+  - first:
+      213: 6255151550471265577
+    second: basement tevii2_1
+  - first:
+      213: 8936247715115149622
+    second: basement tevii2_2
+  - first:
+      213: -8189316292649557152
+    second: basement tevii2_3
+  - first:
+      213: -8208774029995906690
+    second: basement tevii2_4
+  - first:
+      213: -1180095549357058618
+    second: basement tevii2_5
+  - first:
+      213: 707576639597707368
+    second: basement tevii2_6
+  - first:
+      213: 5505599132274653079
+    second: basement tevii2_7
+  - first:
+      213: -16754675837240012
+    second: basement tevii2_8
+  - first:
+      213: -9130867723356377202
+    second: basement tevii2_9
+  - first:
+      213: -1308288589945415018
+    second: basement tevii2_10
+  - first:
+      213: -1246111848999436659
+    second: basement tevii2_11
+  - first:
+      213: 692571589003798039
+    second: basement tevii2_12
+  - first:
+      213: 1438879335462232607
+    second: basement tevii2_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: basement tevii2_0
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1680
+        width: 1936
+        height: 758
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6883ee898a01a3730800000000000000
+      internalID: 3979511537041553542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_1
+      rect:
+        serializedVersion: 2
+        x: 2658
+        y: 1765
+        width: 1077
+        height: 632
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92dd216a133cec650800000000000000
+      internalID: 6255151550471265577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_2
+      rect:
+        serializedVersion: 2
+        x: 3938
+        y: 1843
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639a55c53fde30c70800000000000000
+      internalID: 8936247715115149622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1739
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063ed4f7834b95e80800000000000000
+      internalID: -8189316292649557152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1690
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7964acf283941e80800000000000000
+      internalID: -8208774029995906690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_5
+      rect:
+        serializedVersion: 2
+        x: 2085
+        y: 940
+        width: 1920
+        height: 758
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c59d8ba9557f9fe0800000000000000
+      internalID: -1180095549357058618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_6
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 1156
+        width: 234
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 860069e6431d1d900800000000000000
+      internalID: 707576639597707368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_7
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1474
+        width: 110
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 797fdeaad31d76c40800000000000000
+      internalID: 5505599132274653079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_8
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 1149
+        width: 284
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43df46a06b974cff0800000000000000
+      internalID: -16754675837240012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_9
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 1191
+        width: 20
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f634ade24a84180800000000000000
+      internalID: -9130867723356377202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_10
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 998
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a5b94857608dde0800000000000000
+      internalID: -1308288589945415018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_11
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 995
+        width: 6
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ebbf120ebe4bee0800000000000000
+      internalID: -1246111848999436659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_12
+      rect:
+        serializedVersion: 2
+        x: 2069
+        y: 950
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7166918d0328c9900800000000000000
+      internalID: 692571589003798039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement tevii2_13
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 143
+        width: 3915
+        height: 736
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1260e0d12de7f310800000000000000
+      internalID: 1438879335462232607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      basement tevii2_0: 3979511537041553542
+      basement tevii2_1: 6255151550471265577
+      basement tevii2_10: -1308288589945415018
+      basement tevii2_11: -1246111848999436659
+      basement tevii2_12: 692571589003798039
+      basement tevii2_13: 1438879335462232607
+      basement tevii2_2: 8936247715115149622
+      basement tevii2_3: -8189316292649557152
+      basement tevii2_4: -8208774029995906690
+      basement tevii2_5: -1180095549357058618
+      basement tevii2_6: 707576639597707368
+      basement tevii2_7: 5505599132274653079
+      basement tevii2_8: -16754675837240012
+      basement tevii2_9: -9130867723356377202
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

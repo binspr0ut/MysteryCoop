@@ -4,8 +4,16 @@ using UnityEngine;
 public class StairDownTrigger : NetworkBehaviour, IObject
 {
     private ulong interactorClientId; // simpan siapa yang terakhir interaksi
+    public int counter = 0;
 
     public bool CanInteract() => true;
+
+    public static StairDownTrigger instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     public void Interact(Transform player)
     {
@@ -26,6 +34,7 @@ public class StairDownTrigger : NetworkBehaviour, IObject
             // kirim ke server dulu, baru server broadcast ke owner
             GoBasementServerRpc();
         }
+        counter++;
     }
 
     [ServerRpc(RequireOwnership = false)]
