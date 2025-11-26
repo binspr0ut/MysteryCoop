@@ -8,6 +8,10 @@ public class Door : NetworkBehaviour, IObject
     public GameObject DoorOpen;
     public GameObject DoorClosed;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip doorOpenSFX;
+    [SerializeField] private AudioClip doorCloseSFX;
+
     // Hanya server yang boleh write
     private readonly NetworkVariable<bool> isOpen = new NetworkVariable<bool>(
         false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
@@ -84,6 +88,17 @@ public class Door : NetworkBehaviour, IObject
     private void OnDoorNetworkChanged(bool oldValue, bool newValue)
     {
         UpdateDoorVisual(newValue);
+
+        // 🔊 SFX: play saat pintu benar-benar berubah state
+        if (AudioManager.Instance != null)
+        {
+            AudioClip clip = newValue ? doorOpenSFX : doorCloseSFX;
+            if (clip != null)
+            {
+                AudioManager.Instance.PlaySFX(clip);
+            }
+        }
+
         // Debug.Log($"[CLIENT {NetworkManager.Singleton.LocalClientId}] Door visual <- {newValue}");
     }
 }

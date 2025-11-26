@@ -13,10 +13,16 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
     public bool isSolved = false;
     private SpiritMovement PossessedSpirit;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip openClockUISFX;
+    [SerializeField] private AudioClip closeClockUISFX;
+
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
 
     private ObjectState currentState = ObjectState.Disabled;
+    public ObjectState CurrentState => currentState; // ✅ getter publik
+
 
     public void SetObjectState(ObjectState state)
     {
@@ -37,6 +43,13 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
                 break;
         }
     }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
     void Start()
     {
         ID ??= System.Guid.NewGuid().ToString();
@@ -47,9 +60,8 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
         if (ControlUI != null)
             ControlUI.SetActive(true);
 
-        var col = GetComponent<Collider2D>();
-        if (col != null)
-            col.enabled = false;
+        SetObjectState(currentState); // ✅ gunakan logika dari SetObjectState()
+
 
     }
 
@@ -75,6 +87,9 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
         ControlUI.SetActive(true);
         ClockPuzzleUI.SetActive(false);
         IsPossessed = false;
+
+        // 🔊 SFX tutup UI jam (arwah)
+        PlaySFX(closeClockUISFX);
     }
 
     // === POSSESSION SYSTEM ===
@@ -109,10 +124,24 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
             ControlUI.SetActive(false);
             ClockPuzzleUI.SetActive(true);
             IsPossessed = true;
+
+            // 🔊 SFX buka UI jam (saat masih locked / sebelum diaktifkan)
+            PlaySFX(openClockUISFX);
         }
 
         if (currentState == ObjectState.Active)
         {
+            SubtitleManager.Instance.ShowSubtitle(
+                    "The clock’s awake again. Should I try to possess it!",
+                    SubtitleTarget.Spirit,
+                    SubtitleScope.Global
+                );
+
+            SubtitleManager.Instance.ShowSubtitle(
+                    "Interesting… it’s working again. Maybe it’s pointing to something.",
+                    SubtitleTarget.Detective,
+                    SubtitleScope.Global
+                );
             var puzzle = ClockPuzzleUI.GetComponentInChildren<ClockPuzzle>();
             if (puzzle != null && puzzle.alarmSound != null)
                 puzzle.alarmSound.volume = 1f;
@@ -121,6 +150,9 @@ public class Clock : NetworkBehaviour, IPossess, IStateObject
             ControlUI.SetActive(false);
             ClockPuzzleUI.SetActive(true);
             IsPossessed = true;
+
+            // 🔊 SFX buka UI jam (saat sudah aktif)
+            PlaySFX(openClockUISFX);
         }
 
         Debug.Log("[Clock] Possessed and puzzle opened.");

@@ -13,6 +13,8 @@ public class SceneFlowManager : NetworkBehaviour
 
     private string pendingNextScene = null;
 
+    private bool _showNoteOnNextScene = false;
+
     private void Awake()
     {
         if (Instance != null)
@@ -49,6 +51,10 @@ public class SceneFlowManager : NetworkBehaviour
         }
 
         pendingNextScene = string.IsNullOrWhiteSpace(nextSceneName) ? null : nextSceneName;
+
+        // minta FirstFloor nanti menampilkan note overlay
+        _showNoteOnNextScene = true;
+
         StartCoroutine(LoadCutsceneForAll(cutsceneSceneName));
     }
 
@@ -75,6 +81,67 @@ public class SceneFlowManager : NetworkBehaviour
         Debug.Log($"[SceneFlow] All clients now in cutscene scene: {sceneName}");
     }
 
+    private System.Collections.IEnumerator ShowIntroNoteWhenReady()
+    {
+        // Tunggu beberapa frame sampai scene gameplay aktif & object overlay sudah ada
+        for (int i = 0; i < 120; i++) // ~2 detik max
+        {
+            var overlay = FindObjectOfType<ReadNoteOverlay>(true);
+            if (overlay != null)
+            {
+                overlay.Show();    // << tampilkan overlay di client ini
+                yield break;
+            }
+            yield return null;
+        }
+        Debug.LogWarning("[SceneFlow] ReadNoteOverlay not found in this scene.");
+    }
+
+
+
+    // Dipanggil ketika pemain menekan "Continue" di panel guide
+    [ServerRpc(RequireOwnership = false)]
+    public void ReportGuideContinueServerRpc(string cutsceneSceneName, string nextSceneName, ServerRpcParams _ = default)
+    {
+        readyCount.Value++;
+
+        int total = NetworkManager.Singleton.ConnectedClients.Count;
+        Debug.Log($"[SceneFlow] Guide ready ({readyCount.Value}/{total})");
+
+        if (readyCount.Value >= total)
+        {
+            // reset counter untuk fase berikutnya (cutscene done)
+            readyCount.Value = 0;
+
+            // mulai cutscene untuk semua pemain
+            PlayCutscene(cutsceneSceneName, nextSceneName);
+        }
+    }
+
+    // Dipanggil oleh host ketika menekan "Start Game" di lobby
+    [ServerRpc(RequireOwnership = false)]
+    public void ShowGuidePanelsServerRpc(ServerRpcParams _ = default)
+    {
+        ShowGuidePanelsClientRpc();
+    }
+
+    [ClientRpc]
+    private void ShowGuidePanelsClientRpc(ClientRpcParams _ = default)
+    {
+        var menu = FindObjectOfType<MainMenuUI>();
+        if (menu != null)
+        {
+            menu.ShowGuideForLocalPlayer();
+        }
+        else
+        {
+            Debug.LogWarning("[SceneFlow] MainMenuUI not found when trying to show guide panels.");
+        }
+    }
+
+
+
+
     // Dipanggil oleh cutscene di masing-masing client setelah selesai
     [ServerRpc(RequireOwnership = false)]
     public void ReportCutsceneDoneServerRpc(ServerRpcParams _ = default)
@@ -97,9 +164,24 @@ public class SceneFlowManager : NetworkBehaviour
     {
         Debug.Log("[SceneFlow] All players done, ending cutscene");
 
+        // Daftarkan listener di SEMUA client, bukan hanya host, dan jangan pakai flag
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoadedOnce;
+
         if (IsServer && !string.IsNullOrEmpty(nextScene))
         {
             NetworkManager.SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         }
     }
+
+    // === B. OnSceneLoadedOnce ===
+    private void OnSceneLoadedOnce(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoadedOnce;
+
+        // Tampilkan overlay di setiap client setelah scene aktif
+        var note = FindObjectOfType<ReadNoteOverlay>(true);
+        if (note != null) note.Show();
+        else Debug.LogWarning("[SceneFlow] ReadNoteOverlay not found in scene.");
+    }
+
 }

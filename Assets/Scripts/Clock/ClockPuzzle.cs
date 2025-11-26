@@ -16,9 +16,19 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     [Header("Audio")]
     public AudioSource alarmSound;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip arrowMoveSFX;
+
+
     private RectTransform currentHand;
     private bool isDragging = false;
     private Vector2 pivotScreenPos;
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
 
     private void Awake()
     {
@@ -32,6 +42,10 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     // =====================================================================
     public void OnPointerDown(PointerEventData eventData)
     {
+
+        // 🔊 SFX: mulai menggerakkan jarum jam
+        PlaySFX(arrowMoveSFX);
+
         var clickedObj = eventData.pointerPressRaycast.gameObject;
         if (clickedObj == null) return;
 
@@ -78,11 +92,17 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     // =====================================================================
     private void CheckPuzzleState()
     {
-        float hourZ = Mathf.Abs(NormalizeAngle(hourArrow.localEulerAngles.z));
-        float minuteZ = Mathf.Abs(NormalizeAngle(minuteArrow.localEulerAngles.z));
+        if (parentClock != null && parentClock.CurrentState == ObjectState.Locked)
+            return;
 
-        bool hourCorrect = Mathf.Abs(hourZ - targetHourAngle) <= tolerance;
-        bool minuteCorrect = Mathf.Abs(minuteZ - targetMinuteAngle) <= tolerance;
+        float hourZ = NormalizeAngle(hourArrow.localEulerAngles.z);
+        float minuteZ = NormalizeAngle(minuteArrow.localEulerAngles.z);
+
+        float targetHourNorm = NormalizeAngle(targetHourAngle);
+        float targetMinuteNorm = NormalizeAngle(targetMinuteAngle);
+
+        bool hourCorrect = Mathf.Abs(hourZ - targetHourNorm) <= tolerance;
+        bool minuteCorrect = Mathf.Abs(minuteZ - targetMinuteNorm) <= tolerance;
 
         bool isCorrect = hourCorrect && minuteCorrect;
 
@@ -112,7 +132,10 @@ public class ClockPuzzle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     // =====================================================================
     private float NormalizeAngle(float angle)
     {
-        if (angle > 180) angle -= 360;
+        angle %= 360f;
+        if (angle > 180f) angle -= 360f;
+        if (angle < -180f) angle += 360f;
         return angle;
+
     }
 }

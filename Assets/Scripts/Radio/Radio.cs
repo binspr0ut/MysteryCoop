@@ -49,6 +49,13 @@ public class Radio : MonoBehaviour, IObject, IStateObject
 
         if (currentState == ObjectState.Active)
         {
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: Looks like this radio needs a stronger signal to pick anything up.",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global
+            );
+
             ControlUI.SetActive(false);
             RadioUI.SetActive(true);
             IsInteracted = true;

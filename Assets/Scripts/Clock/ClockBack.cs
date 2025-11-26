@@ -9,13 +9,18 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
 
     [Header("UI References")]
     [SerializeField] private GameObject controlUI;
-    [SerializeField] private GameObject clockBackUIPanel;
+    public GameObject clockBackUIPanel;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openClockUISFX;
+    [SerializeField] private AudioClip closeClockUISFX;
 
     [Header("Puzzle Elements")]
     [SerializeField] private GameObject batteryUI1;
     [SerializeField] private GameObject batteryUI2;
     [SerializeField] private Clock clockTarget;      // target jam (punya Collider2D yg awalnya disabled)
     [SerializeField] private Box boxDependency;      // ketergantungan Box
+    public bool IsSolvedNet => _isSolvedNet.Value;
 
     private ClockBackUI _puzzleUI;
 
@@ -24,6 +29,12 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
 
     private ObjectState currentState = ObjectState.Disabled;
 
+    public static ClockBack Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void SetObjectState(ObjectState state)
     {
@@ -59,18 +70,27 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         batteryUI1.SetActive(false);
         batteryUI2.SetActive(false);
 
-        ClockBackBatterySync.Instance.OnBatteryChanged += HandleBatterySync;
+        // ClockBackBatterySync.Instance.OnBatteryChanged += HandleBatterySync;
+
+
+        // ✅ Hubungkan event dari UI ke fungsi selesai puzzle
+        _puzzleUI = clockBackUIPanel.GetComponentInChildren<ClockBackUI>(true);
+        if (_puzzleUI != null)
+            _puzzleUI.onPuzzleDone += HandlePuzzleDoneLocal;
+
     }
-    private void HandleBatterySync(int count)
+    public void HandleBatterySync(int count)
     {
         if (count >= 1)
-            ShowBattery(batteryUI1);
+            Debug.Log("Battery Count 1");
+        // ShowBattery(batteryUI1);
 
         if (count >= 2)
-            ShowBattery(batteryUI2);
+            Debug.Log("Battery Count 2");
+        // ShowBattery(batteryUI2);
     }
 
-    private void ShowBattery(GameObject obj)
+    public void ShowBattery(GameObject obj)
     {
         var cg = obj.GetComponent<CanvasGroup>();
         if (cg == null) cg = obj.AddComponent<CanvasGroup>();
@@ -120,6 +140,12 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
 
         if (currentState == ObjectState.Active)
         {  // Hanya Detective yang boleh membuka panel
+            SubtitleManager.Instance.ShowSubtitle(
+                    "Agung: This clock’s stopped. I’ll need to find a battery",
+                    SubtitleTarget.Detective,
+                    SubtitleScope.Local
+                );
+
             var detective = player.GetComponent<DetectiveMovement>();
             if (detective == null)
             {
@@ -130,13 +156,17 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             IsInteracted = true;
             if (controlUI) controlUI.SetActive(false);
             if (clockBackUIPanel) clockBackUIPanel.SetActive(true);
+            InventoryController.Instance.ShowInventoryFreeze();
 
-            // Tampilkan battery jika Box sudah solved
-            if (batteryUI1 && batteryUI2)
-            {
-                batteryUI1.SetActive(boxDependency != null && boxDependency.isSolved);
-                batteryUI2.SetActive(boxDependency != null && boxDependency.isSolved);
-            }
+            // 🔊 SFX buka UI jam (belakang)
+            PlaySFX(openClockUISFX);
+
+            // // Tampilkan battery jika Box sudah solved
+            // if (batteryUI1 && batteryUI2)
+            // {
+            //     batteryUI1.SetActive(boxDependency != null && boxDependency.isSolved);
+            //     batteryUI2.SetActive(boxDependency != null && boxDependency.isSolved);
+            // }
         }
     }
 
@@ -145,6 +175,10 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
         IsInteracted = false;
         if (controlUI) controlUI.SetActive(true);
         if (clockBackUIPanel) clockBackUIPanel.SetActive(false);
+        InventoryController.Instance.HideInventory();
+
+        // 🔊 SFX tutup UI jam (detektif)
+        PlaySFX(closeClockUISFX);
     }
 
     // Dipanggil lokal oleh UI saat battery sukses dipasang
@@ -152,15 +186,43 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
     {
         if (IsServer)
         {
-            // Host langsung set NetworkVariable (satu sumber kebenaran)
             SetSolvedOnServer();
+            ActivateClockServerRpc(); // ✅ langsung aktifkan clock di server
         }
         else
         {
-            // Client minta server untuk menetapkan solved
             RequestSetSolvedServerRpc();
+            RequestActivateClockServerRpc(); // ✅ minta server aktifkan clock
         }
     }
+
+    // === RPC untuk aktifkan Clock ===
+    [ServerRpc(RequireOwnership = false)]
+    private void RequestActivateClockServerRpc(ServerRpcParams rpcParams = default)
+    {
+        ActivateClockServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ActivateClockServerRpc()
+    {
+        if (clockTarget == null) return;
+
+        clockTarget.SetObjectState(ObjectState.Active); // ✅ ubah state
+        Debug.Log("⏰ Clock is now ACTIVE (triggered by ClockBack puzzle solve)");
+
+        ActivateClockClientRpc(); // broadcast ke semua client
+    }
+
+    [ClientRpc]
+    private void ActivateClockClientRpc()
+    {
+        if (clockTarget == null) return;
+
+        clockTarget.SetObjectState(ObjectState.Active);
+        Debug.Log("📡 Clock activated on client");
+    }
+
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestSetSolvedServerRpc(ServerRpcParams rpcParams = default)
@@ -197,11 +259,17 @@ public class ClockBack : NetworkBehaviour, IObject, IStateObject
             clockTarget.enabled = solved;
         }
 
-        // Tampilkan battery jika Box sudah solved
-        if (batteryUI1 && batteryUI2)
-        {
-            batteryUI1.SetActive(!solved);
-            batteryUI2.SetActive(!solved);
-        }
+        // // Tampilkan battery jika Box sudah solved
+        // if (batteryUI1 && batteryUI2)
+        // {
+        //     batteryUI1.SetActive(!solved);
+        //     batteryUI2.SetActive(!solved);
+        // }
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 }

@@ -6,11 +6,17 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
     public string ID { get; private set; }
     public GameObject ControlUI;
 
-    public GameObject ShelfUI;
-    public GameObject GuestbookUI;
+    public GameObject PaperPuzzleUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private ObjectState currentState = ObjectState.Disabled;
+
+
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openBoardSFX;
+    [SerializeField] private AudioClip closeBoardSFX;
+
 
 
     [Header("Components")]
@@ -48,44 +54,52 @@ public class ShelfOpened : MonoBehaviour, IObject, IStateObject
         if (currentState == ObjectState.Locked)
         {
             Debug.Log("🔒 Objek masih terkunci. Kamu memerlukan kunci.");
-            // tampilkan UI "Memerlukan kunci"
-            return;
+
         }
 
         if (currentState == ObjectState.Active)
         {
-            OpenShelf();
+            OpenPaperPuzzle();
         }
 
     }
 
     public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
-    public void OpenGuestbook()
+    public void OpenPaperPuzzle()
     {
         ControlUI.SetActive(false);
-        GuestbookUI.SetActive(true);
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 1;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = true;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         IsInteracted = true;
-    }
-    public void OpenShelf()
-    {
-        ControlUI.SetActive(false);
-        ShelfUI.SetActive(true);
-        IsInteracted = true;
+
+        // 🔊 SFX buka papan (detektif)
+        PlaySFX(openBoardSFX);
     }
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
-        ShelfUI.SetActive(false);
-        GuestbookUI.SetActive(false);
+        PaperPuzzleUI.GetComponent<CanvasGroup>().alpha = 0;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().interactable = false;
+        PaperPuzzleUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         IsInteracted = false;
+
+        // 🔊 SFX buka papan (detektif)
+        PlaySFX(closeBoardSFX);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 
 

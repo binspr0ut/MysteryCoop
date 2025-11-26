@@ -71,7 +71,7 @@ public class OffscreenIndicatorBinder_NG : MonoBehaviour
         indicator.worldHeightOffset = worldHeightOffset;
         indicator.indicatorColor = teammateColor;
 
-        indicator.hideWhenOnScreen = false; // biar kelihatan dulu
+        indicator.hideWhenOnScreen = true;
 
         Debug.Log($"✅ Indicator dibuat untuk target: {other.name}");
     }

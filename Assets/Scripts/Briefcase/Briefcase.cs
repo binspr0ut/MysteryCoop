@@ -10,6 +10,11 @@ public class Briefcase : NetworkBehaviour, IObject
     public GameObject LockPanel;   // Panel input kode
     public GameObject ControlUI;   // HUD kontrol (disembunyikan saat panel tampil)
 
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openBriefcaseSFX;
+    [SerializeField] private AudioClip closeBriefcaseSFX;
+
     [Header("Settings")]
     public string CorrectCode = "389";
 
@@ -19,6 +24,8 @@ public class Briefcase : NetworkBehaviour, IObject
     // Mencegah trigger berulang
     private bool explorationMarkedOnServer = false;
 
+    private int counter = 0;
+
     // ========================================================================
     // INTERACTION
     // ========================================================================
@@ -26,8 +33,29 @@ public class Briefcase : NetworkBehaviour, IObject
 
     public void Interact(Transform playerTransform)
     {
+        if (counter == 0)
+        {
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: It seems this briefcase needs a code to be opened!",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global,
+                overwrite: true
+            );
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: Look, there's a note lying on the briefcase",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global
+            );
+
+            counter++;
+        }
+
         if (ControlUI != null)
             ControlUI.SetActive(false);
+
+        // 🔊 SFX buka UI koper
+        PlaySFX(openBriefcaseSFX);
 
         if (LockPanel == null)
         {
@@ -53,6 +81,9 @@ public class Briefcase : NetworkBehaviour, IObject
         if (LockPanel != null) LockPanel.SetActive(false);
         if (ControlUI != null) ControlUI.SetActive(true);
         IsInteracted = false;
+
+        // 🔊 SFX tutup UI koper
+        PlaySFX(closeBriefcaseSFX);
     }
 
     // ========================================================================
@@ -104,11 +135,11 @@ public class Briefcase : NetworkBehaviour, IObject
         // Tutup panel
         ClosePuzzle();
 
-        // Bisa trigger scene change, animasi koper terbuka, dsb.
-        if (SceneFlowManager.Instance != null)
+        if (IsServer && SceneFlowManager.Instance != null)
         {
-            SceneFlowManager.Instance.ChangeScene("BriefcaseOpenedScene");
+            SceneFlowManager.Instance.PlayCutscene("KoperCutscene", "BriefcaseOpenedScene");
         }
+
     }
 
     [ClientRpc]
@@ -131,5 +162,11 @@ public class Briefcase : NetworkBehaviour, IObject
             LockPanel.SetActive(false);
             lockPanelScript = LockPanel.GetComponent<BriefcaseLockPanel>();
         }
+    }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
     }
 }

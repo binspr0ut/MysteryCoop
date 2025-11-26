@@ -12,6 +12,12 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
 
     [SerializeField] private RectTransform[] covers;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip coverGrabSFX;   // saat mulai pegang/geser
+    [SerializeField] private AudioClip coverSlideSFX;  // saat cover berhasil dibuka
+    [SerializeField] private AudioClip batteryPickupSFX; // ngambil batre yes
+
+
     [Header("Puzzle Settings")]
     [SerializeField] private float moveThreshold = 150f; // jarak minimum dianggap "digeser"
 
@@ -68,6 +74,13 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             if (clicked == c?.gameObject)
             {
                 draggingObject = c;
+
+                // 🔊 SFX: mulai pegang/geser cover
+                if (AudioManager.Instance != null && coverGrabSFX != null)
+                {
+                    AudioManager.Instance.PlaySFX(coverGrabSFX);
+                }
+
                 return;
             }
         }
@@ -75,11 +88,13 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         // 2) Jika klik di area baterai (termasuk child)
         if (IsUnder(clicked, battery1))
         {
+            InventoryController.Instance.GetBattery1();
             HandleBatteryClick(battery1);
             return;
         }
         if (IsUnder(clicked, battery2))
         {
+            InventoryController.Instance.GetBattery2();
             HandleBatteryClick(battery2);
             return;
         }
@@ -107,6 +122,13 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
 
         if (distance > moveThreshold)
         {
+
+            // 🔊 SFX: cover benar-benar kebuka / geser cukup jauh
+            if (AudioManager.Instance != null && coverSlideSFX != null)
+            {
+                AudioManager.Instance.PlaySFX(coverSlideSFX);
+            }
+
             // Tanda visual cover sudah “terbuka”
             var img = draggingObject.GetComponent<Image>();
             if (img) img.enabled = false;
@@ -162,6 +184,12 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         batteryCount++;
         Debug.Log($"🔋 Battery collected: {batteryCount}/2");
 
+        // 🔊 SFX: setiap kali battery diambil
+        if (AudioManager.Instance != null && batteryPickupSFX != null)
+        {
+            AudioManager.Instance.PlaySFX(batteryPickupSFX);
+        }
+
         // Inform ClockBack!
         onBatteryCollected?.Invoke(batteryCount);
 
@@ -172,6 +200,7 @@ public class BoxUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             puzzleDone = true;
             Debug.Log("🎉 Puzzle solved! Both batteries collected!");
             onPuzzleDone?.Invoke();
+            InventoryController.Instance.ShowInventoryUI();
         }
     }
 

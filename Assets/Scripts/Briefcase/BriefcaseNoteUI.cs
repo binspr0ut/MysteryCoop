@@ -1,16 +1,21 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class BriefcaseNoteUI : MonoBehaviour
+public class BriefcaseNoteUI : NetworkBehaviour
 {
     [Header("Refs")]
     public GameObject notePanel;
     public GameObject noteButton;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openNoteSFX;
 
     [Header("Inventory")]
     public DetectiveInventory detectiveInventory;
     public ItemData noteItemData;
 
     private bool hasTriggeredStateChange = false;
+    private bool hasTaken = false;
 
     void Start()
     {
@@ -19,42 +24,53 @@ public class BriefcaseNoteUI : MonoBehaviour
 
     public void ShowNote()
     {
-        if (notePanel) notePanel.SetActive(true);
-    }
+        InventoryController.Instance.HideInventory();
 
-    public void HideNote()
-    {
-        if (notePanel) notePanel.SetActive(false);
-    }
+        // 🔊 SFX buka note
+        if (AudioManager.Instance != null && openNoteSFX != null)
+        {
+            AudioManager.Instance.PlaySFX(openNoteSFX);
+        }
 
-    public void TakeNote()
-    {
         // 🔥 Trigger state change only ONCE
         if (!hasTriggeredStateChange)
         {
             hasTriggeredStateChange = true;
             TriggerStateChangeToServer();
+
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Dinda: Could that be the answer to unlocking the briefcase?",
+                SubtitleTarget.Spirit,
+                SubtitleScope.Global
+            );
+
+            SubtitleManager.Instance.ShowSubtitle(
+                "Agung: Maybe, we should try",
+                SubtitleTarget.Detective,
+                SubtitleScope.Global
+            );
+
         }
 
-        // noteButton.SetActive(false);
+        if (notePanel) notePanel.SetActive(true);
+    }
+
+    public void HideNote()
+    {
+
+        if (notePanel) notePanel.SetActive(false);
+    }
+
+    public void TakeNote()
+    {
+        if (!hasTaken)
+        {
+            GetNoteServerRpc();
+            hasTaken = true;
+        }
+
         HideNote();
-
-        if (!detectiveInventory || !noteItemData)
-        {
-            Debug.LogWarning("[BriefcaseNoteUI] Inventory atau ItemData belum di-assign.");
-            return;
-        }
-
-        bool added = detectiveInventory.AddItem(noteItemData);
-        if (added)
-        {
-            if (noteButton) noteButton.SetActive(false);
-            Debug.Log("[BriefcaseNoteUI] Note berhasil ditambahkan ke inventory!");
-        }
-        else
-        {
-            Debug.Log("Inventory penuh atau gagal menambahkan note!");
-        }
     }
 
     private void TriggerStateChangeToServer()
@@ -68,5 +84,17 @@ public class BriefcaseNoteUI : MonoBehaviour
         {
             Debug.LogWarning("[BriefcaseNoteUI] Scene1StateManager not found!");
         }
+    }
+
+    [ServerRpc]
+    void GetNoteServerRpc()
+    {
+        GetNoteClientRpc();
+    }
+
+    [ClientRpc]
+    void GetNoteClientRpc()
+    {
+        InventoryController.Instance.GetNote();
     }
 }

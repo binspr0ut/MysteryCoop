@@ -1,20 +1,27 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
+public class ShelfLockpick : NetworkBehaviour, IObject, IStateObject
 {
-    public bool IsPossessed { get; private set; }
+    public bool IsInteracted { get; private set; }
     public string ID { get; private set; }
 
     [Header("UI References")]
     public GameObject ControlUI;
     public GameObject LockpickOverlay;
     public GameObject OpenedShelf;
-    public SpriteRenderer OpenedShelfRenderer;
 
     public GameObject LockpickTrigger;
     public bool isSolved;
     private SpiritMovement PossessedSpirit;
+
+    public MonoBehaviour ShelfOpened;
+    public MonoBehaviour ShelfOpenedSpirit;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip openLockpickUISFX; //buka UI lockPIG
+    [SerializeField] private AudioClip lockpickSolvedSFX;    // semua pin benar
+
 
     [Header("Components")]
     [SerializeField] private Collider2D interactionCollider;
@@ -60,7 +67,7 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
               ?.SetValue(ui, this);
     }
 
-    public void Possess()
+    public void Interact(Transform player)
     {
         if (currentState == ObjectState.Disabled) return;
 
@@ -74,57 +81,31 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
 
         if (currentState == ObjectState.Active)
         {
-            // cari spirit di sekitar (atau lewat parameter dari PossesDetector)
-            var spirit = FindFirstObjectByType<SpiritMovement>();
-            if (spirit != null && spirit.IsOwner)
-            {
-                // 🔹 Panggil RPC agar semua client tahu spirit menghilang
-                spirit.SetVisibleServerRpc(false);
-                PossessedSpirit = spirit;
-            }
-
             ControlUI.SetActive(false);
             LockpickOverlay.SetActive(true);
-            IsPossessed = true;
+            IsInteracted = true;
+
+            // 🔊 SFX: buka UI lockpick
+            PlaySFX(openLockpickUISFX);
         }
     }
 
-    public void Interact()
-    {
-        if (IsPossessed)
-        {
-            Debug.Log("Unposess ShelfLockpick");
-            Unpossess();
-            IsPossessed = false;
-        }
-        else
-        {
-            Debug.Log("Possess ShelfLockPick");
-            Possess();
-            IsPossessed = true;
-        }
-    }
 
-    public bool CanPossess() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
-
-    public void Unpossess()
-    {
-        if (PossessedSpirit != null)
-        {
-            PossessedSpirit.SetVisibleServerRpc(true);
-            PossessedSpirit = null;
-        }
-
-        ClosePuzzle();
-    }
-
+    public bool CanInteract() => currentState == ObjectState.Active || currentState == ObjectState.Locked;
 
     public void ClosePuzzle()
     {
         ControlUI.SetActive(true);
         LockpickOverlay.SetActive(false);
-        IsPossessed = false;
+        IsInteracted = false;
     }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || AudioManager.Instance == null) return;
+        AudioManager.Instance.PlaySFX(clip);
+    }
+
     public System.Action OnShelfUnlocked;
 
     [ServerRpc(RequireOwnership = false)]
@@ -142,7 +123,15 @@ public class ShelfLockpick : NetworkBehaviour, IPossess, IStateObject
     private void UpdateShelfClientRpc()
     {
         LockpickOverlay.SetActive(false);
-        OpenedShelfRenderer.enabled = true;
+        OpenedShelf.SetActive(true);
         LockpickTrigger.SetActive(false);
+        if (ShelfOpened is IStateObject so)
+            so.SetObjectState(ObjectState.Active);
+
+        if (ShelfOpenedSpirit is IStateObject si)
+            si.SetObjectState(ObjectState.Active);
+
+        // 🔊 SFX: semua pin benar, lemari berhasil kebuka
+        PlaySFX(lockpickSolvedSFX);
     }
 }
