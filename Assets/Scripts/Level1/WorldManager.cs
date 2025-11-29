@@ -23,6 +23,12 @@ public class WorldManager : NetworkBehaviour
     public SpriteRenderer SkyDetectiveTexture;
     public SpriteRenderer SkySpiritTexture;
 
+    [Header("BuildingBackground")]
+    public SpriteRenderer BuildingDetectiveTexture;
+    public SpriteRenderer BuildingSpiritTexture;
+    public SpriteRenderer BuildingDetective2Texture;
+    public SpriteRenderer BuildingSpirit2Texture;
+
     [Header("Stair")]
     public SpriteRenderer StairDetectiveTexture;
     public SpriteRenderer StairSpiritTexture;
@@ -60,6 +66,12 @@ public class WorldManager : NetworkBehaviour
 
         SetActive(ThirdFloorDetectiveTexture, isDetective);
         SetActive(ThirdFloorSpiritTexture, !isDetective);
+
+        SetActive(BuildingDetectiveTexture, isDetective);
+        SetActive(BuildingSpiritTexture, !isDetective);
+
+        SetActive(BuildingDetective2Texture, isDetective);
+        SetActive(BuildingSpirit2Texture, !isDetective);
 
         SetActive(SkyDetectiveTexture, isDetective);
         SetActive(SkySpiritTexture, !isDetective);
