@@ -17,6 +17,12 @@ public class BriefcaseOpenedAssetManager : NetworkBehaviour
     public GameObject DesemberDetectiveTexture;
     public GameObject DesemberSpiritTexture;
 
+    public GameObject DetectivePolaroidMapButton;
+    public GameObject SpiritPolaroidMapButton;
+
+    public GameObject DetectivePolaroidClueButton;
+    public GameObject SpiritPolaroidClueButton;
+
 
     public override void OnNetworkSpawn()
     {
@@ -40,6 +46,12 @@ public class BriefcaseOpenedAssetManager : NetworkBehaviour
 
         SetActive(DesemberDetectiveTexture, isDetective);
         SetActive(DesemberSpiritTexture, !isDetective);
+
+        SetActive(DetectivePolaroidMapButton, isDetective);
+        SetActive(SpiritPolaroidMapButton, !isDetective);
+
+        SetActive(DetectivePolaroidClueButton, isDetective);
+        SetActive(SpiritPolaroidClueButton, !isDetective);
     }
 
     private void SetActive(GameObject r, bool active)
