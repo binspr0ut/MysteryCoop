@@ -51,9 +51,9 @@ public class Radio : MonoBehaviour, IObject, IStateObject
         {
 
             SubtitleManager.Instance.ShowSubtitle(
-                "Agung: Looks like this radio needs a stronger signal to pick anything up.",
+                "Looks like this radio needs a stronger signal to pick anything up.",
                 SubtitleTarget.Detective,
-                SubtitleScope.Global
+                SubtitleScope.Local
             );
 
             ControlUI.SetActive(false);

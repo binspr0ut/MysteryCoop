@@ -64,8 +64,8 @@ public class Lift : NetworkBehaviour, IObject, IStateObject
     {
         if (currentState == ObjectState.Locked)
         {
-            SubtitleManager.Instance.ShowSubtitle("Liftnya ngga nyala", SubtitleTarget.Detective, SubtitleScope.Global);
-            SubtitleManager.Instance.ShowSubtitle("o iya, yok ke basement", SubtitleTarget.Spirit, SubtitleScope.Global);
+            SubtitleManager.Instance.ShowSubtitle("Looks like the electricity is down.", SubtitleTarget.Detective, SubtitleScope.Global);
+            SubtitleManager.Instance.ShowSubtitle("Let’s check the outlet in the basement", SubtitleTarget.Spirit, SubtitleScope.Global);
             if (!hasChangedState)
             {
                 Scene1StateManager.Instance.ChangeState(Level1State.TurnElectricity);

@@ -36,14 +36,14 @@ public class Briefcase : NetworkBehaviour, IObject
         if (counter == 0)
         {
             SubtitleManager.Instance.ShowSubtitle(
-                "Agung: It seems this briefcase needs a code to be opened!",
+                "It seems this briefcase needs a code to be opened!",
                 SubtitleTarget.Detective,
                 SubtitleScope.Global,
                 overwrite: true
             );
 
             SubtitleManager.Instance.ShowSubtitle(
-                "Agung: Look, there's a note lying on the briefcase",
+                "There's a note lying on the briefcase",
                 SubtitleTarget.Detective,
                 SubtitleScope.Global
             );

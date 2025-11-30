@@ -128,7 +128,7 @@ public class InventoryController : NetworkBehaviour
     {
         if (!ClockBack.Instance.clockBackUIPanel.activeInHierarchy)
         {
-            SubtitleManager.Instance.ShowSubtitle("This battery might be useful.    ", SubtitleTarget.Detective, SubtitleScope.Local);
+            SubtitleManager.Instance.ShowSubtitle("This battery might be useful on other things", SubtitleTarget.Detective, SubtitleScope.Local);
             return;
         }
         else
@@ -143,7 +143,7 @@ public class InventoryController : NetworkBehaviour
     {
         if (!ClockBack.Instance.clockBackUIPanel.activeInHierarchy)
         {
-            SubtitleManager.Instance.ShowSubtitle("This battery might be useful.   ", SubtitleTarget.Detective, SubtitleScope.Local);
+            SubtitleManager.Instance.ShowSubtitle("This battery might be useful on other things", SubtitleTarget.Detective, SubtitleScope.Local);
             return;
         }
         else

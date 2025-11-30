@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
+public class ShelfOpenedSpirit : NetworkBehaviour, IPossess, IStateObject
 {
 
     public bool IsPossessed { get; private set; }
@@ -117,6 +118,12 @@ public class ShelfOpenedSpirit : MonoBehaviour, IPossess, IStateObject
 
     public void Unpossess()
     {
+        if (IsHost)
+        {
+            ClosePuzzle();
+            return;
+        }
+
         if (PossessedSpirit != null)
         {
             // 🔹 Tampilkan kembali spirit di semua client

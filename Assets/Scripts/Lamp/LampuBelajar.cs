@@ -9,7 +9,7 @@ public class LampuBelajar : NetworkBehaviour, IPossess
     [Header("Lamp Visuals")]
     [SerializeField] private GameObject spotLight;
 
-        //SFX SETAN RASUKIN BARANG
+    //SFX SETAN RASUKIN BARANG
     [SerializeField] private AudioClip possessSFX;
     [SerializeField] private AudioClip unpossessSFX;
 
@@ -100,13 +100,13 @@ public class LampuBelajar : NetworkBehaviour, IPossess
             if (counter == 0)
             {
                 SubtitleManager.Instance.ShowSubtitle(
-                                       "Dinda: Hey look!, there's a briefcase, but that is not mine, is it from the murderer?",
+                                       "Hey look!, there's a briefcase, but that is not mine, is it from the murderer?",
                                        SubtitleTarget.Spirit,
                                        SubtitleScope.Global
                                    );
 
                 SubtitleManager.Instance.ShowSubtitle(
-                    "Agung: Interesting, let me check it!”",
+                    "Interesting, let me check it!”",
                     SubtitleTarget.Detective,
                     SubtitleScope.Global
                 );

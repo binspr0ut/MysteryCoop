@@ -85,9 +85,9 @@ public class ParabolaBalance : NetworkBehaviour, IPossess, IStateObject
         else
         {
             SubtitleManager.Instance.ShowSubtitle(
-                            "Dinda: The parabola looks useful, but it's broken. Maybe if I possess it, something will happen",
+                            "The parabola looks useful, but it's broken. Maybe if I possess it, something will happen",
                             SubtitleTarget.Spirit,
-                            SubtitleScope.Global
+                            SubtitleScope.Local
                         );
 
             Debug.Log("Possess Parabola");
