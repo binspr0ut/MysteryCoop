@@ -40,13 +40,13 @@ public class BriefcaseNoteUI : NetworkBehaviour
 
 
             SubtitleManager.Instance.ShowSubtitle(
-                "Dinda: Could that be the answer to unlocking the briefcase?",
+                "Could that be the answer to unlocking the briefcase?",
                 SubtitleTarget.Spirit,
                 SubtitleScope.Global
             );
 
             SubtitleManager.Instance.ShowSubtitle(
-                "Agung: Maybe, we should try",
+                "Maybe, we should try",
                 SubtitleTarget.Detective,
                 SubtitleScope.Global
             );

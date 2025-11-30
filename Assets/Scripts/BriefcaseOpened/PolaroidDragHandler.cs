@@ -157,24 +157,23 @@ public class PolaroidDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
 
         eventSystem.SetActive(false);
         yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "polaroidnya udah selesai semua cok.", target: SubtitleTarget.Detective
+            "Looks like all the polaroids are in place", target: SubtitleTarget.Detective
         );
 
         yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "keren juga", target: SubtitleTarget.Spirit
+            "Looks great", target: SubtitleTarget.Spirit
         );
 
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "Wait… these photos form some kind of pattern.", target: SubtitleTarget.Detective
+        );
+
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "Mm-hmm… something’s definitely there", target: SubtitleTarget.Spirit
+        );
 
         PuzzleNetworkManager.Instance.PuzzleSolvedServerRpc();
-
         eventSystem.SetActive(false);
-        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "keknya ada polanya cok.", target: SubtitleTarget.Detective
-        );
-
-        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "iya juga", target: SubtitleTarget.Spirit
-        );
 
 
         eventSystem.SetActive(true);

@@ -20,17 +20,21 @@ public class BriefcaseOpenedSceneStarter : NetworkBehaviour
 
         // Sync: EventSystem OFF
         yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "Kopernya kebuka juga.", SubtitleTarget.Detective
+            "The lock’s finally off", SubtitleTarget.Detective
         );
 
         yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "iya ada polaroid", SubtitleTarget.Spirit
+            "Wait there's something inside", SubtitleTarget.Spirit
+        );
+
+        yield return SubtitleManager.Instance.ShowAndWaitRoutine(
+            "Polaroid..? and Calendar..? Why would someone hide these?", SubtitleTarget.Spirit
         );
 
         // Sync: EventSystem OFF (lagi)
 
         yield return SubtitleManager.Instance.ShowAndWaitRoutine(
-            "Coba berantakin kali ya.", SubtitleTarget.Detective
+            "Whatever the reason, this might be our next clue", SubtitleTarget.Detective
         );
 
     }

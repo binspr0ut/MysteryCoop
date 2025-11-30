@@ -635,10 +635,18 @@ MonoBehaviour:
   ThirdFloorSpiritTexture: {fileID: 2093976628}
   SkyDetectiveTexture: {fileID: 826226849}
   SkySpiritTexture: {fileID: 1226815091}
+  BuildingDetectiveTexture: {fileID: 0}
+  BuildingSpiritTexture: {fileID: 0}
+  BuildingDetective2Texture: {fileID: 0}
+  BuildingSpirit2Texture: {fileID: 0}
   StairDetectiveTexture: {fileID: 819391016}
   StairSpiritTexture: {fileID: 1573850782}
   GudangDetectiveTexture: {fileID: 868829625}
   GudangSpiritTexture: {fileID: 2005844773}
+  HiasanDindingDetectiveTexture: {fileID: 0}
+  HiasanDindingSpiritTexture: {fileID: 0}
+  HiasanDinding2DetectiveTexture: {fileID: 0}
+  HiasanDinding2SpiritTexture: {fileID: 0}
 --- !u!4 &47160604
 Transform:
   m_ObjectHideFlags: 0
@@ -961,6 +969,14 @@ MonoBehaviour:
   interactionCollider: {fileID: 60487462}
   blackFadeCanvas: {fileID: 1838961966}
   audioSource: {fileID: 381871368}
+  lift1Animator: {fileID: 0}
+  lift2Animator: {fileID: 0}
+  lift3Animator: {fileID: 0}
+  lift1Text: {fileID: 0}
+  lift2Text: {fileID: 0}
+  lift3Text: {fileID: 0}
+  liftAnimDuration: 1
+  currentFloor: 1
 --- !u!61 &60487462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1383,9 +1399,12 @@ MonoBehaviour:
   ControlUI: {fileID: 1904602423}
   LockpickOverlay: {fileID: 1693800992}
   OpenedShelf: {fileID: 1987442355}
-  OpenedShelfRenderer: {fileID: 1987442356}
   LockpickTrigger: {fileID: 81814763}
   isSolved: 0
+  ShelfOpened: {fileID: 0}
+  ShelfOpenedSpirit: {fileID: 0}
+  openLockpickUISFX: {fileID: 0}
+  lockpickSolvedSFX: {fileID: 0}
   interactionCollider: {fileID: 81814766}
 --- !u!61 &81814766
 BoxCollider2D:
@@ -1581,6 +1600,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   controlUI: {fileID: 1904602423}
   clockBackUIPanel: {fileID: 1470240714}
+  openClockUISFX: {fileID: 0}
+  closeClockUISFX: {fileID: 0}
   batteryUI1: {fileID: 1101162941}
   batteryUI2: {fileID: 1288899521}
   clockTarget: {fileID: 1200930347}
@@ -2543,6 +2564,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   LockPanel: {fileID: 0}
   ControlUI: {fileID: 0}
+  openBriefcaseSFX: {fileID: 0}
+  closeBriefcaseSFX: {fileID: 0}
   CorrectCode: 493
 --- !u!61 &134308544
 BoxCollider2D:
@@ -3464,6 +3487,7 @@ MonoBehaviour:
   targetMinuteAngle: 120
   tolerance: 5
   alarmSound: {fileID: 0}
+  arrowMoveSFX: {fileID: 0}
 --- !u!1 &195082113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3792,6 +3816,7 @@ MonoBehaviour:
   clockBackObject: {fileID: 85947140}
   parabolaObject: {fileID: 438346085}
   shelfOpenedObject: {fileID: 1987442358}
+  shelfOpenedSpiritObject: {fileID: 0}
   clockObject: {fileID: 1200930347}
   LiftLampFloor1: {fileID: 2042627702}
   HallwayLampFloor1: {fileID: 1734292922}
@@ -4510,6 +4535,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1494370121}
   DoorClosed: {fileID: 1501470595}
+  doorOpenSFX: {fileID: 0}
+  doorCloseSFX: {fileID: 0}
 --- !u!114 &294898521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5015,6 +5042,8 @@ MonoBehaviour:
   ClockPuzzleUI: {fileID: 193142671}
   ControlUI: {fileID: 0}
   isSolved: 0
+  openClockUISFX: {fileID: 0}
+  closeClockUISFX: {fileID: 0}
   interactionCollider: {fileID: 0}
 --- !u!1 &328359786
 GameObject:
@@ -12375,6 +12404,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1609188410}
   DoorClosed: {fileID: 204571528}
+  doorOpenSFX: {fileID: 0}
+  doorCloseSFX: {fileID: 0}
 --- !u!114 &863228813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12563,8 +12594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5bb8ca53382457281f611f347f1cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BriefcaseNoteUI
+  ShowTopMostFoldoutHeaderGroup: 1
   notePanel: {fileID: 605135111}
   noteButton: {fileID: 1689681830}
+  openNoteSFX: {fileID: 0}
   detectiveInventory: {fileID: 0}
   noteItemData: {fileID: 11400000, guid: 3dd146f91845645b6b5e8e2e3b0f2174, type: 2}
 --- !u!114 &863384028
@@ -12584,6 +12617,8 @@ MonoBehaviour:
   - {fileID: 391147315}
   - {fileID: 1046538339}
   correctCode: 389
+  digitClickSFX: {fileID: 0}
+  submitSFX: {fileID: 0}
 --- !u!114 &863384029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12915,7 +12950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &880003210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12931,6 +12966,7 @@ MonoBehaviour:
   root: {fileID: 880003209}
   canvasGroup: {fileID: 1651030112}
   objectiveUI: {fileID: 9952663}
+  controlUI: {fileID: 1904602423}
   autoHide: 1
   countdownDuration: 8
   countdownText: {fileID: 1611938041}
@@ -14447,7 +14483,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1041284824
@@ -14731,6 +14767,7 @@ MonoBehaviour:
   targetMinuteAngle: 0
   tolerance: 5
   alarmSound: {fileID: 1163298335}
+  arrowMoveSFX: {fileID: 0}
 --- !u!114 &1049108051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16973,6 +17010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
+  counter: 0
 --- !u!114 &1157613317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17597,6 +17635,8 @@ MonoBehaviour:
   ClockPuzzleUI: {fileID: 1049108049}
   ControlUI: {fileID: 1904602423}
   isSolved: 0
+  openClockUISFX: {fileID: 0}
+  closeClockUISFX: {fileID: 0}
   interactionCollider: {fileID: 1200930348}
 --- !u!58 &1200930348
 CircleCollider2D:
@@ -20027,6 +20067,14 @@ MonoBehaviour:
   interactionCollider: {fileID: 0}
   blackFadeCanvas: {fileID: 0}
   audioSource: {fileID: 0}
+  lift1Animator: {fileID: 0}
+  lift2Animator: {fileID: 0}
+  lift3Animator: {fileID: 0}
+  lift1Text: {fileID: 0}
+  lift2Text: {fileID: 0}
+  lift3Text: {fileID: 0}
+  liftAnimDuration: 1
+  currentFloor: 1
 --- !u!61 &1301793211
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20283,6 +20331,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   LockPanel: {fileID: 863384025}
   ControlUI: {fileID: 1904602423}
+  openBriefcaseSFX: {fileID: 0}
+  closeBriefcaseSFX: {fileID: 0}
   CorrectCode: 389
 --- !u!61 &1313926611
 BoxCollider2D:
@@ -22658,6 +22708,8 @@ MonoBehaviour:
   target1: {fileID: 1773791655}
   target2: {fileID: 318720279}
   snapDistance: 150
+  insertBatterySFX: {fileID: 0}
+  cue: {fileID: 0}
 --- !u!114 &1470240717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23493,6 +23545,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1494370121}
   DoorClosed: {fileID: 1501470595}
+  doorOpenSFX: {fileID: 0}
+  doorCloseSFX: {fileID: 0}
 --- !u!61 &1494370125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24106,6 +24160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48a324adc26a443681e1f20a1594660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  electricPuzzle: {fileID: 0}
 --- !u!61 &1533443935
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25120,6 +25175,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   DoorOpen: {fileID: 1609188410}
   DoorClosed: {fileID: 204571528}
+  doorOpenSFX: {fileID: 0}
+  doorCloseSFX: {fileID: 0}
 --- !u!114 &1609188413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25658,6 +25715,9 @@ MonoBehaviour:
   - {fileID: 876552025}
   - {fileID: 246411040}
   - {fileID: 1986622215}
+  coverGrabSFX: {fileID: 0}
+  coverSlideSFX: {fileID: 0}
+  batteryPickupSFX: {fileID: 0}
   moveThreshold: 150
 --- !u!114 &1633387111
 MonoBehaviour:
@@ -26556,6 +26616,8 @@ MonoBehaviour:
   shearTolerance: 12
   colorLerpSpeed: 8
   shelfLockpick: {fileID: 81814765}
+  lockpickMoveSFX: {fileID: 0}
+  pinMoveSFX: {fileID: 0}
 --- !u!114 &1693800994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28219,6 +28281,7 @@ MonoBehaviour:
   ControlUI: {fileID: 1904602423}
   BoxUI: {fileID: 1633387109}
   interactionCollider: {fileID: 1811646368}
+  openBoxSFX: {fileID: 0}
 --- !u!1 &1819819089
 GameObject:
   m_ObjectHideFlags: 0
@@ -29103,7 +29166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1904602424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29205,13 +29268,15 @@ MonoBehaviour:
   interactButton: {fileID: 259271495}
   joyStick: {fileID: 443664794}
   joyStickBg: {fileID: 594785457}
+  inventoryBg: {fileID: 0}
   DetectiveInteract: {fileID: -524706510987638252, guid: 0086a56745d244d3ca11cf337df19311, type: 3}
   DetectiveJoystick: {fileID: 4947722915844465521, guid: 0086a56745d244d3ca11cf337df19311, type: 3}
   DetectiveJoystickBg: {fileID: -2423901941277185884, guid: 0086a56745d244d3ca11cf337df19311, type: 3}
+  DetectiveInventoryBg: {fileID: 0}
   SpiritInteract: {fileID: 9106752235861819543, guid: 0086a56745d244d3ca11cf337df19311, type: 3}
   SpiritJoystick: {fileID: -6790060714797883464, guid: 0086a56745d244d3ca11cf337df19311, type: 3}
   SpiritJoystickBg: {fileID: -8945390090425787706, guid: 0086a56745d244d3ca11cf337df19311, type: 3}
-  inventoryButton: {fileID: 1103207667}
+  SpiritInventoryBg: {fileID: 0}
   transparentValue: 0.1
 --- !u!1 &1906672957
 GameObject:
@@ -30435,6 +30500,14 @@ MonoBehaviour:
   interactionCollider: {fileID: 1957891140}
   blackFadeCanvas: {fileID: 1838961966}
   audioSource: {fileID: 381871368}
+  lift1Animator: {fileID: 0}
+  lift2Animator: {fileID: 0}
+  lift3Animator: {fileID: 0}
+  lift1Text: {fileID: 0}
+  lift2Text: {fileID: 0}
+  lift3Text: {fileID: 0}
+  liftAnimDuration: 1
+  currentFloor: 1
 --- !u!114 &1957891139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30972,8 +31045,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ControlUI: {fileID: 1904602423}
-  ShelfUI: {fileID: 1766457374}
-  GuestbookUI: {fileID: 54565917}
+  PaperPuzzleUI: {fileID: 0}
+  openBoardSFX: {fileID: 0}
+  closeBoardSFX: {fileID: 0}
   interactionCollider: {fileID: 1987442359}
 --- !u!61 &1987442359
 BoxCollider2D:
@@ -31089,6 +31163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LampuBelajar
   ShowTopMostFoldoutHeaderGroup: 1
   spotLight: {fileID: 1438291714}
+  possessSFX: {fileID: 0}
+  unpossessSFX: {fileID: 0}
   uiControl: {fileID: 1904602423}
   leftStick: {fileID: 443664794}
   interactButton: {fileID: 259271495}
@@ -32824,6 +32900,14 @@ MonoBehaviour:
   interactionCollider: {fileID: 2114040908}
   blackFadeCanvas: {fileID: 1838961966}
   audioSource: {fileID: 381871368}
+  lift1Animator: {fileID: 0}
+  lift2Animator: {fileID: 0}
+  lift3Animator: {fileID: 0}
+  lift1Text: {fileID: 0}
+  lift2Text: {fileID: 0}
+  lift3Text: {fileID: 0}
+  liftAnimDuration: 1
+  currentFloor: 1
 --- !u!114 &2114040907
 MonoBehaviour:
   m_ObjectHideFlags: 0
