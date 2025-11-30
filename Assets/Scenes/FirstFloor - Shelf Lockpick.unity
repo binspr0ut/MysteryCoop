@@ -2423,7 +2423,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &119691033
 MonoBehaviour:
@@ -10319,7 +10319,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.81, y: 0.14999998, z: -10}
+  m_LocalPosition: {x: -2.92, y: 0.39, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19850,9 +19850,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1987442358}
-        m_TargetAssemblyTypeName: ShelfOpened, Assembly-CSharp
-        m_MethodName: ClosePuzzle
+      - m_Target: {fileID: 1253108857}
+        m_TargetAssemblyTypeName: ShelfOpenedSpirit, Assembly-CSharp
+        m_MethodName: Unpossess
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25733,6 +25733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7316dcc979e4236955c4a1f760b913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  ShowTopMostFoldoutHeaderGroup: 1
   ControlUI: {fileID: 1904602423}
   PaperPuzzleUI: {fileID: 789845185}
   interactionCollider: {fileID: 1253108856}
